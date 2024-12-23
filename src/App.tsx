@@ -4,6 +4,13 @@ import Home from "./routes/Home";
 import Shows from "./routes/Shows";
 import Movies from "./routes/Movies";
 import Layout from "./components/Layout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { staleTime: 60 * 1000 },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -28,7 +35,11 @@ const router = createBrowserRouter([
 
 function App() {
   // Returned JSX
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
