@@ -7,8 +7,8 @@ function Logo() {
     <Link to="/">
       <img
         src={logo}
-        width="50"
-        height="72"
+        width="35"
+        height="50"
         alt="BroNflix"
         title="BroNflix logo"
       />
