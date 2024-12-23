@@ -21,3 +21,16 @@ body {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+/* Side bar custom CSS */
+.sidebar__nav-title {
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+.sidebar--expanded {
+  width: 35rem;
+  & .sidebar__nav-title {
+    opacity: 1;
+  }
+}
