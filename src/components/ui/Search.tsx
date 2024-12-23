@@ -18,7 +18,7 @@ function Search() {
       </span>
       <input
         type="text"
-        className={`bg-transparent border border-stone-50 rounded-full outline-none py-.5 text-[1.4rem] ${
+        className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.4rem] ${
           isHovered ? "w-96 opacity-100 px-4" : "w-0 opacity-0 p-0"
         } transition-all duration-200`}
         placeholder="Search..."
