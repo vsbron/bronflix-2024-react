@@ -1,5 +1,6 @@
-import logo from "@/assets/bronflix-logo.png";
 import { Link } from "react-router-dom";
+
+import logo from "@/assets/bronflix-logo.png";
 
 function Logo() {
   // Returned JSX
