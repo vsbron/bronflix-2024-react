@@ -1,11 +1,35 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Home from "./routes/Home";
+import Shows from "./routes/Shows";
+import Movies from "./routes/Movies";
+import Layout from "./components/ui/Layout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: "/shows",
+        element: <Shows />
+      },
+      {
+        path: "/movies",
+        element: <Movies />
+      }
+    ]
+  }
+])
+
 function App() {
   // Returned JSX
   return (
-    <main className="bg-stone-950 text-stone-50">
-      <img src="/logo-letter.png" alt="BroNflix Logo" />
-      <h1 className="text-8xl -mt-40">BroNflix project</h1>
-      <h4 className="text-4xl mb-40">Under construction</h4>
-    </main>
+    <RouterProvider router={router} />
   );
 }
 
