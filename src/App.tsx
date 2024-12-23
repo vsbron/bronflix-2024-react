@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home";
 import Shows from "./routes/Shows";
 import Movies from "./routes/Movies";
-import Layout from "./components/ui/Layout";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
@@ -12,25 +12,23 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "/shows",
-        element: <Shows />
+        element: <Shows />,
       },
       {
         path: "/movies",
-        element: <Movies />
-      }
-    ]
-  }
-])
+        element: <Movies />,
+      },
+    ],
+  },
+]);
 
 function App() {
   // Returned JSX
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
