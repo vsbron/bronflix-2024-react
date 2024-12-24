@@ -16,10 +16,21 @@ html {
 }
 
 body {
-  font: 400 1.6rem/1.5 Arial, sans-serif;
+  font: 400 1.6rem/1.5 "Roboto", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  font-weight: 500;
+  font-family: "Oswald";
+}
+
+h1 {
+  font-size: 5rem;
 }
 
 /* Side bar custom CSS */

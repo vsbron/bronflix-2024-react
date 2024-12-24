@@ -1,3 +1,4 @@
+import Heading from "../../components/Heading";
 import { useFeatureMovie } from "./useFeatureMovie";
 
 function FeaturedMovie() {
@@ -10,17 +11,20 @@ function FeaturedMovie() {
 
   // Returned JSX
   return (
-    <section
-      className="relative w-full h-[50rem] flex items-end justify-start text-white max-w-[65vw] p-20"
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
-        backgroundSize: "cover",
-        backgroundPosition: "top center",
-      }}
-    >
-      <div className="max-w-[50%]">
-        <h1 className="text-6xl font-bold mb-4">{movie?.title}</h1>
-        <p className="text-xl">{movie?.overview}</p>
+    <section>
+      <Heading>What's hot</Heading>
+      <div
+        className="relative w-full h-[50rem] flex items-end justify-start text-white max-w-[65vw] p-20"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+          backgroundSize: "cover",
+          backgroundPosition: "top center",
+        }}
+      >
+        <div className="max-w-[50%]">
+          <h1 className="text-6xl font-bold mb-4">{movie?.title}</h1>
+          <p className="text-xl">{movie?.overview}</p>
+        </div>
       </div>
     </section>
   );
