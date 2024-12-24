@@ -1,5 +1,5 @@
 import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL, MOVIES_URL } from "../../lib/constants";
+import { MOVIES_IMG_URL } from "../../lib/constants";
 import { useTrendingMovies } from "./useTrendingMovies";
 
 function TrendingMovies() {

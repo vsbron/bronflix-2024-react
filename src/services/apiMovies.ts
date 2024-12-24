@@ -18,7 +18,7 @@ export async function getRandomMovie(): Promise<any> {
   return data.results[Math.floor(Math.random() * data.results.length)];
 }
 
-// API for getting 1 random movie
+// API for getting 10 trending shows
 export async function getTrendingMovies(): Promise<any> {
   // Fetching the movie data
   const response = await fetch(
