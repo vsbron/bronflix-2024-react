@@ -12,7 +12,7 @@ function FeaturedMovie() {
   // Returned JSX
   return (
     <section>
-      <Heading>What's hot</Heading>
+      <Heading>WHAT'S HOT</Heading>
       <div
         className="relative w-full h-[50rem] flex items-end justify-start text-white max-w-[65vw] p-20"
         style={{

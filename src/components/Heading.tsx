@@ -15,7 +15,11 @@ function Heading({ children, as = "h1" }: { children: string; as?: Headings }) {
       break;
   }
 
-  return <div className="bg-red-950">{Element}</div>;
+  return (
+    <div className="px-6 pt-2 pb-3 my-4 bg-custom-gradient w-[50%]">
+      {Element}
+    </div>
+  );
 }
 
 export default Heading;
