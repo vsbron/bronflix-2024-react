@@ -10,8 +10,6 @@ function TrendingShows() {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error fetching movie</div>;
 
-  console.log(shows);
-
   // Returned JSX
   return (
     <section>

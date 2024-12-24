@@ -16,13 +16,13 @@ function TrendingMovies() {
   return (
     <section>
       <Heading as="h2">TRENDING MOVIES</Heading>
-      <div className="flex gap-6 h-96">
+      <div className="flex gap-6 h-[32rem]">
         {movies.map((movie: any) => (
           <div
             style={{
               backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
             }}
-            className="rounded-lg h-[100%] basis-72 bg-cover"
+            className="rounded-lg h-[100%] basis-96 bg-cover"
           ></div>
         ))}
       </div>

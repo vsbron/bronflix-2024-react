@@ -17,5 +17,5 @@ export async function getTrendingActors(): Promise<any> {
   const data = await response.json();
 
   // Returning the first 10 trending shows
-  return data.results.slice(0, 10);
+  return data.results.slice(0, 12);
 }

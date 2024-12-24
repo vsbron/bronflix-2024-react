@@ -34,5 +34,5 @@ export async function getTrendingMovies(): Promise<any> {
   const data = await response.json();
 
   // Returning the first 10 trending movies
-  return data.results.slice(0, 10);
+  return data.results.slice(0, 8);
 }
