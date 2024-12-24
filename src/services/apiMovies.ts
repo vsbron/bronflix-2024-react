@@ -34,3 +34,22 @@ export async function getTrendingMovies(): Promise<any> {
   // Returning the first 8 trending movies
   return data.results.slice(0, 8);
 }
+
+// API for getting specific movie
+export async function getMovie(movieId: string): Promise<any> {
+  // Fetching the movie data
+  const response = await fetch(
+    `${MOVIES_URL}/movie/${movieId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+  );
+
+  // Guard clause
+  if (!response.ok) {
+    throw new Error("Failed to fetch movie");
+  }
+
+  // Extracting the movie data
+  const data = await response.json();
+
+  // Returning the movie
+  return data;
+}

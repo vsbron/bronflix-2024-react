@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./routes/Home";
 import Shows from "./routes/Shows";
+import MoviePage from "./routes/MoviePage";
 import Movies from "./routes/Movies";
 import Layout from "./components/Layout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/movies",
         element: <Movies />,
+      },
+      {
+        path: "/movies/:id",
+        element: <MoviePage />,
       },
     ],
   },
