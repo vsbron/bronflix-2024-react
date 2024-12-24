@@ -30,7 +30,7 @@ function FeaturedMovie() {
         <div className="p-10 pt-96 pr-[50%] bg-gradient-to-t from-stone-950 to-transparent">
           <h1 className="text-7xl font-bold mb-4">{movie?.title}</h1>
           <p className="text-2xl">{truncatedOverview}</p>
-          <div className="mt-6 font-bold flex gap-10">
+          <div className="mt-6 font-bold flex gap-6">
             <div className="bg-red-950 rounded-lg inline-block hover:bg-stone-50 hover:text-red-950 ">
               <Link className="inline-block py-3 px-6" to="/movies/something">
                 READ MORE

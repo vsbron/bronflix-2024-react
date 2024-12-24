@@ -1,7 +1,6 @@
-// Union for the headers
-type Headings = "h1" | "h2";
+import { HeadingProps } from "../lib/types";
 
-function Heading({ children, as = "h1" }: { children: string; as?: Headings }) {
+function Heading({ children, as = "h1" }: HeadingProps) {
   // Constant to hold the correct element
   let Element;
 
@@ -15,6 +14,7 @@ function Heading({ children, as = "h1" }: { children: string; as?: Headings }) {
       break;
   }
 
+  // Returned JSX
   return (
     <div className="px-6 pt-2 pb-3 my-4 bg-custom-gradient w-[50%]">
       {Element}
