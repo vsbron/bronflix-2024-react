@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Heading from "../../components/Heading";
 import { MOVIES_IMG_URL } from "../../lib/constants";
 import { useTrendingMovies } from "./useTrendingMovies";
@@ -18,12 +19,14 @@ function TrendingMovies() {
       <Heading as="h2">TRENDING MOVIES</Heading>
       <div className="flex gap-6 h-[32rem]">
         {movies.map((movie: any) => (
-          <div
-            style={{
-              backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
-            }}
-            className="rounded-lg h-[100%] basis-96 bg-cover"
-          ></div>
+          <Link to={`/movies/${movie.id}`} className="block h-full basis-96">
+            <div
+              style={{
+                backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
+              }}
+              className="rounded-lg bg-cover h-full"
+            ></div>
+          </Link>
         ))}
       </div>
     </section>
