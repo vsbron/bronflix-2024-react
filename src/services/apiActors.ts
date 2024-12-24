@@ -1,11 +1,10 @@
 import { MOVIES_URL } from "../lib/constants";
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 // API for getting 10 trending actors
 export async function getTrendingActors(): Promise<any> {
-  // Fetching the show data
+  // Fetching the actors data
   const response = await fetch(
-    `${MOVIES_URL}/person/popular?api_key=${API_KEY}&page=1`
+    `${MOVIES_URL}/person/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=1`
   );
 
   // Guard clause
@@ -13,9 +12,9 @@ export async function getTrendingActors(): Promise<any> {
     throw new Error("Failed to fetch actors");
   }
 
-  // Extracting the shows data
+  // Extracting the actors data
   const data = await response.json();
 
-  // Returning the first 10 trending shows
+  // Returning the first 12 trending actors
   return data.results.slice(0, 12);
 }

@@ -13,7 +13,7 @@ function Sidebar() {
         isHovered ? "sidebar--expanded" : ""
       }`}
       style={{
-        backgroundImage: "linear-gradient(to right,#0c0a09 40%, transparent)",
+        backgroundImage: "linear-gradient(to right, var(--color-black) 40%, transparent)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

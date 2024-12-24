@@ -10,9 +10,22 @@
   box-sizing: inherit;
 }
 
+:root {
+  --color-white: #fafaf9;
+  --color-black: #0c0a09;
+  --color-red--500: #ef4444;
+  --color-red--900: #7f1d1d;
+  --color-red--950: #450a0a;
+}
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  scrollbar-color: var(--color-red--900) var(--color-black);
+  scrollbar-width: 2px;
+}
+::selection {
+  background-color: var(--color-red--900);
+  color: var(--color-white);
 }
 
 body {

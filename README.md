@@ -4,4 +4,4 @@ A Netflix-inspired movie browsing app, BroNflix, featuring a dynamic UI, Redux s
 
 ## Live version
 
-https://vsbron-react2024-bronflix.netlify.app
+https://vsbronflix.netlify.app/

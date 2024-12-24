@@ -1,11 +1,9 @@
 import { MOVIES_URL } from "../lib/constants";
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-
 // API for getting 1 random movie
 export async function getRandomMovie(): Promise<any> {
-  // Fetching the movie data
+  // Fetching the movies data
   const response = await fetch(
-    `${MOVIES_URL}/movie/popular?api_key=${API_KEY}&page=1&include_adult=false`
+    `${MOVIES_URL}/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=1&include_adult=false`
   );
 
   // Guard clause
@@ -18,11 +16,11 @@ export async function getRandomMovie(): Promise<any> {
   return data.results[Math.floor(Math.random() * data.results.length)];
 }
 
-// API for getting 10 trending shows
+// API for getting 10 trending movies
 export async function getTrendingMovies(): Promise<any> {
-  // Fetching the movie data
+  // Fetching the movies data
   const response = await fetch(
-    `${MOVIES_URL}/movie/popular?api_key=${API_KEY}&page=1&include_adult=false`
+    `${MOVIES_URL}/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=1&include_adult=false`
   );
 
   // Guard clause
@@ -33,6 +31,6 @@ export async function getTrendingMovies(): Promise<any> {
   // Extracting the movies data
   const data = await response.json();
 
-  // Returning the first 10 trending movies
+  // Returning the first 8 trending movies
   return data.results.slice(0, 8);
 }
