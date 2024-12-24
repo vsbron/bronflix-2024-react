@@ -31,12 +31,12 @@ function FeaturedMovie() {
           <h1 className="text-7xl font-bold mb-4">{movie?.title}</h1>
           <p className="text-2xl">{truncatedOverview}</p>
           <div className="mt-6 font-bold flex gap-6">
-            <div className="bg-red-950 rounded-lg inline-block hover:bg-stone-50 hover:text-red-950 ">
+            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900 ">
               <Link className="inline-block py-3 px-6" to="/movies/something">
                 READ MORE
               </Link>
             </div>
-            <div className="bg-red-950 rounded-lg inline-block hover:bg-stone-50 hover:text-red-950 ">
+            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900 ">
               <Link className="inline-block py-3 px-6" to="/movies/something">
                 WATCH TRAILER
               </Link>
