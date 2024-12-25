@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import { IMovie } from "@/lib/types";
 import { Link } from "react-router-dom";
 
@@ -21,21 +22,21 @@ function FeaturedMovieBig({ movie }: { movie: IMovie }) {
       <div className="p-10 pt-96 w-full bg-gradient-to-t from-stone-900 to-transparent">
         <div className="max-w-[60rem]">
           <h2 className="text-7xl font-medium mb-4">{movie.title}</h2>
-          <p className="text-2xl">{truncatedOverview}</p>
-          <div className="mt-6 font-bold flex gap-6">
-            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900">
+          <p className="text-2xl mb-5">{truncatedOverview}</p>
+          <div className="flex gap-6">
+            <Button>
               <Link
                 className="inline-block py-3 px-6"
                 to={`/movies/${movie.id}`}
               >
                 LEARN MORE
               </Link>
-            </div>
-            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900">
+            </Button>
+            <Button>
               <Link className="inline-block py-3 px-6" to="/movies/something">
                 WATCH TRAILER
               </Link>
-            </div>
+            </Button>
           </div>
         </div>
       </div>

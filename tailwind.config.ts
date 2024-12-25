@@ -7,6 +7,8 @@ module.exports = {
         "custom-gradient":
           "linear-gradient(45deg, var(--color-red--950), transparent)",
         "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
+        "button-gradient":
+          "linear-gradient(to right, var(--color-red--950), var(--color-red--900))",
       },
       fontFamily: {
         heading: ["Oswald", "sans-serif"],
