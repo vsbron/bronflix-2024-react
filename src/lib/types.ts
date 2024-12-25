@@ -8,7 +8,7 @@ export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
-// Movie data
+// Movie/Show/Actor data
 export interface IMovie {
   id: string;
   title: string;
@@ -59,4 +59,14 @@ export interface IProductionCompany {
   id: number;
   logo_path: string;
   name: string;
+}
+export interface IActor {
+  id: number;
+  name: string;
+  profile_path: string;
+  gender: number;
+  birthday: string;
+  deathday: string | null;
+  place_of_birth: string;
+  biography: string;
 }

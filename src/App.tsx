@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "./components/Layout";
 import Home from "./routes/Home";
+import ActorPage, { actorLoader } from "./routes/ActorPage";
 import Movies from "./routes/Movies";
 import MoviePage, { movieLoader } from "./routes/MoviePage";
 import Shows from "./routes/Shows";
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
         path: "/shows/:showId",
         element: <ShowPage />,
         loader: showLoader,
+      },
+      {
+        path: "/actors/:actorId",
+        element: <ActorPage />,
+        loader: actorLoader,
       },
     ],
   },

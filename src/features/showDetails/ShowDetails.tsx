@@ -6,9 +6,7 @@ function ShowDetails({ show }: { show: IShow }) {
   console.log(show);
 
   // Handling the show data
-  const headingTitle = `${show.name.toLocaleUpperCase()} (${new Date(
-    show.first_air_date
-  )
+  const headingTitle = `${show.name} (${new Date(show.first_air_date)
     .getFullYear()
     .toString()})`;
   const genres = show.genres.map((genre: IGenre) => genre.name).join(", ");

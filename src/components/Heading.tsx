@@ -7,7 +7,7 @@ function Heading({ children, as = "h1" }: HeadingProps) {
   // Switch statement to determine the right header
   switch (as) {
     case "h1":
-      Element = <h1>{children}</h1>;
+      Element = <h1>{children.toUpperCase()}</h1>;
       break;
     case "h2":
       Element = <h2>{children}</h2>;

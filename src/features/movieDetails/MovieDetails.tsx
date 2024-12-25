@@ -4,9 +4,7 @@ import { IGenre, IMovie, IProductionCompany } from "../../lib/types";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Handling the movie data
-  const headingTitle = `${movie.title.toLocaleUpperCase()} (${new Date(
-    movie.release_date
-  )
+  const headingTitle = `${movie.title} (${new Date(movie.release_date)
     .getFullYear()
     .toString()})`;
   const genres = movie.genres.map((genre: IGenre) => genre.name).join(", ");
