@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-gradient": "linear-gradient(45deg, var(--color-red--950), transparent)",
+        "custom-gradient":
+          "linear-gradient(45deg, var(--color-red--950), transparent)",
+        "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
       },
       fontFamily: {
         heading: ["Oswald", "sans-serif"],
