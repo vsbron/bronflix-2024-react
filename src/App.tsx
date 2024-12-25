@@ -8,6 +8,7 @@ import Movies from "./routes/Movies";
 import MoviePage, { movieLoader } from "./routes/MoviePage";
 import Shows from "./routes/Shows";
 import ShowPage, { showLoader } from "./routes/ShowPage";
+import BackspaceNavigation from "./utils/BackspaceNavigation";
 
 // Setting up the query client
 const queryClient = new QueryClient({
