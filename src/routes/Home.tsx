@@ -1,4 +1,4 @@
-import FeaturedMovie from "@/features/home/FeaturedMovie";
+import FeaturedMovies from "@/features/home/FeaturedMovies";
 import TrendingActors from "@/features/home/TrendingActors";
 import TrendingMovies from "@/features/home/TrendingMovies";
 import TrendingShows from "@/features/home/TrendingShows";
@@ -7,7 +7,7 @@ function Home() {
   // Returned JSX
   return (
     <>
-      <FeaturedMovie />
+      <FeaturedMovies />
       <TrendingMovies />
       <TrendingShows />
       <TrendingActors />

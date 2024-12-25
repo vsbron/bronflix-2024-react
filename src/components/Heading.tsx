@@ -16,7 +16,7 @@ function Heading({ children, as = "h1" }: HeadingProps) {
 
   // Returned JSX
   return (
-    <div className="px-6 pt-2 pb-3 my-4 bg-custom-gradient w-[50%]">
+    <div className="px-6 pt-2 pb-3 my-4 bg-custom-gradient w-[50%] rounded-md">
       {element}
     </div>
   );

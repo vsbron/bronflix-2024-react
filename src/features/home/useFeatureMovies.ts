@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getRandomMovie } from "@/services/apiMovies";
+import { getRandomMovies } from "@/services/apiMovies";
 
-export function useFeatureMovie() {
+export function useFeatureMovies() {
   // Getting the query function
   const {
     isLoading,
-    data: movie,
+    data: movies,
     error,
   } = useQuery({
     queryKey: ["movie"],
-    queryFn: getRandomMovie,
+    queryFn: getRandomMovies,
   });
 
   // Returning all the values
-  return { isLoading, movie, error };
+  return { isLoading, movies, error };
 }

@@ -1,8 +1,8 @@
 import { MOVIES_URL } from "@/lib/constants";
 import { IMovie } from "@/lib/types";
 
-// API for getting one random movie
-export async function getRandomMovie(): Promise<IMovie> {
+// API for getting three random movie
+export async function getRandomMovies(): Promise<IMovie[]> {
   try {
     // Fetching the movies data
     const response = await fetch(
@@ -18,9 +18,12 @@ export async function getRandomMovie(): Promise<IMovie> {
       throw new Error(`Failed to fetch movies: ${response.statusText}`);
     }
 
-    // Extracting the movies data and returning random one
+    // Extracting the movies data
     const data = await response.json();
-    return data.results[Math.floor(Math.random() * data.results.length)];
+
+    // Shuffle the array and return three random movies
+    const shuffledMovies = data.results.sort(() => 0.5 - Math.random());
+    return shuffledMovies.slice(0, 3);
   } catch (error) {
     console.error("Fetch error:", error);
     throw new Error("An error occurred while fetching movies data.");

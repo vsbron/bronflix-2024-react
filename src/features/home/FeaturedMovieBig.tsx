@@ -1,0 +1,46 @@
+import { IMovie } from "@/lib/types";
+import { Link } from "react-router-dom";
+
+function FeaturedMovieBig({ movie }: { movie: IMovie }) {
+  // Handling the movie data
+  const overview = movie?.overview || "";
+  const truncatedOverview =
+    overview.length > 165
+      ? `${overview.slice(0, 165).trim().split(" ").slice(0, -1).join(" ")}...`
+      : overview;
+
+  // Returned JSX
+  return (
+    <div
+      style={{
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+        backgroundPosition: "top center",
+      }}
+      className="relative w-full h-full flex items-end justify-start text-white bg-cover row-span-2"
+    >
+      <div className="p-10 pt-96 w-full bg-gradient-to-t from-stone-900 to-transparent">
+        <div className="max-w-[60rem]">
+          <h2 className="text-7xl font-medium mb-4">{movie.title}</h2>
+          <p className="text-2xl">{truncatedOverview}</p>
+          <div className="mt-6 font-bold flex gap-6">
+            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900">
+              <Link
+                className="inline-block py-3 px-6"
+                to={`/movies/${movie.id}`}
+              >
+                LEARN MORE
+              </Link>
+            </div>
+            <div className="bg-red-900 rounded-lg inline-block hover:bg-stone-50 hover:text-red-900">
+              <Link className="inline-block py-3 px-6" to="/movies/something">
+                WATCH TRAILER
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default FeaturedMovieBig;
