@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+
+import { useTrendingMovies } from "./useTrendingMovies";
+
 import Heading from "../../components/Heading";
 import { MOVIES_IMG_URL } from "../../lib/constants";
-import { useTrendingMovies } from "./useTrendingMovies";
 import { IMovie } from "../../lib/types";
 
 function TrendingMovies() {
@@ -16,18 +18,22 @@ function TrendingMovies() {
   return (
     <section>
       <Heading as="h2">TRENDING MOVIES</Heading>
-      <div className="flex gap-6 h-[32rem]">
-        {movies.map((movie: IMovie) => (
-          <Link to={`/movies/${movie.id}`} className="block h-full basis-96">
-            <div
-              style={{
-                backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
-              }}
-              className="rounded-lg bg-cover h-full"
-            ></div>
-          </Link>
-        ))}
-      </div>
+      {movies?.length ? (
+        <div className="flex gap-6 h-[32rem]">
+          {movies.map((movie: IMovie) => (
+            <Link to={`/movies/${movie.id}`} className="block h-full basis-96">
+              <div
+                style={{
+                  backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
+                }}
+                className="rounded-lg bg-cover h-full"
+              ></div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div>Sorry, no movies available</div>
+      )}
     </section>
   );
 }

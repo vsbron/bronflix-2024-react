@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import Heading from "../../components/Heading";
+
 import { useFeatureMovie } from "./useFeatureMovie";
+
+import Heading from "../../components/Heading";
 
 function FeaturedMovie() {
   // Getting the random movie
@@ -8,7 +10,7 @@ function FeaturedMovie() {
 
   // Guard clauses
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching movie</div>;
+  if (error || !movie) return <div>Error fetching movie</div>;
 
   const overview = movie?.overview || "";
   const truncatedOverview =

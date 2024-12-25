@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import Home from "./routes/Home";
-import Shows from "./routes/Shows";
-import MoviePage, { movieLoader } from "./routes/MoviePage";
-import Movies from "./routes/Movies";
-import Layout from "./components/Layout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import Layout from "./components/Layout";
+import Home from "./routes/Home";
+import Movies from "./routes/Movies";
+import MoviePage, { movieLoader } from "./routes/MoviePage";
+import Shows from "./routes/Shows";
 import ShowPage, { showLoader } from "./routes/ShowPage";
 
 // Setting up the query client

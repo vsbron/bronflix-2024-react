@@ -2,7 +2,7 @@ import { MOVIES_URL } from "../lib/constants";
 import { IShow } from "../lib/types";
 
 // API for getting 10 trending shows
-export async function getTrendingShows(): Promise<any> {
+export async function getTrendingShows(): Promise<IShow[]> {
   // Fetching the show data
   const response = await fetch(
     `${MOVIES_URL}/tv/popular?api_key=${

@@ -1,6 +1,7 @@
+import { useTrendingActors } from "./useTrendingActors";
+
 import Heading from "../../components/Heading";
 import { MOVIES_IMG_URL } from "../../lib/constants";
-import { useTrendingActors } from "./useTrendingActors";
 
 function TrendingActors() {
   // Getting the random movie

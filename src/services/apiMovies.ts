@@ -2,7 +2,7 @@ import { MOVIES_URL } from "../lib/constants";
 import { IMovie } from "../lib/types";
 
 // API for getting 1 random movie
-export async function getRandomMovie(): Promise<any> {
+export async function getRandomMovie(): Promise<IMovie> {
   try {
     // Fetching the movies data
     const response = await fetch(
@@ -28,7 +28,7 @@ export async function getRandomMovie(): Promise<any> {
 }
 
 // API for getting 10 trending movies
-export async function getTrendingMovies(): Promise<any> {
+export async function getTrendingMovies(): Promise<IMovie[]> {
   try {
     // Fetching the movies data
     const response = await fetch(
