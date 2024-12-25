@@ -1,10 +1,6 @@
 function Shows() {
   // Returned JSX
-  return (
-    <div>
-      BroNflix shows
-    </div>
-  )
+  return <div>BroNflix shows</div>;
 }
 
-export default Shows
+export default Shows;
