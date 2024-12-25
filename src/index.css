@@ -59,7 +59,13 @@ h2 {
 }
 .sidebar--expanded {
   width: 35rem;
+
   & .sidebar__nav-title {
     opacity: 1;
   }
+}
+
+/* Utility classes */
+.preview-bg {
+  @apply bg-center bg-[100%_auto] hover:bg-[105%_auto] duration-300 transition-all;
 }

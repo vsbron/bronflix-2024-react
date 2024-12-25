@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
-
 import { useFeatureMovies } from "./useFeatureMovies";
 
 import Heading from "@/components/Heading";
+import Loader from "@/components/Loader";
 import FeaturedMovieBig from "./FeaturedMovieBig";
 import FeaturedMovieSmall from "./FeaturedMovieSmall";
-import Loader from "@/components/Loader";
 
 function FeaturedMovies() {
   // Getting the random movie

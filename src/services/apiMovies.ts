@@ -49,7 +49,7 @@ export async function getTrendingMovies(): Promise<IMovie[]> {
 
     // Extracting the movies data and returning the first 8
     const data = await response.json();
-    return data.results.slice(0, 8);
+    return data.results.slice(0, 8).sort(() => 0.5 - Math.random());
   } catch (error) {
     console.error("Fetch error:", error);
     throw new Error("An error occurred while fetching movies data.");

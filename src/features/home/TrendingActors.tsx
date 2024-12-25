@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTrendingActors } from "./useTrendingActors";
 
 import Heading from "@/components/Heading";
+import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IActor } from "@/lib/types";
 
@@ -11,8 +12,9 @@ function TrendingActors() {
   const { isLoading, actors, error } = useTrendingActors();
 
   // Guard clauses
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching actors</div>;
+  if (isLoading) return <Loader />;
+  if (error || !actors)
+    return <div className="text-red-500">Error fetching actors</div>;
 
   // Returned JSX
   return (
@@ -30,9 +32,9 @@ function TrendingActors() {
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${actor.profile_path})`,
                 }}
-                className="rounded-lg h-[100%] basis-60 bg-cover flex items-end"
+                className="rounded-lg h-[100%] basis-60 flex items-end preview-bg"
               >
-                <div className="bg-gradient-to-t from-stone-950 to-transparent px-2 pb-4 pt-20 w-full font-heading font-light text-[1.7rem]">
+                <div className="bg-featured-background px-2 pb-4 pt-20 w-full font-heading font-light text-[1.7rem]">
                   <h4>{actor.name}</h4>
                 </div>
               </div>

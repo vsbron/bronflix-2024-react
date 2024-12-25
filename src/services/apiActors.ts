@@ -18,8 +18,8 @@ export async function getTrendingActors(): Promise<IActor[]> {
   // Extracting the actors data
   const data = await response.json();
 
-  // Returning the first 12 trending actors
-  return data.results.slice(0, 12);
+  // Returning the first 12 trending actors (shuffled)
+  return data.results.slice(0, 12).sort(() => 0.5 - Math.random());
 }
 
 // API for getting specific actor

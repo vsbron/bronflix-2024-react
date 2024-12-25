@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTrendingMovies } from "./useTrendingMovies";
 
 import Heading from "@/components/Heading";
+import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovie } from "@/lib/types";
 
@@ -11,8 +12,9 @@ function TrendingMovies() {
   const { isLoading, movies, error } = useTrendingMovies();
 
   // Guard clauses
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching movies</div>;
+  if (isLoading) return <Loader />;
+  if (error || !movies)
+    return <div className="text-red-500">Error fetching movies</div>;
 
   // Returned JSX
   return (
@@ -30,7 +32,7 @@ function TrendingMovies() {
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
                 }}
-                className="rounded-lg bg-cover h-full"
+                className="rounded-lg h-full preview-bg"
               ></div>
             </Link>
           ))}

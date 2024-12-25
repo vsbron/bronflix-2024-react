@@ -19,7 +19,7 @@ export async function getTrendingShows(): Promise<IShow[]> {
   const data = await response.json();
 
   // Returning the first 10 trending shows
-  return data.results.slice(0, 10);
+  return data.results.slice(0, 8).sort(() => 0.5 - Math.random());
 }
 
 // API for getting specific show
