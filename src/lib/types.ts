@@ -14,6 +14,7 @@ export interface IMovie {
   title: string;
   overview: string;
   poster_path: string;
+  backdrop_path: string;
   tagline: string;
   release_date: string;
   runtime: string;
@@ -22,6 +23,33 @@ export interface IMovie {
   genres: IGenre[];
   origin_country: { country: string }[];
   production_companies: IProductionCompany[];
+}
+export interface IShow {
+  id: string;
+  name: string;
+  genres: IGenre[];
+  origin_country: { country: string }[];
+  overview?: string;
+  poster_path: string;
+  backdrop_path: string;
+  tagline?: string;
+  first_air_date: string;
+  production_companies: IProductionCompany[];
+  type: string;
+  status: string;
+  spoken_languages: { english_name: string }[];
+  languages: string[];
+  original_language: string;
+  created_by: any[];
+  episode_run_time: any[];
+  in_production: boolean;
+  last_air_date: string;
+  networks: any[];
+  last_episode_to_air: any;
+  next_episode_to_air: any;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  seasons: any[];
 }
 export interface IGenre {
   id: number;

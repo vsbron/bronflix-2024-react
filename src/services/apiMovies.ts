@@ -75,6 +75,6 @@ export async function getMovie(movieId: string): Promise<IMovie> {
     return data;
   } catch (error) {
     console.error("Fetch error:", error);
-    throw new Error("An error occurred while fetching movies data.");
+    throw new Error("An error occurred while fetching movie data.");
   }
 }
