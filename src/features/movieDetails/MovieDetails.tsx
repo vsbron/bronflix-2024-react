@@ -1,6 +1,6 @@
-import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL } from "../../lib/constants";
-import { IGenre, IMovie, IProductionCompany } from "../../lib/types";
+import Heading from "@/components/Heading";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IGenre, IMovie, IProductionCompany } from "@/lib/types";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Handling the movie data

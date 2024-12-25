@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 
 import { useTrendingMovies } from "./useTrendingMovies";
 
-import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL } from "../../lib/constants";
-import { IMovie } from "../../lib/types";
+import Heading from "@/components/Heading";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IMovie } from "@/lib/types";
 
 function TrendingMovies() {
-  // Getting the random movie
+  // Getting the trending movies
   const { isLoading, movies, error } = useTrendingMovies();
 
   // Guard clauses
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching movie</div>;
+  if (error) return <div>Error fetching movies</div>;
 
   // Returned JSX
   return (

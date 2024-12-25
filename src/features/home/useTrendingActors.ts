@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTrendingActors } from "../../services/apiActors";
+import { getTrendingActors } from "@/services/apiActors";
 
 export function useTrendingActors() {
   // Getting the query function

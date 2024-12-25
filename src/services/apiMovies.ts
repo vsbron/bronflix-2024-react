@@ -1,7 +1,7 @@
-import { MOVIES_URL } from "../lib/constants";
-import { IMovie } from "../lib/types";
+import { MOVIES_URL } from "@/lib/constants";
+import { IMovie } from "@/lib/types";
 
-// API for getting 1 random movie
+// API for getting one random movie
 export async function getRandomMovie(): Promise<IMovie> {
   try {
     // Fetching the movies data

@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import { IMovie } from "../lib/types";
-import { getMovie } from "../services/apiMovies";
-import MovieDetails from "../features/movieDetails/MovieDetails";
-import Wrapper from "../components/Wrapper";
+import MovieDetails from "@/features/movieDetails/MovieDetails";
+
+import Wrapper from "@/components/Wrapper";
+import { IMovie } from "@/lib/types";
+import { getMovie } from "@/services/apiMovies";
 
 // Movie data loader
 export const movieLoader = async ({

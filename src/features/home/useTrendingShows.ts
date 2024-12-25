@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTrendingShows } from "../../services/apiShows";
+
+import { getTrendingShows } from "@/services/apiShows";
 
 export function useTrendingShows() {
   // Getting the query function

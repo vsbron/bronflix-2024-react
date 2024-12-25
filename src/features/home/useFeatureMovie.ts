@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRandomMovie } from "../../services/apiMovies";
+
+import { getRandomMovie } from "@/services/apiMovies";
 
 export function useFeatureMovie() {
   // Getting the query function

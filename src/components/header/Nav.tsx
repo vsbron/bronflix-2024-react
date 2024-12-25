@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FilmIcon, HomeIcon, TvIcon } from "@heroicons/react/24/outline";
 
-import { LinkItemProps } from "../lib/types";
+import { LinkItemProps } from "@/lib/types";
 
 function Nav() {
   // Returned JSX

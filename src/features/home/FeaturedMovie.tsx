@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { useFeatureMovie } from "./useFeatureMovie";
 
-import Heading from "../../components/Heading";
+import Heading from "@/components/Heading";
 
 function FeaturedMovie() {
   // Getting the random movie

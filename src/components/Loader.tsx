@@ -1,6 +1,7 @@
 import Wrapper from "./Wrapper";
 
 function Loader() {
+  // Returned JSX
   return (
     <Wrapper className="flex justify-center items-center">
       <div className="w-24 h-24 rounded-full bg-loader-gradient flex justify-center items-center animate-spin">

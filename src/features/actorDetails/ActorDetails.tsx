@@ -1,6 +1,6 @@
-import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL } from "../../lib/constants";
-import { IActor } from "../../lib/types";
+import Heading from "@/components/Heading";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IActor } from "@/lib/types";
 
 function ActorDetails({ actor }: { actor: IActor }) {
   // Handling the actor data

@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 
 import { useTrendingShows } from "./useTrendingShows";
 
-import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL } from "../../lib/constants";
-import { IShow } from "../../lib/types";
+import Heading from "@/components/Heading";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IShow } from "@/lib/types";
 
 function TrendingShows() {
-  // Getting the random movie
+  // Getting the trending shows
   const { isLoading, shows, error } = useTrendingShows();
 
   // Guard clauses
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error fetching movie</div>;
+  if (error) return <div>Error fetching shows</div>;
 
   // Returned JSX
   return (
@@ -32,7 +32,7 @@ function TrendingShows() {
           ))}
         </div>
       ) : (
-        <div>Sorry, no movies available</div>
+        <div>Sorry, no shows available</div>
       )}
     </section>
   );

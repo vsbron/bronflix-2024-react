@@ -1,8 +1,8 @@
-import { MOVIES_URL } from "../lib/constants";
-import { IActor } from "../lib/types";
+import { MOVIES_URL } from "@/lib/constants";
+import { IActor } from "@/lib/types";
 
 // API for getting 10 trending actors
-export async function getTrendingActors(): Promise<any> {
+export async function getTrendingActors(): Promise<IActor[]> {
   // Fetching the actors data
   const response = await fetch(
     `${MOVIES_URL}/person/popular?api_key=${

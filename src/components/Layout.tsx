@@ -1,8 +1,9 @@
 import { Outlet, useNavigation } from "react-router-dom";
 
-import Header from "./Header";
-import Sidebar from "./Sidebar";
 import Loader from "./Loader";
+import Footer from "./footer/Footer";
+import Header from "./header/Header";
+import Sidebar from "./header/Sidebar";
 
 function Layout() {
   // Getting the navigation object from the hook
@@ -16,8 +17,9 @@ function Layout() {
     <div className="bg-stone-950 text-stone-50 flex">
       <Header />
       <Sidebar />
-      <main className="w-screen ml-[7.5rem]">
+      <main className="w-screen ml-[7.5rem] min-h-screen">
         {isLoading ? <Loader /> : <Outlet />}
+        <Footer />
       </main>
     </div>
   );

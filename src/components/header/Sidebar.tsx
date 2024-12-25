@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import Logo from "./Logo";
 import Nav from "./Nav";
 
@@ -13,7 +14,8 @@ function Sidebar() {
         isHovered ? "sidebar--expanded" : ""
       }`}
       style={{
-        backgroundImage: "linear-gradient(to right, var(--color-black) 40%, transparent)",
+        backgroundImage:
+          "linear-gradient(to right, var(--color-black) 40%, transparent)",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

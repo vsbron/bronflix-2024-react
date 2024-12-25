@@ -1,10 +1,8 @@
-import Heading from "../../components/Heading";
-import { MOVIES_IMG_URL } from "../../lib/constants";
-import { IGenre, IProductionCompany, IShow } from "../../lib/types";
+import Heading from "@/components/Heading";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IGenre, IProductionCompany, IShow } from "@/lib/types";
 
 function ShowDetails({ show }: { show: IShow }) {
-  console.log(show);
-
   // Handling the show data
   const headingTitle = `${show.name} (${new Date(show.first_air_date)
     .getFullYear()

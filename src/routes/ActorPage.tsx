@@ -1,10 +1,10 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import ActorDetails from "../features/actorDetails/ActorDetails";
+import ActorDetails from "@/features/actorDetails/ActorDetails";
 
-import Wrapper from "../components/Wrapper";
-import { IActor } from "../lib/types";
-import { getActor } from "../services/apiActors";
+import Wrapper from "@/components/Wrapper";
+import { IActor } from "@/lib/types";
+import { getActor } from "@/services/apiActors";
 
 // Show data loader
 export const actorLoader = async ({

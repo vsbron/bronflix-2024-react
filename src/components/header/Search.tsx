@@ -1,6 +1,5 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-
 import { useState } from "react";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 function Search() {
   // Setting the state for hovering effect

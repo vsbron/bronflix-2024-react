@@ -1,9 +1,10 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import { IShow } from "../lib/types";
-import { getShow } from "../services/apiShows";
-import Wrapper from "../components/Wrapper";
-import ShowDetails from "../features/showDetails/ShowDetails";
+import ShowDetails from "@/features/showDetails/ShowDetails";
+
+import Wrapper from "@/components/Wrapper";
+import { IShow } from "@/lib/types";
+import { getShow } from "@/services/apiShows";
 
 // Show data loader
 export const showLoader = async ({
