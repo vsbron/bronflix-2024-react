@@ -21,7 +21,11 @@ function TrendingShows() {
       {shows?.length ? (
         <div className="flex gap-6 h-[24rem]">
           {shows.map((show: IShow) => (
-            <Link to={`/shows/${show.id}`} className="block h-full basis-96">
+            <Link
+              to={`/shows/${show.id}`}
+              key={show.id}
+              className="block h-full basis-96"
+            >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${show.poster_path})`,

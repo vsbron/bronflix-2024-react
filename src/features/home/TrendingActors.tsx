@@ -21,7 +21,11 @@ function TrendingActors() {
       {actors?.length ? (
         <div className="flex gap-6 h-80">
           {actors.map((actor: IActor) => (
-            <Link to={`/actors/${actor.id}`} className="block h-full basis-96">
+            <Link
+              to={`/actors/${actor.id}`}
+              key={actor.id}
+              className="block h-full basis-96"
+            >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${actor.profile_path})`,

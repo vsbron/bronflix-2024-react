@@ -7,7 +7,7 @@ function Heading({ children, as = "h1" }: HeadingProps) {
   // Switch statement to determine the right header
   switch (as) {
     case "h1":
-      element = <h1>{children.toUpperCase()}</h1>;
+      element = <h1 className="-mt-0.5">{children.toUpperCase()}</h1>;
       break;
     case "h2":
       element = <h2>{children}</h2>;
@@ -16,7 +16,7 @@ function Heading({ children, as = "h1" }: HeadingProps) {
 
   // Returned JSX
   return (
-    <div className="px-6 pt-2 pb-3 my-4 bg-custom-gradient w-[50%] rounded-md">
+    <div className="px-6 pt-2 pb-3 mt-4 mb-6 bg-heading-gradient w-[50%] rounded-md">
       {element}
     </div>
   );

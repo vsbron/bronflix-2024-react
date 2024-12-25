@@ -10,10 +10,12 @@ function FeaturedMovieSmall({ movie }: { movie: IMovie }) {
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         backgroundPosition: "top center",
       }}
-      className="relative w-full flex items-end justify-start text-white bg-cover"
+      className="relative w-full flex items-end justify-start text-white bg-cover rounded-lg"
     >
-      <div className="p-10 pt-48 pr-[25%] w-full bg-gradient-to-t from-stone-900 to-transparent">
-        <h2 className="text-5xl font-medium mb-5">{movie.title}</h2>
+      <div className="p-10 pt-48 pr-[25%] w-full bg-featured-background">
+        <h2 className="text-5xl leading-[1.1] font-medium mb-5">
+          {movie.title}
+        </h2>
         <Button>
           <Link
             className="inline-block py-2 px-4 text-[1.4rem]"

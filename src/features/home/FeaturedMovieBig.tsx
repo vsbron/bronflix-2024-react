@@ -17,9 +17,9 @@ function FeaturedMovieBig({ movie }: { movie: IMovie }) {
         backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         backgroundPosition: "top center",
       }}
-      className="relative w-full h-full flex items-end justify-start text-white bg-cover row-span-2"
+      className="relative w-full h-full flex items-end justify-start text-white bg-cover row-span-2 rounded-lg"
     >
-      <div className="p-10 pt-96 w-full bg-gradient-to-t from-stone-900 to-transparent">
+      <div className="p-10 pt-96 w-full bg-featured-background">
         <div className="max-w-[60rem]">
           <h2 className="text-7xl font-medium mb-4">{movie.title}</h2>
           <p className="text-2xl mb-5">{truncatedOverview}</p>

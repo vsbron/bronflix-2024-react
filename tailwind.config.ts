@@ -4,11 +4,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-gradient":
-          "linear-gradient(45deg, var(--color-red--950), transparent)",
-        "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
         "button-gradient":
           "linear-gradient(to right, var(--color-red--950), var(--color-red--900))",
+        "featured-background":
+          "linear-gradient(to top, var(--color-black--09), transparent)",
+        "heading-gradient":
+          "linear-gradient(to right, var(--color-red--950), transparent)",
+        "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
       },
       fontFamily: {
         heading: ["Oswald", "sans-serif"],

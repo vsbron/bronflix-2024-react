@@ -13,6 +13,7 @@
 :root {
   --color-white: #fafaf9;
   --color-black: #0c0a09;
+  --color-black--09: rgba(12, 10, 9, 0.9);
   --color-red--500: #ef4444;
   --color-red--900: #7f1d1d;
   --color-red--950: #450a0a;
