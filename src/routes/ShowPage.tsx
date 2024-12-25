@@ -2,7 +2,6 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
 
-import Wrapper from "@/components/Wrapper";
 import { IShow } from "@/lib/types";
 import { getShow } from "@/services/apiShows";
 
@@ -21,11 +20,7 @@ function ShowPage() {
   const show = useLoaderData() as IShow;
 
   // Returned JSX
-  return (
-    <Wrapper>
-      <ShowDetails show={show} />
-    </Wrapper>
-  );
+  return <ShowDetails show={show} />;
 }
 
 export default ShowPage;

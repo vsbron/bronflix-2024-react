@@ -2,7 +2,6 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import ActorDetails from "@/features/actorDetails/ActorDetails";
 
-import Wrapper from "@/components/Wrapper";
 import { IActor } from "@/lib/types";
 import { getActor } from "@/services/apiActors";
 
@@ -20,14 +19,8 @@ function ActorPage() {
   // Getting the actor data from the loader
   const actor = useLoaderData() as IActor;
 
-  console.log(actor);
-
   // Returned JSX
-  return (
-    <Wrapper>
-      <ActorDetails actor={actor} />
-    </Wrapper>
-  );
+  return <ActorDetails actor={actor} />;
 }
 
 export default ActorPage;

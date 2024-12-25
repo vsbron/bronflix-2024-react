@@ -19,14 +19,14 @@ function TrendingShows() {
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
       {shows?.length ? (
-        <div className="flex gap-6 h-[32rem]">
+        <div className="flex gap-6 h-[24rem]">
           {shows.map((show: IShow) => (
             <Link to={`/shows/${show.id}`} className="block h-full basis-96">
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${show.poster_path})`,
                 }}
-                className="rounded-lg h-[100%] basis-72 bg-cover"
+                className="rounded-lg h-[100%] basis-72 bg-cover bg-center"
               ></div>
             </Link>
           ))}

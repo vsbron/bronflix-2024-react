@@ -2,7 +2,6 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import MovieDetails from "@/features/movieDetails/MovieDetails";
 
-import Wrapper from "@/components/Wrapper";
 import { IMovie } from "@/lib/types";
 import { getMovie } from "@/services/apiMovies";
 
@@ -21,11 +20,7 @@ function MoviePage() {
   const movie = useLoaderData() as IMovie;
 
   // Returned JSX
-  return (
-    <Wrapper>
-      <MovieDetails movie={movie} />
-    </Wrapper>
-  );
+  return <MovieDetails movie={movie} />;
 }
 
 export default MoviePage;

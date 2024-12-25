@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import Sidebar from "./header/Sidebar";
+import Wrapper from "./Wrapper";
 
 function Layout() {
   // Getting the navigation object from the hook
@@ -18,7 +19,7 @@ function Layout() {
       <Header />
       <Sidebar />
       <main className="w-screen ml-[7.5rem] min-h-screen">
-        {isLoading ? <Loader /> : <Outlet />}
+        <Wrapper>{isLoading ? <Loader /> : <Outlet />}</Wrapper>
         <Footer />
       </main>
     </div>
