@@ -21,6 +21,7 @@ export function useFeatureMovies() {
         id: movie.id,
         title: movie.title,
         overview: movie.overview,
+        poster_path: movie.poster_path,
         backdrop_path: movie.backdrop_path,
       }));
   }
