@@ -15,7 +15,13 @@ export function useTrendingShows() {
   let shows: IShow[] = [];
   if (data) {
     // Shuffle and select 8 trending shows
-    shows = shuffleArray(data).slice(0, SHOWS_TRENDING_QUANTITY);
+    shows = shuffleArray(data)
+      .slice(0, SHOWS_TRENDING_QUANTITY)
+      .map((show: IShow) => ({
+        id: show.id,
+        name: show.name,
+        backdrop_path: show.backdrop_path,
+      }));
   }
 
   return { isLoading, shows, error };

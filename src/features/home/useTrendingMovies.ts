@@ -15,7 +15,12 @@ export function useTrendingMovies() {
   let movies: IMovie[] = [];
   if (data) {
     // Shuffle and select trending movies
-    movies = shuffleArray(data).slice(0, MOVIES_TRENDING_QUANTITY);
+    movies = shuffleArray(data)
+      .slice(0, MOVIES_TRENDING_QUANTITY)
+      .map((movie: IMovie) => ({
+        id: movie.id,
+        poster_path: movie.poster_path,
+      }));
   }
 
   return { isLoading, movies, error };

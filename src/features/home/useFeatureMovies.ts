@@ -15,7 +15,13 @@ export function useFeatureMovies() {
   let movies: IMovie[] = [];
   if (data) {
     // Shuffle and select featured movies
-    movies = shuffleArray(data).slice(0, MOVIES_FEATURED_QUANTITY);
+    movies = shuffleArray(data)
+      .slice(0, MOVIES_FEATURED_QUANTITY)
+      .map((movie: IMovie) => ({
+        id: movie.id,
+        title: movie.title,
+        backdrop_path: movie.backdrop_path,
+      }));
   }
 
   return { isLoading, movies, error };

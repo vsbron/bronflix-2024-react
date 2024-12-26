@@ -15,7 +15,13 @@ export function useTrendingActors() {
   let actors: IActor[] = [];
   if (data) {
     // Shuffle and select trending actors
-    actors = shuffleArray(data).slice(0, ACTORS_TRENDING_QUANTITY);
+    actors = shuffleArray(data)
+      .slice(0, ACTORS_TRENDING_QUANTITY)
+      .map((actor: IActor) => ({
+        id: actor.id,
+        name: actor.name,
+        profile_path: actor.profile_path,
+      }));
   }
 
   return { isLoading, actors, error };
