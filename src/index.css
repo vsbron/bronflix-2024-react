@@ -12,6 +12,8 @@
 
 :root {
   --color-white: #fafaf9;
+  --color-white--400: #a8a29e;
+  --color-white--500: #78716c;
   --color-black: #0c0a09;
   --color-black--09: rgba(12, 10, 9, 0.9);
   --color-red--500: #ef4444;
@@ -63,6 +65,27 @@ h2 {
   & .sidebar__nav-title {
     opacity: 1;
   }
+}
+
+footer a {
+  color: var(--color-white--400);
+  transition: color 0.2s ease;
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--color-white);
+}
+
+footer svg {
+  height: 3rem;
+  fill: var(--color-white--500);
+  transition: fill 0.2s ease;
+}
+
+footer a:hover svg,
+footer a:focus svg {
+  fill: var(--color-white);
 }
 
 /* Utility classes */
