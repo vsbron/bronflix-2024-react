@@ -21,7 +21,7 @@ function TrendingActors() {
     <section>
       <Heading as="h2">TRENDING ACTORS</Heading>
       {actors?.length ? (
-        <div className="flex gap-6 h-80">
+        <div className="flex gap-6 h-96">
           {actors.map((actor: IActor) => (
             <Link
               to={`/actors/${actor.id}`}
@@ -34,7 +34,7 @@ function TrendingActors() {
                 }}
                 className="rounded-lg h-[100%] basis-60 flex items-end preview-bg"
               >
-                <div className="bg-featured-background px-2 pb-4 pt-20 w-full font-heading font-light text-[1.7rem]">
+                <div className="bg-featured-background px-2 pb-4 pt-20 w-full font-heading font-light text-[1.9rem]">
                   <h4>{actor.name}</h4>
                 </div>
               </div>

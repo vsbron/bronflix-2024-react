@@ -1,18 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { MOVIES_TRENDING_QUANTITY } from "@/lib/constants";
+import { IMovie } from "@/lib/types";
 import { getTrendingMovies } from "@/services/apiMovies";
+import { shuffleArray } from "@/utils/helpers";
 
 export function useTrendingMovies() {
-  // Getting the query function
-  const {
-    isLoading,
-    data: movies,
-    error,
-  } = useQuery({
-    queryKey: ["movies"],
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["movies-trending"],
     queryFn: getTrendingMovies,
   });
 
-  // Returning all the values
+  // Transform the data once it's loaded
+  let movies: IMovie[] = [];
+  if (data) {
+    // Shuffle and select trending movies
+    movies = shuffleArray(data).slice(0, MOVIES_TRENDING_QUANTITY);
+  }
+
   return { isLoading, movies, error };
 }
