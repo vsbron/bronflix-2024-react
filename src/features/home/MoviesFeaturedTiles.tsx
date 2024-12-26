@@ -1,14 +1,10 @@
-import Button from "@/components/Button";
-import { MOVIES_IMG_URL } from "@/lib/constants";
-import {
-  FeaturedMovieProps,
-  FeaturedMovieTileProps,
-  IMovie,
-} from "@/lib/types";
-import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-export function FeaturedMovieBig({ movie }: FeaturedMovieProps) {
+import Button from "@/components/Button";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MovieFeaturedProps, MovieFeaturedTileProps } from "@/lib/types";
+
+export function MovieFeaturedBig({ movie }: MovieFeaturedProps) {
   // Handling the movie data
   const overview = movie.overview || "";
   const truncatedOverview =
@@ -37,7 +33,7 @@ export function FeaturedMovieBig({ movie }: FeaturedMovieProps) {
   );
 }
 
-export function FeaturedMovieSmall({ movie }: FeaturedMovieProps) {
+export function MovieFeaturedSmall({ movie }: MovieFeaturedProps) {
   // Returned JSX
   return (
     <FeaturedMovieTile movieBG={movie.backdrop_path!}>
@@ -63,7 +59,7 @@ function FeaturedMovieTile({
   children,
   className,
   movieBG,
-}: FeaturedMovieTileProps) {
+}: MovieFeaturedTileProps) {
   // Returned JSX
   return (
     <div

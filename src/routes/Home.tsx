@@ -1,18 +1,18 @@
+import MoviesFeatured from "@/features/home/MoviesFeatured";
+import MoviesTopRated from "@/features/home/MoviesTopRated";
 import Separator from "@/components/Separator";
-import FeaturedMovies from "@/features/home/FeaturedMovies";
-import TopRatedMovies from "@/features/home/TopRatedMovies";
-import TrendingActors from "@/features/home/TrendingActors";
-import TrendingShows from "@/features/home/TrendingShows";
+import ActorsTrending from "@/features/home/ActorsTrending";
+import ShowsTrending from "@/features/home/ShowsTrending";
 
 function Home() {
   // Returned JSX
   return (
     <>
-      <FeaturedMovies />
-      <TrendingShows />
-      <TrendingActors />
+      <MoviesFeatured />
+      <ShowsTrending />
+      <ActorsTrending />
       <Separator />
-      <TopRatedMovies />
+      <MoviesTopRated />
     </>
   );
 }

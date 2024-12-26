@@ -1,24 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { MOVIES_TRENDING_QUANTITY } from "@/lib/constants";
+import { MOVIES_TOP_RATED_QUANTITY } from "@/lib/constants";
 import { IMovie } from "@/lib/types";
-import { getTrendingMovies } from "@/services/apiMovies";
+import { getMovies } from "@/services/apiMovies";
 import { shuffleArray } from "@/utils/helpers";
 
-export function useTrendingMovies() {
+export function useMoviesTopRated() {
   const { isLoading, data, error } = useQuery({
-    queryKey: ["movies-trending"],
-    queryFn: getTrendingMovies,
+    queryKey: ["movies-top-rated"],
+    queryFn: () => getMovies("top_rated"),
   });
 
   // Transform the data once it's loaded
   let movies: IMovie[] = [];
   if (data) {
-    // Shuffle and select trending movies
+    // Shuffle and select top rated movies
     movies = shuffleArray(data)
-      .slice(0, MOVIES_TRENDING_QUANTITY)
+      .slice(0, MOVIES_TOP_RATED_QUANTITY)
       .map((movie: IMovie) => ({
         id: movie.id,
+        title: movie.title,
         poster_path: movie.poster_path,
       }));
   }

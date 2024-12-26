@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-import { useTrendingActors } from "./useTrendingActors";
+import { useActorsTrending } from "./useActorsTrending";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IPerson } from "@/lib/types";
 
-function TrendingActors() {
+function ActorsTrending() {
   // Getting the trending actors
-  const { isLoading, actors, error } = useTrendingActors();
+  const { isLoading, actors, error } = useActorsTrending();
 
   // Guard clauses
   if (isLoading) return <Loader />;
@@ -48,4 +48,4 @@ function TrendingActors() {
   );
 }
 
-export default TrendingActors;
+export default ActorsTrending;

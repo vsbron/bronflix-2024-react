@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-import { useTrendingShows } from "./useTrendingShows";
+import { useShowsTrending } from "./useShowsTrending";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShow } from "@/lib/types";
 
-function TrendingShows() {
+function ShowsTrending() {
   // Getting the trending shows
-  const { isLoading, shows, error } = useTrendingShows();
+  const { isLoading, shows, error } = useShowsTrending();
 
   // Guard clauses
   if (isLoading) return <Loader />;
@@ -48,4 +48,4 @@ function TrendingShows() {
   );
 }
 
-export default TrendingShows;
+export default ShowsTrending;

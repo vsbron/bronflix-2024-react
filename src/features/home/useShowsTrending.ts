@@ -5,7 +5,7 @@ import { IShow } from "@/lib/types";
 import { getTrendingShows } from "@/services/apiShows";
 import { shuffleArray } from "@/utils/helpers";
 
-export function useTrendingShows() {
+export function useShowsTrending() {
   const { isLoading, data, error } = useQuery({
     queryKey: ["shows-trending"],
     queryFn: getTrendingShows,

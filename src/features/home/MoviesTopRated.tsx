@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
-import { useTopRatedMovies } from "./useTopRatedMovies";
+import { useMoviesTopRated } from "./useMoviesTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovie } from "@/lib/types";
 
-function TopRatedMovies() {
+function MoviesTopRated() {
   // Getting the trending movies
-  const { isLoading, movies, error } = useTopRatedMovies();
+  const { isLoading, movies, error } = useMoviesTopRated();
 
   // Guard clauses
   if (isLoading) return <Loader />;
@@ -44,4 +44,4 @@ function TopRatedMovies() {
   );
 }
 
-export default TopRatedMovies;
+export default MoviesTopRated;

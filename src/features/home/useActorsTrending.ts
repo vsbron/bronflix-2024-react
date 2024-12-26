@@ -5,7 +5,7 @@ import { IPerson } from "@/lib/types";
 import { getTrendingActors } from "@/services/apiActors";
 import { shuffleArray } from "@/utils/helpers";
 
-export function useTrendingActors() {
+export function useActorsTrending() {
   const { isLoading, data, error } = useQuery({
     queryKey: ["actors-trending"],
     queryFn: getTrendingActors,

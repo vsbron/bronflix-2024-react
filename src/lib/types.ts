@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 /* Unions */
 type Headings = "h1" | "h2";
+export type MoviesAPIType = "popular" | "top_rated";
 
 /* Components */
 export type ButtonProps = { children: ReactNode };
@@ -10,8 +11,8 @@ export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
-export type FeaturedMovieProps = { movie: IMovie };
-export type FeaturedMovieTileProps = {
+export type MovieFeaturedProps = { movie: IMovie };
+export type MovieFeaturedTileProps = {
   children: ReactNode;
   className?: string;
   movieBG: string;
