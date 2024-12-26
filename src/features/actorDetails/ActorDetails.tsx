@@ -1,8 +1,8 @@
 import Heading from "@/components/Heading";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IActor } from "@/lib/types";
+import { IPerson } from "@/lib/types";
 
-function ActorDetails({ actor }: { actor: IActor }) {
+function ActorDetails({ actor }: { actor: IPerson }) {
   // Handling the actor data
   const birthday = new Date(actor.birthday).toString();
 

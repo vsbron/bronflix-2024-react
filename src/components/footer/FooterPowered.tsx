@@ -42,7 +42,7 @@ function FooterPowered() {
           rel="noreferrer"
           aria-label="TheMovieDB"
         >
-          <svg width="150" height="30">
+          <svg width="130" height="30">
             <use href="/set-powered.svg#movie-db"></use>
           </svg>
         </a>

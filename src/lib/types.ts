@@ -1,58 +1,81 @@
 import { ReactNode } from "react";
 
-// Union for the headers
+/* Unions */
 type Headings = "h1" | "h2";
-type ButtonSize = "big" | "small";
 
-// Components
+/* Components */
 export type ButtonProps = { children: ReactNode };
 export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
-// Movie/Show/Actor data
+/* Movie/Show/Actor data */
 export interface IMovie {
   id: string;
   title?: string;
+  tagline?: string;
   overview?: string;
   poster_path?: string;
   backdrop_path?: string;
-  tagline?: string;
   release_date?: string;
-  runtime?: string;
-  budget?: string;
-  original_language?: string;
+  budget?: number;
   genres?: IGenre[];
-  origin_country?: { country: string }[];
+  original_language?: string;
+  original_title?: string;
+  popularity?: number;
+  production_countries?: { name: string }[];
   production_companies?: IProductionCompany[];
+  revenue?: number;
+  runtime?: string;
+  spoken_languages?: { english_name: string }[];
+  vote_average?: number;
+  vote_count?: number;
 }
 export interface IShow {
   id: string;
   name: string;
+  tagline?: string;
+  overview?: string;
   poster_path?: string;
   backdrop_path: string;
-  genres?: IGenre[];
-  origin_country?: { country: string }[];
-  overview?: string;
-  tagline?: string;
   first_air_date?: string;
-  production_companies?: IProductionCompany[];
-  type?: string;
-  status?: string;
-  spoken_languages?: { english_name: string }[];
-  languages?: string[];
-  original_language?: string;
-  created_by?: any[];
+  created_by?: IPerson[];
   episode_run_time?: any[];
+  genres?: IGenre[];
   in_production?: boolean;
+  languages?: string[];
   last_air_date?: string;
-  networks?: any[];
-  last_episode_to_air?: any;
-  next_episode_to_air?: any;
+  last_episode_to_air?: any /**/;
+  next_episode_to_air?: string;
+  networks?: IProductionCompany[];
   number_of_episodes?: number;
   number_of_seasons?: number;
-  seasons?: any[];
+  origin_country?: { country: string }[];
+  original_language?: string;
+  original_name?: string;
+  popularity?: number;
+  production_companies?: IProductionCompany[];
+  production_countries?: { name: string }[];
+  seasons?: ISeason[];
+  spoken_languages?: { english_name: string }[];
+  status?: string;
+  type?: string;
+  vote_average?: number;
+  vote_count?: number;
 }
+export interface IPerson {
+  id: number;
+  name: string;
+  profile_path: string;
+  also_known_as?: string[];
+  biography?: string;
+  birthday?: string;
+  deathday?: string | null;
+  gender?: number;
+  place_of_birth?: string;
+  popularity?: number;
+}
+///////////////
 export interface IGenre {
   id: number;
   name: string;
@@ -62,13 +85,13 @@ export interface IProductionCompany {
   logo_path: string;
   name: string;
 }
-export interface IActor {
+export interface ISeason {
   id: number;
   name: string;
-  profile_path: string;
-  gender?: number;
-  birthday?: string;
-  deathday?: string | null;
-  place_of_birth?: string;
-  biography?: string;
+  overview: string;
+  poster_path: string;
+  air_date: string;
+  episode_count: number;
+  season_number: number;
+  vote_average: number;
 }

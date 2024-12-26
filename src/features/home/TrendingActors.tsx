@@ -5,7 +5,7 @@ import { useTrendingActors } from "./useTrendingActors";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IActor } from "@/lib/types";
+import { IPerson } from "@/lib/types";
 
 function TrendingActors() {
   // Getting the trending actors
@@ -22,7 +22,7 @@ function TrendingActors() {
       <Heading as="h2">TRENDING ACTORS</Heading>
       {actors?.length ? (
         <div className="flex gap-6 h-96">
-          {actors.map((actor: IActor) => (
+          {actors.map((actor: IPerson) => (
             <Link
               to={`/actors/${actor.id}`}
               key={actor.id}

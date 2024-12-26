@@ -20,6 +20,7 @@ export function useFeatureMovies() {
       .map((movie: IMovie) => ({
         id: movie.id,
         title: movie.title,
+        overview: movie.overview,
         backdrop_path: movie.backdrop_path,
       }));
   }

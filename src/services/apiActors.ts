@@ -1,8 +1,8 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IActor } from "@/lib/types";
+import { IPerson } from "@/lib/types";
 
 // API for getting trending actors
-export async function getTrendingActors(): Promise<IActor[]> {
+export async function getTrendingActors(): Promise<IPerson[]> {
   try {
     // Fetch the data
     const response = await fetch(
@@ -35,7 +35,7 @@ export async function getTrendingActors(): Promise<IActor[]> {
 }
 
 // API for getting specific actor
-export async function getActor(movieId: string): Promise<IActor> {
+export async function getActor(movieId: string): Promise<IPerson> {
   try {
     // Fetching the data
     const response = await fetch(

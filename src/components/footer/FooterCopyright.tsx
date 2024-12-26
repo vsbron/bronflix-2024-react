@@ -5,13 +5,13 @@ function FooterCopyright() {
   return (
     <>
       <FooterHeading>Copyright</FooterHeading>
-      Built by VSBroN as a portfolio project
+      Built by VSBroN as a portfolio project.
       <br />
       This project is available on{" "}
       <a href="https://github.com/vsbron/bronflix-2024-react" target="_blank">
         GitHub
-      </a>
-      <br />© 2024. All rights reserved
+      </a>.
+      <br />© {new Date().getFullYear()}. All rights reserved.
     </>
   );
 }
