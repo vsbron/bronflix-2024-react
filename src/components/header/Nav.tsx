@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { FilmIcon, HomeIcon, TvIcon } from "@heroicons/react/24/outline";
+import {
+  FilmIcon,
+  HomeIcon,
+  TvIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 
 import { LinkItemProps } from "@/lib/types";
 
@@ -15,6 +20,9 @@ function Nav() {
       </Link>
       <Link to="/movies">
         <LinkItem icon={<FilmIcon />} title="Movies" />
+      </Link>
+      <Link to="/actors">
+        <LinkItem icon={<UserIcon />} title="Actors" />
       </Link>
     </nav>
   );
