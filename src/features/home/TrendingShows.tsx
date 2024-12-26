@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { useTrendingShows } from "./useTrendingShows";
 
 import Heading from "@/components/Heading";
+import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShow } from "@/lib/types";
-import Loader from "@/components/Loader";
 
 function TrendingShows() {
   // Getting the trending shows
@@ -21,7 +21,7 @@ function TrendingShows() {
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
       {shows?.length ? (
-        <div className="grid grid-cols-4 h-[35rem] gap-6">
+        <div className="grid grid-cols-5 h-[35rem] gap-6">
           {shows.map((show: IShow) => (
             <Link
               to={`/shows/${show.id}`}
@@ -34,7 +34,7 @@ function TrendingShows() {
                 }}
                 className="rounded-lg h-[100%] basis-72 flex items-end preview-bg"
               >
-                <div className="bg-featured-background px-6 pb-4 pt-20 w-full font-heading font-light text-[2.2rem]">
+                <div className="bg-featured-background px-6 pb-4 pt-20 w-full font-heading font-light text-[2.5rem]">
                   <h3>{show.name}</h3>
                 </div>
               </div>

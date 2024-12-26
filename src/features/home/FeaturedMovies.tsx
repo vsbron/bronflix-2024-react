@@ -1,13 +1,10 @@
 import { useFeatureMovies } from "./useFeatureMovies";
 
+import FeaturedMoviesRibbon from "./FeaturedMoviesRibbon";
+import { FeaturedMovieBig, FeaturedMovieSmall } from "./FeaturedMoviesTiles";
+
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
-import FeaturedMovieBig from "./FeaturedMovieBig";
-import FeaturedMovieSmall from "./FeaturedMovieSmall";
-import { IMovie } from "@/lib/types";
-import { Link } from "react-router-dom";
-import { MOVIES_IMG_URL } from "@/lib/constants";
-import FeaturedMoviesRibbon from "./FeaturedMoviesRibbon";
 
 function FeaturedMovies() {
   // Getting the random movie

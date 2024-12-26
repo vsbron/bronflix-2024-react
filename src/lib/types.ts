@@ -9,6 +9,14 @@ export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
+// Home page components
+export type FeaturedMovieProps = { movie: IMovie };
+export type FeaturedMovieTileProps = {
+  children: ReactNode;
+  className?: string;
+  movieBG: string;
+};
+
 /* Movie/Show/Actor data */
 export interface IMovie {
   id: string;
