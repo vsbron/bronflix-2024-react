@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import MovieHighlight from "./MovieHighlight";
 
 import { GenresProvider } from "@/context/GenresContext";
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import {
+  HIGHLIGHTED_MOVIE_CHANGE_INTERVAL,
+  MOVIES_IMG_URL,
+} from "@/lib/constants";
 import { IMovieList, MoviesFeaturedProps } from "@/lib/types";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie
   const [chosenMovie, setChosenMovie] = useState<IMovieList>(movies[0]);
+
+  // Use Effect that changes the chosen movie overtime
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChosenMovie((prevMovie) => {
+        const currentIndex = movies.findIndex(
+          (movie) => movie.id === prevMovie.id
+        );
+        const nextIndex = (currentIndex + 1) % movies.length;
+        return movies[nextIndex];
+      });
+    }, HIGHLIGHTED_MOVIE_CHANGE_INTERVAL);
+
+    // Cleanup function
+    return () => clearInterval(interval);
+  }, [movies, chosenMovie]);
 
   // Click handler to change the movie
   const handleClick = (movie: IMovieList) => {
