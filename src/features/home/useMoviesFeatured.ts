@@ -23,6 +23,9 @@ export function useMoviesFeatured() {
         overview: movie.overview,
         poster_path: movie.poster_path,
         backdrop_path: movie.backdrop_path,
+        release_date: movie.release_date,
+        original_language: movie.original_language,
+        vote_average: movie.vote_average,
       }));
   }
 

@@ -30,7 +30,7 @@ export interface IMovie {
   production_countries?: { name: string }[];
   production_companies?: IProductionCompany[];
   revenue?: number;
-  runtime?: string;
+  runtime?: number;
   spoken_languages?: { english_name: string }[];
   vote_average?: number;
   vote_count?: number;

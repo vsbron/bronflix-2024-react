@@ -34,7 +34,7 @@ function ShowsTrending() {
                 }}
                 className="rounded-lg h-[100%] basis-72 flex items-end preview-bg"
               >
-                <div className="bg-featured-background px-6 pb-4 pt-20 w-full font-heading font-light text-[2.5rem]">
+                <div className="bg-preview px-6 pb-4 pt-20 w-full font-heading font-light text-[2.5rem]">
                   <h3>{show.name}</h3>
                 </div>
               </div>

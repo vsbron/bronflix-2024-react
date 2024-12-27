@@ -34,7 +34,7 @@ function ActorsTrending() {
                 }}
                 className="rounded-lg h-[100%] basis-60 flex items-end preview-bg"
               >
-                <div className="bg-featured-background px-2 pb-4 pt-20 w-full font-heading font-light text-[1.9rem]">
+                <div className="bg-preview px-2 pb-4 pt-20 w-full font-heading font-light text-[1.9rem]">
                   <h4>{actor.name}</h4>
                 </div>
               </div>

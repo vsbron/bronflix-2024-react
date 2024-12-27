@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import MovieHighlight from "./MovieHighlight";
+
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovie, MoviesFeaturedProps } from "@/lib/types";
 
@@ -14,29 +16,26 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
 
   // Returned JSX
   return (
-    <div className="h-[75rem] relative">
-      <div
-        style={{
-          backgroundImage: `url(${MOVIES_IMG_URL}/original/${chosenMovie.backdrop_path})`,
-        }}
-        className="h-full bg-no-repeat bg-[70vw_auto] bg-[top_right]"
-      ></div>
+    <div className="h-[80rem] relative">
+      <MovieHighlight movie={chosenMovie} />
 
-      <div className="flex gap-6 h-[25rem] col-span-full absolute bottom-0 left-0 w-full">
+      {/* Featured movies strip */}
+      <div className="flex gap-6 h-[25rem] w-full">
         {movies.map((movie: IMovie) => (
           <div
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`block h-full basis-96 rounded-lg relative cursor-pointer ${
-              movie.id === chosenMovie.id ? "border-4 border-red-900 " : ""
-            }`}
+            className="block h-full basis-96 rounded-lg overflow-hidden relative cursor-pointer"
           >
+            {/* prettier-ignore */}
             <div
-              style={{
-                backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
-              }}
-              className="h-full preview-bg"
-            ></div>
+              style={{backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`}}
+              className="h-full preview-bg" />
+            <div
+              className={`absolute inset-0 border-4 border-red-900 pointer-events-none transition-opacity ${
+                movie.id === chosenMovie.id ? "opacity-100" : "opacity-0"
+              }`}
+            />
           </div>
         ))}
       </div>

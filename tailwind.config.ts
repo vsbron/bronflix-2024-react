@@ -6,11 +6,14 @@ module.exports = {
       backgroundImage: {
         "button-gradient":
           "linear-gradient(to right, var(--color-red--950), var(--color-red--900))",
-        "featured-background":
-          "linear-gradient(to top, var(--color-black--09), transparent)",
+        "featured-gradient-1":
+          "linear-gradient(to right, var(--color-black), transparent)",
+        "featured-gradient-2":
+          "linear-gradient(to top, var(--color-black) 5%, transparent)",
         "heading-gradient":
           "linear-gradient(to right, var(--color-red--950), transparent)",
         "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
+        preview: "linear-gradient(to top, var(--color-black--09), transparent)",
       },
       fontFamily: {
         heading: ["Oswald", "sans-serif"],
