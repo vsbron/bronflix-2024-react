@@ -11,12 +11,7 @@ export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
-export type MovieFeaturedProps = { movie: IMovie };
-export type MovieFeaturedTileProps = {
-  children: ReactNode;
-  className?: string;
-  movieBG: string;
-};
+export type MoviesFeaturedProps = { movies: IMovie[] };
 
 /* Movie/Show/Actor data */
 export interface IMovie {

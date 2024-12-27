@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import { Link } from "react-router-dom";
 
 function ExploreMore() {
   return (

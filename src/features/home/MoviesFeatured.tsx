@@ -1,31 +1,46 @@
-import { useMoviesFeatured } from "./useMoviesFeatured";
+import { useState } from "react";
 
-import FeaturedMoviesRibbon from "./MoviesFeaturedRibbon";
-import { MovieFeaturedBig, MovieFeaturedSmall } from "./MoviesFeaturedTiles";
+import { MOVIES_IMG_URL } from "@/lib/constants";
+import { IMovie, MoviesFeaturedProps } from "@/lib/types";
 
-import Heading from "@/components/Heading";
-import Loader from "@/components/Loader";
+function MoviesFeatured({ movies }: MoviesFeaturedProps) {
+  // Setting the state for the chosen movie
+  const [chosenMovie, setChosenMovie] = useState<IMovie>(movies[0]);
 
-function MoviesFeatured() {
-  // Getting the random movie
-  const { isLoading, movies, error } = useMoviesFeatured();
-
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !movies)
-    return <div className="text-red-500">Error fetching movie</div>;
+  // Click handler to change the movie
+  const handleClick = (movie: IMovie) => {
+    setChosenMovie(movie);
+  };
 
   // Returned JSX
   return (
-    <section>
-      <Heading>WHAT'S HOT</Heading>
-      <div className="grid grid-cols-[1fr_55rem] gap-6">
-        <MovieFeaturedBig movie={movies[0]} />
-        <MovieFeaturedSmall movie={movies[1]} />
-        <MovieFeaturedSmall movie={movies[2]} />
-        <FeaturedMoviesRibbon movies={movies.slice(2, -1)} />
+    <div className="h-[75rem] relative">
+      <div
+        style={{
+          backgroundImage: `url(${MOVIES_IMG_URL}/original/${chosenMovie.backdrop_path})`,
+        }}
+        className="h-full bg-no-repeat bg-[70vw_auto] bg-[top_right]"
+      ></div>
+
+      <div className="flex gap-6 h-[25rem] col-span-full absolute bottom-0 left-0 w-full">
+        {movies.map((movie: IMovie) => (
+          <div
+            key={movie.id}
+            onClick={() => handleClick(movie)}
+            className={`block h-full basis-96 rounded-lg relative cursor-pointer ${
+              movie.id === chosenMovie.id ? "border-4 border-red-900 " : ""
+            }`}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
+              }}
+              className="h-full preview-bg"
+            ></div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
 
