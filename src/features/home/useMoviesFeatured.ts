@@ -26,6 +26,7 @@ export function useMoviesFeatured() {
         release_date: movie.release_date,
         original_language: movie.original_language,
         vote_average: movie.vote_average,
+        vote_count: movie.vote_count,
         genre_ids: movie.genre_ids,
       }));
   }

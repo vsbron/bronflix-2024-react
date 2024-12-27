@@ -4,6 +4,12 @@ import { ReactNode } from "react";
 type Headings = "h1" | "h2";
 export type MoviesAPIType = "popular" | "top_rated";
 
+/* Context */
+export type GenresContextType = {
+  genres: IGenre[];
+};
+export type GenresProviderProps = { children: ReactNode };
+
 /* Components */
 export type ButtonProps = { children: ReactNode };
 export type HeadingProps = { children: string; as?: Headings };
@@ -12,6 +18,7 @@ export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
+export type MovieRatingProps = { score: number; count: number };
 
 /* Movie/Show/Actor data */
 export interface IMovie {
@@ -44,6 +51,7 @@ export interface IMovieList {
   release_date?: string;
   original_language?: string;
   vote_average?: number;
+  vote_count?: number;
   genre_ids?: number[];
 }
 export interface IShow {
