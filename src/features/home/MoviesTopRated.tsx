@@ -5,7 +5,7 @@ import { useMoviesTopRated } from "./useMoviesTopRated";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IMovie } from "@/lib/types";
+import { IMovieList } from "@/lib/types";
 
 function MoviesTopRated() {
   // Getting the trending movies
@@ -22,7 +22,7 @@ function MoviesTopRated() {
       <Heading as="h2">TOP RATED MOVIES</Heading>
       {movies?.length ? (
         <div className="flex gap-6 h-[40rem]">
-          {movies.map((movie: IMovie) => (
+          {movies.map((movie: IMovieList) => (
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}

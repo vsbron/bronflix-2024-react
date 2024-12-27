@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { MOVIES_FEATURED_QUANTITY } from "@/lib/constants";
-import { IMovie } from "@/lib/types";
+import { IMovieList } from "@/lib/types";
 import { getMovies } from "@/services/apiMovies";
 import { shuffleArray } from "@/utils/helpers";
 
@@ -12,12 +12,12 @@ export function useMoviesFeatured() {
   });
 
   // Transform the data once it's loaded
-  let movies: IMovie[] = [];
+  let movies: IMovieList[] = [];
   if (data) {
     // Shuffle and select featured movies
     movies = shuffleArray(data)
       .slice(0, MOVIES_FEATURED_QUANTITY)
-      .map((movie: IMovie) => ({
+      .map((movie: IMovieList) => ({
         id: movie.id,
         title: movie.title,
         overview: movie.overview,
@@ -26,6 +26,7 @@ export function useMoviesFeatured() {
         release_date: movie.release_date,
         original_language: movie.original_language,
         vote_average: movie.vote_average,
+        genre_ids: movie.genre_ids,
       }));
   }
 

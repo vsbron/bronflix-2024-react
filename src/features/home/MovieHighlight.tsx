@@ -1,10 +1,25 @@
-import Button from "@/components/Button";
-import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import { IMovie } from "@/lib/types";
 import { Link } from "react-router-dom";
 
-function MovieHighlight({ movie }: { movie: IMovie }) {
+import { useGenres } from "@/context/GenresContext";
+
+import Button from "@/components/Button";
+import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
+import { IGenre, IMovieList } from "@/lib/types";
+
+function MovieHighlight({ movie }: { movie: IMovieList }) {
+  // Get the genres from Context API
+  const { genres } = useGenres();
+
   // Handling the movie data
+  const score = movie?.vote_average || 0;
+  const genreNames =
+    movie?.genre_ids
+      ?.map((id: number) => {
+        const genre = genres.find((genre: IGenre) => genre.id === id);
+        return genre ? genre.name : null;
+      })
+      .filter(Boolean)
+      .join(", ") || "";
   const overview = movie?.overview || "";
   const truncatedOverview =
     overview.length > 150
@@ -17,9 +32,11 @@ function MovieHighlight({ movie }: { movie: IMovie }) {
       <div className="flex flex-col items-start justify-end gap-10 relative z-10 w-1/3 h-[50rem]">
         <h2 className="text-8xl">{movie.title?.toUpperCase()}</h2>
         <div className="flex gap-6 items-center text-stone-400 -mt-5 text-[1.5rem]">
-          <MovieRating score={movie.vote_average!} />
+          <MovieRating score={score} />
           <div>{new Date(movie.release_date!).getFullYear()}</div>
           <div>{LANGUAGES[movie.original_language!]}</div>
+          <div className="mx-2">|</div>
+          <div>{genreNames}</div>
         </div>
         <p>{truncatedOverview}</p>
         <Button>
@@ -62,15 +79,12 @@ function MovieRating({ score }: { score: number }) {
       break;
   }
 
-  // Format the score to 2 decimal places
-  const formattedScore = score.toFixed(2);
-
   // Returned JSX
   return (
     <div
       className={`${bgColor} ${color} inline-block px-3 pt-1.5 pb-1 leading-tight rounded-xl text-2xl`}
     >
-      {formattedScore}
+      {score.toFixed(2)}
     </div>
   );
 }

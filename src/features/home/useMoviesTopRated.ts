@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { MOVIES_TOP_RATED_QUANTITY } from "@/lib/constants";
-import { IMovie } from "@/lib/types";
+import { IMovieList } from "@/lib/types";
 import { getMovies } from "@/services/apiMovies";
 import { shuffleArray } from "@/utils/helpers";
 
@@ -12,12 +12,12 @@ export function useMoviesTopRated() {
   });
 
   // Transform the data once it's loaded
-  let movies: IMovie[] = [];
+  let movies: IMovieList[] = [];
   if (data) {
     // Shuffle and select top rated movies
     movies = shuffleArray(data)
       .slice(0, MOVIES_TOP_RATED_QUANTITY)
-      .map((movie: IMovie) => ({
+      .map((movie: IMovieList) => ({
         id: movie.id,
         title: movie.title,
         poster_path: movie.poster_path,

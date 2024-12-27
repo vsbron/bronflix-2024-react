@@ -11,7 +11,7 @@ export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
-export type MoviesFeaturedProps = { movies: IMovie[] };
+export type MoviesFeaturedProps = { movies: IMovieList[] };
 
 /* Movie/Show/Actor data */
 export interface IMovie {
@@ -34,6 +34,17 @@ export interface IMovie {
   spoken_languages?: { english_name: string }[];
   vote_average?: number;
   vote_count?: number;
+}
+export interface IMovieList {
+  id: string;
+  title: string;
+  overview?: string;
+  poster_path: string;
+  backdrop_path?: string;
+  release_date?: string;
+  original_language?: string;
+  vote_average?: number;
+  genre_ids?: number[];
 }
 export interface IShow {
   id: string;
