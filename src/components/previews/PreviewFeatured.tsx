@@ -1,4 +1,5 @@
 import { MOVIES_IMG_URL } from "@/lib/constants";
+import ScorePreview from "./ScorePreview";
 
 function PreviewFeatured({ movie, chosenMovieId, clickHandler }: any) {
   return (
@@ -13,6 +14,7 @@ function PreviewFeatured({ movie, chosenMovieId, clickHandler }: any) {
         }}
         className="h-full preview-bg"
       />
+      <ScorePreview score={movie.vote_average} />
       {movie.id === chosenMovieId && (
         <div className="absolute inset-0 border-4 border-red-900 pointer-events-none animate-fadeInForwards" />
       )}

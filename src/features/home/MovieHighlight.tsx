@@ -4,6 +4,7 @@ import { useGenres } from "@/context/GenresContext";
 import Button from "@/components/Button";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { IGenre, IMovieList, MovieRatingProps } from "@/lib/types";
+import { scoreColor } from "@/utils/helpers";
 
 function MovieHighlight({ movie }: { movie: IMovieList }) {
   // Get the genres from Context API
@@ -25,9 +26,9 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
   // Returned JSX
   return (
     <div className="mb-16">
-      <div className="flex flex-col items-start justify-end gap-10 relative z-10 w-1/3 h-[50rem]">
+      <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-1/3 h-[50rem]">
         <h2 className="text-8xl">{movie.title?.toUpperCase()}</h2>
-        <div className="flex gap-8 items-center -mt-5">
+        <div className="flex gap-8 items-center -mt-2">
           <MovieRating score={score} count={count} />
           <div className="flex items-center gap-6 text-[1.5rem] text-stone-400 pb-0.5">
             <div>{new Date(movie.release_date!).getFullYear()}</div>
@@ -35,7 +36,7 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
             <div>{genreNames}</div>
           </div>
         </div>
-        <p>{truncatedOverview}</p>
+        <p className="mb-6">{truncatedOverview}</p>
         <Button>
           <Link className="inline-block py-3 px-6" to={`/movies/${movie.id}`}>
             LEARN MORE
@@ -58,22 +59,8 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
 export default MovieHighlight;
 
 function MovieRating({ score, count }: MovieRatingProps) {
-  // Setting the colors based on a score
-  let bgColor, color;
-  switch (true) {
-    case score >= 7:
-      bgColor = "bg-green-900";
-      color = "text-green-400";
-      break;
-    case score >= 4:
-      bgColor = "bg-yellow-800";
-      color = "text-yellow-200";
-      break;
-    default:
-      bgColor = "bg-red-900";
-      color = "text-red-200";
-      break;
-  }
+  // Getting the colors for the score
+  const { bgColor, color } = scoreColor(score);
 
   // Returned JSX
   return (
