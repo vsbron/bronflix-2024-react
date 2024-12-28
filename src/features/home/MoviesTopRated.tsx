@@ -4,6 +4,7 @@ import { useMoviesTopRated } from "./useMoviesTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
+import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovieList } from "@/lib/types";
 
@@ -26,14 +27,15 @@ function MoviesTopRated() {
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
-              className="block h-full basis-[30rem]"
+              className="block h-full basis-[30rem] relative"
             >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
                 }}
                 className="rounded-lg h-full preview-bg"
-              ></div>
+              />
+              <ScorePreview score={movie.vote_average!} />
             </Link>
           ))}
         </div>

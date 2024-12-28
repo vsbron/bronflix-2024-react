@@ -20,14 +20,19 @@ export type ButtonPreviewWrapperProps = {
 };
 export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
-export type WrapperProps = { children: ReactNode; className?: string };
 export type ScorePreviewProps = {
   score: number;
   isHighlighted?: boolean;
 };
+export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
+export type PreviewFeaturedProps = {
+  movie: IMovieList;
+  chosenMovieId: string;
+  clickHandler: (movie: IMovie) => void;
+};
 export type MovieRatingProps = { score: number; count: number };
 export type RibbonProps = {
   length: number;
