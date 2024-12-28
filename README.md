@@ -23,16 +23,12 @@ The app includes the following sections and pages:
 - **Individual Pages:** Detailed information pages for movies, shows, and actors, dynamically fetched based on ID.
 - **Core Components:** A responsive header, side navigation, and footer for smooth navigation.
 
----
-
 ## Features
 
 - **Dynamic Content:** Movies, shows, and actors are fetched from the TMDB API and displayed in a shuffled order for a fresh experience.
 - **Interactive Sections:** A featured movie section with auto-cycling and manual navigation.
 - **Detailed Pages:** Explore in-depth details for movies, shows, and actors on dedicated pages.
 - **Modern UI/UX:** Sleek design with responsive layout and intuitive navigation.
-
----
 
 ## Page Descriptions
 
@@ -55,29 +51,21 @@ The app includes the following sections and pages:
 - **Top Rated Movies Section:**
   - Showcases a shuffled list of critically acclaimed movies.
 
----
-
 ### Movie Page
 
 - Provides detailed information about a selected movie.
 - Displays relevant metadata, including release date, ratings, and overview.
 - Related movies or recommendations may be shown in a sidebar.
 
----
-
 ### Show Page
 
 - Features in-depth details about a selected show.
 - Includes seasons, episodes, and related cast information when available.
 
----
-
 ### Actor Page
 
 - Displays detailed actor profiles.
 - Includes biography, filmography, and notable works.
-
----
 
 ## Technical Details
 
@@ -86,8 +74,6 @@ The app includes the following sections and pages:
 - **Icons:** HeroIcons for modern and consistent UI elements.
 - **State Management:** Context API for managing global state.
 - **API:** TMDB API for fetching movies, shows, and actor data.
-
----
 
 ## Live version
 
