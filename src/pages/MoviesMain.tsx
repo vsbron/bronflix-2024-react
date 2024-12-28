@@ -1,8 +1,8 @@
 import Heading from "@/components/Heading";
 
-function Movies() {
+function MoviesMain() {
   // Returned JSX
   return <Heading>BroNflix movies</Heading>;
 }
 
-export default Movies;
+export default MoviesMain;

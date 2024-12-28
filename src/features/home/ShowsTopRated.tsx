@@ -12,16 +12,18 @@ function ShowsTopRated() {
   // Getting the top rated shows
   const { isLoading, shows, error } = useShowsTopRated();
 
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !shows)
-    return <div className="text-red-500">Error fetching shows</div>;
-
-  // Returned JSX
+  // Returned JSX (with conditions)
   return (
     <section>
       <Heading as="h2">TOP RATED SHOWS</Heading>
-      {shows?.length ? (
+      {isLoading ? (
+        <Loader />
+      ) : error || !shows || !shows.length ? (
+        <div className="text-red-500">
+          {error?.message || "Error fetching top rated shows"}
+        </div>
+      ) : (
+        // Content
         <div className="grid grid-cols-4 h-[50rem] gap-6">
           {shows.map((show: IShowList) => (
             <Link
@@ -43,8 +45,6 @@ function ShowsTopRated() {
             </Link>
           ))}
         </div>
-      ) : (
-        <div>Sorry, no shows available</div>
       )}
     </section>
   );

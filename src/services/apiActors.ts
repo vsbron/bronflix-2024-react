@@ -27,10 +27,13 @@ export async function getTrendingActors(): Promise<IPerson[]> {
     // Return the actors
     return data.results;
   } catch (error: unknown) {
-    // prettier-ignore
     if (error instanceof Error) {
-      throw new Error(`An error occurred while fetching actors data: ${error.message}`);
-    } else { throw new Error("An unknown error occurred while fetching actors data.")}
+      console.error(error.message);
+      throw new Error("An error occurred while fetching actors data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching actors data.");
+    }
   }
 }
 
@@ -57,9 +60,12 @@ export async function getActor(movieId: string): Promise<IPerson> {
     // Return the actor
     return data;
   } catch (error: unknown) {
-    // prettier-ignore
     if (error instanceof Error) {
-      throw new Error(`An error occurred while fetching actor data: ${error.message}`);
-    } else { throw new Error("An unknown error occurred while fetching actor data.")}
+      console.error(error.message);
+      throw new Error("An error occurred while fetching actor data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching actor data.");
+    }
   }
 }

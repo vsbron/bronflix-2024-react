@@ -1,7 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
-
 import { IShow } from "@/lib/types";
 import { getShow } from "@/services/apiShows";
 
@@ -15,7 +14,7 @@ export const showLoader = async ({
   return show;
 };
 
-function ShowPage() {
+function Show() {
   // Getting the show data from the loader
   const show = useLoaderData() as IShow;
 
@@ -23,4 +22,4 @@ function ShowPage() {
   return <ShowDetails show={show} />;
 }
 
-export default ShowPage;
+export default Show;

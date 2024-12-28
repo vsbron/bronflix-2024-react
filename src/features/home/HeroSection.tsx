@@ -9,16 +9,20 @@ function HeroSection() {
   // Getting the featured movies
   const { isLoading, movies, error } = useMoviesFeatured();
 
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !movies)
-    return <div className="text-red-500">Error fetching movies</div>;
-
-  // Returned JSX
+  // Returned JSX (with conditions)
   return (
     <section>
       <Heading>WHAT'S HOT</Heading>
-      <FeaturedMovies movies={movies} />
+      {isLoading ? (
+        <Loader />
+      ) : error || !movies || !movies.length ? (
+        <div className="text-red-500">
+          {error?.message || "Error fetching featured movies"}
+        </div>
+      ) : (
+        // Content
+        <FeaturedMovies movies={movies} />
+      )}
     </section>
   );
 }

@@ -27,10 +27,13 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
     // Return the movies
     return data.results;
   } catch (error: unknown) {
-    // prettier-ignore
     if (error instanceof Error) {
-      throw new Error(`An error occurred while fetching movies data: ${error.message}`);
-    } else { throw new Error("An unknown error occurred while fetching movies data.")}
+      console.error(error.message);
+      throw new Error("An error occurred while fetching movies data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching movies data.");
+    }
   }
 }
 
@@ -57,9 +60,12 @@ export async function getMovie(movieId: string): Promise<IMovie> {
     // Return the movie
     return data;
   } catch (error: unknown) {
-    // prettier-ignore
     if (error instanceof Error) {
-      throw new Error(`An error occurred while fetching movie data: ${error.message}`);
-    } else { throw new Error("An unknown error occurred while fetching movie data.")}
+      console.error(error.message);
+      throw new Error("An error occurred while fetching movie data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching movie data.");
+    }
   }
 }

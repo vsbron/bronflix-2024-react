@@ -6,7 +6,7 @@ import Heading from "@/components/Heading";
 function ExploreMore() {
   return (
     <div>
-      <Heading>More content to explore</Heading>
+      <Heading as="h2">More content to explore</Heading>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet
         libero ab similique nemo molestias repellat id cupiditate animi ut?

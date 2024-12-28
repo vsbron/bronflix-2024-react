@@ -12,16 +12,18 @@ function ShowsTrending() {
   // Getting the trending shows
   const { isLoading, shows, error } = useShowsTrending();
 
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !shows)
-    return <div className="text-red-500">Error fetching shows</div>;
-
-  // Returned JSX
+  // Returned JSX (with conditions)
   return (
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
-      {shows?.length ? (
+      {isLoading ? (
+        <Loader />
+      ) : error || !shows || !shows.length ? (
+        <div className="text-red-500">
+          {error?.message || "Error fetching trending shows"}
+        </div>
+      ) : (
+        // Content
         <div className="grid grid-cols-5 h-[35rem] gap-6">
           {shows.map((show: IShowList) => (
             <Link
@@ -43,8 +45,6 @@ function ShowsTrending() {
             </Link>
           ))}
         </div>
-      ) : (
-        <div>Sorry, no shows available</div>
       )}
     </section>
   );

@@ -1,8 +1,8 @@
 import Heading from "@/components/Heading";
 
-function Shows() {
+function ShowsMain() {
   // Returned JSX
   return <Heading>BroNflix shows</Heading>;
 }
 
-export default Shows;
+export default ShowsMain;

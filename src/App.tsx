@@ -2,14 +2,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "./components/Layout";
-import Home from "./routes/Home";
-import Actors from "./routes/Actors";
-import ActorPage, { actorLoader } from "./routes/ActorPage";
-import Movies from "./routes/Movies";
-import MoviePage, { movieLoader } from "./routes/MoviePage";
-import Shows from "./routes/Shows";
-import ShowPage, { showLoader } from "./routes/ShowPage";
-import NotFound from "./routes/NotFound";
+import Home from "./pages/Home";
+import ActorsMain from "./pages/ActorsMain";
+import Actor, { actorLoader } from "./pages/Actor";
+import MoviesMain from "./pages/MoviesMain";
+import Movie, { movieLoader } from "./pages/Movie";
+import ShowsMain from "./pages/ShowsMain";
+import Show, { showLoader } from "./pages/Show";
+import NotFound from "./pages/NotFound";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -30,29 +30,29 @@ const router = createBrowserRouter([
       },
       {
         path: "/movies",
-        element: <Movies />,
+        element: <MoviesMain />,
       },
       {
         path: "/movies/:movieId",
-        element: <MoviePage />,
+        element: <Movie />,
         loader: movieLoader,
       },
       {
         path: "/shows",
-        element: <Shows />,
+        element: <ShowsMain />,
       },
       {
         path: "/shows/:showId",
-        element: <ShowPage />,
+        element: <Show />,
         loader: showLoader,
       },
       {
         path: "/actors",
-        element: <Actors />,
+        element: <ActorsMain />,
       },
       {
         path: "/actors/:actorId",
-        element: <ActorPage />,
+        element: <Actor />,
         loader: actorLoader,
       },
       {

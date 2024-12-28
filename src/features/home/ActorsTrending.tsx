@@ -11,16 +11,18 @@ function ActorsTrending() {
   // Getting the trending actors
   const { isLoading, actors, error } = useActorsTrending();
 
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !actors)
-    return <div className="text-red-500">Error fetching actors</div>;
-
-  // Returned JSX
+  // Returned JSX (with conditions)
   return (
     <section>
       <Heading as="h2">TRENDING ACTORS</Heading>
-      {actors?.length ? (
+      {isLoading ? (
+        <Loader />
+      ) : error || !actors || !actors.length ? (
+        <div className="text-red-500">
+          {error?.message || "Error fetching trending actors"}
+        </div>
+      ) : (
+        // Content
         <div className="flex gap-6 h-96">
           {actors.map((actor: IPerson) => (
             <Link
@@ -41,8 +43,6 @@ function ActorsTrending() {
             </Link>
           ))}
         </div>
-      ) : (
-        <div>Sorry, no actors available</div>
       )}
     </section>
   );

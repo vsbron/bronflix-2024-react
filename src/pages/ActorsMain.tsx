@@ -1,8 +1,8 @@
 import Heading from "@/components/Heading";
 
-function Actors() {
+function ActorsMain() {
   // Returned JSX
   return <Heading>BroNflix actors</Heading>;
 }
 
-export default Actors;
+export default ActorsMain;

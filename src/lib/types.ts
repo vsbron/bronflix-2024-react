@@ -31,7 +31,7 @@ export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type PreviewFeaturedProps = {
   movie: IMovieList;
   chosenMovieId: string;
-  clickHandler: (movie: IMovie) => void;
+  clickHandler: (movie: IMovieList) => void;
 };
 export type MovieRatingProps = { score: number; count: number };
 export type RibbonProps = {

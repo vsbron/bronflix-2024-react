@@ -9,19 +9,21 @@ import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovieList } from "@/lib/types";
 
 function MoviesTopRated() {
-  // Getting the trending movies
+  // Getting the top rated movies
   const { isLoading, movies, error } = useMoviesTopRated();
 
-  // Guard clauses
-  if (isLoading) return <Loader />;
-  if (error || !movies)
-    return <div className="text-red-500">Error fetching movies</div>;
-
-  // Returned JSX
+  // Returned JSX (with conditions)
   return (
     <section>
       <Heading as="h2">TOP RATED MOVIES</Heading>
-      {movies?.length ? (
+      {isLoading ? (
+        <Loader />
+      ) : error || !movies || !movies.length ? (
+        <div className="text-red-500">
+          {error?.message || "Error fetching top rated movies"}
+        </div>
+      ) : (
+        // Content
         <div className="flex gap-6 h-[40rem]">
           {movies.map((movie: IMovieList) => (
             <Link
@@ -40,8 +42,6 @@ function MoviesTopRated() {
             </Link>
           ))}
         </div>
-      ) : (
-        <div>Sorry, no movies available</div>
       )}
     </section>
   );

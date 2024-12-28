@@ -1,7 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import MovieDetails from "@/features/movieDetails/MovieDetails";
-
 import { IMovie } from "@/lib/types";
 import { getMovie } from "@/services/apiMovies";
 
@@ -15,7 +14,7 @@ export const movieLoader = async ({
   return movie;
 };
 
-function MoviePage() {
+function Movie() {
   // Getting the movie data from the loader
   const movie = useLoaderData() as IMovie;
 
@@ -23,4 +22,4 @@ function MoviePage() {
   return <MovieDetails movie={movie} />;
 }
 
-export default MoviePage;
+export default Movie;

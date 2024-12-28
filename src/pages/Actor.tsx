@@ -15,7 +15,7 @@ export const actorLoader = async ({
   return actor;
 };
 
-function ActorPage() {
+function Actor() {
   // Getting the actor data from the loader
   const actor = useLoaderData() as IPerson;
 
@@ -23,4 +23,4 @@ function ActorPage() {
   return <ActorDetails actor={actor} />;
 }
 
-export default ActorPage;
+export default Actor;
