@@ -1,11 +1,11 @@
-import ButtonsPreview from "@/components/previews/ButtonsPreview";
+import ButtonsPreviewWrapper from "@/components/previews/ButtonsPreviewWrapper";
 import { RibbonProps } from "@/lib/types";
 
 function Ribbon({ length, children, ribbon }: RibbonProps) {
   // Returned JSX
   return (
     <div className="relative">
-      <ButtonsPreview ribbon={ribbon} length={length} />
+      <ButtonsPreviewWrapper ribbon={ribbon} length={length} />
       <div className="relative">
         {/* Container with overflow hidden and horizontal scrolling */}
         <div className="w-full overflow-x-hidden">

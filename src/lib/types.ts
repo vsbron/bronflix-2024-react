@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, Ref, RefObject } from "react";
 
 /* Unions */
 type Headings = "h1" | "h2";
-export type MovieRibbonDirections = "left" | "right";
+export type RibbonDirections = "left" | "right";
 export type MoviesAPIType = "popular" | "top_rated";
 
 /* Context */
@@ -13,6 +13,11 @@ export type GenresProviderProps = { children: ReactNode };
 
 /* Components */
 export type ButtonProps = { children: ReactNode };
+export type ButtonPreviewProps = { dir: RibbonDirections; clickHandler: any };
+export type ButtonPreviewWrapperProps = {
+  ribbon: RefObject<HTMLDivElement>;
+  length: number;
+};
 export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
