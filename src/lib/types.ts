@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 /* Unions */
 type Headings = "h1" | "h2";
+export type MovieRibbonDirections = "left" | "right";
 export type MoviesAPIType = "popular" | "top_rated";
 
 /* Context */
@@ -19,6 +20,11 @@ export type WrapperProps = { children: ReactNode; className?: string };
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type MovieRatingProps = { score: number; count: number };
+export type RibbonProps = {
+  length: number;
+  children: ReactNode;
+  ribbon: any;
+};
 
 /* Movie/Show/Actor data */
 export interface IMovie {

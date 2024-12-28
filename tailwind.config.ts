@@ -10,6 +10,8 @@ module.exports = {
           "linear-gradient(to right, var(--color-black), transparent)",
         "featured-gradient-2":
           "linear-gradient(to top, var(--color-black) 5%, transparent)",
+        "buttons-wrapper-gradient":
+          "linear-gradient(to left, var(--color-black) 10%, transparent)",
         "heading-gradient":
           "linear-gradient(to right, var(--color-red--950), transparent)",
         "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
