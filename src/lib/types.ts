@@ -70,7 +70,7 @@ export interface IMovieList {
   backdrop_path?: string;
   release_date?: string;
   original_language?: string;
-  vote_average?: number;
+  vote_average: number;
   vote_count?: number;
   genre_ids?: number[];
 }
@@ -105,6 +105,12 @@ export interface IShow {
   type?: string;
   vote_average?: number;
   vote_count?: number;
+}
+export interface IShowList {
+  id: string;
+  name: string;
+  backdrop_path: string;
+  vote_average: number;
 }
 export interface IPerson {
   id: number;

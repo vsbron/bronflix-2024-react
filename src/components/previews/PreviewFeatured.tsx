@@ -21,7 +21,7 @@ function PreviewFeatured({
         }}
         className="h-full preview-bg"
       />
-      <ScorePreview score={movie.vote_average!} />
+      <ScorePreview score={movie.vote_average} />
       {movie.id === chosenMovieId && (
         <div className="absolute inset-0 border-4 border-red-900 pointer-events-none animate-fadeInForwards" />
       )}

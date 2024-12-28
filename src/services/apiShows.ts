@@ -1,8 +1,8 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IShow } from "@/lib/types";
+import { IShow, IShowList } from "@/lib/types";
 
 // API for getting trending shows
-export async function getTrendingShows(): Promise<IShow[]> {
+export async function getTrendingShows(): Promise<IShowList[]> {
   try {
     // Fetch the data
     const response = await fetch(

@@ -27,15 +27,16 @@ function MoviesTopRated() {
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
-              className="block h-full basis-[30rem] relative"
+              className="block h-full basis-[30rem]"
             >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${movie.poster_path})`,
                 }}
-                className="rounded-lg h-full preview-bg"
-              />
-              <ScorePreview score={movie.vote_average!} />
+                className="rounded-lg h-full preview-bg relative"
+              >
+                <ScorePreview score={movie.vote_average!} />
+              </div>
             </Link>
           ))}
         </div>
