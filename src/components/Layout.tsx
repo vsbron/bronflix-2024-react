@@ -16,7 +16,7 @@ function Layout() {
 
   // Returned JSX
   return (
-    <div className="bg-stone-950 text-stone-50 flex max-w-[1920px] mx-auto">
+    <div className="text-stone-50 flex max-w-[1920px] mx-auto">
       <BackspaceNavigation />
       <Header />
       <Sidebar />

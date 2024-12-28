@@ -9,7 +9,7 @@ function FooterLogo() {
       height="442"
       alt="BroNflix"
       title="BroNflix logo"
-      className="absolute right-48 -bottom-20 opacity-35 -rotate-12"
+      className="absolute right-48 -bottom-20 opacity-35 -rotate-12 -z-10"
     />
   );
 }

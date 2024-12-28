@@ -1,4 +1,4 @@
-import { ReactNode, Ref, RefObject } from "react";
+import { ReactNode, RefObject } from "react";
 
 /* Unions */
 type Headings = "h1" | "h2";
@@ -21,6 +21,10 @@ export type ButtonPreviewWrapperProps = {
 export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
+export type ScorePreviewProps = {
+  score: number;
+  isHighlighted?: boolean;
+};
 
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
