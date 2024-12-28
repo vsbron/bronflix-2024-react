@@ -1,9 +1,9 @@
 import { ReactNode, RefObject } from "react";
 
 /* Unions */
+export type APIFetchType = "popular" | "top_rated";
 type Headings = "h1" | "h2";
 export type RibbonDirections = "left" | "right";
-export type MoviesAPIType = "popular" | "top_rated";
 
 /* Context */
 export type GenresContextType = {

@@ -1,12 +1,12 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IShow, IShowList } from "@/lib/types";
+import { APIFetchType, IShow, IShowList } from "@/lib/types";
 
-// API for getting trending shows
-export async function getTrendingShows(): Promise<IShowList[]> {
+// API for getting the shows
+export async function getShows(type: APIFetchType): Promise<IShowList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MOVIES_URL}/tv/popular?api_key=${
+      `${MOVIES_URL}/tv/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1&include_adult=false`
     );
@@ -24,7 +24,7 @@ export async function getTrendingShows(): Promise<IShowList[]> {
     // Ensure data.results not empty and is an array
     if (!data.results || !Array.isArray(data.results)) return [];
 
-    // Return the shows
+    // Return the movies
     return data.results;
   } catch (error: unknown) {
     // prettier-ignore

@@ -6,6 +6,7 @@ export const HOME_MOVIE_CHANGE_INTERVAL = 10000;
 export const MOVIES_FEATURED_QUANTITY = 15;
 export const MOVIES_TOP_RATED_QUANTITY = 6;
 export const SHOWS_TRENDING_QUANTITY = 10;
+export const SHOWS_TOP_RATED_QUANTITY = 8;
 export const ACTORS_TRENDING_QUANTITY = 10;
 
 export const LANGUAGES: { [key: string]: string } = {

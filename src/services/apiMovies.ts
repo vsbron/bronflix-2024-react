@@ -1,8 +1,8 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IMovie, IMovieList, MoviesAPIType } from "@/lib/types";
+import { APIFetchType, IMovie, IMovieList } from "@/lib/types";
 
 // API for getting movies
-export async function getMovies(type: MoviesAPIType): Promise<IMovieList[]> {
+export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   try {
     // Fetch the data
     const response = await fetch(
