@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
+import bg from "@/assets/explore-bg-2x.png";
 
 function ExploreMore() {
   return (
@@ -47,8 +48,8 @@ function ExploreMore() {
         </Button>
       </div>
       <div
-        style={{ backgroundImage: "url(/explore-bg-2x.png)" }}
-        className="absolute -top-10 -bottom-16 right-0 w-[60%] bg-cover -z-10 opacity-75"
+        style={{ backgroundImage: `url(${bg})` }}
+        className="absolute -top-10 -bottom-16 right-0 w-[60%] bg-cover -z-10 opacity-75 bg-center"
       ></div>
     </div>
   );
