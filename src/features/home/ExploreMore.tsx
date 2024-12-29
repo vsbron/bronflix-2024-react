@@ -5,7 +5,7 @@ import Heading from "@/components/Heading";
 
 function ExploreMore() {
   return (
-    <div>
+    <div className="relative">
       <Heading as="h2">More content to explore</Heading>
       <div className="w-1/2">
         <p>
@@ -29,7 +29,7 @@ function ExploreMore() {
           timeless classics.
         </p>
       </div>
-      <div className="flex gap-8 mt-8">
+      <div className="flex gap-8 mt-8 mb-1">
         <Button>
           <Link className="inline-block py-3 px-6" to="/movies">
             MOVIES
@@ -46,6 +46,10 @@ function ExploreMore() {
           </Link>
         </Button>
       </div>
+      <div
+        style={{ backgroundImage: "url(/explore-bg-2x.png)" }}
+        className="absolute -top-10 -bottom-16 right-0 w-[60%] bg-cover -z-10 opacity-75"
+      ></div>
     </div>
   );
 }
