@@ -1,16 +1,19 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { useShowsTrending } from "./useShowsTrending";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
+import Ribbon from "@/components/previews/Ribbon";
+import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShowList } from "@/lib/types";
-import ScorePreview from "@/components/previews/ScorePreview";
 
 function ShowsTrending() {
-  // Getting the trending shows
+  // Getting the trending shows and ref for ribbon element
   const { isLoading, shows, error } = useShowsTrending();
+  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Returned JSX (with conditions)
   return (
@@ -24,18 +27,18 @@ function ShowsTrending() {
         </div>
       ) : (
         // Content
-        <div className="grid grid-cols-5 h-[35rem] gap-6">
+        <Ribbon length={shows.length} ribbon={ribbonRef}>
           {shows.map((show: IShowList) => (
             <Link
               to={`/shows/${show.id}`}
               key={show.id}
-              className="block h-full basis-96"
+              className="block basis-[35rem] h-[19rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
             >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${show.backdrop_path})`,
                 }}
-                className="rounded-lg h-[100%] basis-72 flex items-end preview-bg relative"
+                className="rounded-lg h-full flex items-end preview-bg relative"
               >
                 <div className="bg-preview px-6 pb-4 pt-20 w-full font-heading font-light text-[2.5rem]">
                   <h3>{show.name}</h3>
@@ -44,7 +47,7 @@ function ShowsTrending() {
               </div>
             </Link>
           ))}
-        </div>
+        </Ribbon>
       )}
     </section>
   );

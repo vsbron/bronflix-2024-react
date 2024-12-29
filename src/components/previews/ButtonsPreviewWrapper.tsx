@@ -20,9 +20,19 @@ function ButtonsPreviewWrapper({
 
   const scrollBySet = (direction: RibbonDirections) => {
     if (ribbon.current) {
-      // Width of the visible previews (4 previews in this case)
+      // Get the width of the first item, including the gap
+      const firstItem = ribbon.current.children[0] as HTMLElement;
+      if (!firstItem) return;
+
+      const itemWidth = firstItem.offsetWidth;
+      const gapWidth = parseFloat(getComputedStyle(ribbon.current).gap || "0");
+
+      // Calculate the number of items visible in the container
       const visibleWidth = ribbon.current.offsetWidth;
-      const scrollStep = visibleWidth; // Scroll by the width of the visible previews
+      const itemsPerSet = Math.floor(visibleWidth / (itemWidth + gapWidth));
+
+      // Total scroll step for one set
+      const scrollStep = itemsPerSet * (itemWidth + gapWidth);
 
       ribbon.current.scrollBy({
         left: direction === "left" ? -scrollStep : scrollStep,

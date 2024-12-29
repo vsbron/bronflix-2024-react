@@ -1,16 +1,19 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { useMoviesTopRated } from "./useMoviesTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
+import Ribbon from "@/components/previews/Ribbon";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IMovieList } from "@/lib/types";
 
 function MoviesTopRated() {
-  // Getting the top rated movies
+  // Getting the top rated movies and ref for ribbon element
   const { isLoading, movies, error } = useMoviesTopRated();
+  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Returned JSX (with conditions)
   return (
@@ -24,12 +27,12 @@ function MoviesTopRated() {
         </div>
       ) : (
         // Content
-        <div className="flex gap-6 h-[40rem]">
+        <Ribbon length={movies.length} ribbon={ribbonRef}>
           {movies.map((movie: IMovieList) => (
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
-              className="block h-full basis-[30rem]"
+              className="block h-[40rem] basis-[29rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
             >
               <div
                 style={{
@@ -41,7 +44,7 @@ function MoviesTopRated() {
               </div>
             </Link>
           ))}
-        </div>
+        </Ribbon>
       )}
     </section>
   );

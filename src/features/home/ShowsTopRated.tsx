@@ -1,14 +1,14 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { useShowsTopRated } from "./useShowsTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
+import Ribbon from "@/components/previews/Ribbon";
+import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShowList } from "@/lib/types";
-import ScorePreview from "@/components/previews/ScorePreview";
-import Ribbon from "@/components/previews/Ribbon";
-import { useRef } from "react";
 
 function ShowsTopRated() {
   // Getting the top rated shows and ref for ribbon element
@@ -32,7 +32,7 @@ function ShowsTopRated() {
             <Link
               to={`/shows/${show.id}`}
               key={show.id}
-              className="block h-[24rem] basis-[44rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+              className="block h-[24rem] basis-[44.2rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
             >
               <div
                 style={{

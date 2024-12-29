@@ -6,10 +6,13 @@ import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IPerson } from "@/lib/types";
+import Ribbon from "@/components/previews/Ribbon";
+import { useRef } from "react";
 
 function ActorsTrending() {
-  // Getting the trending actors
+  // Getting the trending actors and ref for ribbon element
   const { isLoading, actors, error } = useActorsTrending();
+  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Returned JSX (with conditions)
   return (
@@ -23,18 +26,18 @@ function ActorsTrending() {
         </div>
       ) : (
         // Content
-        <div className="flex gap-6 h-96">
+        <Ribbon length={actors.length} ribbon={ribbonRef}>
           {actors.map((actor: IPerson) => (
             <Link
               to={`/actors/${actor.id}`}
               key={actor.id}
-              className="block h-full basis-96"
+              className="block basis-[16.8rem] h-[25rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
             >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${actor.profile_path})`,
                 }}
-                className="rounded-lg h-[100%] basis-60 flex items-end preview-bg"
+                className="rounded-lg h-full flex items-end preview-bg"
               >
                 <div className="bg-preview px-2 pb-4 pt-20 w-full font-heading font-light text-[1.9rem]">
                   <h4>{actor.name}</h4>
@@ -42,7 +45,7 @@ function ActorsTrending() {
               </div>
             </Link>
           ))}
-        </div>
+        </Ribbon>
       )}
     </section>
   );
