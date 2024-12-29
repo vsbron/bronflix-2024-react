@@ -17,6 +17,7 @@ export type ButtonPreviewProps = { dir: RibbonDirections; clickHandler: any };
 export type ButtonPreviewWrapperProps = {
   ribbon: RefObject<HTMLDivElement>;
   length: number;
+  isScrollByOne?: boolean;
 };
 export type HeadingProps = { children: string; as?: Headings };
 export type LinkItemProps = { icon: ReactNode; title: string };
@@ -38,6 +39,7 @@ export type RibbonProps = {
   length: number;
   children: ReactNode;
   ribbon: any;
+  isScrollByOne?: boolean;
 };
 
 /* Movie/Show/Actor data */

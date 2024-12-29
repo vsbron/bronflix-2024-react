@@ -7,10 +7,13 @@ import Loader from "@/components/Loader";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShowList } from "@/lib/types";
 import ScorePreview from "@/components/previews/ScorePreview";
+import Ribbon from "@/components/previews/Ribbon";
+import { useRef } from "react";
 
 function ShowsTopRated() {
-  // Getting the top rated shows
+  // Getting the top rated shows and ref for ribbon element
   const { isLoading, shows, error } = useShowsTopRated();
+  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Returned JSX (with conditions)
   return (
@@ -24,12 +27,12 @@ function ShowsTopRated() {
         </div>
       ) : (
         // Content
-        <div className="grid grid-cols-4 h-[50rem] gap-6">
+        <Ribbon length={shows.length} ribbon={ribbonRef}>
           {shows.map((show: IShowList) => (
             <Link
               to={`/shows/${show.id}`}
               key={show.id}
-              className="block h-full basis-96"
+              className="block h-[24rem] basis-[44rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
             >
               <div
                 style={{
@@ -44,7 +47,7 @@ function ShowsTopRated() {
               </div>
             </Link>
           ))}
-        </div>
+        </Ribbon>
       )}
     </section>
   );

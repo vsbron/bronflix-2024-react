@@ -72,7 +72,7 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
       <GenresProvider>
         <MovieHighlight movie={chosenMovie} />
       </GenresProvider>
-      <Ribbon length={movies.length} ribbon={ribbonRef}>
+      <Ribbon length={movies.length} ribbon={ribbonRef} isScrollByOne={true}>
         {movies.map((movie: IMovieList) => (
           <PreviewFeatured
             movie={movie}
