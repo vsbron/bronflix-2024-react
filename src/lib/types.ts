@@ -20,6 +20,10 @@ export type ButtonPreviewWrapperProps = {
   isScrollByOne?: boolean;
 };
 export type HeadingProps = { children: string; as?: Headings };
+export type IconWrapperProps = {
+  icon: ReactNode;
+  children: ReactNode;
+};
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type ScorePreviewProps = {
   score: number;
@@ -44,6 +48,14 @@ export type RibbonProps = {
 };
 
 /* Movie/Show/Actor data */
+export interface IBase {
+  id: string;
+  name?: string;
+  poster_path?: string;
+  backdrop_path?: string;
+  profile_path?: string;
+  vote_average?: number;
+}
 export interface IMovie {
   id: string;
   title?: string;
@@ -65,7 +77,7 @@ export interface IMovie {
   vote_average?: number;
   vote_count?: number;
 }
-export interface IMovieList {
+export interface IMovieList extends IBase {
   id: string;
   title: string;
   overview?: string;
@@ -109,14 +121,14 @@ export interface IShow {
   vote_average?: number;
   vote_count?: number;
 }
-export interface IShowList {
+export interface IShowList extends IBase {
   id: string;
   name: string;
   backdrop_path: string;
   vote_average: number;
 }
-export interface IPerson {
-  id: number;
+export interface IPerson extends IBase {
+  id: string;
   name: string;
   profile_path: string;
   also_known_as?: string[];

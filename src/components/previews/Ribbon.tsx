@@ -10,7 +10,6 @@ function Ribbon({ length, children, ribbon, isScrollByOne }: RibbonProps) {
         length={length}
         isScrollByOne={isScrollByOne}
       />
-      {/* Featured movies ribbon */}
       <div className="flex gap-6 w-full overflow-x-hidden" ref={ribbon}>
         {children}
       </div>

@@ -9,7 +9,12 @@ import Button from "@/components/Button";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { useGenres } from "@/context/GenresContext";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import { IGenre, IMovieList, MovieRatingProps } from "@/lib/types";
+import {
+  IconWrapperProps,
+  IGenre,
+  IMovieList,
+  MovieRatingProps,
+} from "@/lib/types";
 
 function MovieHighlight({ movie }: { movie: IMovieList }) {
   // Get the genres from Context API
@@ -72,7 +77,7 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
 
 export default MovieHighlight;
 
-function IconWrapper({ icon, children }: any) {
+function IconWrapper({ icon, children }: IconWrapperProps) {
   return (
     <div className="flex items-center gap-2">
       <div className="w-8">{icon}</div>
