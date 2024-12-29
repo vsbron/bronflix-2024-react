@@ -5,7 +5,7 @@ import { useShowsTrending } from "./useShowsTrending";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
-import Ribbon from "@/components/previews/Ribbon";
+import RibbonTwoRow from "@/components/previews/RibbonTwoRow";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShowList } from "@/lib/types";
@@ -27,12 +27,16 @@ function ShowsTrending() {
         </div>
       ) : (
         // Content
-        <Ribbon length={shows.length} ribbon={ribbonRef}>
+        <RibbonTwoRow
+          length={shows.length}
+          ribbon={ribbonRef}
+          cellWidth="35rem"
+        >
           {shows.map((show: IShowList) => (
             <Link
               to={`/shows/${show.id}`}
               key={show.id}
-              className="block basis-[35rem] h-[19rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+              className="block h-[19rem] rounded-lg overflow-hidden relative cursor-pointer"
             >
               <div
                 style={{
@@ -47,7 +51,7 @@ function ShowsTrending() {
               </div>
             </Link>
           ))}
-        </Ribbon>
+        </RibbonTwoRow>
       )}
     </section>
   );

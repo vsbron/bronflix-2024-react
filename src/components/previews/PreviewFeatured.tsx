@@ -13,7 +13,7 @@ function PreviewFeatured({
     <div
       key={movie.id}
       onClick={() => clickHandler(movie)}
-      className="block basis-72 h-[27rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+      className="block basis-72 h-[27rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer"
     >
       <div
         style={{

@@ -40,6 +40,7 @@ export type RibbonProps = {
   children: ReactNode;
   ribbon: any;
   isScrollByOne?: boolean;
+  cellWidth?: string;
 };
 
 /* Movie/Show/Actor data */

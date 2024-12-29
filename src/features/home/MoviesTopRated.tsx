@@ -32,7 +32,7 @@ function MoviesTopRated() {
             <Link
               to={`/movies/${movie.id}`}
               key={movie.id}
-              className="block h-[40rem] basis-[29rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+              className="block h-[40rem] basis-[29rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer"
             >
               <div
                 style={{

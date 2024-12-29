@@ -20,7 +20,7 @@ function Layout() {
       <BackspaceNavigation />
       <Header />
       <Sidebar />
-      <main className="w-screen ml-[7.5rem] min-h-screen">
+      <main className="w-screen ml-[7.5rem] min-h-screen overflow-x-hidden">
         <Wrapper>{isLoading ? <Loader /> : <Outlet />}</Wrapper>
         <Footer />
       </main>

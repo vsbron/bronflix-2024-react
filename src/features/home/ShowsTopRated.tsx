@@ -5,7 +5,7 @@ import { useShowsTopRated } from "./useShowsTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
-import Ribbon from "@/components/previews/Ribbon";
+import RibbonTwoRow from "@/components/previews/RibbonTwoRow";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IShowList } from "@/lib/types";
@@ -27,18 +27,22 @@ function ShowsTopRated() {
         </div>
       ) : (
         // Content
-        <Ribbon length={shows.length} ribbon={ribbonRef}>
+        <RibbonTwoRow
+          length={shows.length}
+          ribbon={ribbonRef}
+          cellWidth="44.2rem"
+        >
           {shows.map((show: IShowList) => (
             <Link
               to={`/shows/${show.id}`}
               key={show.id}
-              className="block h-[24rem] basis-[44.2rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+              className="block h-[24rem] rounded-lg overflow-hidden relative cursor-pointer"
             >
               <div
                 style={{
                   backgroundImage: `url(${MOVIES_IMG_URL}w500${show.backdrop_path})`,
                 }}
-                className="rounded-lg h-[100%] basis-72 flex items-end preview-bg relative"
+                className="rounded-lg h-full flex items-end preview-bg relative"
               >
                 <div className="bg-preview px-6 pb-4 pt-20 w-full font-heading font-light text-[2.5rem]">
                   <h3>{show.name}</h3>
@@ -47,7 +51,7 @@ function ShowsTopRated() {
               </div>
             </Link>
           ))}
-        </Ribbon>
+        </RibbonTwoRow>
       )}
     </section>
   );

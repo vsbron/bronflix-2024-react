@@ -31,7 +31,7 @@ function ActorsTrending() {
             <Link
               to={`/actors/${actor.id}`}
               key={actor.id}
-              className="block basis-[16.8rem] h-[25rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer bg-featured-gradient-tl"
+              className="block basis-[16.8rem] h-[25rem] flex-shrink-0 rounded-lg overflow-hidden relative cursor-pointer"
             >
               <div
                 style={{
