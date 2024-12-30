@@ -6,16 +6,16 @@ import {
 } from "@heroicons/react/24/solid";
 
 import { useGenres } from "@/context/GenresContext";
+import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 
 import Button from "@/components/Button";
-import Video from "@/components/Video";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import { IconWrapperProps } from "@/lib/types";
-import { IGenre, IMovieList } from "@/lib/typesAPI";
+import { IconWrapperProps, MovieHighlightProps } from "@/lib/types";
+import { IGenre } from "@/lib/typesAPI";
 
-function MovieHighlight({ movie }: { movie: IMovieList }) {
+function MovieHighlight({ movie }: MovieHighlightProps) {
   // Get the genres from Context API
   const { genres } = useGenres();
   const trailer = useTrailer(movie);
@@ -62,14 +62,12 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
               LEARN MORE
             </Link>
           </Button>
-          <Video>
-            <Video.Trigger>
-              <Button>
-                <span className="inline-block py-3 px-6">WATCH TRAILER</span>
-              </Button>
-            </Video.Trigger>
-            <Video.Content video={trailer!} />
-          </Video>
+          <VideoProvider.Trigger>
+            <Button>
+              <span className="inline-block py-3 px-6">WATCH TRAILER</span>
+            </Button>
+          </VideoProvider.Trigger>
+          <VideoProvider.Content video={trailer!} />
         </div>
       </div>
       <div
@@ -88,6 +86,7 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
 export default MovieHighlight;
 
 function IconWrapper({ icon, children }: IconWrapperProps) {
+  // Returned JSX
   return (
     <div className="flex items-center gap-2">
       <div className="w-8">{icon}</div>

@@ -1,13 +1,22 @@
+import { useEffect, useState } from "react";
+
+import useVideo from "@/context/VideoContext";
+
 import { MOVIES_URL } from "@/lib/constants";
 import { IMovieList, IVideo } from "@/lib/typesAPI";
-import { useEffect, useState } from "react";
 
 function useTrailer(movie: IMovieList) {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
+  const { isOpen } = useVideo();
+
+  console.log(isOpen);
 
   // Use effect that fetches trailer
   useEffect(() => {
+    // Prevent fetch if modal is open (on index)
+    if (isOpen) return;
+
     // Creating controller for cleanup function
     const controller = new AbortController();
     const { signal } = controller;
@@ -44,7 +53,7 @@ function useTrailer(movie: IMovieList) {
     return () => {
       controller.abort();
     };
-  }, [movie]);
+  }, [movie, isOpen]);
 
   // Returning video
   return video;

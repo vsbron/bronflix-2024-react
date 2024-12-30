@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import MovieHighlight from "./MovieHighlight";
+import { GenresProvider } from "@/context/GenresContext";
+import { VideoProvider } from "@/context/VideoContext";
 
 import PreviewFeatured from "@/components/previews/PreviewFeatured";
 import Ribbon from "@/components/previews/Ribbon";
-import { GenresProvider } from "@/context/GenresContext";
 import { HOME_MOVIE_CHANGE_INTERVAL } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
@@ -71,7 +72,9 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   return (
     <div className="relative">
       <GenresProvider>
-        <MovieHighlight movie={chosenMovie} />
+        <VideoProvider>
+          <MovieHighlight movie={chosenMovie} />
+        </VideoProvider>
       </GenresProvider>
       <Ribbon length={movies.length} ribbon={ribbonRef} isScrollByOne={true}>
         {movies.map((movie: IMovieList) => (

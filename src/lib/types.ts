@@ -51,6 +51,7 @@ export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
+export type MovieHighlightProps = { movie: IMovieList };
 export type PreviewFeaturedProps = {
   movie: IMovieList;
   chosenMovieId: string;

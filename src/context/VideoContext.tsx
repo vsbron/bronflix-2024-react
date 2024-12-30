@@ -9,7 +9,7 @@ const VideoContext = createContext<VideoContextProps>({
 });
 
 // Parent component
-function Video({ children }: { children: ReactNode }) {
+export function VideoProvider({ children }: { children: ReactNode }) {
   // Setting the pop up state and click handlers
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openVideo = () => setIsOpen(true);
@@ -38,7 +38,7 @@ function Content({ video }: { video: string }) {
 
   // Returned JSX
   return (
-    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70">
+    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/80">
       <div className="relative bg-red-950 p-8 rounded-lg">
         <button
           onClick={closeVideo}
@@ -66,7 +66,14 @@ function Content({ video }: { video: string }) {
 }
 
 // Tieing everything up
-Video.Trigger = Trigger;
-Video.Content = Content;
+VideoProvider.Trigger = Trigger;
+VideoProvider.Content = Content;
 
-export default Video;
+// Custom hook
+const useVideo = () => {
+  const context = useContext(VideoContext);
+  if (!context) throw new Error("useVideo must be used within VideoProvider");
+  return context;
+};
+
+export default useVideo;
