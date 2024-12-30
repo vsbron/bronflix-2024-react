@@ -21,17 +21,12 @@
   --color-red--950: #450a0a;
   --color-rose--300: #fda4af;
 }
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   scrollbar-color: var(--color-red--900) var(--color-black);
-  scrollbar-width: 2px;
 }
-::selection {
-  background-color: var(--color-red--900);
-  color: var(--color-white);
-}
-
 body {
   background-color: var(--color-black);
   font: 400 1.6rem/1.5 "Roboto", sans-serif;
@@ -70,13 +65,16 @@ ul {
   margin: 1.5rem 0 2rem 1rem;
 }
 
-a {
+p a,
+ul a {
   color: var(--color-rose--300);
   transition: color 0.2s ease;
 }
 
-a:hover,
-a:focus {
+p a:hover,
+ul a:hover,
+p a:focus,
+ul a:focus {
   color: var(--color-white);
 }
 

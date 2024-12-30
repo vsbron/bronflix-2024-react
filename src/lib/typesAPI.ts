@@ -118,3 +118,8 @@ export interface ISeason {
   season_number: number;
   vote_average: number;
 }
+export interface IVideo {
+  key: string;
+  type: string;
+  site: string;
+}
