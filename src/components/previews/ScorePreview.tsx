@@ -14,7 +14,7 @@ function ScorePreview({ score, isHighlighted = false }: ScorePreviewProps) {
           : "absolute z-20 top-3 left-3 text-[1.4rem] font-medium rounded-lg"
       }`}
     >
-      {parseFloat(score.toFixed(1)) * 10}
+      {score.toFixed(2)}
     </div>
   );
 }
