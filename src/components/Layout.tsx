@@ -1,10 +1,11 @@
 import { Outlet, useNavigation } from "react-router-dom";
 
 import Loader from "./Loader";
+import Wrapper from "./Wrapper";
 import Footer from "./footer/Footer";
 import Header from "./header/Header";
 import Sidebar from "./header/Sidebar";
-import Wrapper from "./Wrapper";
+
 import BackspaceNavigation from "@/utils/BackspaceNavigation";
 
 function Layout() {

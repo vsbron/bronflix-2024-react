@@ -5,7 +5,7 @@ import { useActorsTrending } from "./useActorsTrending";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { preparePreviews } from "@/utils/preparePreviews";
+import { PreparePreviews } from "@/components/previews/PreparePreviews";
 
 function ActorsTrending() {
   // Getting the trending actors and ref for ribbon element
@@ -22,7 +22,7 @@ function ActorsTrending() {
     );
 
   // Prepare preview ribbons
-  const preparedPreviews = preparePreviews({
+  const preparedPreviews = PreparePreviews({
     rawPreviews: actors,
     pages: 2,
     height: "h-[25rem]",

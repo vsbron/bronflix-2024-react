@@ -1,5 +1,3 @@
-import Wrapper from "./Wrapper";
-
 function Loader() {
   // Returned JSX
   return (

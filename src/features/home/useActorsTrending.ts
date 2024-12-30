@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { ACTORS_TRENDING_QUANTITY } from "@/lib/constants";
-import { IPerson } from "@/lib/typesAPI";
+import { IPersonList } from "@/lib/typesAPI";
 import { getTrendingActors } from "@/services/apiActors";
 import { shuffleArray } from "@/utils/helpers";
 
@@ -12,12 +12,12 @@ export function useActorsTrending() {
   });
 
   // Transform the data once it's loaded
-  let actors: IPerson[] = [];
+  let actors: IPersonList[] = [];
   if (data) {
     // Shuffle and select trending actors
     actors = shuffleArray(data)
       .slice(0, ACTORS_TRENDING_QUANTITY)
-      .map((actor: IPerson) => ({
+      .map((actor: IPersonList) => ({
         id: actor.id,
         name: actor.name,
         profile_path: actor.profile_path,

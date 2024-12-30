@@ -1,8 +1,9 @@
 import { ReactNode, RefObject } from "react";
-import { IGenre, IMovieList } from "./typesAPI";
+import { IBase, IGenre, IMovieList } from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2";
+type Media = "actors" | "tv" | "movies";
 export type RibbonDirections = "left" | "right";
 
 /* Context */
@@ -25,6 +26,13 @@ export type IconWrapperProps = {
   children: ReactNode;
 };
 export type LinkItemProps = { icon: ReactNode; title: string };
+export type PreparedPreviewsProps<T> = {
+  rawPreviews: T[];
+  pages: number;
+  height: string;
+  type: Media;
+};
+export type PreviewImageProps = { media: IBase; type: string };
 export type ScorePreviewProps = {
   score: number;
   isHighlighted?: boolean;

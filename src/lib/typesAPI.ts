@@ -28,13 +28,6 @@ export interface IShowList extends IBase {
 export interface IPersonList extends IBase {
   name: string;
   profile_path: string;
-  also_known_as?: string[];
-  biography?: string;
-  birthday?: string;
-  deathday?: string | null;
-  gender?: number;
-  place_of_birth?: string;
-  popularity?: number;
 }
 
 /* Individual data*/

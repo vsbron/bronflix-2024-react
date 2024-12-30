@@ -5,7 +5,7 @@ import { useShowsTrending } from "./useShowsTrending";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { preparePreviews } from "@/utils/preparePreviews";
+import { PreparePreviews } from "@/components/previews/PreparePreviews";
 
 function ShowsTrending() {
   // Getting the trending shows and ref for ribbon element
@@ -22,7 +22,7 @@ function ShowsTrending() {
     );
 
   // Prepare preview ribbons
-  const preparedPreviews = preparePreviews({
+  const preparedPreviews = PreparePreviews({
     rawPreviews: shows,
     pages: 2,
     height: "h-[19rem]",

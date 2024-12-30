@@ -5,7 +5,7 @@ import { useMoviesTopRated } from "./useMoviesTopRated";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { preparePreviews } from "@/utils/preparePreviews";
+import { PreparePreviews } from "@/components/previews/PreparePreviews";
 
 function MoviesTopRated() {
   // Getting the top rated movies and ref for ribbon element
@@ -22,7 +22,7 @@ function MoviesTopRated() {
     );
 
   // Prepare preview ribbons
-  const preparedPreviews = preparePreviews({
+  const preparedPreviews = PreparePreviews({
     rawPreviews: movies,
     pages: 3,
     height: "h-[40rem]",

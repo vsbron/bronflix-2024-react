@@ -5,7 +5,7 @@ import { useShowsTopRated } from "./useShowsTopRated";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { preparePreviews } from "@/utils/preparePreviews";
+import { PreparePreviews } from "@/components/previews/PreparePreviews";
 
 function ShowsTopRated() {
   // Getting the top rated shows and ref for ribbon element
@@ -22,7 +22,7 @@ function ShowsTopRated() {
     );
 
   // Prepare preview ribbons
-  const preparedPreviews = preparePreviews({
+  const preparedPreviews = PreparePreviews({
     rawPreviews: shows,
     pages: 2,
     height: "h-[24rem]",
