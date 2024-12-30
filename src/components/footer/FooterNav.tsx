@@ -8,7 +8,7 @@ function FooterNav() {
     <>
       <FooterHeading>Discover more</FooterHeading>
       <div className="flex">
-        <ul className="basis-[40%]">
+        <ul className="basis-[40%] m-0">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -25,7 +25,7 @@ function FooterNav() {
             <Link to="/site-map">Site Map</Link>
           </li>
         </ul>
-        <ul className="basis-[40%]">
+        <ul className="basis-[40%] m-0">
           <li>
             <Link to="/app-info">App Info</Link>
           </li>

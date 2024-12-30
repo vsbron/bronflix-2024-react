@@ -36,7 +36,7 @@ export function PreparePreviews<T extends IBase>({
               <Link
                 key={media.id}
                 to={`/${type === "tv" ? "shows" : type}/${media.id}`}
-                className={`block flex-1 ${height}`}
+                className={`block text-stone-50 flex-1 ${height}`}
                 style={{
                   flexBasis: isTwoRows ? flexBasis : "",
                 }}

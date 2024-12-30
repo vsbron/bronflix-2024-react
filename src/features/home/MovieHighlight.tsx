@@ -33,7 +33,7 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
   return (
     <div className="mb-16">
       <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-1/3 h-[50rem]">
-        <h2 className="text-8xl">{movie.title?.toUpperCase()}</h2>
+        <h2 className="text-8xl m-0">{movie.title?.toUpperCase()}</h2>
         <div className="flex gap-8 items-center -mt-2">
           <div className="flex items-center gap-4 text-stone-500 text-[1.4rem]">
             <ScorePreview score={score} isHighlighted={true} />

@@ -10,7 +10,7 @@ function Heading({ children, as = "h1" }: HeadingProps) {
       element = <h1 className="-mt-0.5">{children.toUpperCase()}</h1>;
       break;
     case "h2":
-      element = <h2>{children}</h2>;
+      element = <h2 className="m-0">{children}</h2>;
       break;
   }
 
