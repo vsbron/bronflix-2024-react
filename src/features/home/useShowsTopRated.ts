@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { SHOWS_TOP_RATED_QUANTITY } from "@/lib/constants";
-import { IShowList } from "@/lib/types";
+import { IShowList } from "@/lib/typesAPI";
 import { getShows } from "@/services/apiShows";
 import { shuffleArray } from "@/utils/helpers";
 

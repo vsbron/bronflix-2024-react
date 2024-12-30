@@ -9,12 +9,8 @@ import Button from "@/components/Button";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { useGenres } from "@/context/GenresContext";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import {
-  IconWrapperProps,
-  IGenre,
-  IMovieList,
-  MovieRatingProps,
-} from "@/lib/types";
+import { IconWrapperProps } from "@/lib/types";
+import { IGenre, IMovieList } from "@/lib/typesAPI";
 
 function MovieHighlight({ movie }: { movie: IMovieList }) {
   // Get the genres from Context API

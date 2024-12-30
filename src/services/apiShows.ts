@@ -1,5 +1,5 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { APIFetchType, IShow, IShowList } from "@/lib/types";
+import { APIFetchType, IShow, IShowList } from "@/lib/typesAPI";
 
 // API for getting the shows
 export async function getShows(type: APIFetchType): Promise<IShowList[]> {

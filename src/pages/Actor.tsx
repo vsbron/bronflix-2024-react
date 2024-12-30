@@ -1,8 +1,7 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import ActorDetails from "@/features/actorDetails/ActorDetails";
-
-import { IPerson } from "@/lib/types";
+import { IPerson } from "@/lib/typesAPI";
 import { getActor } from "@/services/apiActors";
 
 // Show data loader

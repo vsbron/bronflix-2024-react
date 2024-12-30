@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import MovieDetails from "@/features/movieDetails/MovieDetails";
-import { IMovie } from "@/lib/types";
+import { IMovie } from "@/lib/typesAPI";
 import { getMovie } from "@/services/apiMovies";
 
 // Movie data loader

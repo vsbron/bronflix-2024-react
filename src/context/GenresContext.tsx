@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { MOVIES_URL } from "@/lib/constants";
-import { GenresContextType, GenresProviderProps, IGenre } from "@/lib/types";
+import { GenresContextType, GenresProviderProps } from "@/lib/types";
+import { IGenre } from "@/lib/typesAPI";
 
 // Creating the context
 const GenresContext = createContext<GenresContextType | undefined>(undefined);

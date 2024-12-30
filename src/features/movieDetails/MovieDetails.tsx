@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IGenre, IMovie, IProductionCompany } from "@/lib/types";
+import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Handling the movie data
@@ -9,7 +9,7 @@ function MovieDetails({ movie }: { movie: IMovie }) {
     .toString()})`;
   const genres = movie.genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = movie.origin_country
-    .map((country) => country)
+    .map((country: string) => country)
     .join(", ");
   const productionCompanies = movie.production_companies
     .map((company: IProductionCompany) => company.name)

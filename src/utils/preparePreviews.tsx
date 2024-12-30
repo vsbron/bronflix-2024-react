@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import ScorePreview from "@/components/previews/ScorePreview";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IBase } from "@/lib/types";
+import { IBase } from "@/lib/typesAPI";
 
 const getPreviewClassNames = (type: string) =>
   type === "tv"

@@ -1,7 +1,7 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
-import { IShow } from "@/lib/types";
+import { IShow } from "@/lib/typesAPI";
 import { getShow } from "@/services/apiShows";
 
 // Show data loader

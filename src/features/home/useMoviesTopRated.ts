@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { MOVIES_TOP_RATED_QUANTITY } from "@/lib/constants";
-import { IMovieList } from "@/lib/types";
+import { IMovieList } from "@/lib/typesAPI";
 import { getMovies } from "@/services/apiMovies";
 import { shuffleArray } from "@/utils/helpers";
 

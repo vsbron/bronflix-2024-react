@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading";
 import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IGenre, IProductionCompany, IShow } from "@/lib/types";
+import { IGenre, IProductionCompany, IShow } from "@/lib/typesAPI";
 
 function ShowDetails({ show }: { show: IShow }) {
   // Handling the show data
@@ -9,7 +9,7 @@ function ShowDetails({ show }: { show: IShow }) {
     .toString()})`;
   const genres = show.genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = show.origin_country
-    .map((country) => country)
+    .map((country: string) => country)
     .join(", ");
   const productionCompanies = show.production_companies
     .map((company: IProductionCompany) => company.name)

@@ -1,5 +1,5 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IPerson } from "@/lib/types";
+import { IPerson } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPerson[]> {

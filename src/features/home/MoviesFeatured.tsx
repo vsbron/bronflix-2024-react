@@ -6,7 +6,8 @@ import PreviewFeatured from "@/components/previews/PreviewFeatured";
 import Ribbon from "@/components/previews/Ribbon";
 import { GenresProvider } from "@/context/GenresContext";
 import { HOME_MOVIE_CHANGE_INTERVAL } from "@/lib/constants";
-import { IMovieList, MoviesFeaturedProps } from "@/lib/types";
+import { MoviesFeaturedProps } from "@/lib/types";
+import { IMovieList } from "@/lib/typesAPI";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element
