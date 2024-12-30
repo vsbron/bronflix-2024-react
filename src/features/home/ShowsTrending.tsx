@@ -30,7 +30,7 @@ function ShowsTrending() {
     isTwoRows: true,
   });
 
-  // Returned JSX (with conditions)
+  // Returned JSX
   return (
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>

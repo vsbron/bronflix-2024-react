@@ -29,7 +29,7 @@ function MoviesTopRated() {
     type: "movies",
   });
 
-  // Returned JSX (with conditions)
+  // Returned JSX
   return (
     <section>
       <Heading as="h2">TOP RATED MOVIES</Heading>

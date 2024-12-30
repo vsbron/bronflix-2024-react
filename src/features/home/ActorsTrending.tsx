@@ -29,7 +29,7 @@ function ActorsTrending() {
     type: "actors",
   });
 
-  // Returned JSX (with conditions)
+  // Returned JSX
   return (
     <section>
       <Heading as="h2">TRENDING ACTORS</Heading>
