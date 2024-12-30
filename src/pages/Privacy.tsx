@@ -1,6 +1,7 @@
 import Heading from "@/components/Heading";
 
 function Privacy() {
+  // Returned JSX
   return (
     <section>
       <Heading>Privacy Policy</Heading>

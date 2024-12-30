@@ -11,6 +11,7 @@ import ShowsMain from "./pages/ShowsMain";
 import Show, { showLoader } from "./pages/Show";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
+import TermsOfUse from "./pages/TermsOfUse";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <Privacy />,
+      },
+      {
+        path: "/terms",
+        element: <TermsOfUse />,
       },
       {
         path: "/*",
