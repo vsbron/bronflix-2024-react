@@ -7,6 +7,7 @@ import Header from "./header/Header";
 import Sidebar from "./header/Sidebar";
 
 import BackspaceNavigation from "@/utils/BackspaceNavigation";
+import ScrollToTop from "@/utils/ScrollToTop";
 
 function Layout() {
   // Getting the navigation object from the hook
@@ -18,6 +19,7 @@ function Layout() {
   // Returned JSX
   return (
     <div className="text-stone-50 flex max-w-[1920px] mx-auto">
+      <ScrollToTop />
       <BackspaceNavigation />
       <Header />
       <Sidebar />
