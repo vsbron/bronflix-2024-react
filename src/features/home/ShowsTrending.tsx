@@ -27,6 +27,7 @@ function ShowsTrending() {
     pages: 2,
     height: "h-[19rem]",
     type: "tv",
+    isTwoRows: true,
   });
 
   // Returned JSX (with conditions)

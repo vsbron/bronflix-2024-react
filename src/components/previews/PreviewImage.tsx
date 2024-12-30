@@ -4,7 +4,7 @@ import { MOVIES_IMG_URL } from "@/lib/constants";
 import { PreviewImageProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
-function PreviewImage({ media, type }: PreviewImageProps) {
+function PreviewImage({ media, type, children }: PreviewImageProps) {
   // Getting the correct image element
   const previewImg: keyof IBase =
     type === "actors"
@@ -26,18 +26,21 @@ function PreviewImage({ media, type }: PreviewImageProps) {
       style={{
         backgroundImage: `url(${MOVIES_IMG_URL}w500${imagePath})`,
       }}
-      className="rounded-lg h-full flex items-end preview-bg"
+      className="rounded-lg h-full flex items-end preview-bg relative"
     >
+      {children}
       {media.name && (
         <div
-          className={`bg-preview w-full font-heading font-light ${getPreviewClassNames(
+          className={`bg-preview-gradient w-full font-heading font-light ${getPreviewClassNames(
             type
           )}`}
         >
           <h4>{media.name}</h4>
         </div>
       )}
-      {media.vote_average && <ScorePreview score={media.vote_average} />}
+      {media.vote_average !== undefined && (
+        <ScorePreview score={media.vote_average} />
+      )}
     </div>
   );
 }

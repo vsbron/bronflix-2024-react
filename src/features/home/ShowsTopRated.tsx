@@ -27,6 +27,7 @@ function ShowsTopRated() {
     pages: 2,
     height: "h-[24rem]",
     type: "tv",
+    isTwoRows: true,
   });
 
   // Returned JSX (with conditions)

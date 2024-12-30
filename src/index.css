@@ -95,5 +95,5 @@ footer a:focus svg {
 
 /* Utility classes */
 .preview-bg {
-  @apply bg-center bg-[100%_auto] hover:bg-[105%_auto] duration-300 transition-all;
+  @apply bg-center bg-cover duration-300 transition-all hover:scale-95;
 }

@@ -15,7 +15,8 @@ module.exports = {
         "heading-gradient":
           "linear-gradient(to right, var(--color-red--950), transparent)",
         "loader-gradient": "conic-gradient(transparent, var(--color-red--900))",
-        preview: "linear-gradient(to top, var(--color-black--09), transparent)",
+        "preview-gradient":
+          "linear-gradient(to top, var(--color-black--09), transparent)",
       },
       fontFamily: {
         heading: ["Oswald", "sans-serif"],

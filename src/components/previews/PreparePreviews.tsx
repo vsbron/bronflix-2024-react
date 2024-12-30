@@ -9,9 +9,17 @@ export function PreparePreviews<T extends IBase>({
   pages,
   height,
   type,
+  isTwoRows,
 }: PreparedPreviewsProps<T>) {
   // Calculating how many elements we need to display on the page
+  const GAP = 15;
   const elementsPerPage = Math.ceil(rawPreviews.length / pages);
+  const itemsPerRow = isTwoRows ? elementsPerPage / 2 : elementsPerPage;
+
+  // Calculate dynamic flex-basis
+  const flexBasis = `calc((100% - ${
+    (itemsPerRow - 1) * GAP
+  }px) / ${itemsPerRow})`;
 
   // Returned JSX
   return (
@@ -23,12 +31,15 @@ export function PreparePreviews<T extends IBase>({
 
         // Prepare each set
         return (
-          <div className="flex gap-6 w-full flex-shrink-0">
+          <div className="gap-6 w-full flex flex-shrink-0 flex-wrap">
             {rawPreviews.slice(start, end).map((media: T) => (
               <Link
                 key={media.id}
                 to={`/${type === "tv" ? "shows" : type}/${media.id}`}
-                className={`block flex-1 ${height} rounded-lg overflow-hidden relative cursor-pointer`}
+                className={`block flex-1 ${height}`}
+                style={{
+                  flexBasis: isTwoRows ? flexBasis : "",
+                }}
               >
                 <PreviewImage media={media} type={type} />
               </Link>

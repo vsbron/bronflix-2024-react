@@ -31,8 +31,13 @@ export type PreparedPreviewsProps<T> = {
   pages: number;
   height: string;
   type: Media;
+  isTwoRows?: boolean;
 };
-export type PreviewImageProps = { media: IBase; type: string };
+export type PreviewImageProps = {
+  media: IBase;
+  type: string;
+  children?: ReactNode;
+};
 export type ScorePreviewProps = {
   score: number;
   isHighlighted?: boolean;
