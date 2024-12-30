@@ -5,9 +5,12 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/solid";
 
-import Button from "@/components/Button";
-import ScorePreview from "@/components/previews/ScorePreview";
 import { useGenres } from "@/context/GenresContext";
+import useTrailer from "@/hooks/useTrailer";
+
+import Button from "@/components/Button";
+import Video from "@/components/Video";
+import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { IconWrapperProps } from "@/lib/types";
 import { IGenre, IMovieList } from "@/lib/typesAPI";
@@ -15,6 +18,7 @@ import { IGenre, IMovieList } from "@/lib/typesAPI";
 function MovieHighlight({ movie }: { movie: IMovieList }) {
   // Get the genres from Context API
   const { genres } = useGenres();
+  const trailer = useTrailer(movie);
 
   // Handling the movie data
   // prettier-ignore
@@ -52,11 +56,21 @@ function MovieHighlight({ movie }: { movie: IMovieList }) {
           </div>
         </div>
         <p className="mb-6">{truncatedOverview}</p>
-        <Button>
-          <Link className="inline-block py-3 px-6" to={`/movies/${movie.id}`}>
-            LEARN MORE
-          </Link>
-        </Button>
+        <div className="flex gap-6">
+          <Button>
+            <Link className="inline-block py-3 px-6" to={`/movies/${movie.id}`}>
+              LEARN MORE
+            </Link>
+          </Button>
+          <Video>
+            <Video.Trigger>
+              <Button>
+                <span className="inline-block py-3 px-6">WATCH TRAILER</span>
+              </Button>
+            </Video.Trigger>
+            <Video.Content video={trailer!} />
+          </Video>
+        </div>
       </div>
       <div
         style={{

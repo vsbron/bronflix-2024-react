@@ -31,7 +31,7 @@ export interface IPersonList extends IBase {
 }
 
 /* Individual data*/
-export interface IMovie {
+export interface IMovie extends IMovieList {
   id: string;
   title: string;
   tagline: string;

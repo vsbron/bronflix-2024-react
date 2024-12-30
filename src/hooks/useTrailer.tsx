@@ -1,8 +1,8 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IMovie, IVideo } from "@/lib/typesAPI";
+import { IMovieList, IVideo } from "@/lib/typesAPI";
 import { useEffect, useState } from "react";
 
-function useTrailer({ movie }: { movie: IMovie }) {
+function useTrailer(movie: IMovieList) {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
 
@@ -30,12 +30,9 @@ function useTrailer({ movie }: { movie: IMovie }) {
         );
 
         // Updating the state of video
-        const trailerURL = trailer
-          ? `https://www.youtube.com/embed/${trailer.key}`
-          : "";
-
-        setVideo(trailerURL);
+        setVideo(trailer ? `https://www.youtube.com/embed/${trailer.key}` : "");
       } catch (error) {
+        setVideo("");
         console.error("Error fetching trailer:", error);
       }
     }
@@ -45,11 +42,11 @@ function useTrailer({ movie }: { movie: IMovie }) {
 
     // Cleanup function
     return () => {
-      controller.abort(); // Abort fetch on unmount
+      controller.abort();
     };
   }, [movie]);
 
-  // Returned video
+  // Returning video
   return video;
 }
 

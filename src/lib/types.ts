@@ -42,6 +42,11 @@ export type ScorePreviewProps = {
   score: number;
   isHighlighted?: boolean;
 };
+export type VideoContextProps = {
+  isOpen: boolean;
+  openVideo: () => void;
+  closeVideo: () => void;
+};
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
