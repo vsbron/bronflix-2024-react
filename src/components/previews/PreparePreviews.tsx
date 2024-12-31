@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PreviewImage from "@/components/previews/PreviewImage";
 import { IBase } from "@/lib/typesAPI";
 import { PreparedPreviewsProps } from "@/lib/types";
+import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 
 export function PreparePreviews<T extends IBase>({
   rawPreviews,
@@ -31,7 +32,9 @@ export function PreparePreviews<T extends IBase>({
 
         // Prepare each set
         return (
-          <div className="gap-6 w-full flex flex-shrink-0 flex-wrap">
+          <div
+            className={`${PREVIEWS_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}
+          >
             {rawPreviews.slice(start, end).map((media: T) => (
               <Link
                 key={media.id}

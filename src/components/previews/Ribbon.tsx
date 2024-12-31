@@ -10,7 +10,7 @@ function Ribbon({ length, children, ribbon, isScrollByOne }: RibbonProps) {
         length={length}
         isScrollByOne={isScrollByOne}
       />
-      <div className="flex gap-6 w-full overflow-x-hidden" ref={ribbon}>
+      <div className={`flex gap-6 w-full overflow-x-hidden`} ref={ribbon}>
         {children}
       </div>
     </div>

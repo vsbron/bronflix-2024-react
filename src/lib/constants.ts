@@ -9,6 +9,9 @@ export const SHOWS_TRENDING_QUANTITY = 20;
 export const SHOWS_TOP_RATED_QUANTITY = 16;
 export const ACTORS_TRENDING_QUANTITY = 20;
 
+export const PREVIEWS_GAP = 15;
+export const PREVIEWS_GAP_CLASS = `gap-${PREVIEWS_GAP / 2.5}`;
+
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",
   es: "Spanish",

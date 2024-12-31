@@ -1,3 +1,4 @@
+import { PREVIEWS_GAP } from "@/lib/constants";
 import ButtonsPreview from "./ButtonsPreview";
 
 import { ButtonPreviewWrapperProps, RibbonDirections } from "@/lib/types";
@@ -23,7 +24,10 @@ function ButtonsPreviewWrapper({
       // Scroll by the width of the container + gap
       // FIX!
       ribbon.current.scrollBy({
-        left: direction === "left" ? -ribbonWidth - 15 : ribbonWidth + 15,
+        left:
+          direction === "left"
+            ? -ribbonWidth - PREVIEWS_GAP
+            : ribbonWidth + PREVIEWS_GAP,
         behavior: "smooth",
       });
     }
