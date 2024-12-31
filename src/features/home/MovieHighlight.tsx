@@ -55,16 +55,14 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
             <div>{genreNames}</div>
           </div>
         </div>
-        <p className="mb-6">{truncatedOverview}</p>
+        <p className="mt-0 mb-6">{truncatedOverview}</p>
         <div className="flex gap-6">
           <Button>
-            <Link className="inline-block py-3 px-6" to={`/movies/${movie.id}`}>
-              LEARN MORE
-            </Link>
+            <Link to={`/movies/${movie.id}`}>LEARN MORE</Link>
           </Button>
           <VideoProvider.Trigger>
             <Button>
-              <span className="inline-block py-3 px-6">WATCH TRAILER</span>
+              <span>WATCH TRAILER</span>
             </Button>
           </VideoProvider.Trigger>
           <VideoProvider.Content video={trailer!} />

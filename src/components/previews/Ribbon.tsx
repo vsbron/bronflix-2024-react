@@ -1,4 +1,5 @@
 import ButtonsPreviewWrapper from "@/components/previews/ButtonsPreviewWrapper";
+import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { RibbonProps } from "@/lib/types";
 
 function Ribbon({ length, children, ribbon, isScrollByOne }: RibbonProps) {
@@ -10,7 +11,10 @@ function Ribbon({ length, children, ribbon, isScrollByOne }: RibbonProps) {
         length={length}
         isScrollByOne={isScrollByOne}
       />
-      <div className={`flex gap-6 w-full overflow-x-hidden`} ref={ribbon}>
+      <div
+        className={`flex ${PREVIEWS_GAP_CLASS} w-full overflow-x-hidden`}
+        ref={ribbon}
+      >
         {children}
       </div>
     </div>
