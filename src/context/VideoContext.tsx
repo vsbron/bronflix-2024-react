@@ -1,7 +1,9 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { VideoContextProps } from "@/lib/types";
 
+// Creating the context
 const VideoContext = createContext<VideoContextProps>({
   isOpen: false,
   openVideo: () => {},
@@ -37,12 +39,12 @@ function Content({ video }: { video: string }) {
   if (!isOpen) return null;
 
   // Returned JSX
-  return (
-    <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/80">
-      <div className="relative bg-red-950 p-8 rounded-lg">
+  return createPortal(
+    <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
+      <div className="relative z-30 bg-red-950 p-8 rounded-lg animate-fadeInDown">
         <button
           onClick={closeVideo}
-          className="absolute -top-2 -right-12 bg-white-200 rounded-full text-[2rem] leading-1"
+          className="absolute -top-2 -right-12 text-white rounded-full text-[2.5rem] leading-1"
         >
           ✕
         </button>
@@ -61,7 +63,8 @@ function Content({ video }: { video: string }) {
           <div>Sorry, no trailer available</div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

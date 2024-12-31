@@ -22,7 +22,6 @@ function ButtonsPreviewWrapper({
     if (ribbon.current) {
       const ribbonWidth = ribbon.current.offsetWidth; // Get the step distance (one set)
       // Scroll by the width of the container + gap
-      // FIX!
       ribbon.current.scrollBy({
         left:
           direction === "left"
