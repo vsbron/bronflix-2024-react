@@ -24,11 +24,16 @@ module.exports = {
       },
       animation: {
         fadeInForwards: "fadeIn 0.2s ease forwards",
+        exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        exploreMoreBgMove: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-90rem" },
         },
       },
     },

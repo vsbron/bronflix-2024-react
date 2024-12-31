@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import bg from "@/assets/explore-bg-2x.png";
+import bg from "@/assets/explore-bg-2x.jpg";
 
 function ExploreMore() {
+  // Returned JSX
   return (
     <div className="relative">
       <Heading as="h2">More content to explore</Heading>
@@ -48,9 +49,16 @@ function ExploreMore() {
         </Button>
       </div>
       <div
-        style={{ backgroundImage: `url(${bg})` }}
-        className="absolute -top-10 -bottom-16 right-0 w-[60%] bg-cover -z-10 opacity-75 bg-center"
-      ></div>
+        className="absolute -top-10 -bottom-16 right-0 w-[80%] bg-cover -z-10 bg-center overflow-hidden opacity-60 perspe"
+        style={{ perspective: "50rem" }}
+      >
+        <div
+          className="absolute -top-1/4 right-0 h-[150%] w-[90rem] bg-[100%_auto] bg-repeat-y bg-top-right transform rotate-y-15 origin-right-center animate-exploreMoreBg"
+          style={{
+            backgroundImage: `url(${bg})`,
+          }}
+        />
+      </div>
     </div>
   );
 }
