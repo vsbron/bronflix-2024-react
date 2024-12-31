@@ -9,7 +9,7 @@ function ExploreMore() {
   return (
     <div className="relative">
       <Heading as="h2">More content to explore</Heading>
-      <div className="w-1/2">
+      <div className="w-3/5">
         <p>
           Dive into our expansive library of movies, TV series, and celebrity
           profiles. Explore action-packed blockbusters, heartwarming dramas, and
@@ -49,13 +49,16 @@ function ExploreMore() {
         </Button>
       </div>
       <div
-        className="absolute -top-10 -bottom-16 right-0 w-[80%] bg-cover -z-10 bg-center overflow-hidden opacity-60 perspe"
+        className="absolute -top-10 -bottom-16 right-0 w-[80%] -z-10 bg-center overflow-hidden opacity-80"
         style={{ perspective: "50rem" }}
       >
         <div
-          className="absolute -top-1/4 right-0 h-[150%] w-[90rem] bg-[100%_auto] bg-repeat-y bg-top-right transform rotate-y-15 origin-right-center animate-exploreMoreBg"
+          className="absolute -top-1/4 right-0 h-[150%] w-[80rem] bg-[100%_auto] animate-exploreMoreBg"
           style={{
             backgroundImage: `url(${bg})`,
+            backgroundPosition: "top right",
+            transform: "rotateY(-15deg)",
+            transformOrigin: "right center",
           }}
         />
       </div>

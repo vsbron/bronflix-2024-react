@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 
 import { VideoContextProps } from "@/lib/types";
@@ -38,10 +44,25 @@ function Content({ video }: { video: string }) {
   // Guard clause
   if (!isOpen) return null;
 
+  // useEffect for Escape key press handler
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      event.key === "Escape" && isOpen && closeVideo();
+    };
+
+    // Add the event listener
+    document.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [isOpen]);
+
   // Returned JSX
   return createPortal(
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
-      <div className="relative z-30 bg-red-950 p-8 rounded-lg animate-fadeInDown">
+      <div className="relative z-30 bg-red-950 p-8 rounded-lg opacity-0 -t-[20rem] animate-showVideoPopUp">
         <button
           onClick={closeVideo}
           className="absolute -top-2 -right-12 text-white rounded-full text-[2.5rem] leading-1"

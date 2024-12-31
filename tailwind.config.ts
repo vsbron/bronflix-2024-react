@@ -23,17 +23,22 @@ module.exports = {
         body: ["Roboto", "sans-serif"],
       },
       animation: {
-        fadeInForwards: "fadeIn 0.2s ease forwards",
         exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
+        fadeInForwards: "fadeIn .2s ease forwards",
+        showVideoPopUp: "fadeInDown .2s ease forwards .2s",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        fadeInDown: {
+          "0%": { top: "-20rem", opacity: "0" },
+          "100%": { top: "0rem", opacity: "1" },
+        },
         exploreMoreBgMove: {
           "0%": { backgroundPositionY: "0" },
-          "100%": { backgroundPositionY: "-90rem" },
+          "100%": { backgroundPositionY: "-80rem" },
         },
       },
     },
