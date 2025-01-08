@@ -12,7 +12,7 @@ function HeroSection() {
   // Returned JSX (with conditions)
   return (
     <section>
-      <Heading>WHAT'S HOT</Heading>
+      <Heading>WHAT'S HOT?</Heading>
       {isLoading ? (
         <Loader />
       ) : error || !movies || !movies.length ? (

@@ -41,6 +41,7 @@ export type PreviewImageProps = {
 export type ScorePreviewProps = {
   score: number;
   isHighlighted?: boolean;
+  isBig?: boolean;
 };
 export type VideoContextProps = {
   isOpen: boolean;

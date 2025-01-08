@@ -21,4 +21,5 @@ export const LANGUAGES: { [key: string]: string } = {
   ja: "Japanese",
   ru: "Russian",
   zh: "Chinese",
+  ko: "Korean",
 };

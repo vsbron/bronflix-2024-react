@@ -5,6 +5,7 @@ import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { RibbonProps } from "@/lib/types";
 
 function Ribbon({ length, children, isScrollByOne }: RibbonProps) {
+  // Setting the ref for the ribbon
   const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Returned JSX

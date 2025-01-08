@@ -10,9 +10,10 @@ import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 
 import Button from "@/components/Button";
+import { IconWrapper } from "@/components/IconWrapper";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import { IconWrapperProps, MovieHighlightProps } from "@/lib/types";
+import { MovieHighlightProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
@@ -82,13 +83,3 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 }
 
 export default MovieHighlight;
-
-export function IconWrapper({ icon, children }: IconWrapperProps) {
-  // Returned JSX
-  return (
-    <div className="flex items-center gap-2">
-      <div className="w-8">{icon}</div>
-      {children}
-    </div>
-  );
-}
