@@ -5,10 +5,13 @@ import { GenresProvider } from "@/context/GenresContext";
 import { VideoProvider } from "@/context/VideoContext";
 
 import PreviewFeatured from "@/components/previews/PreviewFeatured";
-import Ribbon from "@/components/previews/Ribbon";
-import { HOME_MOVIE_CHANGE_INTERVAL } from "@/lib/constants";
+import {
+  HOME_MOVIE_CHANGE_INTERVAL,
+  PREVIEWS_GAP_CLASS,
+} from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
+import ButtonsPreviewWrapper from "@/components/previews/ButtonsPreviewWrapper";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element
@@ -76,16 +79,26 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
           <MovieHighlight movie={chosenMovie} />
         </VideoProvider>
       </GenresProvider>
-      <Ribbon length={movies.length} ribbon={ribbonRef} isScrollByOne={true}>
-        {movies.map((movie: IMovieList) => (
-          <PreviewFeatured
-            movie={movie}
-            chosenMovieId={chosenMovie.id}
-            clickHandler={handleClick}
-            key={movie.id}
-          />
-        ))}
-      </Ribbon>
+      <div className="relative">
+        <ButtonsPreviewWrapper
+          ribbon={ribbonRef}
+          length={movies.length}
+          isScrollByOne={true}
+        />
+        <div
+          className={`flex ${PREVIEWS_GAP_CLASS} w-full overflow-x-hidden`}
+          ref={ribbonRef}
+        >
+          {movies.map((movie: IMovieList) => (
+            <PreviewFeatured
+              movie={movie}
+              chosenMovieId={chosenMovie.id}
+              clickHandler={handleClick}
+              key={movie.id}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

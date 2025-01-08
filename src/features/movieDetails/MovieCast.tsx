@@ -27,7 +27,7 @@ function MovieCast() {
   return (
     <section>
       <Heading as="h2">Cast & Characters</Heading>
-      <Ribbon length={cast.length} ribbon={ribbonRef} isScrollByOne={true}>
+      <Ribbon length={cast.length} isScrollByOne={true}>
         {cast.map((actor: ICast) => (
           <div
             className="block basis-64 flex-shrink-0 rounded-lg overflow-x-hidden"

@@ -34,9 +34,7 @@ function ShowsTopRated() {
   return (
     <section>
       <Heading as="h2">TOP RATED SHOWS</Heading>
-      <Ribbon length={shows.length} ribbon={ribbonRef}>
-        {preparedPreviews}
-      </Ribbon>
+      <Ribbon length={shows.length}>{preparedPreviews}</Ribbon>
     </section>
   );
 }

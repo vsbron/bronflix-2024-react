@@ -2,10 +2,12 @@ import { ScorePreviewProps } from "@/lib/types";
 import { scoreColor } from "@/utils/helpers";
 
 function ScorePreview({ score, isHighlighted = false }: ScorePreviewProps) {
+  // Editing the score
   const adjustedScore = score.toFixed(1);
+  
   // Getting the colors for the score
   const { bgColor, color } = scoreColor(parseFloat(adjustedScore));
-
+  
   // Returned JSX
   return (
     <div

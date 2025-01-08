@@ -33,9 +33,7 @@ function MoviesTopRated() {
   return (
     <section>
       <Heading as="h2">TOP RATED MOVIES</Heading>
-      <Ribbon length={movies.length} ribbon={ribbonRef}>
-        {preparedPreviews}
-      </Ribbon>
+      <Ribbon length={movies.length}>{preparedPreviews}</Ribbon>
     </section>
   );
 }

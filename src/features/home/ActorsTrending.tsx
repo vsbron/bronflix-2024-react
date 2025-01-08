@@ -33,9 +33,7 @@ function ActorsTrending() {
   return (
     <section>
       <Heading as="h2">TRENDING ACTORS</Heading>
-      <Ribbon length={actors.length} ribbon={ribbonRef}>
-        {preparedPreviews}
-      </Ribbon>
+      <Ribbon length={actors.length}>{preparedPreviews}</Ribbon>
     </section>
   );
 }

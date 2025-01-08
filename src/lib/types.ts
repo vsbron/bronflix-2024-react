@@ -60,7 +60,6 @@ export type PreviewFeaturedProps = {
 export type RibbonProps = {
   length: number;
   children: ReactNode;
-  ribbon: any;
   isScrollByOne?: boolean;
   cellWidth?: string;
 };

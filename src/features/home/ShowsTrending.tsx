@@ -34,9 +34,7 @@ function ShowsTrending() {
   return (
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
-      <Ribbon length={shows.length} ribbon={ribbonRef}>
-        {preparedPreviews}
-      </Ribbon>
+      <Ribbon length={shows.length}>{preparedPreviews}</Ribbon>
     </section>
   );
 }
