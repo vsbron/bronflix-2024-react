@@ -23,11 +23,9 @@ function MovieCast() {
       </div>
     );
 
-  console.log(cast);
-
   // Returned JSX
   return (
-    <div>
+    <section>
       <Heading as="h2">Cast & Characters</Heading>
       <Ribbon length={cast.length} ribbon={ribbonRef} isScrollByOne={true}>
         {cast.map((actor: ICast) => (
@@ -46,7 +44,7 @@ function MovieCast() {
           </div>
         ))}
       </Ribbon>
-    </div>
+    </section>
   );
 }
 

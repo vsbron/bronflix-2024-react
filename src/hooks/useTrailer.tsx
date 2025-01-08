@@ -10,8 +10,6 @@ function useTrailer(movie: IMovieList) {
   const [video, setVideo] = useState<string>();
   const { isOpen } = useVideo();
 
-  console.log(isOpen);
-
   // Use effect that fetches trailer
   useEffect(() => {
     // Prevent fetch if modal is open (on index)

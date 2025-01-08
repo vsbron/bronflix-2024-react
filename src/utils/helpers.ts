@@ -24,3 +24,12 @@ export function scoreColor(score: number) {
   // Return colors
   return { bgColor, color };
 }
+
+// Function that formats the dat
+export function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}

@@ -39,6 +39,7 @@ export interface IMovie {
   poster_path: string;
   backdrop_path: string;
   release_date: string;
+  belongs_to_collection: string;
   budget: number;
   genres: IGenre[];
   origin_country: string[];
