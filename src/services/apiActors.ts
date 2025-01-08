@@ -1,5 +1,5 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { IPerson, IPersonList } from "@/lib/typesAPI";
+import { ICast, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -71,7 +71,7 @@ export async function getActor(movieId: string): Promise<IPerson> {
 }
 
 // API for getting movie cast actor
-export async function getMovieCast(movieId: string): Promise<any> {
+export async function getMovieCast(movieId: string): Promise<ICast[]> {
   try {
     // Fetching the data
     const response = await fetch(
@@ -89,7 +89,7 @@ export async function getMovieCast(movieId: string): Promise<any> {
     const data = await response.json();
 
     // Return the actor
-    return data;
+    return data.cast;
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);

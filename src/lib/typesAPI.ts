@@ -31,7 +31,7 @@ export interface IPersonList extends IBase {
 }
 
 /* Individual data*/
-export interface IMovie extends IMovieList {
+export interface IMovie {
   id: string;
   title: string;
   tagline: string;
@@ -96,6 +96,12 @@ export interface IPerson {
   deathday?: string;
   biography: string;
   popularity: number;
+}
+export interface ICast extends IBase {
+  id: string;
+  name: string;
+  character: string;
+  profile_path: string;
 }
 
 /* Misc */

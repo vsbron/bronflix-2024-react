@@ -10,7 +10,7 @@ export function useMovieCast() {
   // Fetching the data using React Query
   const {
     isLoading,
-    data: actors,
+    data: cast,
     error,
   } = useQuery({
     queryKey: ["movie-case", movieId],
@@ -18,5 +18,5 @@ export function useMovieCast() {
   });
 
   // Return fetched data
-  return { isLoading, actors, error };
+  return { isLoading, cast, error };
 }

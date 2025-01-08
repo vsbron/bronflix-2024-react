@@ -7,31 +7,34 @@ import Ribbon from "@/components/previews/Ribbon";
 import PreviewImage from "@/components/previews/PreviewImage";
 
 import { useMovieCast } from "./useMovieCast";
+import { ICast } from "@/lib/typesAPI";
 
 function MovieCast() {
   // Getting the fetched cast and setting the ref for ribbon element
-  const { isLoading, actors, error } = useMovieCast();
+  const { isLoading, cast, error } = useMovieCast();
   const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Guard clauses
   if (isLoading) return <Loader />;
-  if (error || !actors)
+  if (error || !cast)
     return (
       <div className="text-red-500">
-        {error?.message || "Error fetching top rated actors"}
+        {error?.message || "Error fetching cast actors"}
       </div>
     );
 
-  // Getting the actual cast array
-  const cast = actors.cast;
+  console.log(cast);
 
   // Returned JSX
   return (
     <div>
       <Heading as="h2">Cast & Characters</Heading>
       <Ribbon length={cast.length} ribbon={ribbonRef} isScrollByOne={true}>
-        {cast.map((actor: any) => (
-          <div className="block basis-64 flex-shrink-0 rounded-lg overflow-x-hidden ">
+        {cast.map((actor: ICast) => (
+          <div
+            className="block basis-64 flex-shrink-0 rounded-lg overflow-x-hidden"
+            key={actor.id}
+          >
             <div key={actor.id} className="h-[25rem] cursor-pointer">
               <Link to={`/actors/${actor.id}`}>
                 <PreviewImage media={actor} type={"actors"} />
