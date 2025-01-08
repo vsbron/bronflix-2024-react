@@ -25,11 +25,19 @@ export function scoreColor(score: number) {
   return { bgColor, color };
 }
 
-// Function that formats the dat
+// Function that formats the date
 export function formatDate(dateString: string) {
   return new Date(dateString).toLocaleString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
   });
+}
+
+// Function that formats the runtime
+export function formatRuntime(runtime: number) {
+  const hours = Math.floor(runtime / 60);
+  const minutes = Math.floor(runtime % 60);
+
+  return `${hours}h ${minutes}m`;
 }

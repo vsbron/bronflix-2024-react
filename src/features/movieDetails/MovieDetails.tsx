@@ -1,11 +1,16 @@
+import { VideoProvider } from "@/context/VideoContext";
 import MovieCast from "./MovieCast";
 
 import Heading from "@/components/Heading";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
-import { formatDate } from "@/utils/helpers";
+import { formatDate, formatRuntime } from "@/utils/helpers";
+import Button from "@/components/Button";
+import useTrailer from "@/hooks/useTrailer";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
+  const trailer = useTrailer(movie);
+
   // Handling the movie data
   const headingTitle = `${movie.title} (${new Date(movie.release_date)
     .getFullYear()
@@ -38,12 +43,20 @@ function MovieDetails({ movie }: { movie: IMovie }) {
             <div className="absolute inset-0 bg-stone-950/80" />
             <div className="relative z-10">
               <div>Released: {formatDate(movie.release_date)}</div>
-              <div>Runtime: {movie.runtime} minutes</div>
-              <div>Budget: {movie.budget}</div>
+              <div>Runtime: {formatRuntime(movie.runtime)}</div>
+              <div>Budget: ${movie.budget.toLocaleString()}</div>
               <div>Genres: {genres}</div>
               <div>Country: {originCountry}</div>
               <div>Production Company: {productionCompanies}</div>
               <div>Language: {movie.original_language.toUpperCase()}</div>
+              <VideoProvider>
+                <VideoProvider.Trigger>
+                  <Button>
+                    <span>WATCH TRAILER</span>
+                  </Button>
+                </VideoProvider.Trigger>
+                <VideoProvider.Content video={trailer!} />
+              </VideoProvider>
             </div>
           </div>
         </div>
