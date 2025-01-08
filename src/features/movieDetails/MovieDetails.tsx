@@ -1,14 +1,27 @@
-import { VideoProvider } from "@/context/VideoContext";
-import MovieCast from "./MovieCast";
+import {
+  BanknotesIcon,
+  CalendarIcon,
+  ClockIcon,
+  LanguageIcon,
+  UserIcon,
+} from "@heroicons/react/24/outline";
 
-import Heading from "@/components/Heading";
-import { MOVIES_IMG_URL } from "@/lib/constants";
-import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
-import { formatDate, formatRuntime } from "@/utils/helpers";
-import Button from "@/components/Button";
+import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 
+import MovieCast from "./MovieCast";
+
+import Button from "@/components/Button";
+import Heading from "@/components/Heading";
+import ScorePreview from "@/components/previews/ScorePreview";
+import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
+import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
+import { formatDate, formatRuntime } from "@/utils/helpers";
+
+import { IconWrapper } from "../home/MovieHighlight";
+
 function MovieDetails({ movie }: { movie: IMovie }) {
+  // Getting the trailer from the custom hook
   const trailer = useTrailer(movie);
 
   // Handling the movie data
@@ -23,12 +36,21 @@ function MovieDetails({ movie }: { movie: IMovie }) {
     .map((company: IProductionCompany) => company.name)
     .join(", ");
 
+  // Handling the movie data
+  // prettier-ignore
+  const score = movie?.vote_average || 0;
+  const count = movie?.vote_count || 0;
+  const overview = movie?.overview || "";
+  const truncatedOverview =
+    overview.length > 150
+      ? `${overview.slice(0, 150).trim().split(" ").slice(0, -1).join(" ")}...`
+      : overview;
+
   // Returned JSX
   return (
     <>
       <section>
         <Heading>{headingTitle}</Heading>
-
         <div className="flex items-stretch rounded-lg overflow-hidden">
           <img
             src={`${MOVIES_IMG_URL}w400${movie.poster_path}`}
@@ -41,14 +63,26 @@ function MovieDetails({ movie }: { movie: IMovie }) {
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-8 py-4"
           >
             <div className="absolute inset-0 bg-stone-950/80" />
-            <div className="relative z-10">
-              <div>Released: {formatDate(movie.release_date)}</div>
-              <div>Runtime: {formatRuntime(movie.runtime)}</div>
-              <div>Budget: ${movie.budget.toLocaleString()}</div>
+            <div className="relative z-10 flex flex-col gap-3">
+              <div className="flex items-center gap-4 text-stone-500 text-[1.4rem]">
+                <ScorePreview score={score} isHighlighted={true} />
+                <IconWrapper icon={<UserIcon />}>
+                  {(count / 1000).toFixed(2)}K
+                </IconWrapper>
+              </div>
+              <IconWrapper icon={<CalendarIcon />}>
+                {formatDate(movie.release_date)}
+              </IconWrapper>
+              <IconWrapper icon={<LanguageIcon />}>
+                {LANGUAGES[movie.original_language!]}
+              </IconWrapper>
+              <IconWrapper icon={<ClockIcon />}>
+                {formatRuntime(movie.runtime)}
+              </IconWrapper>
+              <IconWrapper icon={<BanknotesIcon />}>
+                ${movie.budget.toLocaleString()}
+              </IconWrapper>
               <div>Genres: {genres}</div>
-              <div>Country: {originCountry}</div>
-              <div>Production Company: {productionCompanies}</div>
-              <div>Language: {movie.original_language.toUpperCase()}</div>
               <VideoProvider>
                 <VideoProvider.Trigger>
                   <Button>
@@ -63,6 +97,8 @@ function MovieDetails({ movie }: { movie: IMovie }) {
 
         <div>{movie.tagline}</div>
         <div>Overview: {movie.overview}</div>
+        <div>Country: {originCountry}</div>
+        <div>Production Company: {productionCompanies}</div>
       </section>
 
       <MovieCast />

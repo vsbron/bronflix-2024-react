@@ -83,7 +83,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
 export default MovieHighlight;
 
-function IconWrapper({ icon, children }: IconWrapperProps) {
+export function IconWrapper({ icon, children }: IconWrapperProps) {
   // Returned JSX
   return (
     <div className="flex items-center gap-2">
