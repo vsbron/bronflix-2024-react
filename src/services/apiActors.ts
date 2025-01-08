@@ -69,3 +69,34 @@ export async function getActor(movieId: string): Promise<IPerson> {
     }
   }
 }
+
+// API for getting movie cast actor
+export async function getMovieCast(movieId: string): Promise<IPerson> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MOVIES_URL}/movie/${movieId}/credits?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }&language=en-US`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the cast data: ${response.statusText}}`);
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the actor
+    return data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw new Error("An error occurred while fetching cast data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching cast data.");
+    }
+  }
+}

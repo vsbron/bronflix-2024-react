@@ -1,3 +1,5 @@
+import MovieCast from "./MovieCast";
+
 import Heading from "@/components/Heading";
 import { MOVIES_IMG_URL } from "@/lib/constants";
 import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
@@ -30,6 +32,7 @@ function MovieDetails({ movie }: { movie: IMovie }) {
       <div>Country: {originCountry}</div>
       <div>Production Company: {productionCompanies}</div>
       <div>Language: {movie.original_language.toUpperCase()}</div>
+      <MovieCast />
     </div>
   );
 }
