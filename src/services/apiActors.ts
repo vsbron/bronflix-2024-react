@@ -71,7 +71,7 @@ export async function getActor(movieId: string): Promise<IPerson> {
 }
 
 // API for getting movie cast actor
-export async function getMovieCast(movieId: string): Promise<IPerson> {
+export async function getMovieCast(movieId: string): Promise<any> {
   try {
     // Fetching the data
     const response = await fetch(

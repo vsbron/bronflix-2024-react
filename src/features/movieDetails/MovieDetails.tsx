@@ -19,21 +19,23 @@ function MovieDetails({ movie }: { movie: IMovie }) {
 
   // Returned JSX
   return (
-    <div>
-      <Heading>{headingTitle}</Heading>
-      <img src={`${MOVIES_IMG_URL}w200${movie.poster_path}`} />
-      <div>Name: {movie.title}</div>
-      <div>Tagline: {movie.tagline}</div>
-      <div>Overview: {movie.overview}</div>
-      <div>Release Date: {movie.release_date}</div>
-      <div>Runtime: {movie.runtime} minutes</div>
-      <div>Budget: {movie.budget}</div>
-      <div>Genres: {genres}</div>
-      <div>Country: {originCountry}</div>
-      <div>Production Company: {productionCompanies}</div>
-      <div>Language: {movie.original_language.toUpperCase()}</div>
+    <>
+      <div>
+        <Heading>{headingTitle}</Heading>
+        <img src={`${MOVIES_IMG_URL}w200${movie.poster_path}`} />
+        <div>Name: {movie.title}</div>
+        <div>Tagline: {movie.tagline}</div>
+        <div>Overview: {movie.overview}</div>
+        <div>Release Date: {movie.release_date}</div>
+        <div>Runtime: {movie.runtime} minutes</div>
+        <div>Budget: {movie.budget}</div>
+        <div>Genres: {genres}</div>
+        <div>Country: {originCountry}</div>
+        <div>Production Company: {productionCompanies}</div>
+        <div>Language: {movie.original_language.toUpperCase()}</div>
+      </div>
       <MovieCast />
-    </div>
+    </>
   );
 }
 
