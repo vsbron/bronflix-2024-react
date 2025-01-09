@@ -2,30 +2,29 @@ import {
   BanknotesIcon,
   CalendarIcon,
   ClockIcon,
+  GlobeAltIcon,
+  FilmIcon,
   LanguageIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
 
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
+import { formatDate, formatRuntime } from "@/utils/helpers";
 
 import MovieCast from "./MovieCast";
-
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import { IconWrapper } from "@/components/IconWrapper";
 import ScorePreview from "@/components/previews/ScorePreview";
-import { LANGUAGES, MOVIES_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
-import { IGenre, IMovie, IProductionCompany } from "@/lib/typesAPI";
-import { formatDate, formatRuntime } from "@/utils/helpers";
+import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
+import { IGenre, IMovie } from "@/lib/typesAPI";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie);
 
-  console.log(movie);
-
-  // Handling the movie data
+  // Handling some  movie data
   const headingTitle = `${movie.title} (${new Date(movie.release_date)
     .getFullYear()
     .toString()})`;
@@ -33,15 +32,8 @@ function MovieDetails({ movie }: { movie: IMovie }) {
   const originCountry = movie.origin_country
     .map((country: string) => country)
     .join(", ");
-  const productionCompanies = movie.production_companies
-    .map((company: IProductionCompany) => company.name)
-    .join(", ");
-
-  // Handling the movie data
-  // prettier-ignore
   const score = movie?.vote_average || 0;
   const count = movie?.vote_count || 0;
-  const overview = movie?.overview || "";
 
   // Returned JSX
   return (
@@ -57,9 +49,9 @@ function MovieDetails({ movie }: { movie: IMovie }) {
             style={{
               backgroundImage: `url(${MOVIES_IMG_URL}/original/${movie.backdrop_path})`,
             }}
-            className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-8 py-6 rounded-lg"
+            className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
-            <div className="absolute inset-0 bg-stone-950/85" />
+            <div className="absolute inset-0 bg-stone-950/75" />
             <div className="relative z-10 flex flex-col gap-3">
               <div className="flex items-center gap-4 text-stone-400 text-[1.6rem] mb-3">
                 <ScorePreview score={score} isHighlighted={true} isBig={true} />
@@ -67,27 +59,41 @@ function MovieDetails({ movie }: { movie: IMovie }) {
                   {(count / 1000).toFixed(2)}K
                 </IconWrapper>
               </div>
-              <h2 className="text-[3.5rem] my-0 -mb-2">{movie.title}</h2>
-              <h4 className="mb-3 italic">{movie.tagline}</h4>
-              <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
-                <IconWrapper icon={<CalendarIcon />}>
-                  {formatDate(movie.release_date)}
-                </IconWrapper>
-                <span>|</span>
-                <span>{genres}</span>
+              <div className="text-[4rem] -my-5 font-heading">
+                {movie.title}
               </div>
-              <div className={`flex ${PREVIEWS_GAP_CLASS} mb-2`}>
-                <IconWrapper icon={<LanguageIcon />}>
-                  {LANGUAGES[movie.original_language!]}
-                </IconWrapper>
-                <IconWrapper icon={<ClockIcon />}>
-                  {formatRuntime(movie.runtime)}
-                </IconWrapper>
-                <IconWrapper icon={<BanknotesIcon />}>
-                  ${movie.budget.toLocaleString()}
-                </IconWrapper>
+              <div className="mb-3 text-[2rem] italic text-stone-400">
+                {movie.tagline}
               </div>
-              <div className="max-w-[65rem] mb-4">{overview}</div>
+              <div className="contents text-2xl">
+                <div>{genres}</div>
+                <div className="flex gap-8">
+                  <IconWrapper icon={<CalendarIcon />}>
+                    {formatDate(movie.release_date)}
+                  </IconWrapper>
+                  <IconWrapper icon={<LanguageIcon />}>
+                    {LANGUAGES[movie.original_language!]}
+                  </IconWrapper>
+                  <IconWrapper icon={<ClockIcon />}>
+                    {formatRuntime(movie.runtime)}
+                  </IconWrapper>
+                </div>
+                <div className="flex gap-8">
+                  <IconWrapper icon={<GlobeAltIcon />}>
+                    {originCountry}
+                  </IconWrapper>
+                  <IconWrapper icon={<FilmIcon />}>
+                    {movie.production_companies[0].name}
+                  </IconWrapper>
+                  <IconWrapper icon={<BanknotesIcon />}>
+                    ${movie.budget.toLocaleString()}
+                  </IconWrapper>
+                </div>
+              </div>
+              <div className="flex gap-8 mb-2"></div>
+              {movie.overview && (
+                <div className="max-w-[65rem] mb-6">{movie.overview}</div>
+              )}
               <VideoProvider>
                 <VideoProvider.Trigger>
                   <Button>
@@ -99,11 +105,7 @@ function MovieDetails({ movie }: { movie: IMovie }) {
             </div>
           </div>
         </div>
-
-        {/* <div>Country: {originCountry}</div>
-        <div>Production Company: {productionCompanies}</div> */}
       </section>
-
       <MovieCast />
     </>
   );
