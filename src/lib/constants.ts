@@ -23,3 +23,14 @@ export const LANGUAGES: { [key: string]: string } = {
   zh: "Chinese",
   ko: "Korean",
 };
+
+export const CREW_JOBS = [
+  "Director",
+  "Writer",
+  "Novel",
+  "Screenplay",
+  "Original Music Composer",
+  "Director of Photography",
+  "Producer",
+  "Executive Producer",
+];

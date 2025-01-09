@@ -1,5 +1,5 @@
 import { MOVIES_URL } from "@/lib/constants";
-import { ICast, IPerson, IPersonList } from "@/lib/typesAPI";
+import { ICastCrew, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -70,8 +70,8 @@ export async function getActor(movieId: string): Promise<IPerson> {
   }
 }
 
-// API for getting movie cast actor
-export async function getMovieCast(movieId: string): Promise<ICast[]> {
+// API for getting movie cast and crew
+export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
   try {
     // Fetching the data
     const response = await fetch(
@@ -82,21 +82,25 @@ export async function getMovieCast(movieId: string): Promise<ICast[]> {
 
     // Guard clause
     if (!response.ok) {
-      throw new Error(`Failed to fetch the cast data: ${response.statusText}}`);
+      throw new Error(
+        `Failed to fetch the cast & crew data: ${response.statusText}}`
+      );
     }
 
     // Getting the actual data
     const data = await response.json();
 
     // Return the actor
-    return data.cast;
+    return data;
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);
-      throw new Error("An error occurred while fetching cast data");
+      throw new Error("An error occurred while fetching cast & crew data");
     } else {
       console.error(error);
-      throw new Error("An unknown error occurred while fetching cast data.");
+      throw new Error(
+        "An unknown error occurred while fetching cast & crew data."
+      );
     }
   }
 }

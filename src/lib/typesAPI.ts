@@ -98,11 +98,19 @@ export interface IPerson {
   biography: string;
   popularity: number;
 }
+export interface ICastCrew {
+  cast: ICast[];
+  crew: ICrew[];
+}
 export interface ICast extends IBase {
-  id: string;
   name: string;
   character: string;
   profile_path: string;
+}
+export interface ICrew extends IBase {
+  name: string;
+  profile_path: string;
+  job: string;
 }
 
 /* Misc */

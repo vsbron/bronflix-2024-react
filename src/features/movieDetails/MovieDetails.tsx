@@ -12,7 +12,7 @@ import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
-import MovieCast from "./MovieCast";
+import MovieCastCrew from "./MovieCastCrew";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import { IconWrapper } from "@/components/IconWrapper";
@@ -106,7 +106,7 @@ function MovieDetails({ movie }: { movie: IMovie }) {
           </div>
         </div>
       </section>
-      <MovieCast />
+      <MovieCastCrew />
     </>
   );
 }
