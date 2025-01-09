@@ -19,6 +19,7 @@ import { IconWrapper } from "@/components/IconWrapper";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { IGenre, IMovie } from "@/lib/typesAPI";
+import RelatedMovies from "./RelatedMovies";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Getting the trailer from the custom hook
@@ -34,6 +35,7 @@ function MovieDetails({ movie }: { movie: IMovie }) {
     .join(", ");
   const score = movie?.vote_average || 0;
   const count = movie?.vote_count || 0;
+  const isCollection = !!movie.belongs_to_collection.id;
 
   // Returned JSX
   return (
@@ -107,6 +109,9 @@ function MovieDetails({ movie }: { movie: IMovie }) {
         </div>
       </section>
       <MovieCastCrew />
+      {isCollection && (
+        <RelatedMovies collectionId={movie.belongs_to_collection.id} />
+      )}
     </>
   );
 }

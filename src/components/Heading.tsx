@@ -12,6 +12,9 @@ function Heading({ children, as = "h1" }: HeadingProps) {
     case "h2":
       element = <h2 className="m-0">{children}</h2>;
       break;
+    case "h3":
+      element = <h3 className="m-0">{children}</h3>;
+      break;
   }
 
   // Returned JSX

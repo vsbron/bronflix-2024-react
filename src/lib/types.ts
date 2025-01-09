@@ -2,7 +2,7 @@ import { ReactNode, RefObject } from "react";
 import { IBase, IGenre, IMovieList } from "./typesAPI";
 
 /* Unions */
-type Headings = "h1" | "h2";
+type Headings = "h1" | "h2" | "h3";
 type Media = "actors" | "tv" | "movies";
 export type RibbonDirections = "left" | "right";
 
