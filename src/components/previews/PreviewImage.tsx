@@ -31,9 +31,7 @@ function PreviewImage({ media, type, children }: PreviewImageProps) {
       {children}
       {media.name && (
         <div
-          className={`bg-preview-gradient w-full font-heading font-light ${getPreviewClassNames(
-            type
-          )}`}
+          className={`bg-preview-gradient w-full ${getPreviewClassNames(type)}`}
         >
           <h4>{media.name}</h4>
         </div>

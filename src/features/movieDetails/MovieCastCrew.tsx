@@ -25,7 +25,8 @@ function MovieCastCrew() {
   // Destructuring the data
   const { cast, crew } = data;
 
-  // Filtering the crew to the main job titles only
+  // Filtering the cast and crew arrays
+  const shortenedCast = cast.slice(0, 25);
   const shortenCrew = crew
     .filter((crewPerson) => CREW_JOBS.includes(crewPerson.job))
     .sort((a, b) => CREW_JOBS.indexOf(a.job) - CREW_JOBS.indexOf(b.job));
@@ -35,8 +36,8 @@ function MovieCastCrew() {
     <>
       <section>
         <Heading as="h2">Cast & Characters</Heading>
-        <Ribbon length={cast.length} isScrollByOne={true}>
-          {cast.map((actor: ICast) => (
+        <Ribbon length={shortenedCast.length} isScrollByOne={true}>
+          {shortenedCast.map((actor: ICast) => (
             <div
               className="block basis-72 flex-shrink-0 rounded-lg overflow-x-hidden"
               key={actor.id}
@@ -53,26 +54,28 @@ function MovieCastCrew() {
           ))}
         </Ribbon>
       </section>
-      <section>
-        <Heading as="h2">Crew</Heading>
-        <Ribbon length={crew.length} isScrollByOne={true}>
-          {shortenCrew.map((crewPerson: ICrew) => (
-            <div
-              className="block basis-56 flex-shrink-0 rounded-lg overflow-x-hidden"
-              key={crewPerson.id + "-" + crewPerson.job}
-            >
-              <div className="h-[20rem] cursor-pointer">
-                <Link to={`/actors/${crewPerson.id}`}>
-                  <PreviewImage media={crewPerson} type={"actors"} />
-                </Link>
+      {crew.length > 0 && (
+        <section>
+          <Heading as="h2">Crew</Heading>
+          <Ribbon length={shortenCrew.length} isScrollByOne={true}>
+            {shortenCrew.map((crewPerson: ICrew) => (
+              <div
+                className="block basis-56 flex-shrink-0 rounded-lg overflow-x-hidden"
+                key={crewPerson.id + "-" + crewPerson.job}
+              >
+                <div className="h-[20rem] cursor-pointer">
+                  <Link to={`/actors/${crewPerson.id}`}>
+                    <PreviewImage media={crewPerson} type={"actors"} />
+                  </Link>
+                </div>
+                <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
+                  {crewPerson.job}
+                </div>
               </div>
-              <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
-                {crewPerson.job}
-              </div>
-            </div>
-          ))}
-        </Ribbon>
-      </section>
+            ))}
+          </Ribbon>
+        </section>
+      )}
     </>
   );
 }

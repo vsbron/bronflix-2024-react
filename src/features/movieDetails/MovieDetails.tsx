@@ -35,7 +35,9 @@ function MovieDetails({ movie }: { movie: IMovie }) {
     .join(", ");
   const score = movie?.vote_average || 0;
   const count = movie?.vote_count || 0;
-  const isCollection = !!movie.belongs_to_collection.id;
+  const budget = movie?.budget || "";
+  const studio = movie?.production_companies?.at(0);
+  const isCollection = !!movie.belongs_to_collection?.id;
 
   // Returned JSX
   return (
@@ -84,12 +86,14 @@ function MovieDetails({ movie }: { movie: IMovie }) {
                   <IconWrapper icon={<GlobeAltIcon />}>
                     {originCountry}
                   </IconWrapper>
-                  <IconWrapper icon={<FilmIcon />}>
-                    {movie.production_companies[0].name}
-                  </IconWrapper>
-                  <IconWrapper icon={<BanknotesIcon />}>
-                    ${movie.budget.toLocaleString()}
-                  </IconWrapper>
+                  {studio && (
+                    <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
+                  )}
+                  {budget && (
+                    <IconWrapper icon={<BanknotesIcon />}>
+                      ${budget.toLocaleString()}
+                    </IconWrapper>
+                  )}
                 </div>
               </div>
               <div className="flex gap-8 mb-2"></div>
@@ -110,7 +114,10 @@ function MovieDetails({ movie }: { movie: IMovie }) {
       </section>
       <MovieCastCrew />
       {isCollection && (
-        <RelatedMovies collectionId={movie.belongs_to_collection.id} />
+        <RelatedMovies
+          collectionId={movie.belongs_to_collection.id}
+          movieId={movie.id}
+        />
       )}
     </>
   );

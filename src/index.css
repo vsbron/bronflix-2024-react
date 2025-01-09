@@ -62,6 +62,12 @@ h3 {
   margin: 2rem 0 1rem;
 }
 
+h4 {
+  font-weight: 300;
+  line-height: 1.2;
+  font-family: "Oswald";
+}
+
 p {
   margin: 1rem 0 2.5rem;
 }

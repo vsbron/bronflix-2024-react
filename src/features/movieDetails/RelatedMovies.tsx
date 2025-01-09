@@ -7,7 +7,14 @@ import PreviewImage from "@/components/previews/PreviewImage";
 import Ribbon from "@/components/previews/Ribbon";
 import { IMovieList } from "@/lib/typesAPI";
 
-function RelatedMovies({ collectionId }: { collectionId: number }) {
+function RelatedMovies({
+  collectionId,
+  movieId,
+}: {
+  collectionId: number;
+  movieId: string;
+}) {
+  // Getting the collection data from the React Query
   const { isLoading, data, error } = useMovieCollection(collectionId);
 
   // Guard clauses
@@ -19,23 +26,29 @@ function RelatedMovies({ collectionId }: { collectionId: number }) {
       </div>
     );
 
+  // Getting the related movies array
+  const relatedMovies = data.parts;
+
   // Returned JSX
   return (
     <section>
       <Heading as="h3">Related Movies</Heading>
-      <Ribbon length={data.parts.length} isScrollByOne={true}>
-        {data.parts.map((movie: IMovieList) => (
-          <div
-            className="block basis-80 flex-shrink-0 rounded-lg overflow-x-hidden"
-            key={movie.id}
-          >
-            <div className="h-[30rem] cursor-pointer">
-              <Link to={`/movies/${movie.id}`}>
-                <PreviewImage media={movie} type={"movies"} />
-              </Link>
-            </div>
-          </div>
-        ))}
+      <Ribbon length={relatedMovies.length} isScrollByOne={true}>
+        {relatedMovies.map(
+          (movie: IMovieList) =>
+            movieId !== movie.id && (
+              <div
+                className="block basis-80 flex-shrink-0 rounded-lg overflow-x-hidden"
+                key={movie.id}
+              >
+                <div className="h-[30rem] cursor-pointer">
+                  <Link to={`/movies/${movie.id}`}>
+                    <PreviewImage media={movie} type={"movies"} />
+                  </Link>
+                </div>
+              </div>
+            )
+        )}
       </Ribbon>
     </section>
   );
