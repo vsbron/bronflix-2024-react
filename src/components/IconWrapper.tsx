@@ -9,3 +9,5 @@ export function IconWrapper({ icon, children }: IconWrapperProps) {
     </div>
   );
 }
+
+export default IconWrapper;

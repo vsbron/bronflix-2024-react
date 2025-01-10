@@ -6,12 +6,12 @@ import Ribbon from "@/components/previews/Ribbon";
 import PreviewImage from "@/components/previews/PreviewImage";
 
 import { useMovieCast } from "./useMovieCast";
-import { ICast, ICrew } from "@/lib/typesAPI";
+import { ICast, ICrew, IMovie } from "@/lib/typesAPI";
 import { CREW_JOBS } from "@/lib/constants";
 
-function MovieCastCrew() {
+function MovieCastCrew({ movie }: { movie: IMovie }) {
   // Getting the fetched cast and setting the ref for ribbon element
-  const { isLoading, data, error } = useMovieCast();
+  const { isLoading, data, error } = useMovieCast(movie);
 
   // Guard clauses
   if (isLoading) return <Loader />;

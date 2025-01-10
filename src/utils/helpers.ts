@@ -27,6 +27,10 @@ export function scoreColor(score: number) {
 
 // Function that formats the date
 export function formatDate(dateString: string) {
+  // Guard clause
+  if (dateString === "") return "TBA";
+
+  // Returned formatted date
   return new Date(dateString).toLocaleString("en-US", {
     month: "long",
     day: "numeric",
@@ -36,8 +40,13 @@ export function formatDate(dateString: string) {
 
 // Function that formats the runtime
 export function formatRuntime(runtime: number) {
+  // Calculating hours and minutes
   const hours = Math.floor(runtime / 60);
   const minutes = Math.floor(runtime % 60);
 
+  // Guard clause
+  if (hours === 0 && minutes === 0) return "Unknown";
+
+  // Returned runtime
   return `${hours}h ${minutes}m`;
 }

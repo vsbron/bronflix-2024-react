@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { getMovieCastCrew } from "@/services/apiActors";
+import { IMovie } from "@/lib/typesAPI";
 
-export function useMovieCast() {
+export function useMovieCast(movie: IMovie) {
   // Getting the id from the url params
-  const { movieId } = useParams();
+  const { id: movieId } = movie;
 
   // Fetching the data using React Query
   const { isLoading, data, error } = useQuery({

@@ -10,7 +10,7 @@ import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 
 import Button from "@/components/Button";
-import { IconWrapper } from "@/components/IconWrapper";
+import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { MovieHighlightProps } from "@/lib/types";

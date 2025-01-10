@@ -10,25 +10,25 @@ import {
 
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
-import { formatDate, formatRuntime } from "@/utils/helpers";
-
-import MovieCastCrew from "./MovieCastCrew";
-import Button from "@/components/Button";
-import Heading from "@/components/Heading";
-import { IconWrapper } from "@/components/IconWrapper";
-import ScorePreview from "@/components/previews/ScorePreview";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { IGenre, IMovie } from "@/lib/typesAPI";
-import RelatedMovies from "./RelatedMovies";
+import { formatDate, formatRuntime } from "@/utils/helpers";
+
+import Button from "@/components/Button";
+import Heading from "@/components/Heading";
+import IconWrapper from "@/components/IconWrapper";
+import ScorePreview from "@/components/previews/ScorePreview";
 
 function MovieDetails({ movie }: { movie: IMovie }) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie);
 
   // Handling some  movie data
-  const headingTitle = `${movie.title} (${new Date(movie.release_date)
-    .getFullYear()
-    .toString()})`;
+  const headingTitle = `${movie.title} (${
+    movie.release_date
+      ? new Date(movie.release_date).getFullYear().toString()
+      : "TBA"
+  })`;
   const genres = movie.genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = movie.origin_country
     .map((country: string) => country)
@@ -37,7 +37,6 @@ function MovieDetails({ movie }: { movie: IMovie }) {
   const count = movie?.vote_count || 0;
   const budget = movie?.budget || "";
   const studio = movie?.production_companies?.at(0);
-  const isCollection = !!movie.belongs_to_collection?.id;
 
   // Returned JSX
   return (
@@ -112,13 +111,6 @@ function MovieDetails({ movie }: { movie: IMovie }) {
           </div>
         </div>
       </section>
-      <MovieCastCrew />
-      {isCollection && (
-        <RelatedMovies
-          collectionId={movie.belongs_to_collection.id}
-          movieId={movie.id}
-        />
-      )}
     </>
   );
 }
