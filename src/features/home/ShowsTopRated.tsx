@@ -1,16 +1,13 @@
-import { useRef } from "react";
-
 import { useShowsTopRated } from "./useShowsTopRated";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { PreparePreviews } from "@/components/previews/PreparePreviews";
+import PreparePreviews from "@/components/previews/PreparePreviews";
 
 function ShowsTopRated() {
   // Getting the top rated shows and ref for ribbon element
   const { isLoading, shows, error } = useShowsTopRated();
-  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Guard clauses
   if (isLoading) return <Loader />;

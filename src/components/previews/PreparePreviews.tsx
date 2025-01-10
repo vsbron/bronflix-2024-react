@@ -5,7 +5,7 @@ import { IBase } from "@/lib/typesAPI";
 import { PreparedPreviewsProps } from "@/lib/types";
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 
-export function PreparePreviews<T extends IBase>({
+function PreparePreviews<T extends IBase>({
   rawPreviews,
   pages,
   height,
@@ -53,3 +53,5 @@ export function PreparePreviews<T extends IBase>({
     </>
   );
 }
+
+export default PreparePreviews;

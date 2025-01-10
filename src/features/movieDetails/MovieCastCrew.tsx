@@ -27,7 +27,7 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   const { cast, crew } = data;
 
   // Filtering the cast and crew arrays
-  const shortenedCast = cast.slice(0, 25);
+  const shortenCast = cast.slice(0, 25);
   const shortenCrew = crew
     .filter((crewPerson) => CREW_JOBS.includes(crewPerson.job))
     .sort((a, b) => CREW_JOBS.indexOf(a.job) - CREW_JOBS.indexOf(b.job));
@@ -38,8 +38,8 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
       <section>
         <Heading as="h2">Cast & Characters</Heading>
         {/* The Cast */}
-        <Ribbon length={shortenedCast.length} isScrollByOne={true}>
-          {shortenedCast.map((actor: ICast) => (
+        <Ribbon length={shortenCast.length} isScrollByOne={true}>
+          {shortenCast.map((actor: ICast) => (
             <div
               className="block basis-72 flex-shrink-0 rounded-lg overflow-x-hidden"
               key={actor.id}

@@ -3,7 +3,7 @@ import { useActorsTrending } from "./useActorsTrending";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import { PreparePreviews } from "@/components/previews/PreparePreviews";
+import PreparePreviews from "@/components/previews/PreparePreviews";
 
 function ActorsTrending() {
   // Getting the trending actors and ref for ribbon element
