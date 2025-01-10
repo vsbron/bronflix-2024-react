@@ -37,7 +37,7 @@ function PreviewImage({ media, type, children }: PreviewImageProps) {
         </div>
       )}
       {media.vote_average !== undefined && (
-        <ScorePreview score={media.vote_average} count={media.vote_count} />
+        <ScorePreview score={media.vote_average} />
       )}
     </div>
   );

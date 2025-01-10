@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import { useActorsTrending } from "./useActorsTrending";
 
 import Heading from "@/components/Heading";
@@ -10,7 +8,6 @@ import { PreparePreviews } from "@/components/previews/PreparePreviews";
 function ActorsTrending() {
   // Getting the trending actors and ref for ribbon element
   const { isLoading, actors, error } = useActorsTrending();
-  const ribbonRef = useRef<HTMLDivElement>(null);
 
   // Guard clauses
   if (isLoading) return <Loader />;

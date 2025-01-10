@@ -17,26 +17,23 @@ function ScorePreview({
   // Getting the colors for the score
   const { bgColor, color } = scoreColor(parseFloat(adjustedScore));
 
-  // Checking whether the item is rated
-  const isRated = count && count > 0 ? true : false;
-
   // Returned JSX
   return (
     <div className={"flex items-center gap-4"}>
       {/* The Score */}
       <div
         className={`flex justify-center items-center text-[1.4rem] leading-[1.4rem] px-3 pt-1.5 pb-1 rounded-xl ${bgColor} ${color} ${
-          isRated &&
+          count &&
           (isBig
             ? "text-[1.75rem] leading-[2.25rem] px-4"
             : "text-2xl px-3.5 py-2")
         } ${!isHighlighted && "absolute top-3 left-3 font-medium rounded-lg"} `}
       >
-        {count !== 0 ? adjustedScore : "Not Rated"}
+        {score > 0 ? adjustedScore : "Not Rated"}
       </div>
 
       {/* The Votes (if rated) */}
-      {isRated && (
+      {count ? (
         <span
           className={`text-[${isBig ? "1.6rem" : "1.4rem"}] text-stone-500`}
         >
@@ -44,6 +41,8 @@ function ScorePreview({
             {(count! / 1000).toFixed(2)}K
           </IconWrapper>
         </span>
+      ) : (
+        ""
       )}
     </div>
   );
