@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 
+import { MovieCastCrewProps } from "@/lib/types";
+import { ICast, ICrew } from "@/lib/typesAPI";
+import { CREW_JOBS } from "@/lib/constants";
+
+import { useMovieCast } from "./useMovieCast";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
 import PreviewImage from "@/components/previews/PreviewImage";
 
-import { useMovieCast } from "./useMovieCast";
-import { ICast, ICrew, IMovie } from "@/lib/typesAPI";
-import { CREW_JOBS } from "@/lib/constants";
-
-function MovieCastCrew({ movie }: { movie: IMovie }) {
+function MovieCastCrew({ movie }: MovieCastCrewProps) {
   // Getting the fetched cast and setting the ref for ribbon element
   const { isLoading, data, error } = useMovieCast(movie);
 
@@ -36,6 +37,7 @@ function MovieCastCrew({ movie }: { movie: IMovie }) {
     <>
       <section>
         <Heading as="h2">Cast & Characters</Heading>
+        {/* The Cast */}
         <Ribbon length={shortenedCast.length} isScrollByOne={true}>
           {shortenedCast.map((actor: ICast) => (
             <div
@@ -54,6 +56,7 @@ function MovieCastCrew({ movie }: { movie: IMovie }) {
           ))}
         </Ribbon>
       </section>
+      {/* The Crew (if available) */}
       {crew.length > 0 && (
         <section>
           <Heading as="h2">Crew</Heading>

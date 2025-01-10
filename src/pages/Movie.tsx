@@ -16,6 +16,7 @@ export const movieLoader = async ({
   return movie;
 };
 
+// The component
 function Movie() {
   // Getting the movie data from the loader
   const movie = useLoaderData() as IMovie;

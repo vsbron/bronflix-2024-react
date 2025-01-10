@@ -5,13 +5,13 @@ import {
   GlobeAltIcon,
   FilmIcon,
   LanguageIcon,
-  UserIcon,
 } from "@heroicons/react/24/outline";
 
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
-import { IGenre, IMovie } from "@/lib/typesAPI";
+import { MovieDetailsProps } from "@/lib/types";
+import { IGenre } from "@/lib/typesAPI";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
 import Button from "@/components/Button";
@@ -19,11 +19,11 @@ import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/previews/ScorePreview";
 
-function MovieDetails({ movie }: { movie: IMovie }) {
+function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie);
 
-  // Handling some  movie data
+  // Handling some movie data
   const headingTitle = `${movie.title} (${
     movie.release_date
       ? new Date(movie.release_date).getFullYear().toString()

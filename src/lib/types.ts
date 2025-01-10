@@ -1,5 +1,5 @@
 import { ReactNode, RefObject } from "react";
-import { IBase, IGenre, IMovieList } from "./typesAPI";
+import { IBase, IGenre, IMovie, IMovieList } from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -11,6 +11,14 @@ export type GenresContextType = {
   genres: IGenre[];
 };
 export type GenresProviderProps = { children: ReactNode };
+export type VideoContentProps = { video: string };
+export type VideoContextProps = {
+  isOpen: boolean;
+  openVideo: () => void;
+  closeVideo: () => void;
+};
+export type VideoProviderProps = { children: ReactNode };
+export type VideoTriggerProps = { children: ReactNode };
 
 /* Components */
 export type ButtonProps = { children: ReactNode };
@@ -20,6 +28,7 @@ export type ButtonPreviewWrapperProps = {
   length: number;
   isScrollByOne?: boolean;
 };
+export type FooterHeadingProps = { children: string };
 export type HeadingProps = { children: string; as?: Headings };
 export type IconWrapperProps = {
   icon: ReactNode;
@@ -44,11 +53,6 @@ export type ScorePreviewProps = {
   isHighlighted?: boolean;
   isBig?: boolean;
 };
-export type VideoContextProps = {
-  isOpen: boolean;
-  openVideo: () => void;
-  closeVideo: () => void;
-};
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
@@ -64,4 +68,12 @@ export type RibbonProps = {
   children: ReactNode;
   isScrollByOne?: boolean;
   cellWidth?: string;
+};
+
+// Movie page
+export type MovieCastCrewProps = { movie: IMovie };
+export type MovieDetailsProps = { movie: IMovie };
+export type RelatedMoviesProps = {
+  collectionId: number;
+  movieId: string;
 };

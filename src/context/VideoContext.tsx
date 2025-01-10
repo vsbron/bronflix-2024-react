@@ -1,13 +1,12 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { VideoContextProps } from "@/lib/types";
+import {
+  VideoContentProps,
+  VideoContextProps,
+  VideoProviderProps,
+  VideoTriggerProps,
+} from "@/lib/types";
 
 // Creating the context
 const VideoContext = createContext<VideoContextProps>({
@@ -17,7 +16,7 @@ const VideoContext = createContext<VideoContextProps>({
 });
 
 // Parent component
-export function VideoProvider({ children }: { children: ReactNode }) {
+export function VideoProvider({ children }: VideoProviderProps) {
   // Setting the pop up state and click handlers
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const openVideo = () => setIsOpen(true);
@@ -30,14 +29,14 @@ export function VideoProvider({ children }: { children: ReactNode }) {
 }
 
 // Child components
-function Trigger({ children }: { children: ReactNode }) {
+function Trigger({ children }: VideoTriggerProps) {
   // Getting the opening video function
   const { openVideo } = useContext(VideoContext);
 
   // Return JSX
   return <div onClick={openVideo}>{children}</div>;
 }
-function Content({ video }: { video: string }) {
+function Content({ video }: VideoContentProps) {
   // Getting the video state and close function
   const { isOpen, closeVideo } = useContext(VideoContext);
 
@@ -81,7 +80,11 @@ function Content({ video }: { video: string }) {
             ></iframe>
           </div>
         ) : (
-          <div>Sorry, no trailer available</div>
+          <div className="text-stone-50 px-20 py-8 flex justify-center items-center text-center text-3xl leading-snug">
+            Sorry, no trailer available
+            <br />
+            Please try again later...
+          </div>
         )}
       </div>
     </div>,

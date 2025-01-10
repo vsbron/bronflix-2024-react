@@ -1,19 +1,15 @@
 import { Link } from "react-router-dom";
 
+import { RelatedMoviesProps } from "@/lib/types";
+import { IMovieList } from "@/lib/typesAPI";
+
 import { useMovieCollection } from "./useMovieCollection";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import PreviewImage from "@/components/previews/PreviewImage";
 import Ribbon from "@/components/previews/Ribbon";
-import { IMovieList } from "@/lib/typesAPI";
 
-function RelatedMovies({
-  collectionId,
-  movieId,
-}: {
-  collectionId: number;
-  movieId: string;
-}) {
+function RelatedMovies({ collectionId, movieId }: RelatedMoviesProps) {
   // Getting the collection data from the React Query
   const { isLoading, data, error } = useMovieCollection(collectionId);
 
