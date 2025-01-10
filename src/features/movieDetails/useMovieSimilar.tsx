@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getMovieCastCrew } from "@/services/apiActors";
+import { getMoviesSimilar } from "@/services/apiMovies";
 
-export function useMovieCast(movieId: string) {
+export function useMovieSimilar(movieId: string) {
   // Fetching the data using React Query
   const { isLoading, data, error } = useQuery({
-    queryKey: ["movie-cast-crew", movieId],
-    queryFn: () => getMovieCastCrew(movieId!),
+    queryKey: ["movies-similar", movieId],
+    queryFn: () => getMoviesSimilar(movieId),
   });
 
   // Return fetched data

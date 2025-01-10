@@ -35,9 +35,9 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     <div className="mb-16">
       <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-1/3 h-[50rem]">
         <h2 className="text-8xl m-0">{movie.title?.toUpperCase()}</h2>
-        <div className="flex gap-8 items-center -mt-2">
+        <div className="flex gap-8 items-center -mt-2 text-stone-400">
           <ScorePreview score={score} count={count} isHighlighted={true} />
-          <div className="flex items-center gap-8 text-[1.5rem] text-stone-400 pb-0.5">
+          <div className="flex items-center gap-8 text-[1.5rem] pb-0.5">
             <IconWrapper icon={<CalendarIcon />}>
               {new Date(movie.release_date!).getFullYear()}
             </IconWrapper>

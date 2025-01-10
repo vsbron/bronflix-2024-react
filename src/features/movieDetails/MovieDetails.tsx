@@ -56,12 +56,14 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           >
             <div className="absolute inset-0 bg-stone-950/75" />
             <div className="relative z-10 flex flex-col gap-3">
-              <ScorePreview
-                score={score}
-                count={count}
-                isHighlighted={true}
-                isBig={true}
-              />
+              <div className="text-gray-400">
+                <ScorePreview
+                  score={score}
+                  count={count}
+                  isHighlighted={true}
+                  isBig={true}
+                />
+              </div>
               <div className="text-[4rem] -my-5 font-heading">
                 {movie.title}
               </div>

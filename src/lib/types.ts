@@ -71,9 +71,8 @@ export type RibbonProps = {
 };
 
 // Movie page
-export type MovieCastCrewProps = { movie: IMovie };
+export type MovieCastCrewProps = { movieId: string };
 export type MovieDetailsProps = { movie: IMovie };
-export type RelatedMoviesProps = {
-  collectionId: number;
+export type MoviesSimilarProps = {
   movieId: string;
 };

@@ -10,9 +10,9 @@ import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
 import PreviewImage from "@/components/previews/PreviewImage";
 
-function MovieCastCrew({ movie }: MovieCastCrewProps) {
+function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   // Getting the fetched cast and setting the ref for ribbon element
-  const { isLoading, data, error } = useMovieCast(movie);
+  const { isLoading, data, error } = useMovieCast(movieId);
 
   // Guard clauses
   if (isLoading) return <Loader />;

@@ -1,43 +1,40 @@
 import { Link } from "react-router-dom";
 
-import { RelatedMoviesProps } from "@/lib/types";
+import { useMovieSimilar } from "./useMovieSimilar";
+import { MoviesSimilarProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
-import { useMovieCollection } from "./useMovieCollection";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import PreviewImage from "@/components/previews/PreviewImage";
 import Ribbon from "@/components/previews/Ribbon";
 
-function RelatedMovies({ collectionId, movieId }: RelatedMoviesProps) {
-  // Getting the collection data from the React Query
-  const { isLoading, data, error } = useMovieCollection(collectionId);
+function MoviesSimilar({ movieId }: MoviesSimilarProps) {
+  // Getting the similar movies data from the React Query
+  const { isLoading, data: relatedMovies, error } = useMovieSimilar(movieId);
 
   // Guard clauses
   if (isLoading) return <Loader />;
-  if (error || !data)
+  if (error || !relatedMovies)
     return (
       <div className="text-red-500">
-        {error?.message || "Error fetching related movies"}
+        {error?.message || "Error fetching similar movies"}
       </div>
     );
-
-  // Getting the related movies array
-  const relatedMovies = data.parts;
 
   // Returned JSX
   return (
     <section>
-      <Heading as="h3">Related Movies</Heading>
+      <Heading as="h3">You may also like</Heading>
       <Ribbon length={relatedMovies.length} isScrollByOne={true}>
         {relatedMovies.map(
           (movie: IMovieList) =>
             movieId !== movie.id && (
               <div
-                className="block basis-80 flex-shrink-0 rounded-lg overflow-x-hidden"
+                className="block basis-72 flex-shrink-0 rounded-lg overflow-x-hidden"
                 key={movie.id}
               >
-                <div className="h-[30rem] cursor-pointer">
+                <div className="h-[27rem] cursor-pointer">
                   <Link to={`/movies/${movie.id}`}>
                     <PreviewImage media={movie} type={"movies"} />
                   </Link>
@@ -50,4 +47,4 @@ function RelatedMovies({ collectionId, movieId }: RelatedMoviesProps) {
   );
 }
 
-export default RelatedMovies;
+export default MoviesSimilar;
