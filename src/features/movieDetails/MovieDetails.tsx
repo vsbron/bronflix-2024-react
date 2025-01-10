@@ -56,12 +56,12 @@ function MovieDetails({ movie }: { movie: IMovie }) {
           >
             <div className="absolute inset-0 bg-stone-950/75" />
             <div className="relative z-10 flex flex-col gap-3">
-              <div className="flex items-center gap-4 text-stone-400 text-[1.6rem] mb-3">
-                <ScorePreview score={score} isHighlighted={true} isBig={true} />
-                <IconWrapper icon={<UserIcon />}>
-                  {(count / 1000).toFixed(2)}K
-                </IconWrapper>
-              </div>
+              <ScorePreview
+                score={score}
+                count={count}
+                isHighlighted={true}
+                isBig={true}
+              />
               <div className="text-[4rem] -my-5 font-heading">
                 {movie.title}
               </div>

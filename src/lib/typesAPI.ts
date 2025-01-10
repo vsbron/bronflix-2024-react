@@ -8,6 +8,7 @@ export interface IBase {
   backdrop_path?: string;
   profile_path?: string;
   vote_average?: number;
+  vote_count?: number;
 }
 export interface IMovieList extends IBase {
   title: string;
@@ -17,13 +18,14 @@ export interface IMovieList extends IBase {
   release_date?: string;
   original_language?: string;
   vote_average: number;
-  vote_count?: number;
+  vote_count: number;
   genre_ids?: number[];
 }
 export interface IShowList extends IBase {
   name: string;
   backdrop_path: string;
   vote_average: number;
+  vote_count: number;
 }
 export interface IPersonList extends IBase {
   name: string;

@@ -1,8 +1,13 @@
+import { UserIcon } from "@heroicons/react/24/outline";
+
 import { ScorePreviewProps } from "@/lib/types";
 import { scoreColor } from "@/utils/helpers";
 
+import IconWrapper from "@/components/IconWrapper";
+
 function ScorePreview({
   score,
+  count,
   isHighlighted = false,
   isBig = false,
 }: ScorePreviewProps) {
@@ -12,18 +17,34 @@ function ScorePreview({
   // Getting the colors for the score
   const { bgColor, color } = scoreColor(parseFloat(adjustedScore));
 
+  // Checking whether the item is rated
+  const isRated = count && count > 0 ? true : false;
+
   // Returned JSX
   return (
-    <div
-      className={`flex justify-center items-center leading-[1.4rem] px-3 pt-1.5 pb-1 rounded-xl ${bgColor} ${color} ${
-        isHighlighted
-          ? isBig
+    <div className={"flex items-center gap-4"}>
+      {/* The Score */}
+      <div
+        className={`flex justify-center items-center text-[1.4rem] leading-[1.4rem] px-3 pt-1.5 pb-1 rounded-xl ${bgColor} ${color} ${
+          isRated &&
+          (isBig
             ? "text-[1.75rem] leading-[2.25rem] px-4"
-            : "text-2xl px-3.5 py-2"
-          : "absolute top-3 left-3 text-[1.4rem] font-medium rounded-lg"
-      }`}
-    >
-      {adjustedScore}
+            : "text-2xl px-3.5 py-2")
+        } ${!isHighlighted && "absolute top-3 left-3 font-medium rounded-lg"} `}
+      >
+        {count !== 0 ? adjustedScore : "Not Rated"}
+      </div>
+
+      {/* The Votes (if rated) */}
+      {isRated && (
+        <span
+          className={`text-[${isBig ? "1.6rem" : "1.4rem"}] text-stone-500`}
+        >
+          <IconWrapper icon={<UserIcon />}>
+            {(count! / 1000).toFixed(2)}K
+          </IconWrapper>
+        </span>
+      )}
     </div>
   );
 }

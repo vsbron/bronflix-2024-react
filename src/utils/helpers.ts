@@ -15,10 +15,13 @@ export function scoreColor(score: number) {
       bgColor = "bg-yellow-800";
       color = "text-yellow-200";
       break;
-    default:
+    case score > 0:
       bgColor = "bg-red-900";
       color = "text-red-200";
       break;
+    default:
+      bgColor = "bg-stone-700";
+      color = "text-stone-100";
   }
 
   // Return colors

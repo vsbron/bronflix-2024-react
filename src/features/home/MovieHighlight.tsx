@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  CalendarIcon,
-  UserIcon,
-  LanguageIcon,
-} from "@heroicons/react/24/solid";
+import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/solid";
 
 import { useGenres } from "@/context/GenresContext";
 import { VideoProvider } from "@/context/VideoContext";
@@ -40,12 +36,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
       <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-1/3 h-[50rem]">
         <h2 className="text-8xl m-0">{movie.title?.toUpperCase()}</h2>
         <div className="flex gap-8 items-center -mt-2">
-          <div className="flex items-center gap-4 text-stone-500 text-[1.4rem]">
-            <ScorePreview score={score} isHighlighted={true} />
-            <IconWrapper icon={<UserIcon />}>
-              {(count / 1000).toFixed(2)}K
-            </IconWrapper>
-          </div>
+          <ScorePreview score={score} count={count} isHighlighted={true} />
           <div className="flex items-center gap-8 text-[1.5rem] text-stone-400 pb-0.5">
             <IconWrapper icon={<CalendarIcon />}>
               {new Date(movie.release_date!).getFullYear()}

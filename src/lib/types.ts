@@ -40,6 +40,7 @@ export type PreviewImageProps = {
 };
 export type ScorePreviewProps = {
   score: number;
+  count?: number;
   isHighlighted?: boolean;
   isBig?: boolean;
 };
