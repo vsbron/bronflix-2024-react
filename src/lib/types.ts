@@ -37,11 +37,11 @@ export type IconWrapperProps = {
 export type LinkItemProps = { icon: ReactNode; title: string };
 export type PreviewsProps<T> = {
   rawPreviews: T[];
-  pages: number;
+  pages?: number;
+  width?: string;
   height: string;
   type: Media;
   isTwoRows?: boolean;
-  isScrollByOne?: boolean;
 };
 export type PreviewImageProps = {
   media: IBase;

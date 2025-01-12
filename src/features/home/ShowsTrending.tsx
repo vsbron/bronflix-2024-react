@@ -21,13 +21,7 @@ function ShowsTrending() {
   return (
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
-      <Previews
-        rawPreviews={shows}
-        pages={2}
-        height="19rem"
-        type="tv"
-        isTwoRows={true}
-      />
+      <Previews rawPreviews={shows} height="19rem" type="tv" isTwoRows={true} />
     </section>
   );
 }

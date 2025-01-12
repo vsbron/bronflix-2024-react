@@ -1,7 +1,7 @@
-import { PREVIEWS_GAP } from "@/lib/constants";
-import ButtonsPreview from "./ButtonsPreview";
-
+import { PREVIEWS_GAP, SCROLL_BY_ONE_MULTIPLIER } from "@/lib/constants";
 import { ButtonPreviewWrapperProps, RibbonDirections } from "@/lib/types";
+
+import ButtonsPreview from "./ButtonsPreview";
 
 function ButtonsPreviewWrapper({
   ribbon,
@@ -13,7 +13,7 @@ function ButtonsPreviewWrapper({
     const step = ribbon.current?.scrollWidth! / length; // Get the step distance (one preview)
     if (ribbon.current) {
       ribbon.current.scrollBy({
-        left: direction === "left" ? -step : step,
+        left: (direction === "left" ? -step : step) * SCROLL_BY_ONE_MULTIPLIER,
         behavior: "smooth",
       });
     }

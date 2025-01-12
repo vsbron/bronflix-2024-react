@@ -11,6 +11,7 @@ export const ACTORS_TRENDING_QUANTITY = 20;
 
 export const PREVIEWS_GAP = 15;
 export const PREVIEWS_GAP_CLASS = `gap-${PREVIEWS_GAP / 2.5}`;
+export const SCROLL_BY_ONE_MULTIPLIER = 3;
 
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",

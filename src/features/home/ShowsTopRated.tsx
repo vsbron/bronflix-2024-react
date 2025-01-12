@@ -21,13 +21,7 @@ function ShowsTopRated() {
   return (
     <section>
       <Heading as="h2">TOP RATED SHOWS</Heading>
-      <Previews
-        rawPreviews={shows}
-        pages={2}
-        height="24rem"
-        type="tv"
-        isTwoRows={true}
-      />
+      <Previews rawPreviews={shows} height="24rem" type="tv" isTwoRows={true} />
     </section>
   );
 }
