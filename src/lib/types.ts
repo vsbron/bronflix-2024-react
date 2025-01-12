@@ -45,6 +45,19 @@ export type PreviewsProps<T> = {
   subtitle?: PreviewSubtitles;
   isTwoRows?: boolean;
 };
+export type PreviewItemProps<T> = {
+  media: T;
+  type: string;
+  height: string;
+  width: string;
+  subtitle?: keyof T;
+};
+export type PreviewGroupProps<T> = {
+  previews: T[];
+  type: string;
+  flexBasis?: string;
+  height: string;
+};
 export type PreviewImageProps = {
   media: IBase;
   type: string;

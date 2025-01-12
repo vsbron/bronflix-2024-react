@@ -2,7 +2,12 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { MOVIES_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
-import { PreviewImageProps, PreviewsProps } from "@/lib/types";
+import {
+  PreviewGroupProps,
+  PreviewImageProps,
+  PreviewItemProps,
+  PreviewsProps,
+} from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
 import ButtonsPreviewWrapper from "./ButtonsPreviewWrapper";
@@ -89,13 +94,7 @@ function PreviewItem<T extends IBase>({
   height,
   width,
   subtitle,
-}: {
-  media: T;
-  type: string;
-  height: string;
-  width: string;
-  subtitle?: keyof T;
-}) {
+}: PreviewItemProps<T>) {
   return (
     <div
       className="block  flex-shrink-0 rounded-lg overflow-x-hidden"
@@ -121,12 +120,7 @@ function PreviewGroup<T extends IBase>({
   type,
   flexBasis,
   height,
-}: {
-  previews: T[];
-  type: string;
-  flexBasis?: string;
-  height: string;
-}) {
+}: PreviewGroupProps<T>) {
   return (
     <div
       className={`${PREVIEWS_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}
