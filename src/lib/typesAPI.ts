@@ -9,6 +9,8 @@ export interface IBase {
   profile_path?: string;
   vote_average?: number;
   vote_count?: number;
+  character?: string;
+  job?: string;
 }
 export interface IMovieList extends IBase {
   title: string;

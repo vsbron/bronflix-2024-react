@@ -14,6 +14,7 @@ function Previews<T extends IBase>({
   width,
   height,
   type,
+  subtitle,
   isTwoRows,
 }: PreviewsProps<T>) {
   // Setting the ref for the ribbon
@@ -53,6 +54,7 @@ function Previews<T extends IBase>({
                 type={type}
                 height={height}
                 width={width!}
+                subtitle={subtitle}
               />
             ))
           : Array.from({ length: pages }).map((_, i) => {
@@ -86,17 +88,18 @@ function PreviewItem<T extends IBase>({
   type,
   height,
   width,
+  subtitle,
 }: {
   media: T;
   type: string;
   height: string;
   width: string;
+  subtitle?: keyof T;
 }) {
   return (
     <div
-      className={`block ${
-        width ? `basis-[${width}]` : "flex-1"
-      } flex-shrink-0 rounded-lg overflow-x-hidden`}
+      className="block  flex-shrink-0 rounded-lg overflow-x-hidden"
+      style={{ flexBasis: width }}
     >
       <Link
         to={`/${type === "tv" ? "shows" : type}/${media.id}`}
@@ -104,6 +107,11 @@ function PreviewItem<T extends IBase>({
       >
         <PreviewImage media={media} type={type} />
       </Link>
+      {subtitle && (
+        <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
+          {media[subtitle] as string}
+        </div>
+      )}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { IBase, IGenre, IMovie, IMovieList } from "./typesAPI";
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
 type Media = "actors" | "tv" | "movies";
+type PreviewSubtitles = "character" | "job";
 export type RibbonDirections = "left" | "right";
 
 /* Context */
@@ -41,6 +42,7 @@ export type PreviewsProps<T> = {
   width?: string;
   height: string;
   type: Media;
+  subtitle?: PreviewSubtitles;
   isTwoRows?: boolean;
 };
 export type PreviewImageProps = {
