@@ -8,7 +8,7 @@ import { useMovieCast } from "./useMovieCast";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 import Ribbon from "@/components/previews/Ribbon";
-import PreviewImage from "@/components/previews/PreviewImage";
+import { PreviewImage } from "@/components/previews/Previews";
 
 function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   // Getting the fetched cast and setting the ref for ribbon element

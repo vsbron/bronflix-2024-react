@@ -6,16 +6,16 @@ import { IMovieList } from "@/lib/typesAPI";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
-import PreviewImage from "@/components/previews/PreviewImage";
+import { PreviewImage } from "@/components/previews/Previews";
 import Ribbon from "@/components/previews/Ribbon";
 
 function MoviesSimilar({ movieId }: MoviesSimilarProps) {
   // Getting the similar movies data from the React Query
-  const { isLoading, data: relatedMovies, error } = useMovieSimilar(movieId);
+  const { isLoading, data: similarMovies, error } = useMovieSimilar(movieId);
 
   // Guard clauses
   if (isLoading) return <Loader />;
-  if (error || !relatedMovies)
+  if (error || !similarMovies)
     return (
       <div className="text-red-500">
         {error?.message || "Error fetching similar movies"}
@@ -26,8 +26,8 @@ function MoviesSimilar({ movieId }: MoviesSimilarProps) {
   return (
     <section>
       <Heading as="h3">You may also like</Heading>
-      <Ribbon length={relatedMovies.length} isScrollByOne={true}>
-        {relatedMovies.map(
+      <Ribbon length={similarMovies.length} isScrollByOne={true}>
+        {similarMovies.map(
           (movie: IMovieList) =>
             movieId !== movie.id && (
               <div

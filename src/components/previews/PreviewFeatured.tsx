@@ -1,6 +1,5 @@
-import PreviewImage from "./PreviewImage";
-
 import { PreviewFeaturedProps } from "@/lib/types";
+import { PreviewImage } from "./Previews";
 
 function PreviewFeatured({
   movie,

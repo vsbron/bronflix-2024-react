@@ -2,8 +2,7 @@ import { useShowsTrending } from "./useShowsTrending";
 
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
-import Ribbon from "@/components/previews/Ribbon";
-import PreparePreviews from "@/components/previews/PreparePreviews";
+import Previews from "@/components/previews/Previews";
 
 function ShowsTrending() {
   // Getting the trending shows and ref for ribbon element
@@ -18,20 +17,17 @@ function ShowsTrending() {
       </div>
     );
 
-  // Prepare preview ribbons
-  const preparedPreviews = PreparePreviews({
-    rawPreviews: shows,
-    pages: 2,
-    height: "h-[19rem]",
-    type: "tv",
-    isTwoRows: true,
-  });
-
   // Returned JSX
   return (
     <section>
       <Heading as="h2">TRENDING SHOWS</Heading>
-      <Ribbon length={shows.length}>{preparedPreviews}</Ribbon>
+      <Previews
+        rawPreviews={shows}
+        pages={2}
+        height="19rem"
+        type="tv"
+        isTwoRows={true}
+      />
     </section>
   );
 }

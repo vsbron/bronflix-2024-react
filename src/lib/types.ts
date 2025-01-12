@@ -35,12 +35,13 @@ export type IconWrapperProps = {
   children: ReactNode;
 };
 export type LinkItemProps = { icon: ReactNode; title: string };
-export type PreparedPreviewsProps<T> = {
+export type PreviewsProps<T> = {
   rawPreviews: T[];
   pages: number;
   height: string;
   type: Media;
   isTwoRows?: boolean;
+  isScrollByOne?: boolean;
 };
 export type PreviewImageProps = {
   media: IBase;
