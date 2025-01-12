@@ -23,11 +23,14 @@ export type VideoTriggerProps = { children: ReactNode };
 
 /* Components */
 export type ButtonProps = { children: ReactNode };
-export type ButtonPreviewProps = { dir: RibbonDirections; clickHandler: any };
-export type ButtonPreviewWrapperProps = {
+export type ButtonPreviewProps = {
   ribbon: RefObject<HTMLDivElement>;
   length: number;
   isScrollByOne?: boolean;
+};
+export type ButtonPreviewArrowProps = {
+  dir: RibbonDirections;
+  clickHandler: any;
 };
 export type FooterHeadingProps = { children: string };
 export type HeadingProps = { children: string; as?: Headings };

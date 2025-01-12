@@ -10,7 +10,7 @@ import {
 } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
-import ButtonsPreviewWrapper from "./ButtonsPreviewWrapper";
+import ButtonsPreview from "./ButtonsPreview";
 import ScorePreview from "./ScorePreview";
 
 function Previews<T extends IBase>({
@@ -39,7 +39,7 @@ function Previews<T extends IBase>({
   return (
     <div className="relative">
       {/* Scroll Buttons */}
-      <ButtonsPreviewWrapper
+      <ButtonsPreview
         ribbon={ribbonRef}
         length={length || rawPreviews.length}
         isScrollByOne={!!width}

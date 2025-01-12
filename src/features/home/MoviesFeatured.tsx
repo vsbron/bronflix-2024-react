@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
-import MovieHighlight from "./MovieHighlight";
 import { GenresProvider } from "@/context/GenresContext";
 import { VideoProvider } from "@/context/VideoContext";
-
-import PreviewFeatured from "@/components/previews/PreviewFeatured";
-import {
-  HOME_MOVIE_CHANGE_INTERVAL,
-  PREVIEWS_GAP_CLASS,
-} from "@/lib/constants";
+import { MOVIE_CHANGE_INTERVAL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
-import ButtonsPreviewWrapper from "@/components/previews/ButtonsPreviewWrapper";
+
+import MovieHighlight from "./MovieHighlight";
+import PreviewFeatured from "@/components/previews/PreviewFeatured";
+import ButtonsPreview from "@/components/previews/ButtonsPreview";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element
@@ -29,7 +26,7 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
         scrollToMovie(movies[nextIndex]);
         return movies[nextIndex];
       });
-    }, HOME_MOVIE_CHANGE_INTERVAL);
+    }, MOVIE_CHANGE_INTERVAL);
 
     // Cleanup function
     return () => clearInterval(interval);
@@ -80,7 +77,7 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
         </VideoProvider>
       </GenresProvider>
       <div className="relative">
-        <ButtonsPreviewWrapper
+        <ButtonsPreview
           ribbon={ribbonRef}
           length={movies.length}
           isScrollByOne={true}

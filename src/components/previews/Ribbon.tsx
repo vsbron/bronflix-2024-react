@@ -1,8 +1,9 @@
 import { useRef } from "react";
 
-import ButtonsPreviewWrapper from "@/components/previews/ButtonsPreviewWrapper";
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { RibbonProps } from "@/lib/types";
+
+import ButtonsPreview from "@/components/previews/ButtonsPreview";
 
 function Ribbon({ length, children, isScrollByOne }: RibbonProps) {
   // Setting the ref for the ribbon
@@ -11,7 +12,7 @@ function Ribbon({ length, children, isScrollByOne }: RibbonProps) {
   // Returned JSX
   return (
     <div className="relative">
-      <ButtonsPreviewWrapper
+      <ButtonsPreview
         ribbon={ribbonRef}
         length={length}
         isScrollByOne={isScrollByOne}
