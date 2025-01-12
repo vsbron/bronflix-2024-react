@@ -1,7 +1,6 @@
 import { useMoviesFeatured } from "./useMoviesFeatured";
 
-import FeaturedMovies from "./MoviesFeatured";
-
+import MoviesFeatured from "./MoviesFeatured";
 import Heading from "@/components/Heading";
 import Loader from "@/components/Loader";
 
@@ -21,7 +20,7 @@ function HeroSection() {
         </div>
       ) : (
         // Content
-        <FeaturedMovies movies={movies} />
+        <MoviesFeatured movies={movies} />
       )}
     </section>
   );

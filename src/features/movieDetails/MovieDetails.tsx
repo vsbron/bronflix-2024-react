@@ -17,7 +17,7 @@ import { formatDate, formatRuntime } from "@/utils/helpers";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
-import ScorePreview from "@/components/previews/ScorePreview";
+import ScorePreview from "@/components/ScorePreview";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook

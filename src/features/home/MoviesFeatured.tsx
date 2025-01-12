@@ -7,8 +7,8 @@ import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
 import MovieHighlight from "./MovieHighlight";
-import PreviewFeatured from "@/components/previews/PreviewFeatured";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
+import { PreviewImage } from "@/components/previews/Previews";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element
@@ -87,12 +87,17 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
           ref={ribbonRef}
         >
           {movies.map((movie: IMovieList) => (
-            <PreviewFeatured
-              movie={movie}
-              chosenMovieId={chosenMovie.id}
-              clickHandler={handleClick}
+            <div
               key={movie.id}
-            />
+              onClick={() => handleClick(movie)}
+              className="block basis-72 h-[27rem] flex-shrink-0 rounded-lg overflow-hidden cursor-pointer"
+            >
+              <PreviewImage media={movie} type={"movies"}>
+                {movie.id === chosenMovie.id && (
+                  <div className="absolute inset-0 border-4 border-red-900 pointer-events-none animate-fadeInForwards rounded-lg" />
+                )}
+              </PreviewImage>
+            </div>
           ))}
         </div>
       </div>

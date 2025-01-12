@@ -10,8 +10,8 @@ import {
 } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
-import ButtonsPreview from "./ButtonsPreview";
-import ScorePreview from "./ScorePreview";
+import ScorePreview from "@/components/ScorePreview";
+import ButtonsPreview from "@/components/previews/ButtonsPreview";
 
 function Previews<T extends IBase>({
   rawPreviews,

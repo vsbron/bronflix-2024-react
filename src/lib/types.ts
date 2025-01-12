@@ -77,17 +77,6 @@ export type WrapperProps = { children: ReactNode; className?: string };
 // Home page components
 export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type MovieHighlightProps = { movie: IMovieList };
-export type PreviewFeaturedProps = {
-  movie: IMovieList;
-  chosenMovieId: string;
-  clickHandler: (movie: IMovieList) => void;
-};
-export type RibbonProps = {
-  length: number;
-  children: ReactNode;
-  isScrollByOne?: boolean;
-  cellWidth?: string;
-};
 
 // Movie page
 export type MovieCastCrewProps = { movieId: string };
