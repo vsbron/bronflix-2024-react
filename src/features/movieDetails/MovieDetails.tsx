@@ -45,8 +45,8 @@ function MovieDetails({ movie }: MovieDetailsProps) {
         <Heading>{headingTitle}</Heading>
         <div className="flex items-stretch rounded-lg overflow-hidden gap-8">
           <img
-            src={`${MOVIES_IMG_URL}w400${movie.poster_path}`}
-            className="basis-96 rounded-lg"
+            src={`${MOVIES_IMG_URL}w500${movie.poster_path}`}
+            className="basis-96 rounded-lg w-[40rem]"
           />
           <div
             style={{

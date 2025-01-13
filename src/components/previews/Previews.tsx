@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
+import noPersonPhoto from "@/assets/noPersonPhoto.png";
 import { MOVIES_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import {
   PreviewGroupProps,
@@ -150,7 +151,10 @@ export function PreviewImage({ media, type, children }: PreviewImageProps) {
       : type === "tv"
       ? "backdrop_path"
       : "poster_path";
-  const imagePath = media[previewImg];
+  const imgPath = media[previewImg];
+
+  // Building final img path
+  const fullImgPath =  `url(${imgPath ? MOVIES_IMG_URL+"w400"+imgPath : noPersonPhoto})`
 
   // Getting correct classes for name element
   const getPreviewClassNames = (type: string) =>
@@ -162,7 +166,7 @@ export function PreviewImage({ media, type, children }: PreviewImageProps) {
   return (
     <div
       style={{
-        backgroundImage: `url(${MOVIES_IMG_URL}w500${imagePath})`,
+        backgroundImage: fullImgPath,
       }}
       className="rounded-lg h-full flex items-end preview-bg relative"
     >
