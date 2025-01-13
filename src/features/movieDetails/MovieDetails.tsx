@@ -58,7 +58,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             style={{ backgroundImage: `url(${coverPath})` }}
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
-            <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-[3px]" />
             <div className="relative z-10 flex flex-col gap-3">
               <div className="text-gray-400">
                 <ScorePreview

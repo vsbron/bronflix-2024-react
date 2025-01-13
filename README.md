@@ -34,38 +34,27 @@ The app includes the following sections and pages:
 
 ### Index Page
 
-- **Featured Movie Component:**
+- **Featured Movie:**  
+  Highlights a selected movie with basic details and an option to watch its trailer. Automatically cycles to the next featured movie, with manual navigation controls available.
 
-  - Highlights a selected movie with basic details.
-  - Automatically cycles to the next featured movie after a set interval.
-  - Allows manual selection of movies via navigation controls.
-
-- **Trending Shows Section:**
-
-  - Displays a shuffled list of popular shows.
-
-- **Trending Actors Section:**
-
-  - Highlights trending actors in a randomized order.
-
-- **Top Rated Movies Section:**
-  - Showcases a shuffled list of critically acclaimed movies.
+- **Trending Content:**  
+  Displays shuffled lists of popular shows, trending actors, and critically acclaimed movies & shows, offering a variety of recommendations on a single page.
 
 ### Movie Page
 
-- Provides detailed information about a selected movie.
-- Displays relevant metadata, including release date, ratings, and overview.
-- Related movies or recommendations may be shown in a sidebar.
+- Displays a poster and cover of the movie alongside detailed information, including:
+  - Ratings, release date, country, studio, budget, overview of the movie, etc.
+  - Option to watch the movie trailer directly on the page.
+- Showcases the cast, including main actors and key crew members such as the director, writers, composer, producers and others.
+- Includes a section labeled "You May Also Like," featuring similar movies or recommendations.
 
 ### Show Page
 
 - Features in-depth details about a selected show.
-- Includes seasons, episodes, and related cast information when available.
 
 ### Actor Page
 
 - Displays detailed actor profiles.
-- Includes biography, filmography, and notable works.
 
 ## Technical Details
 
