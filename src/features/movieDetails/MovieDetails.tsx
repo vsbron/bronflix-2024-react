@@ -18,6 +18,7 @@ import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/ScorePreview";
+import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
@@ -38,23 +39,26 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const budget = movie?.budget || "";
   const studio = movie?.production_companies?.at(0);
 
+  // Building images paths
+  const posterPath = movie.poster_path
+    ? `${MOVIES_IMG_URL}w500${movie.poster_path}`
+    : NO_MOVIE_POSTER;
+  const coverPath = movie.backdrop_path
+    ? `${MOVIES_IMG_URL}original${movie.backdrop_path}`
+    : NO_MOVIE_COVER;
+
   // Returned JSX
   return (
     <>
       <section>
         <Heading>{headingTitle}</Heading>
         <div className="flex items-stretch rounded-lg overflow-hidden gap-8">
-          <img
-            src={`${MOVIES_IMG_URL}w500${movie.poster_path}`}
-            className="basis-96 rounded-lg w-[40rem]"
-          />
+          <img src={posterPath} className="basis-96 rounded-lg w-[40rem]" />
           <div
-            style={{
-              backgroundImage: `url(${MOVIES_IMG_URL}/original/${movie.backdrop_path})`,
-            }}
+            style={{ backgroundImage: `url(${coverPath})` }}
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
-            <div className="absolute inset-0 bg-stone-950/75" />
+            <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-sm" />
             <div className="relative z-10 flex flex-col gap-3">
               <div className="text-gray-400">
                 <ScorePreview
