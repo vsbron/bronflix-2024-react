@@ -10,6 +10,10 @@ import { IGenre } from "@/lib/typesAPI";
 
 import Button from "@/components/Button";
 import IconWrapper from "@/components/IconWrapper";
+import {
+  BlackGradientToRight,
+  BlackGradientToTop,
+} from "@/components/Overlays";
 import ScorePreview from "@/components/ScorePreview";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
@@ -29,6 +33,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     overview.length > 150
       ? `${overview.slice(0, 150).trim().split(" ").slice(0, -1).join(" ")}...`
       : overview;
+  const backgroundImage = `url(${MOVIES_IMG_URL}/original/${movie.backdrop_path})`;
 
   // Returned JSX
   return (
@@ -61,13 +66,11 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         </div>
       </div>
       <div
-        style={{
-          backgroundImage: `url(${MOVIES_IMG_URL}/original/${movie.backdrop_path})`,
-        }}
+        style={{ backgroundImage }}
         className="absolute top-0 right-0 w-3/4 h-5/6 bg-no-repeat bg-cover rounded-lg"
       >
-        <div className="absolute top-0 bottom-0 left-0 w-2/5 bg-featured-gradient-1"></div>
-        <div className="absolute left-0 right-0 bottom-0 h-1/4 bg-featured-gradient-2"></div>
+        <BlackGradientToTop height="25%" />
+        <BlackGradientToRight width="40%" />
       </div>
     </div>
   );

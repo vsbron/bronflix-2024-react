@@ -13,6 +13,7 @@ import { IBase } from "@/lib/typesAPI";
 
 import ScorePreview from "@/components/ScorePreview";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
+import { BlackGradientToTop } from "../Overlays";
 
 function Previews<T extends IBase>({
   rawPreviews,
@@ -168,28 +169,23 @@ export function PreviewImage({ media, type, children }: PreviewImageProps) {
     imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallbackImg
   })`;
 
-  // Getting correct classes for name element
-  const getPreviewClassNames = (type: string) =>
-    type === "tv"
-      ? "text-[2.2rem] px-6 pb-3 pt-10"
-      : "text-[2rem] px-3 pb-2 pt-20";
-
   // Returned JSX
   return (
     <div
       style={{
         backgroundImage: fullImgPath,
       }}
-      className="rounded-lg h-full flex items-end preview-bg relative pt-3"
+      className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
     >
       {children}
       {media.name && (
         <div
-          className="bg-preview-gradient w-full text-[2rem] px-3 pb-2 pt-20"
+          className="relative w-full text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore
           style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
         >
-          <h4>{media.name}</h4>
+          <BlackGradientToTop height="75%" />
+          <h4 className="relative z-10">{media.name}</h4>
         </div>
       )}
       {media.vote_average !== undefined && (

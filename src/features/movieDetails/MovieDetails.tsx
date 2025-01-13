@@ -9,6 +9,7 @@ import {
 
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
+import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
 import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
@@ -18,8 +19,8 @@ import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/ScorePreview";
-import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
-import MovieCollectionLink from "./MovieCollectionLink";
+import { DimOverlay } from "@/components/Overlays";
+import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
@@ -62,7 +63,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             style={{ backgroundImage: `url(${coverPath})` }}
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
-            <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-[3px]" />
+            <DimOverlay />
             {!!collection && <MovieCollectionLink collection={collection} />}
             <div className="relative z-10 flex flex-col gap-3">
               <div className="text-gray-400">

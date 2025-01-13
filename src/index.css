@@ -123,7 +123,3 @@ footer a:hover svg,
 footer a:focus svg {
   fill: var(--color-white);
 }
-/* Utility classes */
-.preview-bg {
-  @apply bg-center bg-cover duration-300 transition-all hover:scale-95;
-}
