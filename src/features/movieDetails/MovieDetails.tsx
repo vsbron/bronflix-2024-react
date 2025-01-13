@@ -19,6 +19,7 @@ import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/ScorePreview";
 import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
+import MovieCollectionLink from "./MovieCollectionLink";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
@@ -47,6 +48,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     ? `${MOVIES_IMG_URL}original${movie.backdrop_path}`
     : NO_MOVIE_COVER;
 
+  // Checking whether movie is a part of movie collection const
+  const collection = movie.belongs_to_collection;
+
   // Returned JSX
   return (
     <>
@@ -59,6 +63,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
             <div className="absolute inset-0 bg-stone-950/70 backdrop-blur-[3px]" />
+            {!!collection && <MovieCollectionLink collection={collection} />}
             <div className="relative z-10 flex flex-col gap-3">
               <div className="text-gray-400">
                 <ScorePreview
