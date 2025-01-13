@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-import noPersonPhoto from "@/assets/noPersonPhoto.png";
+import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
 import { MOVIES_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import {
   PreviewGroupProps,
@@ -103,7 +103,8 @@ function PreviewItem<T extends IBase>({
     >
       <Link
         to={`/${type === "tv" ? "shows" : type}/${media.id}`}
-        className="block" style={{height: height}}
+        className="block"
+        style={{ height: height }}
       >
         <PreviewImage media={media} type={type} />
       </Link>
@@ -145,16 +146,27 @@ function PreviewGroup<T extends IBase>({
 
 export function PreviewImage({ media, type, children }: PreviewImageProps) {
   // Getting the correct image element
-  const previewImg: keyof IBase =
-    type === "actors"
-      ? "profile_path"
-      : type === "tv"
-      ? "backdrop_path"
-      : "poster_path";
-  const imgPath = media[previewImg];
+  const IMAGE_KEYS: Record<string, keyof IBase> = {
+    actors: "profile_path",
+    tv: "backdrop_path",
+    movie: "poster_path",
+  };
 
-  // Building final img path
-  const fullImgPath =  `url(${imgPath ? MOVIES_IMG_URL+"w400"+imgPath : noPersonPhoto})`
+  const FALLBACK_IMAGES: Record<string, string> = {
+    actors: NO_PERSON_PHOTO,
+    tv: NO_SHOW_COVER,
+    movie: NO_MOVIE_POSTER,
+  };
+
+  // Get the appropriate image key and fallback image
+  const previewImg = IMAGE_KEYS[type] || "poster_path";
+  const fallbackImg = FALLBACK_IMAGES[type] || NO_MOVIE_POSTER;
+
+  // Build the final image path
+  const imgPath = media[previewImg];
+  const fullImgPath = `url(${
+    imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallbackImg
+  })`;
 
   // Getting correct classes for name element
   const getPreviewClassNames = (type: string) =>
@@ -168,12 +180,14 @@ export function PreviewImage({ media, type, children }: PreviewImageProps) {
       style={{
         backgroundImage: fullImgPath,
       }}
-      className="rounded-lg h-full flex items-end preview-bg relative"
+      className="rounded-lg h-full flex items-end preview-bg relative pt-3"
     >
       {children}
       {media.name && (
         <div
-          className={`bg-preview-gradient w-full ${getPreviewClassNames(type)}`}
+          className="bg-preview-gradient w-full text-[2rem] px-3 pb-2 pt-20"
+          // prettier-ignore
+          style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
         >
           <h4>{media.name}</h4>
         </div>
