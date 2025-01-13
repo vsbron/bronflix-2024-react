@@ -43,7 +43,7 @@ export interface IMovie {
   poster_path: string;
   backdrop_path: string;
   release_date: string;
-  belongs_to_collection: { id: number };
+  belongs_to_collection: ICollection;
   budget: number;
   genres: IGenre[];
   origin_country: string[];
@@ -120,10 +120,10 @@ export interface ICrew extends IBase {
 /* Misc */
 export interface ICollection {
   id: number;
-  parts: IMovieList[];
+  parts?: IMovieList[];
   backdrop_path: string;
   name: string;
-  overview: string;
+  overview?: string;
   poster_path: string;
 }
 export interface IGenre {

@@ -1,5 +1,5 @@
 import { ReactNode, RefObject } from "react";
-import { IBase, IGenre, IMovie, IMovieList } from "./typesAPI";
+import { IBase, ICollection, IGenre, IMovie, IMovieList } from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -80,6 +80,7 @@ export type MovieHighlightProps = { movie: IMovieList };
 
 // Movie page
 export type MovieCastCrewProps = { movieId: string };
+export type MovieCollectionLinkProps = { collection: ICollection };
 export type MovieDetailsProps = { movie: IMovie };
 export type MoviesSimilarProps = {
   movieId: string;
