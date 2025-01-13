@@ -15,7 +15,7 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
         style={{
           backgroundImage: `url(${MOVIES_IMG_URL}/w400/${collection.backdrop_path})`,
         }}
-        className="relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
+        className="min-w-[25rem] relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
       >
         <div className="absolute left-0 right-0 bottom-0 h-1/2 bg-featured-gradient-2"></div>
         <div className="relative z-10 px-8 pb-4 pt-52">
