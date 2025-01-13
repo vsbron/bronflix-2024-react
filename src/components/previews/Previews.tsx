@@ -14,6 +14,7 @@ import { IBase } from "@/lib/typesAPI";
 import ScorePreview from "@/components/ScorePreview";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
 import { BlackGradientToTop } from "../Overlays";
+import { getImageData } from "@/utils/helpers";
 
 function Previews<T extends IBase>({
   rawPreviews,
@@ -146,46 +147,30 @@ function PreviewGroup<T extends IBase>({
 // Image preview component
 
 export function PreviewImage({ media, type, children }: PreviewImageProps) {
-  // Getting the correct image element
-  const IMAGE_KEYS: Record<string, keyof IBase> = {
-    actors: "profile_path",
-    tv: "backdrop_path",
-    movie: "poster_path",
-  };
-
-  const FALLBACK_IMAGES: Record<string, string> = {
-    actors: NO_PERSON_PHOTO,
-    tv: NO_SHOW_COVER,
-    movie: NO_MOVIE_POSTER,
-  };
-
-  // Get the appropriate image key and fallback image
-  const previewImg = IMAGE_KEYS[type] || "poster_path";
-  const fallbackImg = FALLBACK_IMAGES[type] || NO_MOVIE_POSTER;
+  // Getting the image data
+  const { imageKey, fallback } = getImageData(type);
 
   // Build the final image path
-  const imgPath = media[previewImg];
-  const fullImgPath = `url(${
-    imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallbackImg
+  const imgPath = media[imageKey];
+  const backgroundImage = `url(${
+    imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallback
   })`;
 
   // Returned JSX
   return (
     <div
-      style={{
-        backgroundImage: fullImgPath,
-      }}
+      style={{ backgroundImage }}
       className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
     >
       {children}
-      {media.name && (
+      {(media.name || (media.title && !imgPath)) && (
         <div
           className="relative w-full text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore
           style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
         >
-          <BlackGradientToTop height="75%" />
-          <h4 className="relative z-10">{media.name}</h4>
+          <BlackGradientToTop height="90%" />
+          <h4 className="relative z-10">{media.name || media.title}</h4>
         </div>
       )}
       {media.vote_average !== undefined && (

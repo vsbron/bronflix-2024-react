@@ -4,6 +4,7 @@ export type APIFetchType = "popular" | "top_rated";
 export interface IBase {
   id: string;
   name?: string;
+  title?: string;
   poster_path?: string;
   backdrop_path?: string;
   profile_path?: string;

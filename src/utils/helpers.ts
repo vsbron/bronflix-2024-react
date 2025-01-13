@@ -1,3 +1,6 @@
+import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
+import { IBase } from "@/lib/typesAPI";
+
 // Function that shuffles the array
 export function shuffleArray<T>(array: T[]): T[] {
   return array.sort(() => Math.random() - 0.5);
@@ -53,3 +56,26 @@ export function formatRuntime(runtime: number) {
   // Returned runtime
   return `${hours}h ${minutes}m`;
 }
+
+// Helper function that returns correct image data
+export const getImageData = (type: string) => {
+  // Getting the correct image attribute
+  const IMAGE_KEYS: Record<string, keyof IBase> = {
+    actors: "profile_path",
+    tv: "backdrop_path",
+    movie: "poster_path",
+  };
+
+  // Preparing fallback in case of missing image
+  const FALLBACK_IMAGES: Record<string, string> = {
+    actors: NO_PERSON_PHOTO,
+    tv: NO_SHOW_COVER,
+    movie: NO_MOVIE_POSTER,
+  };
+
+  // Return the image data object
+  return {
+    imageKey: IMAGE_KEYS[type] || "poster_path",
+    fallback: FALLBACK_IMAGES[type] || NO_MOVIE_POSTER,
+  };
+};
