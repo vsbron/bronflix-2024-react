@@ -34,7 +34,7 @@ function ScorePreview({
 
       {/* The Votes (if rated) */}
       {count ? (
-        <span className={`text-[${isBig ? "1.6rem" : "1.4rem"}`}>
+        <span style={{fontSize: isBig ? "1.6rem" : "1.4rem"}}>
           <IconWrapper icon={<UserIcon />}>
             {(count! / 1000).toFixed(2)}K
           </IconWrapper>

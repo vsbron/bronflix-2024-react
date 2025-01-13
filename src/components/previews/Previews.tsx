@@ -102,7 +102,7 @@ function PreviewItem<T extends IBase>({
     >
       <Link
         to={`/${type === "tv" ? "shows" : type}/${media.id}`}
-        className={`h-[${height}] block`}
+        className="block" style={{height: height}}
       >
         <PreviewImage media={media} type={type} />
       </Link>
@@ -129,8 +129,8 @@ function PreviewGroup<T extends IBase>({
         <Link
           key={media.id}
           to={`/${type === "tv" ? "shows" : type}/${media.id}`}
-          className={`block text-stone-50 flex-1 h-[${height}]`}
-          style={{ flexBasis }}
+          className="block text-stone-50 flex-1"
+          style={{ flexBasis, height: height }}
         >
           <PreviewImage media={media} type={type} />
         </Link>
