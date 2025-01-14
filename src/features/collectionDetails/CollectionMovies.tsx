@@ -1,8 +1,10 @@
+import { CollectionMoviesProps } from "@/lib/types";
+
 import Heading from "@/components/Heading";
 import Previews from "@/components/previews/Previews";
-import { IMovie } from "@/lib/typesAPI";
 
-function CollectionMovies({ movies }: { movies: IMovie[] }) {
+function CollectionMovies({ movies }: CollectionMoviesProps) {
+  // Returned JSX
   return (
     <section>
       <Heading as="h2">Movies in the collection</Heading>

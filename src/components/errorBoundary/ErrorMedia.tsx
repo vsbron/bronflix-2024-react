@@ -1,7 +1,9 @@
-import Heading from "../Heading";
-import ProceedOptions from "./ProceedOptions";
+import { ErrorMediaProps } from "@/lib/types";
 
-function ErrorMedia({ type }: { type: string }) {
+import Heading from "@/components/Heading";
+import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
+
+function ErrorMedia({ type }: ErrorMediaProps) {
   // Preparing heading message
   const HeadingTitle = `${type} not found`;
 

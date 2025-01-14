@@ -6,23 +6,23 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 
-import { LinkItemProps } from "@/lib/types";
+import { NavItemProps } from "@/lib/types";
 
 function Nav() {
   // Returned JSX
   return (
     <nav className="flex flex-col gap-16 my-auto">
       <Link to="/">
-        <LinkItem icon={<HomeIcon />} title="Home" />
+        <NavItem icon={<HomeIcon />} title="Home" />
       </Link>
       <Link to="/shows">
-        <LinkItem icon={<TvIcon />} title="Shows" />
+        <NavItem icon={<TvIcon />} title="Shows" />
       </Link>
       <Link to="/movies">
-        <LinkItem icon={<FilmIcon />} title="Movies" />
+        <NavItem icon={<FilmIcon />} title="Movies" />
       </Link>
       <Link to="/actors">
-        <LinkItem icon={<UserIcon />} title="Actors" />
+        <NavItem icon={<UserIcon />} title="Actors" />
       </Link>
     </nav>
   );
@@ -31,7 +31,7 @@ function Nav() {
 export default Nav;
 
 // Link Item element
-function LinkItem({ icon, title }: LinkItemProps) {
+function NavItem({ icon, title }: NavItemProps) {
   // Returned JSX
   return (
     <div className="flex gap-6 whitespace-nowrap items-center text-stone-50 hover:text-red-500 transition-colors duration-200">

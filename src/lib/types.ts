@@ -22,7 +22,6 @@ export type VideoProviderProps = { children: ReactNode };
 export type VideoTriggerProps = { children: ReactNode };
 
 /* Components */
-export type ButtonProps = { children: ReactNode };
 export type ButtonPreviewProps = {
   ribbon: RefObject<HTMLDivElement>;
   length: number;
@@ -32,13 +31,11 @@ export type ButtonPreviewArrowProps = {
   dir: RibbonDirections;
   clickHandler: any;
 };
-export type FooterHeadingProps = { children: string };
-export type HeadingProps = { children: string; as?: Headings };
+export type ErrorMediaProps = { type: string };
 export type IconWrapperProps = {
   icon: ReactNode;
   children: ReactNode;
 };
-export type LinkItemProps = { icon: ReactNode; title: string };
 export type PreviewsProps<T> = {
   rawPreviews: T[];
   pages?: number;
@@ -72,6 +69,14 @@ export type ScorePreviewProps = {
   isHighlighted?: boolean;
   isBig?: boolean;
 };
+
+// UI
+export type BlackGradientToTopProps = { height: string };
+export type BlackGradientToRightProps = { width: string };
+export type ButtonProps = { children: ReactNode };
+export type FooterHeadingProps = { children: string };
+export type HeadingProps = { children: string; as?: Headings };
+export type NavItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
@@ -85,3 +90,7 @@ export type MovieDetailsProps = { movie: IMovie };
 export type MoviesSimilarProps = {
   movieId: string;
 };
+
+// Movie collection page
+export type CollectionDetailsProps = { collection: ICollection };
+export type CollectionMoviesProps = { movies: IMovie[] };

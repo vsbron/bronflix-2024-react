@@ -1,3 +1,8 @@
+import {
+  BlackGradientToRightProps,
+  BlackGradientToTopProps,
+} from "@/lib/types";
+
 export function DimOverlay() {
   // Returned JSX
   return (
@@ -5,7 +10,7 @@ export function DimOverlay() {
   );
 }
 
-export function BlackGradientToTop({ height }: { height: string }) {
+export function BlackGradientToTop({ height }: BlackGradientToTopProps) {
   // Returned JSX
   return (
     <div
@@ -15,7 +20,7 @@ export function BlackGradientToTop({ height }: { height: string }) {
   );
 }
 
-export function BlackGradientToRight({ width }: { width: string }) {
+export function BlackGradientToRight({ width }: BlackGradientToRightProps) {
   // Returned JSX
   return (
     <div
