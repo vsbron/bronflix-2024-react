@@ -12,7 +12,7 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
         Check out the related movies from
       </div>
       <Link
-        to=""
+        to={`/movies/collection/${collection.id}`}
         style={{
           backgroundImage: `url(${MOVIES_IMG_URL}/w400/${collection.backdrop_path})`,
         }}

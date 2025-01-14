@@ -7,6 +7,9 @@ import ActorsMain from "./pages/ActorsMain";
 import Actor, { actorLoader } from "./pages/Actor";
 import MoviesMain from "./pages/MoviesMain";
 import Movie, { movieLoader } from "./pages/Movie";
+import MovieCollection, {
+  movieCollectionLoader,
+} from "./pages/MovieCollection";
 import ShowsMain from "./pages/ShowsMain";
 import Show, { showLoader } from "./pages/Show";
 import NotFound from "./pages/NotFound";
@@ -38,6 +41,11 @@ const router = createBrowserRouter([
         path: "/movies/:movieId",
         element: <Movie />,
         loader: movieLoader,
+      },
+      {
+        path: "/movies/collection/:collectionId",
+        element: <MovieCollection />,
+        loader: movieCollectionLoader,
       },
       {
         path: "/shows",

@@ -70,43 +70,6 @@ export async function getMovie(movieId: string): Promise<IMovie> {
   }
 }
 
-// API for getting movie collection
-export async function getMovieCollection(
-  collection: number
-): Promise<ICollection> {
-  try {
-    // Fetching the data
-    const response = await fetch(
-      `${MOVIES_URL}/similar/${collection}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
-    );
-
-    // Guard clause
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch the collection data: ${response.statusText}}`
-      );
-    }
-
-    // Getting the actual data
-    const data = await response.json();
-
-    // Return the collection
-    return data;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching collection data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching collection data."
-      );
-    }
-  }
-}
-
 // API for getting similar movies
 export async function getMoviesSimilar(movieId: string): Promise<IMovieList[]> {
   try {
