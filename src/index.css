@@ -77,15 +77,19 @@ ul {
 }
 
 p a,
-ul a {
+ul a,
+.link {
   color: var(--color-rose--300);
+  cursor: pointer;
   transition: color 0.2s ease;
 }
 
 p a:hover,
 ul a:hover,
 p a:focus,
-ul a:focus {
+ul a:focus,
+.link:hover,
+.link:focus {
   color: var(--color-white);
 }
 
