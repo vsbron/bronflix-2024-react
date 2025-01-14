@@ -56,6 +56,11 @@ The app includes the following sections and pages:
 
 - Displays detailed actor profiles.
 
+### Collection Page
+
+- Accessed from a movie page within a collection
+- Displays the movie's poster, along with a brief overview and a list of movies included in the collection.
+
 ## Technical Details
 
 - **Framework:** React with TypeScript for type safety and scalability.
