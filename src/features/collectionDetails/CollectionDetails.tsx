@@ -10,9 +10,11 @@ function CollectionDetails({ collection }: { collection: ICollection }) {
   const posterPath = collection.poster_path
     ? `${MEDIA_IMG_URL}w500${collection.poster_path}`
     : NO_MOVIE_POSTER;
-  const coverPath = collection.backdrop_path
-    ? `${MEDIA_IMG_URL}original${collection.backdrop_path}`
-    : NO_MOVIE_COVER;
+  const backgroundImage = `url(${
+    collection.backdrop_path
+      ? `${MEDIA_IMG_URL}original${collection.backdrop_path}`
+      : NO_MOVIE_COVER
+  })`;
 
   // Returned JSX
   return (
@@ -20,14 +22,14 @@ function CollectionDetails({ collection }: { collection: ICollection }) {
       <section>
         <Heading>{collection.name}</Heading>
         <div className="flex items-stretch rounded-lg overflow-hidden gap-8">
-          <img src={posterPath} className="basis-96 rounded-lg w-[40rem]" />
+          <img src={posterPath} className="rounded-lg w-[28rem]" />
           <div
-            style={{ backgroundImage: `url(${coverPath})` }}
-            className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
+            style={{ backgroundImage }}
+            className="bg-no-repeat bg-cover bg-center basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
             <DimOverlay />
             <div className="relative z-10 flex flex-col gap-3">
-              <div className="text-[4rem] -my-5 font-heading">
+              <div className="text-[4rem] -mb-2 font-heading">
                 {collection.name}
               </div>
 

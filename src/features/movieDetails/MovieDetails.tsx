@@ -45,9 +45,11 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const posterPath = movie.poster_path
     ? `${MEDIA_IMG_URL}w500${movie.poster_path}`
     : NO_MOVIE_POSTER;
-  const coverPath = movie.backdrop_path
-    ? `${MEDIA_IMG_URL}original${movie.backdrop_path}`
-    : NO_MOVIE_COVER;
+  const backgroundImage = `url(${
+    movie.backdrop_path
+      ? `${MEDIA_IMG_URL}original${movie.backdrop_path}`
+      : NO_MOVIE_COVER
+  })`;
 
   // Checking whether movie is a part of movie collection const
   const collection = movie.belongs_to_collection;
@@ -60,7 +62,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
         <div className="flex items-stretch rounded-lg overflow-hidden gap-8">
           <img src={posterPath} className="basis-96 rounded-lg w-[40rem]" />
           <div
-            style={{ backgroundImage: `url(${coverPath})` }}
+            style={{ backgroundImage }}
             className="bg-no-repeat bg-cover basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
           >
             <DimOverlay />
