@@ -1,5 +1,5 @@
-export const MOVIES_URL = "https://api.themoviedb.org/3";
-export const MOVIES_IMG_URL = "https://image.tmdb.org/t/p/";
+export const MEDIA_URL = "https://api.themoviedb.org/3";
+export const MEDIA_IMG_URL = "https://image.tmdb.org/t/p/";
 
 export const MOVIE_CHANGE_INTERVAL = 10000;
 

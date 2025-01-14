@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieCollectionLinkProps } from "@/lib/types";
 import { BlackGradientToTop } from "@/components/Overlays";
 
@@ -14,7 +14,7 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
       <Link
         to={`/movies/collection/${collection.id}`}
         style={{
-          backgroundImage: `url(${MOVIES_IMG_URL}/w400/${collection.backdrop_path})`,
+          backgroundImage: `url(${MEDIA_IMG_URL}/w400/${collection.backdrop_path})`,
         }}
         className="min-w-[25rem] relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
       >

@@ -1,5 +1,5 @@
 import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
 import { ICollection } from "@/lib/typesAPI";
 
 import Heading from "@/components/Heading";
@@ -8,12 +8,13 @@ import { DimOverlay } from "@/components/Overlays";
 function CollectionDetails({ collection }: { collection: ICollection }) {
   // Building images paths
   const posterPath = collection.poster_path
-    ? `${MOVIES_IMG_URL}w500${collection.poster_path}`
+    ? `${MEDIA_IMG_URL}w500${collection.poster_path}`
     : NO_MOVIE_POSTER;
   const coverPath = collection.backdrop_path
-    ? `${MOVIES_IMG_URL}original${collection.backdrop_path}`
+    ? `${MEDIA_IMG_URL}original${collection.backdrop_path}`
     : NO_MOVIE_COVER;
 
+  // Returned JSX
   return (
     <>
       <section>

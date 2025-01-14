@@ -1,4 +1,4 @@
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { APIFetchType, ICollection, IMovie, IMovieList } from "@/lib/typesAPI";
 
 // API for getting movies
@@ -6,7 +6,7 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MOVIES_URL}/movie/${type}?api_key=${
+      `${MEDIA_URL}/movie/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1&include_adult=false`
     );
@@ -42,7 +42,7 @@ export async function getMovie(movieId: string): Promise<IMovie> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/movie/${movieId}?api_key=${
+      `${MEDIA_URL}/movie/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );
@@ -75,7 +75,7 @@ export async function getMoviesSimilar(movieId: string): Promise<IMovieList[]> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/movie/${movieId}/similar?api_key=${
+      `${MEDIA_URL}/movie/${movieId}/similar?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import useVideo from "@/context/VideoContext";
 
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { IMovieList, IVideo } from "@/lib/typesAPI";
 
 function useTrailer(movie: IMovieList) {
@@ -23,7 +23,7 @@ function useTrailer(movie: IMovieList) {
     async function fetchVideo() {
       try {
         const response = await fetch(
-          `${MOVIES_URL}/movie/${movie.id}/videos?api_key=${
+          `${MEDIA_URL}/movie/${movie.id}/videos?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }`,
           { signal }

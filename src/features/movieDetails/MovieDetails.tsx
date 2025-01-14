@@ -10,7 +10,7 @@ import {
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
-import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
+import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { formatDate, formatRuntime } from "@/utils/helpers";
@@ -43,10 +43,10 @@ function MovieDetails({ movie }: MovieDetailsProps) {
 
   // Building images paths
   const posterPath = movie.poster_path
-    ? `${MOVIES_IMG_URL}w500${movie.poster_path}`
+    ? `${MEDIA_IMG_URL}w500${movie.poster_path}`
     : NO_MOVIE_POSTER;
   const coverPath = movie.backdrop_path
-    ? `${MOVIES_IMG_URL}original${movie.backdrop_path}`
+    ? `${MEDIA_IMG_URL}original${movie.backdrop_path}`
     : NO_MOVIE_COVER;
 
   // Checking whether movie is a part of movie collection const

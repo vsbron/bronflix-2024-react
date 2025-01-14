@@ -1,4 +1,4 @@
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { ICollection } from "@/lib/typesAPI";
 
 // API for getting movie collection
@@ -8,7 +8,7 @@ export async function getMovieCollection(
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/collection/${collectionId}?api_key=${
+      `${MEDIA_URL}/collection/${collectionId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );

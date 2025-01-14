@@ -1,4 +1,4 @@
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { APIFetchType, IShow, IShowList } from "@/lib/typesAPI";
 
 // API for getting the shows
@@ -6,7 +6,7 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MOVIES_URL}/tv/${type}?api_key=${
+      `${MEDIA_URL}/tv/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1&include_adult=false`
     );
@@ -42,7 +42,7 @@ export async function getShow(showId: string): Promise<IShow> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/tv/${showId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+      `${MEDIA_URL}/tv/${showId}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
     );
 
     // Guard clause

@@ -1,4 +1,4 @@
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { ICastCrew, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
@@ -6,7 +6,7 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MOVIES_URL}/person/popular?api_key=${
+      `${MEDIA_URL}/person/popular?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1`
     );
@@ -42,7 +42,7 @@ export async function getActor(movieId: string): Promise<IPerson> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/person/${movieId}?api_key=${
+      `${MEDIA_URL}/person/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );
@@ -75,7 +75,7 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MOVIES_URL}/movie/${movieId}/credits?api_key=${
+      `${MEDIA_URL}/movie/${movieId}/credits?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&language=en-US`
     );

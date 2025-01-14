@@ -1,5 +1,5 @@
 import Heading from "@/components/Heading";
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
 import { IGenre, IProductionCompany, IShow } from "@/lib/typesAPI";
 
 function ShowDetails({ show }: { show: IShow }) {
@@ -19,7 +19,7 @@ function ShowDetails({ show }: { show: IShow }) {
   return (
     <div>
       <Heading>{headingTitle}</Heading>
-      <img src={`${MOVIES_IMG_URL}w200${show.poster_path}`} />
+      <img src={`${MEDIA_IMG_URL}w200${show.poster_path}`} />
       <div>Name: {show.name}</div>
       <div>Tagline: {show.tagline}</div>
       <div>Overview: {show.overview}</div>

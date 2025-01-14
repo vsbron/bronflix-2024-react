@@ -1,5 +1,5 @@
 import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
 import { PreviewImageProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
@@ -13,7 +13,7 @@ function PreviewImage({ media, type, children }: PreviewImageProps) {
   // Build the final image path
   const imgPath = media[imageKey];
   const backgroundImage = `url(${
-    imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallback
+    imgPath ? MEDIA_IMG_URL + "w500" + imgPath : fallback
   })`;
 
   // Returned JSX

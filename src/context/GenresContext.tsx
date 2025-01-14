@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { MOVIES_URL } from "@/lib/constants";
+import { MEDIA_URL } from "@/lib/constants";
 import { GenresContextType, GenresProviderProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 

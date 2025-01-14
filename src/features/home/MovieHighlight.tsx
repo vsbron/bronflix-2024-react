@@ -4,7 +4,7 @@ import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/solid";
 import { useGenres } from "@/context/GenresContext";
 import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
-import { LANGUAGES, MOVIES_IMG_URL } from "@/lib/constants";
+import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieHighlightProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
@@ -33,7 +33,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     overview.length > 150
       ? `${overview.slice(0, 150).trim().split(" ").slice(0, -1).join(" ")}...`
       : overview;
-  const backgroundImage = `url(${MOVIES_IMG_URL}/original/${movie.backdrop_path})`;
+  const backgroundImage = `url(${MEDIA_IMG_URL}/original/${movie.backdrop_path})`;
 
   // Returned JSX
   return (

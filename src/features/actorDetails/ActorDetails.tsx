@@ -1,5 +1,5 @@
 import Heading from "@/components/Heading";
-import { MOVIES_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
 import { IPerson } from "@/lib/typesAPI";
 
 function ActorDetails({ actor }: { actor: IPerson }) {
@@ -10,7 +10,7 @@ function ActorDetails({ actor }: { actor: IPerson }) {
   return (
     <div>
       <Heading>{actor.name}</Heading>
-      <img src={`${MOVIES_IMG_URL}w200${actor.profile_path}`} />
+      <img src={`${MEDIA_IMG_URL}w200${actor.profile_path}`} />
       <div>Name: {actor.name}</div>
       <div>Gender: {actor.gender}</div>
       <div>Birthday: {birthday}</div>
