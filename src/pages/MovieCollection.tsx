@@ -25,7 +25,6 @@ function MovieCollection() {
   // Returned JSX
   return (
     <>
-      <Heading>{collection.name}</Heading>
       <CollectionDetails collection={collection} />
       <CollectionMovies movies={collection.parts as IMovie[]} />
     </>

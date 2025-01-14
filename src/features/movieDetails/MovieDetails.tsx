@@ -93,7 +93,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
                     {formatRuntime(movie.runtime)}
                   </IconWrapper>
                 </div>
-                <div className="flex gap-8">
+                <div className="flex gap-8 mb-2">
                   <IconWrapper icon={<GlobeAltIcon />}>
                     {originCountry}
                   </IconWrapper>
@@ -107,7 +107,6 @@ function MovieDetails({ movie }: MovieDetailsProps) {
                   )}
                 </div>
               </div>
-              <div className="flex gap-8 mb-2"></div>
               {movie.overview && (
                 <div className="max-w-[65rem] mb-6">{movie.overview}</div>
               )}
