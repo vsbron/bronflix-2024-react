@@ -13,12 +13,6 @@ export async function getMovieCollection(
       }`
     );
 
-    console.log(
-      `${MOVIES_URL}/collection/${collectionId}?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
-    );
-
     // Guard clause
     if (!response.ok) {
       throw new Error(

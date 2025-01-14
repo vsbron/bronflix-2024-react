@@ -1,10 +1,13 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import { ICollection } from "@/lib/typesAPI";
+import { ICollection, IMovie } from "@/lib/typesAPI";
 import { getMovieCollection } from "@/services/apiCollections";
-import Heading from "@/components/Heading";
 
-// Movie data loader
+import Heading from "@/components/Heading";
+import CollectionDetails from "@/features/collectionDetails/CollectionDetails";
+import CollectionMovies from "@/features/collectionDetails/CollectionMovies";
+
+// Movie collection data loader
 export const movieCollectionLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<ICollection> => {
@@ -18,13 +21,13 @@ export const movieCollectionLoader = async ({
 function MovieCollection() {
   // Getting the collection data from the loader
   const collection = useLoaderData() as ICollection;
-  console.log(collection);
 
   // Returned JSX
   return (
     <>
       <Heading>{collection.name}</Heading>
-      {/* <CollectionDetails collection={collection} /> */}
+      <CollectionDetails collection={collection} />
+      <CollectionMovies movies={collection.parts as IMovie[]} />
     </>
   );
 }
