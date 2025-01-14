@@ -8,7 +8,7 @@ import { IMovieList } from "@/lib/typesAPI";
 
 import MovieHighlight from "./MovieHighlight";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
-import { PreviewImage } from "@/components/previews/Previews";
+import PreviewImage from "@/components/previews/PreviewImage";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element

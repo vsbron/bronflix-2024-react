@@ -1,20 +1,16 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
-import { MOVIES_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import {
   PreviewGroupProps,
-  PreviewImageProps,
   PreviewItemProps,
   PreviewsProps,
 } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
-import ScorePreview from "@/components/ScorePreview";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
-import { BlackGradientToTop } from "../Overlays";
-import { getImageData } from "@/utils/helpers";
+import PreviewImage from "@/components/previews/PreviewImage";
 
 function Previews<T extends IBase>({
   rawPreviews,
@@ -98,6 +94,7 @@ function PreviewItem<T extends IBase>({
   width,
   subtitle,
 }: PreviewItemProps<T>) {
+  // Returned JSX
   return (
     <div
       className="block  flex-shrink-0 rounded-lg overflow-x-hidden"
@@ -125,6 +122,7 @@ function PreviewGroup<T extends IBase>({
   flexBasis,
   height,
 }: PreviewGroupProps<T>) {
+  // Returned JSX
   return (
     <div
       className={`${PREVIEWS_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}
@@ -139,43 +137,6 @@ function PreviewGroup<T extends IBase>({
           <PreviewImage media={media} type={type} />
         </Link>
       ))}
-    </div>
-  );
-}
-
-//////////////////////////
-// Image preview component
-
-export function PreviewImage({ media, type, children }: PreviewImageProps) {
-  // Getting the image data
-  const { imageKey, fallback } = getImageData(type);
-
-  // Build the final image path
-  const imgPath = media[imageKey];
-  const backgroundImage = `url(${
-    imgPath ? MOVIES_IMG_URL + "w500" + imgPath : fallback
-  })`;
-
-  // Returned JSX
-  return (
-    <div
-      style={{ backgroundImage }}
-      className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
-    >
-      {children}
-      {(media.name || (media.title && !imgPath)) && (
-        <div
-          className="relative w-full text-[2rem] px-3 pb-2 pt-20"
-          // prettier-ignore
-          style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
-        >
-          <BlackGradientToTop height="90%" />
-          <h4 className="relative z-10">{media.name || media.title}</h4>
-        </div>
-      )}
-      {media.vote_average !== undefined && (
-        <ScorePreview score={media.vote_average} />
-      )}
     </div>
   );
 }
