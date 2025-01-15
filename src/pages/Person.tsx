@@ -1,17 +1,18 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import ActorDetails from "@/features/actorDetails/ActorDetails";
 import { IPerson } from "@/lib/typesAPI";
-import { getActor } from "@/services/apiActors";
+import { getPerson } from "@/services/apiPerson";
+
+import PersonDetails from "@/features/personDetails/PersonDetails";
 
 // Show data loader
-export const actorLoader = async ({
+export const personLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<IPerson> => {
   // Getting the actor using API function
-  const actor = await getActor(params.actorId!);
+  const person = await getPerson(params.personId!);
   // Return show
-  return actor;
+  return person;
 };
 
 function Actor() {
@@ -19,7 +20,7 @@ function Actor() {
   const actor = useLoaderData() as IPerson;
 
   // Returned JSX
-  return <ActorDetails actor={actor} />;
+  return <PersonDetails actor={actor} />;
 }
 
 export default Actor;

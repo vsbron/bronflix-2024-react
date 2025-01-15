@@ -3,7 +3,7 @@ import { IPerson } from "@/lib/typesAPI";
 
 import Heading from "@/components/ui/Heading";
 
-function ActorDetails({ actor }: { actor: IPerson }) {
+function PersonDetails({ actor }: { actor: IPerson }) {
   // Handling the actor data
   const birthday = new Date(actor.birthday).toString();
 
@@ -25,4 +25,4 @@ function ActorDetails({ actor }: { actor: IPerson }) {
   );
 }
 
-export default ActorDetails;
+export default PersonDetails;

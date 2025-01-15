@@ -21,7 +21,7 @@ function ActorsTrending() {
   return (
     <section>
       <Heading as="h2">TRENDING ACTORS</Heading>
-      <Previews rawPreviews={actors} height="25rem" type="actors" />
+      <Previews rawPreviews={actors} height="25rem" type="person" />
     </section>
   );
 }

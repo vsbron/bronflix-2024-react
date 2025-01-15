@@ -7,7 +7,7 @@ import Layout from "@/components/ui/Layout";
 
 import Home from "@/pages/Home";
 import ActorsMain from "@/pages/ActorsMain";
-import Actor, { actorLoader } from "@/pages/Actor";
+import Person, { personLoader } from "@/pages/Person";
 import MoviesMain from "@/pages/MoviesMain";
 import Movie, { movieLoader } from "@/pages/Movie";
 import MovieCollection, {
@@ -68,9 +68,9 @@ const router = createBrowserRouter([
         element: <ActorsMain />,
       },
       {
-        path: "/actors/:actorId",
-        element: <Actor />,
-        loader: actorLoader,
+        path: "/person/:personId",
+        element: <Person />,
+        loader: personLoader,
         errorElement: <ErrorMedia type="person" />,
       },
       {

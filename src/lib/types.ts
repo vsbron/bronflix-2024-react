@@ -3,7 +3,7 @@ import { IBase, ICollection, IGenre, IMovie, IMovieList } from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
-type Media = "actors" | "tv" | "movies";
+type Media = "person" | "tv" | "movies";
 type PreviewSubtitles = "character" | "job";
 export type RibbonDirections = "left" | "right";
 

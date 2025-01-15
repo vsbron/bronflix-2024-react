@@ -39,7 +39,7 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
           rawPreviews={shortenCast as ICast[]}
           height="26rem"
           width="18rem"
-          type="actors"
+          type="person"
           subtitle="character"
         />
       </section>
@@ -51,7 +51,7 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
             rawPreviews={shortenCrew as ICrew[]}
             height="20rem"
             width="14rem"
-            type="actors"
+            type="person"
             subtitle="job"
           />
         </section>

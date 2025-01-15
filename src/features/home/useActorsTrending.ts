@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ACTORS_TRENDING_QUANTITY } from "@/lib/constants";
 import { IPersonList } from "@/lib/typesAPI";
-import { getTrendingActors } from "@/services/apiActors";
+import { getTrendingActors } from "@/services/apiPerson";
 import { shuffleArray } from "@/utils/helpers";
 
 export function useActorsTrending() {

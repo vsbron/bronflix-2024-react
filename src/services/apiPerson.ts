@@ -37,8 +37,8 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
   }
 }
 
-// API for getting specific actor
-export async function getActor(movieId: string): Promise<IPerson> {
+// API for getting specific person
+export async function getPerson(movieId: string): Promise<IPerson> {
   try {
     // Fetching the data
     const response = await fetch(
@@ -57,7 +57,7 @@ export async function getActor(movieId: string): Promise<IPerson> {
     // Getting the actual data
     const data = await response.json();
 
-    // Return the actor
+    // Return the person
     return data;
   } catch (error: unknown) {
     if (error instanceof Error) {

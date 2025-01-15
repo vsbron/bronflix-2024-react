@@ -47,14 +47,14 @@ export default PreviewImage;
 export const getImageData = (type: string) => {
   // Getting the correct image attribute
   const IMAGE_KEYS: Record<string, keyof IBase> = {
-    actors: "profile_path",
+    person: "profile_path",
     tv: "backdrop_path",
     movie: "poster_path",
   };
 
   // Preparing fallback in case of missing image
   const FALLBACK_IMAGES: Record<string, string> = {
-    actors: NO_PERSON_PHOTO,
+    person: NO_PERSON_PHOTO,
     tv: NO_SHOW_COVER,
     movie: NO_MOVIE_POSTER,
   };
