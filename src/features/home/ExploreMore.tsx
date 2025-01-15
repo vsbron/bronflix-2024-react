@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import Button from "@/components/Button";
-import Heading from "@/components/Heading";
 import bg from "@/assets/explore-bg-2x.jpg";
+import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
 
 function ExploreMore() {
   // Returned JSX

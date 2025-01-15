@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieCollectionLinkProps } from "@/lib/types";
-import { BlackGradientToTop } from "@/components/Overlays";
+
+import { BlackGradientToTop } from "@/components/ui/Overlays";
 
 function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
   // Returned JSX

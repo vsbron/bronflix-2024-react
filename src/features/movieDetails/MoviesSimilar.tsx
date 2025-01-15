@@ -1,9 +1,9 @@
-import { useMovieSimilar } from "./useMovieSimilar";
 import { MoviesSimilarProps } from "@/lib/types";
 
-import Heading from "@/components/Heading";
-import Loader from "@/components/Loader";
 import Previews from "@/components/previews/Previews";
+import Heading from "@/components/ui/Heading";
+import Loader from "@/components/ui/Loader";
+import { useMovieSimilar } from "@/features/movieDetails/useMovieSimilar";
 
 function MoviesSimilar({ movieId }: MoviesSimilarProps) {
   // Getting the similar movies data from the React Query

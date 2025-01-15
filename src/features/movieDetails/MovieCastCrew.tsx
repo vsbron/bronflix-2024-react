@@ -1,14 +1,11 @@
-import { Link } from "react-router-dom";
-
 import { MovieCastCrewProps } from "@/lib/types";
 import { ICast, ICrew } from "@/lib/typesAPI";
 import { CREW_JOBS } from "@/lib/constants";
 
-import { useMovieCast } from "./useMovieCast";
-import Heading from "@/components/Heading";
-import Loader from "@/components/Loader";
-import Ribbon from "@/components/previews/Ribbon";
-import Previews, { PreviewImage } from "@/components/previews/Previews";
+import Previews from "@/components/previews/Previews";
+import Heading from "@/components/ui/Heading";
+import Loader from "@/components/ui/Loader";
+import { useMovieCast } from "@/features/movieDetails/useMovieCast";
 
 function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   // Getting the fetched cast and setting the ref for ribbon element

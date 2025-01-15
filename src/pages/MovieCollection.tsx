@@ -3,7 +3,6 @@ import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 import { ICollection, IMovie } from "@/lib/typesAPI";
 import { getMovieCollection } from "@/services/apiCollections";
 
-import Heading from "@/components/Heading";
 import CollectionDetails from "@/features/collectionDetails/CollectionDetails";
 import CollectionMovies from "@/features/collectionDetails/CollectionMovies";
 

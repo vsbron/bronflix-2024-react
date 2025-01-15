@@ -1,5 +1,5 @@
-import Heading from "@/components/Heading";
-import Wrapper from "@/components/Wrapper";
+import Heading from "@/components/ui/Heading";
+import Wrapper from "@/components/ui/Wrapper";
 import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
 import Header from "@/components/header/Header";
 import Sidebar from "@/components/header/Sidebar";

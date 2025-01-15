@@ -3,8 +3,8 @@ import { MEDIA_IMG_URL } from "@/lib/constants";
 import { PreviewImageProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
-import { BlackGradientToTop } from "@/components/Overlays";
 import ScorePreview from "@/components/ScorePreview";
+import { BlackGradientToTop } from "@/components/ui/Overlays";
 
 function PreviewImage({ media, type, children }: PreviewImageProps) {
   // Getting the image data

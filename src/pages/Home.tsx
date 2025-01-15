@@ -1,4 +1,4 @@
-import Separator from "@/components/Separator";
+import Separator from "@/components/ui/Separator";
 import ActorsTrending from "@/features/home/ActorsTrending";
 import ExploreMore from "@/features/home/ExploreMore";
 import HeroSection from "@/features/home/HeroSection";

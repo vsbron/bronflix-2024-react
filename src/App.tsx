@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Layout from "@/components/Layout";
 import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
+import Layout from "@/components/ui/Layout";
 
 import Home from "@/pages/Home";
 import ActorsMain from "@/pages/ActorsMain";

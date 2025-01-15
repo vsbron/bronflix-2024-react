@@ -1,6 +1,7 @@
-import Heading from "@/components/Heading";
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { IPerson } from "@/lib/typesAPI";
+
+import Heading from "@/components/ui/Heading";
 
 function ActorDetails({ actor }: { actor: IPerson }) {
   // Handling the actor data

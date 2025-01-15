@@ -1,6 +1,7 @@
-import Heading from "@/components/Heading";
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { IGenre, IProductionCompany, IShow } from "@/lib/typesAPI";
+
+import Heading from "@/components/ui/Heading";
 
 function ShowDetails({ show }: { show: IShow }) {
   // Handling the show data
