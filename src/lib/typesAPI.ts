@@ -102,6 +102,7 @@ export interface IPerson {
   deathday?: string;
   biography: string;
   popularity: number;
+  known_for_department: string;
 }
 export interface ICastCrew {
   cast: ICast[];

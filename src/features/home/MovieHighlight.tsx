@@ -15,6 +15,7 @@ import {
   BlackGradientToRight,
   BlackGradientToTop,
 } from "@/components/ui/Overlays";
+import { getTextPreview } from "@/utils/helpers";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Get the genres from Context API
@@ -30,9 +31,8 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
   const count = movie?.vote_count || 0;
   const overview = movie?.overview || "";
   const truncatedOverview =
-    overview.length > 150
-      ? `${overview.slice(0, 150).trim().split(" ").slice(0, -1).join(" ")}...`
-      : overview;
+    overview.length > 150 ? getTextPreview(overview, 150) : overview;
+
   const backgroundImage = `url(${MEDIA_IMG_URL}/original/${movie.backdrop_path})`;
 
   // Returned JSX

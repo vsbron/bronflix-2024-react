@@ -72,3 +72,8 @@ export function getMediaImages<T extends IBase>(media: T) {
 
   return { posterPath, backgroundImage };
 }
+
+// Helper function that shortens the large text
+export function getTextPreview(text: string, limit: number) {
+  return text.slice(0, limit).trim().split(" ").slice(0, -1).join(" ") + "...";
+}
