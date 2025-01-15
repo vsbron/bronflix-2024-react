@@ -42,6 +42,8 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   // Checking whether movie is a part of movie collection const
   const collection = movie.belongs_to_collection;
 
+  console.log(movie.original_language);
+
   // Returned JSX
   return (
     <section>

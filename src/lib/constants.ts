@@ -23,6 +23,7 @@ export const LANGUAGES: { [key: string]: string } = {
   ru: "Russian",
   zh: "Chinese",
   ko: "Korean",
+  th: "Thai",
 };
 
 export const CREW_JOBS = [
