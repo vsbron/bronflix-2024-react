@@ -1,8 +1,7 @@
-import { useMoviesFeatured } from "./useMoviesFeatured";
-
-import MoviesFeatured from "./MoviesFeatured";
-import Heading from "@/components/Heading";
-import Loader from "@/components/Loader";
+import Heading from "@/components/ui/Heading";
+import Loader from "@/components/ui/Loader";
+import MoviesFeatured from "@/features/home/MoviesFeatured";
+import { useMoviesFeatured } from "@/features/home/useMoviesFeatured";
 
 function HeroSection() {
   // Getting the featured movies

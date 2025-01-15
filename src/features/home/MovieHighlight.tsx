@@ -7,14 +7,14 @@ import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieHighlightProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
-import Button from "@/components/Button";
 import IconWrapper from "@/components/IconWrapper";
+import ScorePreview from "@/components/ScorePreview";
+import TrailerButton from "@/components/TrailerButton";
+import Button from "@/components/ui/Button";
 import {
   BlackGradientToRight,
   BlackGradientToTop,
-} from "@/components/Overlays";
-import ScorePreview from "@/components/ScorePreview";
-import TrailerButton from "@/components/TrailerButton";
+} from "@/components/ui/Overlays";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Get the genres from Context API

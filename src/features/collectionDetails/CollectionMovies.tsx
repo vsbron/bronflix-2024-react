@@ -1,7 +1,7 @@
 import { CollectionMoviesProps } from "@/lib/types";
 
-import Heading from "@/components/Heading";
 import Previews from "@/components/previews/Previews";
+import Heading from "@/components/ui/Heading";
 
 function CollectionMovies({ movies }: CollectionMoviesProps) {
   // Returned JSX

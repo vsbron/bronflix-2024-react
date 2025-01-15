@@ -1,7 +1,7 @@
 import { CollectionDetailsProps } from "@/lib/types";
 
-import Heading from "@/components/Heading";
 import MediaHero from "@/components/MediaHero";
+import Heading from "@/components/ui/Heading";
 
 function CollectionDetails({ collection }: CollectionDetailsProps) {
   // Returned JSX

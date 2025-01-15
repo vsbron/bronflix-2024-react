@@ -1,4 +1,4 @@
-import { HeadingProps } from "../lib/types";
+import { HeadingProps } from "@/lib/types";
 
 function Heading({ children, as = "h1" }: HeadingProps) {
   // Constant to hold the correct element

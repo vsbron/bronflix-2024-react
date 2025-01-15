@@ -1,7 +1,7 @@
 import { ErrorMediaProps } from "@/lib/types";
 
-import Heading from "@/components/Heading";
 import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
+import Heading from "@/components/ui/Heading";
 
 function ErrorMedia({ type }: ErrorMediaProps) {
   // Preparing heading message

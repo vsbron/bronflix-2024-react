@@ -1,4 +1,4 @@
-import { WrapperProps } from "../lib/types";
+import { WrapperProps } from "@/lib/types";
 
 function Wrapper({ children }: WrapperProps) {
   // Returned JSX

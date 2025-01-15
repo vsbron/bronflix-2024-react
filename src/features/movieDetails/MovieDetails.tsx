@@ -13,12 +13,12 @@ import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
-import Heading from "@/components/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/ScorePreview";
 import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import MediaHero from "@/components/MediaHero";
 import TrailerButton from "@/components/TrailerButton";
+import Heading from "@/components/ui/Heading";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook

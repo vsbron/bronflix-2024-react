@@ -2,7 +2,7 @@ import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { MediaHeroPros } from "@/lib/types";
 import { getMediaImages } from "@/utils/helpers";
 
-import { DimOverlay } from "@/components/Overlays";
+import { DimOverlay } from "@/components/ui/Overlays";
 
 function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
   // Getting images paths

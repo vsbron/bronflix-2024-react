@@ -1,8 +1,9 @@
 import { VideoProvider } from "@/context/VideoContext";
+import { TrailerButtonProps } from "@/lib/types";
 
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 
-function TrailerButton({ video }: { video: string }) {
+function TrailerButton({ video }: TrailerButtonProps) {
   // Returned JSX
   return (
     <VideoProvider>

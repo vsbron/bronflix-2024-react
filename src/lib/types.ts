@@ -89,6 +89,7 @@ export type MediaHeroPros = {
   posterWidth: string;
   children: ReactNode;
 };
+export type TrailerButtonProps = { video: string };
 
 // Movie page
 export type MovieCastCrewProps = { movieId: string };
