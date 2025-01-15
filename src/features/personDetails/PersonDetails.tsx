@@ -1,13 +1,8 @@
 import { useState } from "react";
 
-import {
-  BIO_PREVIEW_LENGTH,
-  GENDERS,
-  MEDIA_IMG_URL,
-  PREVIEWS_GAP_CLASS,
-} from "@/lib/constants";
+import { GENDERS, MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { IPerson } from "@/lib/typesAPI";
-import { formatDate, getTextPreview } from "@/utils/helpers";
+import { formatDate } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
@@ -31,6 +26,11 @@ function PersonDetails({ person }: { person: IPerson }) {
   const formattedBirthday = formatDate(birthday);
   const formattedDeathday = deathday ? formatDate(deathday) : null;
 
+  // Formatting the biography
+  const formattedBio = biography
+    .split("\n\n")
+    .map((paragraph) => <p>{paragraph}</p>);
+
   // Toggle bio handler
   function toggleBioHandler() {
     setIsBioExpanded((iE) => !iE);
@@ -50,22 +50,24 @@ function PersonDetails({ person }: { person: IPerson }) {
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>
           {formattedDeathday && <div>Deathday: {formattedDeathday}</div>}
-          <div>Place of Birth: {place_of_birth}</div>
+          {place_of_birth && <div>Place of Birth: {place_of_birth}</div>}
         </div>
       </div>
-      <div>
-        <Heading as="h3">Biography</Heading>
+      {biography && (
         <div>
-          <div className="mb-4">
-            {isBioExpanded
-              ? biography
-              : getTextPreview(biography, BIO_PREVIEW_LENGTH)}
+          <Heading as="h3">Biography</Heading>
+          <div>
+            <div className="mb-4">
+              {isBioExpanded ? formattedBio : formattedBio[0]}
+            </div>
+            {formattedBio.length > 1 && (
+              <Button onClick={toggleBioHandler}>
+                <span>Read {isBioExpanded ? "Less" : "More"}</span>
+              </Button>
+            )}
           </div>
-          <Button onClick={toggleBioHandler}>
-            <span>Read {isBioExpanded ? "Less" : "More"}</span>
-          </Button>
         </div>
-      </div>
+      )}
     </>
   );
 }
