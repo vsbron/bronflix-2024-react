@@ -24,25 +24,37 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie);
 
+  // Destructuring data
+  const {
+    title,
+    tagline,
+    release_date,
+    genres,
+    origin_country,
+    original_language,
+    runtime,
+    vote_average,
+    vote_count,
+    budget,
+    overview,
+    production_companies,
+    belongs_to_collection,
+  } = movie;
+
   // Handling some movie data
-  const headingTitle = `${movie.title} (${
-    movie.release_date
-      ? new Date(movie.release_date).getFullYear().toString()
-      : "TBA"
+  const headingTitle = `${title} (${
+    release_date ? new Date(release_date).getFullYear().toString() : "TBA"
   })`;
-  const genres = movie.genres.map((genre: IGenre) => genre.name).join(", ");
-  const originCountry = movie.origin_country
+  const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
+  const originCountry = origin_country
     .map((country: string) => country)
     .join(", ");
-  const score = movie?.vote_average || 0;
-  const count = movie?.vote_count || 0;
-  const budget = movie?.budget || "";
-  const studio = movie?.production_companies?.at(0);
+  const score = vote_average || 0;
+  const count = vote_count || 0;
+  const studio = production_companies?.at(0);
 
   // Checking whether movie is a part of movie collection const
-  const collection = movie.belongs_to_collection;
-
-  console.log(movie.original_language);
+  const collection = belongs_to_collection;
 
   // Returned JSX
   return (
@@ -59,21 +71,21 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               isBig={true}
             />
           </div>
-          <div className="text-[4rem] -my-5 font-heading">{movie.title}</div>
+          <div className="text-[4rem] -my-5 font-heading">{title}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
-            {movie.tagline}
+            {tagline}
           </div>
           <div className="contents text-2xl">
-            <div>{genres}</div>
+            <div>{genresList}</div>
             <div className="flex gap-8">
               <IconWrapper icon={<CalendarIcon />}>
-                {formatDate(movie.release_date)}
+                {formatDate(release_date)}
               </IconWrapper>
               <IconWrapper icon={<LanguageIcon />}>
-                {LANGUAGES[movie.original_language!]}
+                {LANGUAGES[original_language]}
               </IconWrapper>
               <IconWrapper icon={<ClockIcon />}>
-                {formatRuntime(movie.runtime)}
+                {formatRuntime(runtime)}
               </IconWrapper>
             </div>
             <div className="flex gap-8 mb-2">
@@ -81,16 +93,14 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               {studio && (
                 <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
               )}
-              {budget && (
+              {budget !== 0 && (
                 <IconWrapper icon={<BanknotesIcon />}>
                   ${budget.toLocaleString()}
                 </IconWrapper>
               )}
             </div>
           </div>
-          {movie.overview && (
-            <div className="max-w-[65rem] mb-6">{movie.overview}</div>
-          )}
+          {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
           <TrailerButton video={trailer!} />
         </div>
       </MediaHero>
