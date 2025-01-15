@@ -50,6 +50,9 @@ module.exports = {
           left: "50%",
           transform: "translate(-50%, -50%)",
         },
+        ".border-main-color": {
+          borderColor: "var(--color-white--700)",
+        },
       });
     },
   ],
