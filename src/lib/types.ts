@@ -83,6 +83,13 @@ export type WrapperProps = { children: ReactNode; className?: string };
 export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type MovieHighlightProps = { movie: IMovieList };
 
+// General
+export type MediaHeroPros = {
+  media: IBase;
+  posterWidth: string;
+  children: ReactNode;
+};
+
 // Movie page
 export type MovieCastCrewProps = { movieId: string };
 export type MovieCollectionLinkProps = { collection: ICollection };

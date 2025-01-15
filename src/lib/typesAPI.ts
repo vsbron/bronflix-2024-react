@@ -119,8 +119,7 @@ export interface ICrew extends IBase {
 }
 
 /* Misc */
-export interface ICollection {
-  id: number;
+export interface ICollection extends IBase {
   parts?: IMovieList[];
   backdrop_path: string;
   name: string;

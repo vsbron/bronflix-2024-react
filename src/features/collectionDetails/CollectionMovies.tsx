@@ -10,8 +10,8 @@ function CollectionMovies({ movies }: CollectionMoviesProps) {
       <Heading as="h2">Movies in the collection</Heading>
       <Previews
         rawPreviews={movies}
-        width="25rem"
-        height="37rem"
+        width="23rem"
+        height="35rem"
         type="movies"
       />
     </section>

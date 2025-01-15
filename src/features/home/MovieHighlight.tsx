@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/solid";
 
 import { useGenres } from "@/context/GenresContext";
-import { VideoProvider } from "@/context/VideoContext";
 import useTrailer from "@/hooks/useTrailer";
 import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
 import { MovieHighlightProps } from "@/lib/types";
@@ -15,6 +14,7 @@ import {
   BlackGradientToTop,
 } from "@/components/Overlays";
 import ScorePreview from "@/components/ScorePreview";
+import TrailerButton from "@/components/TrailerButton";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Get the genres from Context API
@@ -57,12 +57,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
           <Button>
             <Link to={`/movies/${movie.id}`}>LEARN MORE</Link>
           </Button>
-          <VideoProvider.Trigger>
-            <Button>
-              <span>WATCH TRAILER</span>
-            </Button>
-          </VideoProvider.Trigger>
-          <VideoProvider.Content video={trailer!} />
+          <TrailerButton video={trailer!} />
         </div>
       </div>
       <div
