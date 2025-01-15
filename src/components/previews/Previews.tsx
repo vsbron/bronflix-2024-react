@@ -53,7 +53,7 @@ function Previews<T extends IBase>({
         {!!width
           ? rawPreviews.map((media: T) => (
               <PreviewItem
-                key={media.id}
+                key={subtitle !== "job" ? media.id : media.id + "-" + media.job}
                 media={media}
                 type={type}
                 height={height}

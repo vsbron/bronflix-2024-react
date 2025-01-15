@@ -57,6 +57,8 @@ export async function getPerson(movieId: string): Promise<IPerson> {
     // Getting the actual data
     const data = await response.json();
 
+    console.log(data);
+
     // Return the person
     return data;
   } catch (error: unknown) {

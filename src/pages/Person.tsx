@@ -9,18 +9,18 @@ import PersonDetails from "@/features/personDetails/PersonDetails";
 export const personLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<IPerson> => {
-  // Getting the actor using API function
+  // Getting the person using API function
   const person = await getPerson(params.personId!);
   // Return show
   return person;
 };
 
-function Actor() {
-  // Getting the actor data from the loader
-  const actor = useLoaderData() as IPerson;
+function Person() {
+  // Getting the person data from the loader
+  const person = useLoaderData() as IPerson;
 
   // Returned JSX
-  return <PersonDetails actor={actor} />;
+  return <PersonDetails person={person} />;
 }
 
-export default Actor;
+export default Person;
