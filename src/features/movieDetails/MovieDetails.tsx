@@ -30,15 +30,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     tagline,
     release_date,
     genres,
-    origin_country,
-    original_language,
+    origin_country: country,
+    original_language: language,
     runtime,
-    vote_average,
-    vote_count,
+    vote_average: score,
+    vote_count: count,
     budget,
     overview,
-    production_companies,
-    belongs_to_collection,
+    production_companies: companies,
+    belongs_to_collection: collection,
   } = movie;
 
   // Handling some movie data
@@ -46,15 +46,8 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     release_date ? new Date(release_date).getFullYear().toString() : "TBA"
   })`;
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
-  const originCountry = origin_country
-    .map((country: string) => country)
-    .join(", ");
-  const score = vote_average || 0;
-  const count = vote_count || 0;
-  const studio = production_companies?.at(0);
-
-  // Checking whether movie is a part of movie collection const
-  const collection = belongs_to_collection;
+  const originCountry = country.map((country: string) => country).join(", ");
+  const studio = companies.at(0);
 
   // Returned JSX
   return (
@@ -82,7 +75,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
                 {formatDate(release_date)}
               </IconWrapper>
               <IconWrapper icon={<LanguageIcon />}>
-                {LANGUAGES[original_language]}
+                {LANGUAGES[language]}
               </IconWrapper>
               <IconWrapper icon={<ClockIcon />}>
                 {formatRuntime(runtime)}
