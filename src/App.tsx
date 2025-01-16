@@ -18,6 +18,7 @@ import Show, { showLoader } from "@/pages/Show";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import TermsOfUse from "@/pages/TermsOfUse";
+import { HelmetProvider } from "react-helmet-async";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -93,7 +94,9 @@ function App() {
   // Returned JSX
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
     </QueryClientProvider>
   );
 }

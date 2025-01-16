@@ -68,6 +68,7 @@ The app includes the following sections and pages:
 - **Icons:** HeroIcons for modern and consistent UI elements.
 - **State Management:** Context API for managing global state.
 - **API:** TMDB API for fetching movies, shows, and actor data.
+- **Meta Management:** React Helmet Async for handling dynamic meta tags and improving SEO and social sharing.
 
 ## Live version
 
