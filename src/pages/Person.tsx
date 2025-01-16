@@ -1,11 +1,6 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import {
-  NOTABLE_POPULARITY_LIMIT,
-  NOTABLE_SCORE_LIMIT,
-  NOTABLE_WORK_LIMIT,
-} from "@/lib/constants";
-import { IMediaCredit, IPerson } from "@/lib/typesAPI";
+import { IMovie, IPerson, IShow } from "@/lib/typesAPI";
 import { getPerson } from "@/services/apiPerson";
 
 import PersonDetails from "@/features/personDetails/PersonDetails";
@@ -30,25 +25,19 @@ function Person() {
   const person = useLoaderData() as IPerson;
 
   // Getting the movies data from React Query
-  const { isLoading, data: movies, error } = usePersonCredits(person.id);
+  const { isLoading, data, error } = usePersonCredits(person.id);
 
   // Guard clause
   if (isLoading || error) return <Loader />;
 
-  // Filtering out the notable movies
-  const notableMovies = movies
-    .filter(
-      (movie: IMediaCredit) =>
-        movie.popularity > NOTABLE_POPULARITY_LIMIT &&
-        movie.vote_average >= NOTABLE_SCORE_LIMIT
-    )
-    .sort((a: IMediaCredit, b: IMediaCredit) => b.vote_average - a.vote_average)
-    // Remove duplicates based on unique property (e.g., `id`)
-    .filter(
-      (movie: any, index: any, self: any) =>
-        index === self.findIndex((m: any) => m.id === movie.id)
-    )
-    .slice(0, NOTABLE_WORK_LIMIT);
+  // Combining movies and shows data
+  const creditsData = [
+    ...data.movies.cast.map((movie: IMovie) => ({
+      ...movie,
+      type: "movies",
+    })),
+    ...data.shows.cast.map((show: IShow) => ({ ...show, type: "tv" })),
+  ];
 
   // Returned JSX
   return (
@@ -56,7 +45,7 @@ function Person() {
       <Heading>{person.name}</Heading>
       <div className="flex flex-col gap-10">
         <PersonDetails person={person} />
-        <PersonNotableWork movies={notableMovies} />
+        <PersonNotableWork credits={creditsData} />
       </div>
       <PersonFilmography />
     </div>

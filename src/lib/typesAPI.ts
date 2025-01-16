@@ -59,6 +59,7 @@ export interface IMovie {
   revenue: number;
   runtime: number;
   spoken_languages: { english_name: string }[];
+  type?: Media;
   vote_average: number;
   vote_count: number;
 }
@@ -90,7 +91,7 @@ export interface IShow {
   seasons?: ISeason[];
   spoken_languages?: { english_name: string }[];
   status?: string;
-  type?: string;
+  type?: Media;
   vote_average?: number;
   vote_count?: number;
 }

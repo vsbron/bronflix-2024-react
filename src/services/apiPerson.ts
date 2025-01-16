@@ -1,12 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import {
-  ICastCrew,
-  ICredits,
-  IMovie,
-  IPerson,
-  IPersonList,
-  IShow,
-} from "@/lib/typesAPI";
+import { ICastCrew, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -136,14 +129,9 @@ export async function getPersonCredits(personId: number): Promise<any> {
     // Getting the actual data
     const data1 = await response1.json();
     const data2 = await response2.json();
+    const data = { movies: data1, shows: data2 };
 
-    // Merging data while assigning specific type to every item
-    const data = [
-      ...data1.cast.map((movie: IMovie) => ({ ...movie, type: "movies" })),
-      ...data2.cast.map((show: IShow) => ({ ...show, type: "tv" })),
-    ];
-
-    // Return the credits list
+    // Return the combined credits list
     return data;
   } catch (error: unknown) {
     if (error instanceof Error) {
