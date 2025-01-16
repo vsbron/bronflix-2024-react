@@ -1,6 +1,11 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import { IPerson } from "@/lib/typesAPI";
+import {
+  NOTABLE_POPULARITY_LIMIT,
+  NOTABLE_SCORE_LIMIT,
+  NOTABLE_WORK_LIMIT,
+} from "@/lib/constants";
+import { IMediaCredit, IPerson } from "@/lib/typesAPI";
 import { getPerson } from "@/services/apiPerson";
 
 import PersonDetails from "@/features/personDetails/PersonDetails";
@@ -8,7 +13,6 @@ import PersonNotableWork from "@/features/personDetails/PersonNotableWork";
 import PersonFilmography from "@/features/personDetails/PersonFilmography";
 import { usePersonCredits } from "@/features/personDetails/usePersonCredits";
 import Heading from "@/components/ui/Heading";
-import Error from "./Error";
 import Loader from "@/components/ui/Loader";
 
 // Show data loader
@@ -25,9 +29,21 @@ function Person() {
   // Getting the person data from the loader
   const person = useLoaderData() as IPerson;
 
+  // Getting the movies data from React Query
   const { isLoading, data: movies, error } = usePersonCredits(person.id);
 
+  // Guard clause
   if (isLoading || error) return <Loader />;
+
+  // Filtering out the notable movies
+  const notableMovies = movies?.cast
+    .filter(
+      (movie: IMediaCredit) =>
+        movie.popularity > NOTABLE_POPULARITY_LIMIT &&
+        movie.vote_average >= NOTABLE_SCORE_LIMIT
+    )
+    .sort((a, b) => b.vote_average - a.vote_average)
+    .slice(0, NOTABLE_WORK_LIMIT);
 
   // Returned JSX
   return (
@@ -35,7 +51,7 @@ function Person() {
       <Heading>{person.name}</Heading>
       <div className="flex flex-col gap-10">
         <PersonDetails person={person} />
-        <PersonNotableWork movies={movies.cast} />
+        <PersonNotableWork movies={notableMovies} />
       </div>
       <PersonFilmography />
     </div>

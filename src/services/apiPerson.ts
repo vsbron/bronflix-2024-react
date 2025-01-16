@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { ICastCrew, IMovie, IPerson, IPersonList } from "@/lib/typesAPI";
+import { ICastCrew, ICredits, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -106,7 +106,7 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
 }
 
 // API for getting persons` credited work
-export async function getPersonCredits(personId: number): Promise<any> {
+export async function getPersonCredits(personId: number): Promise<ICredits> {
   try {
     // Fetching the data
     const response = await fetch(
@@ -124,6 +124,8 @@ export async function getPersonCredits(personId: number): Promise<any> {
 
     // Getting the actual data
     const data = await response.json();
+
+    console.log(data);
 
     // Return the movie list
     return data;

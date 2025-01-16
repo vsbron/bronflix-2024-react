@@ -119,6 +119,20 @@ export interface ICrew extends IBase {
   job: string;
 }
 
+export interface ICredits {
+  cast: IMediaCredit[];
+  crew: IMediaCredit[];
+}
+
+export interface IMediaCredit {
+  id: number;
+  title: string;
+  release_date: string;
+  popularity: number;
+  vote_average: number;
+  character?: string;
+}
+
 /* Misc */
 export interface ICollection extends IBase {
   parts?: IMovieList[];

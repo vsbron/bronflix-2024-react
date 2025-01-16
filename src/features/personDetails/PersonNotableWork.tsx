@@ -8,8 +8,8 @@ function PersonNotableWork({ movies }: { movies: any }) {
       <Heading as="h3">Notable work</Heading>
       <Previews
         rawPreviews={movies}
-        width="23rem"
-        height="35rem"
+        width="18rem"
+        height="27rem"
         type="movies"
       />
     </div>
