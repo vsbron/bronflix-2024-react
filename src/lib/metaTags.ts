@@ -9,3 +9,16 @@ export const META_MAIN_DESC =
   "Your ultimate platform for exploring movies and TV shows. Discover detailed information, search for your favorites, and enjoy personalized recommendations.";
 export const META_MAIN_KEYW =
   "movies, tv shows, entertainment, streaming, genres, recommendations, BroNflix, film, series, movie database";
+
+// Other pages
+export const META_PRIVACY_TITLE = `Privacy Policy${META_TITLE_END}`;
+export const META_PRIVACY_DESC =
+  "At BroNflix, your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our platform.";
+
+export const META_TERMS_TITLE = `Terms of Use${META_TITLE_END}`;
+export const META_TERMS_DESC =
+  "Your ultimate platform for exploring movies and TV shows. By using BroNflix, you agree to abide by the following terms and conditions. Please review them carefully before using the site.";
+
+export const META_NOT_FOUND_TITLE = `Page Not Found${META_TITLE_END}`;
+export const META_NOT_FOUND_DESC =
+  "The page you're looking for doesn't exist. Please check the URL or return to the homepage.";

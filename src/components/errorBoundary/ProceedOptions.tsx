@@ -6,7 +6,7 @@ function ProceedOptions() {
 
   // Returned JSX
   return (
-    <div className="mt-12">
+    <div className="mt-8">
       Please check the URL or try again later. If the problem persists, you can:
       <ul className="list-disc pl-2 my-2">
         <li>
