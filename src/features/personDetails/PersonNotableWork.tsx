@@ -11,6 +11,7 @@ function PersonNotableWork({ movies }: { movies: any }) {
         width="18rem"
         height="27rem"
         type="movies"
+        merged={true}
       />
     </div>
   );

@@ -23,7 +23,7 @@ function PreviewImage({ media, type, children }: PreviewImageProps) {
       className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
     >
       {children}
-      {(media.name || (media.title && !imgPath)) && (
+      {(type === "tv" || (media.title && !imgPath)) && (
         <div
           className="relative w-full text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore

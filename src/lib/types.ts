@@ -3,8 +3,8 @@ import { IBase, ICollection, IGenre, IMovie, IMovieList } from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
-type Media = "person" | "tv" | "movies";
 type PreviewSubtitles = "character" | "job";
+export type Media = "person" | "tv" | "movies";
 export type RibbonDirections = "left" | "right";
 
 /* Context */
@@ -44,6 +44,7 @@ export type PreviewsProps<T> = {
   type: Media;
   subtitle?: PreviewSubtitles;
   isTwoRows?: boolean;
+  merged?: boolean;
 };
 export type PreviewItemProps<T> = {
   media: T;
@@ -57,6 +58,12 @@ export type PreviewGroupProps<T> = {
   type: string;
   flexBasis?: string;
   height: string;
+};
+export type PreviewMergedProps<T> = {
+  media: T;
+  height: string;
+  width: string;
+  type: Media;
 };
 export type PreviewImageProps = {
   media: IBase;

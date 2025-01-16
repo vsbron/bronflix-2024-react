@@ -5,6 +5,7 @@ import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import {
   PreviewGroupProps,
   PreviewItemProps,
+  PreviewMergedProps,
   PreviewsProps,
 } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
@@ -20,6 +21,7 @@ function Previews<T extends IBase>({
   type,
   subtitle,
   isTwoRows,
+  merged = false,
 }: PreviewsProps<T>) {
   // Setting the ref for the ribbon
   const ribbonRef = useRef<HTMLDivElement>(null);
@@ -51,16 +53,28 @@ function Previews<T extends IBase>({
       >
         {/* If there's width provided, then we scroll by one, otherwise by set */}
         {!!width
-          ? rawPreviews.map((media: T) => (
-              <PreviewItem
-                key={subtitle !== "job" ? media.id : media.id + "-" + media.job}
-                media={media}
-                type={type}
-                height={height}
-                width={width!}
-                subtitle={subtitle}
-              />
-            ))
+          ? merged
+            ? rawPreviews.map((media: T) => (
+                <PreviewMerged
+                  key={media.id}
+                  media={media}
+                  type={type}
+                  height={height}
+                  width={width}
+                />
+              ))
+            : rawPreviews.map((media: T) => (
+                <PreviewItem
+                  key={
+                    subtitle !== "job" ? media.id : media.id + "-" + media.job
+                  }
+                  media={media}
+                  type={type}
+                  height={height}
+                  width={width!}
+                  subtitle={subtitle}
+                />
+              ))
           : Array.from({ length: pages }).map((_, i) => {
               // Calculating the number of previews in a set
               const start = i * elementsPerPage;
@@ -97,7 +111,7 @@ function PreviewItem<T extends IBase>({
   // Returned JSX
   return (
     <div
-      className="block  flex-shrink-0 rounded-lg overflow-x-hidden"
+      className="block flex-shrink-0 rounded-lg overflow-x-hidden"
       style={{ flexBasis: width }}
     >
       <Link
@@ -137,6 +151,28 @@ function PreviewGroup<T extends IBase>({
           <PreviewImage media={media} type={type} />
         </Link>
       ))}
+    </div>
+  );
+}
+
+function PreviewMerged<T extends IBase>({
+  media,
+  height,
+  width,
+}: PreviewMergedProps<T>) {
+  // Returned JSX
+  return (
+    <div
+      className="block flex-shrink-0 rounded-lg overflow-x-hidden"
+      style={{ flexBasis: width }}
+    >
+      <Link
+        to={`/${media.type === "tv" ? "shows" : media.type}/${media.id}`}
+        className="block"
+        style={{ height }}
+      >
+        <PreviewImage media={media} type="movies" />
+      </Link>
     </div>
   );
 }

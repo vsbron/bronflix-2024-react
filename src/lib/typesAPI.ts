@@ -1,3 +1,5 @@
+import { Media } from "./types";
+
 export type APIFetchType = "popular" | "top_rated";
 
 /* Fetched lists */
@@ -12,6 +14,7 @@ export interface IBase {
   vote_count?: number;
   character?: string;
   job?: string;
+  type?: Media;
 }
 export interface IMovieList extends IBase {
   title: string;

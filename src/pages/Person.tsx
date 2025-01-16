@@ -36,13 +36,18 @@ function Person() {
   if (isLoading || error) return <Loader />;
 
   // Filtering out the notable movies
-  const notableMovies = movies?.cast
+  const notableMovies = movies
     .filter(
       (movie: IMediaCredit) =>
         movie.popularity > NOTABLE_POPULARITY_LIMIT &&
         movie.vote_average >= NOTABLE_SCORE_LIMIT
     )
-    .sort((a, b) => b.vote_average - a.vote_average)
+    .sort((a: IMediaCredit, b: IMediaCredit) => b.vote_average - a.vote_average)
+    // Remove duplicates based on unique property (e.g., `id`)
+    .filter(
+      (movie: any, index: any, self: any) =>
+        index === self.findIndex((m: any) => m.id === movie.id)
+    )
     .slice(0, NOTABLE_WORK_LIMIT);
 
   // Returned JSX
