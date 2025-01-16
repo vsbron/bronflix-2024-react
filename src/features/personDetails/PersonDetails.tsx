@@ -29,7 +29,7 @@ function PersonDetails({ person }: { person: IPerson }) {
   // Formatting the biography
   const formattedBio = biography
     .split("\n\n")
-    .map((paragraph) => <p>{paragraph}</p>);
+    .map((paragraph, i) => <p key={i}>{paragraph}</p>);
 
   // Toggle bio handler
   function toggleBioHandler() {
@@ -39,10 +39,12 @@ function PersonDetails({ person }: { person: IPerson }) {
   // Returned JSX
   return (
     <>
-      <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
+      <div className={`flex gap-10`}>
         <img
           src={`${MEDIA_IMG_URL}w400${person.profile_path}`}
           className="rounded-lg w-[20rem]"
+          alt={person.name}
+          title={`${person.name} photo`}
         />
         <div className="flex flex-col justify-end">
           <div className="text-[4rem] font-heading">{name}</div>

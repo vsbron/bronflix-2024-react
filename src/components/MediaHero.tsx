@@ -17,6 +17,8 @@ function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
         src={posterPath}
         className="rounded-lg"
         style={{ width: posterWidth }}
+        alt={media.title || media.name}
+        title={`${media.title || media.name} poster`}
       />
       <div
         style={{ backgroundImage }}

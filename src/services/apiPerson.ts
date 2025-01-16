@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { ICastCrew, IPerson, IPersonList } from "@/lib/typesAPI";
+import { ICastCrew, IMovie, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -57,8 +57,6 @@ export async function getPerson(movieId: string): Promise<IPerson> {
     // Getting the actual data
     const data = await response.json();
 
-    console.log(data);
-
     // Return the person
     return data;
   } catch (error: unknown) {
@@ -102,6 +100,41 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
       console.error(error);
       throw new Error(
         "An unknown error occurred while fetching cast & crew data."
+      );
+    }
+  }
+}
+
+// API for getting persons` credited work
+export async function getPersonCredits(personId: number): Promise<any> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}/person/${personId}/movie_credits?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the person's work data: ${response.statusText}}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the movie list
+    return data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw new Error("An error occurred while fetching person's work data");
+    } else {
+      console.error(error);
+      throw new Error(
+        "An unknown error occurred while fetching person's work data."
       );
     }
   }
