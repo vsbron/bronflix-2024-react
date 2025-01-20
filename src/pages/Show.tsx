@@ -1,5 +1,7 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
+import { META_TITLE_END } from "@/lib/metaTags";
 import { IShow } from "@/lib/typesAPI";
 import { getShow } from "@/services/apiShows";
 
@@ -19,8 +21,34 @@ function Show() {
   // Getting the show data from the loader
   const show = useLoaderData() as IShow;
 
+  // Destructuring some data
+  const { name, first_air_date } = show;
+
   // Returned JSX
-  return <ShowDetails show={show} />;
+  return (
+    <>
+      {/* Meta data */}
+      <Helmet>
+        <title>
+          {`${name} (${new Date(
+            first_air_date
+          ).getFullYear()}) - Show${META_TITLE_END}`}
+        </title>
+        <meta
+          name="description"
+          content={`Discover the overview of ${name}, explore the cast and crew, watch the trailer, and dive into all the details about the show's release.`}
+        />
+        <meta
+          name="keywords"
+          content={`${name}, show, TV series, plot, cast, crew, release date, creator, director, actors, genres, rating, episodes, seasons, trailer`}
+        />
+        <meta name="robots" content="index,follow" />
+      </Helmet>
+
+      {/* Content */}
+      <ShowDetails show={show} />
+    </>
+  );
 }
 
 export default Show;

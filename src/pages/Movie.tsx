@@ -35,7 +35,7 @@ function Movie() {
         <title>
           {`${title} (${new Date(
             release_date
-          ).getFullYear()})${META_TITLE_END}`}
+          ).getFullYear()}) - Movie${META_TITLE_END}`}
         </title>
         <meta
           name="description"
