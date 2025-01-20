@@ -1,14 +1,14 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
 
-import { IMovie, IPerson, IShow } from "@/lib/typesAPI";
+import { IMediaCredit, IPerson } from "@/lib/typesAPI";
 import { getPerson } from "@/services/apiPerson";
 
+import Heading from "@/components/ui/Heading";
+import Loader from "@/components/ui/Loader";
 import PersonDetails from "@/features/personDetails/PersonDetails";
 import PersonNotableWork from "@/features/personDetails/PersonNotableWork";
 import PersonFilmography from "@/features/personDetails/PersonFilmography";
 import { usePersonCredits } from "@/features/personDetails/usePersonCredits";
-import Heading from "@/components/ui/Heading";
-import Loader from "@/components/ui/Loader";
 
 // Show data loader
 export const personLoader = async ({
@@ -37,12 +37,12 @@ function Person() {
 
   // Combining data to work as a cast and work as a crew
   const cast = [
-    ...moviesCast.map((movie: IMovie) => ({ ...movie, type: "movies" })),
-    ...showsCast.map((show: IShow) => ({ ...show, type: "tv" })),
+    ...moviesCast.map((movie: IMediaCredit) => ({ ...movie, type: "movies" })),
+    ...showsCast.map((show: IMediaCredit) => ({ ...show, type: "tv" })),
   ];
   const crew = [
-    ...moviesCrew.map((movie: IMovie) => ({ ...movie, type: "movies" })),
-    ...showsCrew.map((show: IShow) => ({ ...show, type: "tv" })),
+    ...moviesCrew.map((movie: IMediaCredit) => ({ ...movie, type: "movies" })),
+    ...showsCrew.map((show: IMediaCredit) => ({ ...show, type: "tv" })),
   ];
 
   // Boolean indicator for correct work to be highlighted

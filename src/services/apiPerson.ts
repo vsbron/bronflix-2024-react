@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { ICastCrew, IPerson, IPersonList } from "@/lib/typesAPI";
+import { ICastCrew, IMediaCredit, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -106,9 +106,10 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
 }
 
 // API for getting persons` credited work
-export async function getPersonCredits(
-  personId: number
-): Promise<{ movies: any; shows: any }> {
+export async function getPersonCredits(personId: number): Promise<{
+  movies: { cast: IMediaCredit[]; crew: IMediaCredit[] };
+  shows: { cast: IMediaCredit[]; crew: IMediaCredit[] };
+}> {
   // Creating urls for fetching
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const endpoints = [
