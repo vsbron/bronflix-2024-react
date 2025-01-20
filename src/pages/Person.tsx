@@ -1,5 +1,7 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
+import { META_TITLE_END } from "@/lib/metaTags";
 import { IMediaCredit, IPerson } from "@/lib/typesAPI";
 import { getPerson } from "@/services/apiPerson";
 
@@ -9,8 +11,6 @@ import PersonDetails from "@/features/personDetails/PersonDetails";
 import PersonNotableWork from "@/features/personDetails/PersonNotableWork";
 import PersonFilmography from "@/features/personDetails/PersonFilmography";
 import { usePersonCredits } from "@/features/personDetails/usePersonCredits";
-import { Helmet } from "react-helmet-async";
-import { META_TITLE_END } from "@/lib/metaTags";
 
 // Show data loader
 export const personLoader = async ({
@@ -56,6 +56,7 @@ function Person() {
   // Returned JSX
   return (
     <>
+      {/* Meta data */}
       <Helmet>
         <title>{`${name} - Profile${META_TITLE_END}`}</title>
         <meta
@@ -69,13 +70,14 @@ function Person() {
         <meta name="robots" content="index,follow" />
       </Helmet>
 
+      {/* Content */}
       <div className="grid grid-cols-[60%_40%] gap-x-12">
         <Heading>{person.name}</Heading>
         <div className="flex flex-col gap-10">
           <PersonDetails person={person} />
           <PersonNotableWork credits={isActor ? cast : crew} />
         </div>
-        <PersonFilmography />
+        <PersonFilmography cast={cast} crew={crew} />
       </div>
     </>
   );

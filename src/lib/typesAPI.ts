@@ -130,8 +130,10 @@ export interface ICredits {
 
 export interface IMediaCredit {
   id: string;
-  title: string;
-  release_date: string;
+  title?: string;
+  name?: string;
+  release_date?: string;
+  first_air_date?: string;
   popularity: number;
   vote_average: number;
   character?: string;
