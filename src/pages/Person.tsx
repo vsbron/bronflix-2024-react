@@ -9,6 +9,8 @@ import PersonDetails from "@/features/personDetails/PersonDetails";
 import PersonNotableWork from "@/features/personDetails/PersonNotableWork";
 import PersonFilmography from "@/features/personDetails/PersonFilmography";
 import { usePersonCredits } from "@/features/personDetails/usePersonCredits";
+import { Helmet } from "react-helmet-async";
+import { META_TITLE_END } from "@/lib/metaTags";
 
 // Show data loader
 export const personLoader = async ({
@@ -23,6 +25,9 @@ export const personLoader = async ({
 function Person() {
   // Getting the person data from the loader
   const person = useLoaderData() as IPerson;
+
+  // Destructuring some person data
+  const { name } = person;
 
   // Getting the movies data from React Query
   const { isLoading, data } = usePersonCredits(person.id);
@@ -50,14 +55,29 @@ function Person() {
 
   // Returned JSX
   return (
-    <div className="grid grid-cols-[60%_40%] gap-x-12">
-      <Heading>{person.name}</Heading>
-      <div className="flex flex-col gap-10">
-        <PersonDetails person={person} />
-        <PersonNotableWork credits={isActor ? cast : crew} />
+    <>
+      <Helmet>
+        <title>{`${name} - Profile${META_TITLE_END}`}</title>
+        <meta
+          name="description"
+          content={`Dive into ${name}'s profile, learn about their biography, birthdate, place of birth, notable works, and filmography.`}
+        />
+        <meta
+          name="keywords"
+          content={`${name}, biography, filmography, career, notable works, birthdate, place of birth, movies, shows`}
+        />
+        <meta name="robots" content="index,follow" />
+      </Helmet>
+
+      <div className="grid grid-cols-[60%_40%] gap-x-12">
+        <Heading>{person.name}</Heading>
+        <div className="flex flex-col gap-10">
+          <PersonDetails person={person} />
+          <PersonNotableWork credits={isActor ? cast : crew} />
+        </div>
+        <PersonFilmography />
       </div>
-      <PersonFilmography />
-    </div>
+    </>
   );
 }
 

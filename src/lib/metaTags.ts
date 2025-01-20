@@ -22,3 +22,7 @@ export const META_TERMS_DESC =
 export const META_NOT_FOUND_TITLE = `Page Not Found${META_TITLE_END}`;
 export const META_NOT_FOUND_DESC =
   "The page you're looking for doesn't exist. Please check the URL or return to the homepage.";
+
+export const META_ERROR_TITLE = `Error${META_TITLE_END}`;
+export const META_ERROR_DESC =
+  "An unexpected error has occurred. Please try again later or return to the homepage for more options.";
