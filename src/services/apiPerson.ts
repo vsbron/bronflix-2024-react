@@ -106,33 +106,35 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
 }
 
 // API for getting persons` credited work
-export async function getPersonCredits(personId: number): Promise<any> {
+export async function getPersonCredits(
+  personId: number
+): Promise<{ movies: any; shows: any }> {
+  // Creating urls for fetching
+  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+  const endpoints = [
+    `${MEDIA_URL}/person/${personId}/movie_credits?api_key=${API_KEY}`,
+    `${MEDIA_URL}/person/${personId}/tv_credits?api_key=${API_KEY}`,
+  ];
+
   try {
-    // Fetching the movies data
-    const response1 = await fetch(
-      `${MEDIA_URL}/person/${personId}/movie_credits?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
-    );
-    // Fetching the show data
-    const response2 = await fetch(
-      `${MEDIA_URL}/person/${personId}/tv_credits?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
+    // Fetching data concurrently
+    const [moviesResponse, showsResponse] = await Promise.all(
+      endpoints.map((url) => fetch(url))
     );
 
     // Guard clause
-    if (!response1.ok || !response2.ok) {
+    if (!moviesResponse.ok || !showsResponse.ok) {
       throw new Error("Failed to fetch the person's work data");
     }
 
-    // Getting the actual data
-    const data1 = await response1.json();
-    const data2 = await response2.json();
-    const data = { movies: data1, shows: data2 };
+    // Parsing the data
+    const [movies, shows] = await Promise.all([
+      moviesResponse.json(),
+      showsResponse.json(),
+    ]);
 
     // Return the combined credits list
-    return data;
+    return { movies, shows };
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(error.message);

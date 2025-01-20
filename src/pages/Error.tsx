@@ -1,6 +1,15 @@
+import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
+import Heading from "@/components/ui/Heading";
+
 function Error() {
   // Returned JSX
-  return <div>Oops! Something went wrong.</div>;
+  return (
+    <section>
+      <Heading as="h1">Error</Heading>
+      <p>Oops! Something went wrong</p>
+      <ProceedOptions />
+    </section>
+  );
 }
 
 export default Error;

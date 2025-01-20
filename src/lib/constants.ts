@@ -18,7 +18,7 @@ export const BIO_PREVIEW_LENGTH = 400;
 
 export const NOTABLE_WORK_LIMIT = 15;
 export const NOTABLE_POPULARITY_LIMIT = 10;
-export const NOTABLE_SCORE_LIMIT = 7;
+export const NOTABLE_SCORE_LIMIT = 7.5;
 
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",

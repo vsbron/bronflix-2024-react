@@ -129,7 +129,7 @@ export interface ICredits {
 }
 
 export interface IMediaCredit {
-  id: number;
+  id: string;
   title: string;
   release_date: string;
   popularity: number;

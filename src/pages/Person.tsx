@@ -25,19 +25,28 @@ function Person() {
   const person = useLoaderData() as IPerson;
 
   // Getting the movies data from React Query
-  const { isLoading, data, error } = usePersonCredits(person.id);
+  const { isLoading, data } = usePersonCredits(person.id);
 
-  // Guard clause
-  if (isLoading || error) return <Loader />;
+  // Guard clauses
+  if (isLoading) return <Loader />;
 
-  // Combining movies and shows data
-  const creditsData = [
-    ...data.movies.cast.map((movie: IMovie) => ({
-      ...movie,
-      type: "movies",
-    })),
-    ...data.shows.cast.map((show: IShow) => ({ ...show, type: "tv" })),
+  // Destructuring and combining the fetched data (data is guaranteed as we catch the error in Router)
+  const { movies, shows } = data!;
+  const { cast: moviesCast, crew: moviesCrew } = movies;
+  const { cast: showsCast, crew: showsCrew } = shows;
+
+  // Combining data to work as a cast and work as a crew
+  const cast = [
+    ...moviesCast.map((movie: IMovie) => ({ ...movie, type: "movies" })),
+    ...showsCast.map((show: IShow) => ({ ...show, type: "tv" })),
   ];
+  const crew = [
+    ...moviesCrew.map((movie: IMovie) => ({ ...movie, type: "movies" })),
+    ...showsCrew.map((show: IShow) => ({ ...show, type: "tv" })),
+  ];
+
+  // Boolean indicator for correct work to be highlighted
+  const isActor = person.known_for_department === "Acting";
 
   // Returned JSX
   return (
@@ -45,7 +54,7 @@ function Person() {
       <Heading>{person.name}</Heading>
       <div className="flex flex-col gap-10">
         <PersonDetails person={person} />
-        <PersonNotableWork credits={creditsData} />
+        <PersonNotableWork credits={isActor ? cast : crew} />
       </div>
       <PersonFilmography />
     </div>

@@ -3,12 +3,12 @@ import {
   NOTABLE_SCORE_LIMIT,
   NOTABLE_WORK_LIMIT,
 } from "@/lib/constants";
-import { IMediaCredit, IMovie } from "@/lib/typesAPI";
+import { IMediaCredit } from "@/lib/typesAPI";
 
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 
-function PersonNotableWork({ credits }: { credits: any[] }) {
+function PersonNotableWork({ credits }: { credits: IMediaCredit[] }) {
   // Filtering out the notable work
   const notableWork = credits
     .filter(
@@ -18,8 +18,8 @@ function PersonNotableWork({ credits }: { credits: any[] }) {
     )
     .sort((a, b) => b.vote_average - a.vote_average)
     .filter(
-      (movie: IMovie, i: number, self: IMovie[]) =>
-        i === self.findIndex((m: IMovie) => m.id === movie.id)
+      (movie: IMediaCredit, i: number, self: IMediaCredit[]) =>
+        i === self.findIndex((m: IMediaCredit) => m.id === movie.id)
     )
     .slice(0, NOTABLE_WORK_LIMIT);
 
