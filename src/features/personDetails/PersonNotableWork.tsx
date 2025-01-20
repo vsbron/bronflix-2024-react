@@ -17,10 +17,13 @@ function PersonNotableWork({ credits }: { credits: IMediaCredit[] }) {
         movie.popularity > NOTABLE_POPULARITY_LIMIT &&
         movie.vote_average >= scoreLimit;
 
+      // Checking if media is unique
       const isUnique = !acc.some((m) => m.id === movie.id);
 
+      // If it's unique and passes condition, add it to an array
       if (isNotable && isUnique) acc.push(movie);
 
+      // Return the array
       return acc;
     }, []);
   };
@@ -38,22 +41,21 @@ function PersonNotableWork({ credits }: { credits: IMediaCredit[] }) {
     .sort((a, b) => b.vote_average - a.vote_average)
     .slice(0, NOTABLE_WORK_LIMIT);
 
+  // Guard clause
+  if (notableWork.length === 0) return;
+
   // Returned JSX
   return (
-    <>
-      {notableWork.length !== 0 && (
-        <div>
-          <Heading as="h3">Notable work</Heading>
-          <Previews
-            rawPreviews={notableWork}
-            width="18rem"
-            height="27rem"
-            type="movies"
-            merged={true}
-          />
-        </div>
-      )}
-    </>
+    <div>
+      <Heading as="h3">Notable work</Heading>
+      <Previews
+        rawPreviews={notableWork}
+        width="18rem"
+        height="27rem"
+        type="movies"
+        merged={true}
+      />
+    </div>
   );
 }
 
