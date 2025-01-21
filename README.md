@@ -52,9 +52,14 @@ The app includes the following sections and pages:
 
 - Features in-depth details about a selected show.
 
-### Actor Page
+### Person Page
 
-- Displays detailed actor profiles.
+- Displays detailed information about the person, including:
+  - Name, birthday, place of birth, and biography.
+- Showcases notable works with a movie poster carousel, featuring clickable movie posters that link to individual movie pages.
+- Includes an expandable filmography section, displaying:
+  - Roles for actors (e.g., character names).
+  - Job titles for crew members (e.g., director, producer, writer).
 
 ### Collection Page
 
