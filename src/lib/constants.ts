@@ -21,6 +21,8 @@ export const NOTABLE_POPULARITY_LIMIT = 10;
 export const NOTABLE_SCORE_LIMIT = 7.5;
 export const NOTABLE_SCORE_SECONDARY = 7;
 
+export const FILMOGRAPHY_LIMIT = 40;
+
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",
   es: "Spanish",

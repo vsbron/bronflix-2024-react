@@ -6,6 +6,7 @@ import { IMediaCredit } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
+import { FILMOGRAPHY_LIMIT } from "@/lib/constants";
 
 function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   // Helper function that sorts the credits array
@@ -86,8 +87,12 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   const modifiedCast = groupCredits(processCredits(cast));
   const modifiedCrew = groupCredits(processCredits(crew));
 
+  // Checking if filmography is big
+  const isBigFilmography =
+    modifiedCast.length + modifiedCrew.length > FILMOGRAPHY_LIMIT;
+
   // Setting the state for the expanded filmography
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(isBigFilmography);
 
   // Click handler
   const handleExpand = () => {
@@ -99,21 +104,26 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
     <div className="border-l-[1px] border-main-color px-12">
       <h2 className="mt-0 uppercase">Filmography</h2>
       <div
-        className="flex flex-col gap-2 overflow-hidden relative"
-        style={{ height: `${isExpanded ? "auto" : "88rem"}` }}
+        className={`flex flex-col gap-2 overflow-hidden relative ${
+          isExpanded || !isBigFilmography ? "" : "h-[88rem]"
+        }`}
       >
         {renderCredits(modifiedCast, "Actor")}
         {renderCredits(modifiedCrew, "Production")}
-        {!isExpanded && <BlackGradientToTop height="30rem" />}
-        <div
-          className={`inset-0 top-auto z-10 flex justify-center mt-12 ${
-            isExpanded ? "static" : "absolute"
-          }`}
-        >
-          <Button onClick={handleExpand}>
-            <span>{isExpanded ? "Hide" : "See"} full list</span>
-          </Button>
-        </div>
+        {isBigFilmography && !isExpanded && (
+          <BlackGradientToTop height="30rem" />
+        )}
+        {isBigFilmography && (
+          <div
+            className={`inset-0 top-auto z-10 flex justify-center mt-12 ${
+              isExpanded ? "static" : "absolute"
+            }`}
+          >
+            <Button onClick={handleExpand}>
+              <span>{isExpanded ? "Hide" : "See"} full list</span>
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
