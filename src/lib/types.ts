@@ -1,5 +1,12 @@
 import { ReactNode, RefObject } from "react";
-import { IBase, ICollection, IGenre, IMovie, IMovieList } from "./typesAPI";
+import {
+  IBase,
+  ICollection,
+  IGenre,
+  IMediaCredit,
+  IMovie,
+  IMovieList,
+} from "./typesAPI";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -110,3 +117,9 @@ export type MoviesSimilarProps = {
 // Movie collection page
 export type CollectionDetailsProps = { collection: ICollection };
 export type CollectionMoviesProps = { movies: IMovie[] };
+
+// Person page
+export type PersonFilmographyProps = {
+  cast: IMediaCredit[];
+  crew: IMediaCredit[];
+};

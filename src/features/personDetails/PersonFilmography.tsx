@@ -1,104 +1,94 @@
-import { IMediaCredit } from "@/lib/typesAPI";
 import { Link } from "react-router-dom";
 
-function PersonFilmography({
-  cast,
-  crew,
-}: {
-  cast: IMediaCredit[];
-  crew: IMediaCredit[];
-}) {
-  const modifiedCast = cast
-    .slice()
-    .sort((a: IMediaCredit, b: IMediaCredit) => {
-      const dateA = new Date(a.date!).getFullYear();
-      const dateB = new Date(b.date!).getFullYear();
+import { PersonFilmographyProps } from "@/lib/types";
+import { IMediaCredit } from "@/lib/typesAPI";
 
-      if (isNaN(dateA)) return 1; // Place invalid or TBA dates at the end
+function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
+  // Helper function that sorts the credits array
+  const processCredits = (credits: IMediaCredit[]) =>
+    credits
+      .slice()
+      .sort((a, b) => {
+        const dateA = new Date(a.date!).getFullYear();
+        const dateB = new Date(b.date!).getFullYear();
 
-      return dateA - dateB;
-    })
-    .reverse();
+        if (isNaN(dateA)) return 1; // Place invalid or TBA dates at the end
 
-  const modifiedCrew = crew
-    .slice()
-    .sort((a: IMediaCredit, b: IMediaCredit) => {
-      const dateA = new Date(a.date!).getFullYear();
-      const dateB = new Date(b.date!).getFullYear();
+        return dateA - dateB;
+      })
+      .reverse();
 
-      if (isNaN(dateA)) return 1; // Place invalid or TBA dates at the end
+  // Helper function that combines multiple roles/jobs under one movie/show
+  const groupCredits = (credits: IMediaCredit[]) => {
+    const grouped = credits.reduce((acc, media) => {
+      const year = new Date(media.date!).getFullYear();
+      const key = `${year}-${media.title || media.name}`;
+      const role = media.job || media.character || "TBA";
 
-      return dateA - dateB;
-    })
-    .reverse();
+      if (!acc[key]) {
+        acc[key] = {
+          year,
+          title: media.title || media.name,
+          type: media.type === "tv" ? "shows" : media.type,
+          roles: [role],
+          id: media.id,
+        };
+      } else {
+        acc[key].roles.push(role);
+      }
+
+      return acc;
+    }, {} as Record<string, any>);
+
+    return Object.values(grouped);
+  };
+
+  // Helper function that spreads the data to an HTML
+  const renderCredits = (credits: any[], sectionTitle: string) => {
+    if (credits.length === 0) return null;
+
+    return (
+      <div>
+        <h3 className="mt-4">{sectionTitle}</h3>
+        {credits.map((media) => {
+          const roles = media.roles.join(", ");
+          return (
+            <div
+              className="flex justify-between relative flex-wrap"
+              key={media.id}
+            >
+              <div className="bg-stone-950 pr-2 text-2xl whitespace-nowrap">
+                {media.year || "TBA"}{" "}
+                <span className="inline-block mx-2">·</span>{" "}
+                <Link
+                  to={`/${media.type}/${media.id}`}
+                  className="text-red-300 hover:text-stone-50 whitespace-nowrap"
+                >
+                  {media.title}
+                </Link>
+              </div>
+              <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
+                {roles}
+              </div>
+              <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10"></div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // Preparing the credits
+  const modifiedCast = groupCredits(processCredits(cast));
+  const modifiedCrew = groupCredits(processCredits(crew));
 
   // Returned JSX
   return (
     <div className="border-l-[1px] border-main-color px-12">
       <h2 className="mt-0 uppercase">Filmography</h2>
       <div className="flex flex-col gap-2">
-        {modifiedCast.length !== 0 && (
-          <div>
-            <h3 className="mt-4">Actor</h3>
-            {modifiedCast.map((media: IMediaCredit) => {
-              // Setting some constants
-              const mediaName = media.title || media.name;
-              const year = media.release_date || media.first_air_date;
-              const type = media.type === "tv" ? "shows" : media.type;
-              return (
-                <div
-                  className="flex justify-between relative flex-wrap"
-                  key={media.id}
-                >
-                  <div className="bg-stone-950 pr-2 text-2xl whitespace-nowrap">
-                    {new Date(year!).getFullYear() || "TBA"}{" "}
-                    <span className="inline-block mx-2">·</span>{" "}
-                    <Link
-                      to={`/${type}/${media.id}`}
-                      className="text-red-300 hover:text-stone-50 whitespace-nowrap"
-                    >
-                      {mediaName}
-                    </Link>
-                  </div>
-                  <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
-                    {media.character || "TBA"}
-                  </div>
-                  <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10"></div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {modifiedCrew.length !== 0 && (
-          <div>
-            <h3 className="mt-4">Production</h3>
-            {modifiedCrew.map((media: IMediaCredit) => {
-              // Setting some constants
-              const mediaName = media.title || media.name;
-              const year = media.release_date || media.first_air_date;
-              const type = media.type === "tv" ? "shows" : media.type;
-              return (
-                <div className="flex justify-between relative" key={media.id}>
-                  <div className="bg-stone-950 pr-2 text-2xl whitespace-nowrap">
-                    {new Date(year!).getFullYear() || "TBA"}{" "}
-                    <span className="inline-block mx-2">·</span>{" "}
-                    <Link
-                      to={`/${type}/${media.id}`}
-                      className="text-red-300 hover:text-stone-50 whitespace-nowrap"
-                    >
-                      {mediaName}
-                    </Link>
-                  </div>
-                  <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
-                    {media.job || "TBA"}
-                  </div>
-                  <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10"></div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        {renderCredits(modifiedCast, "Actor")}
+        {renderCredits(modifiedCrew, "Production")}
       </div>
     </div>
   );

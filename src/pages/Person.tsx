@@ -87,7 +87,7 @@ function Person() {
       </Helmet>
 
       {/* Content */}
-      <div className="grid grid-cols-[60%_40%] gap-x-12">
+      <div className="grid grid-cols-[55%_45%] gap-x-12">
         <Heading>{person.name}</Heading>
         <div className="flex flex-col gap-10">
           <PersonDetails person={person} />
