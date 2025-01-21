@@ -44,14 +44,14 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   };
 
   // Helper function that spreads the data to an HTML
-  const renderCredits = (credits: any[], sectionTitle: string) => {
+  const renderCredits = (credits: IMediaCredit[], sectionTitle: string) => {
     if (credits.length === 0) return null;
 
     return (
       <div>
         <h3 className="mt-4">{sectionTitle}</h3>
         {credits.map((media) => {
-          const roles = media.roles.join(", ");
+          const roles = media.roles!.join(", ");
           return (
             <div
               className="flex justify-between relative flex-wrap"

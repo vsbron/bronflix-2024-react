@@ -6,6 +6,7 @@ import {
   IMediaCredit,
   IMovie,
   IMovieList,
+  IPerson,
 } from "./typesAPI";
 
 /* Unions */
@@ -119,7 +120,9 @@ export type CollectionDetailsProps = { collection: ICollection };
 export type CollectionMoviesProps = { movies: IMovie[] };
 
 // Person page
+export type PersonDetailsProps = { person: IPerson };
 export type PersonFilmographyProps = {
   cast: IMediaCredit[];
   crew: IMediaCredit[];
 };
+export type PersonNotableWorkProps = { credits: IMediaCredit[] };

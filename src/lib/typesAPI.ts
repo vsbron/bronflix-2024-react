@@ -133,6 +133,7 @@ export interface IMediaCredit {
   title?: string;
   name?: string;
   date?: string;
+  year?: string;
   release_date?: string;
   first_air_date?: string;
   type?: string;
@@ -140,6 +141,7 @@ export interface IMediaCredit {
   popularity: number;
   vote_average: number;
   character?: string;
+  roles?: string[];
 }
 
 /* Misc */

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { GENDERS, MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
-import { IPerson } from "@/lib/typesAPI";
+import { GENDERS, MEDIA_IMG_URL } from "@/lib/constants";
+import { PersonDetailsProps } from "@/lib/types";
 import { formatDate } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 
-function PersonDetails({ person }: { person: IPerson }) {
+function PersonDetails({ person }: PersonDetailsProps) {
   // Destructuring data
   const {
     name,

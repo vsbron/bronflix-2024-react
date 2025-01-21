@@ -4,14 +4,15 @@ import {
   NOTABLE_SCORE_SECONDARY,
   NOTABLE_WORK_LIMIT,
 } from "@/lib/constants";
-import { IMediaCredit } from "@/lib/typesAPI";
+import { PersonNotableWorkProps } from "@/lib/types";
 
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
+import { IMediaCredit } from "@/lib/typesAPI";
 
-function PersonNotableWork({ credits }: { credits: IMediaCredit[] }) {
+function PersonNotableWork({ credits }: PersonNotableWorkProps) {
   // Filtering out the notable work
-  const filterNotableWork = (credits: any[], scoreLimit: number) => {
+  const filterNotableWork = (credits: IMediaCredit[], scoreLimit: number) => {
     return credits.reduce<any[]>((acc, movie) => {
       const isNotable =
         movie.popularity > NOTABLE_POPULARITY_LIMIT &&
