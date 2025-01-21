@@ -171,7 +171,7 @@ function PreviewMerged<T extends IBase>({
         className="block"
         style={{ height }}
       >
-        <PreviewImage media={media} type="movies" />
+        <PreviewImage media={media} type={media.type!} posters={true} />
       </Link>
     </div>
   );

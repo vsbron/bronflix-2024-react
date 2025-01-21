@@ -6,12 +6,12 @@ import { IBase } from "@/lib/typesAPI";
 import ScorePreview from "@/components/ScorePreview";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
 
-function PreviewImage({ media, type, children }: PreviewImageProps) {
+function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
   // Getting the image data
   const { imageKey, fallback } = getImageData(type);
 
   // Build the final image path
-  const imgPath = media[imageKey];
+  const imgPath = media[posters ? "poster_path" : imageKey];
   const backgroundImage = `url(${
     imgPath ? MEDIA_IMG_URL + "w500" + imgPath : fallback
   })`;
@@ -23,7 +23,7 @@ function PreviewImage({ media, type, children }: PreviewImageProps) {
       className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
     >
       {children}
-      {(type === "tv" || type === "person" || (media.title && !imgPath)) && (
+      {(!imgPath || (!posters && (type === "tv" || type === "person"))) && (
         <div
           className="relative w-full text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore

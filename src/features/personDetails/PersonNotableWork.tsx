@@ -11,8 +11,8 @@ import Heading from "@/components/ui/Heading";
 
 function PersonNotableWork({ credits }: { credits: IMediaCredit[] }) {
   // Filtering out the notable work
-  const filterNotableWork = (credits: IMediaCredit[], scoreLimit: number) => {
-    return credits.reduce<IMediaCredit[]>((acc, movie) => {
+  const filterNotableWork = (credits: any[], scoreLimit: number) => {
+    return credits.reduce<any[]>((acc, movie) => {
       const isNotable =
         movie.popularity > NOTABLE_POPULARITY_LIMIT &&
         movie.vote_average >= scoreLimit;

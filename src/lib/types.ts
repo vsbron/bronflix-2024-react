@@ -69,6 +69,7 @@ export type PreviewImageProps = {
   media: IBase;
   type: string;
   children?: ReactNode;
+  posters?: boolean;
 };
 export type ScorePreviewProps = {
   score: number;
