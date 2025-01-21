@@ -42,12 +42,28 @@ function Person() {
 
   // Combining data to work as a cast and work as a crew
   const cast = [
-    ...moviesCast.map((movie: IMediaCredit) => ({ ...movie, type: "movies" })),
-    ...showsCast.map((show: IMediaCredit) => ({ ...show, type: "tv" })),
+    ...moviesCast.map((movie: IMediaCredit) => ({
+      ...movie,
+      type: "movies",
+      date: movie.release_date,
+    })),
+    ...showsCast.map((show: IMediaCredit) => ({
+      ...show,
+      type: "tv",
+      date: show.first_air_date,
+    })),
   ];
   const crew = [
-    ...moviesCrew.map((movie: IMediaCredit) => ({ ...movie, type: "movies" })),
-    ...showsCrew.map((show: IMediaCredit) => ({ ...show, type: "tv" })),
+    ...moviesCrew.map((movie: IMediaCredit) => ({
+      ...movie,
+      type: "movies",
+      date: movie.release_date,
+    })),
+    ...showsCrew.map((show: IMediaCredit) => ({
+      ...show,
+      type: "tv",
+      date: show.first_air_date,
+    })),
   ];
 
   // Boolean indicator for correct work to be highlighted

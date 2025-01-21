@@ -132,8 +132,11 @@ export interface IMediaCredit {
   id: string;
   title?: string;
   name?: string;
+  date?: string;
   release_date?: string;
   first_air_date?: string;
+  type?: string;
+  job?: string;
   popularity: number;
   vote_average: number;
   character?: string;
