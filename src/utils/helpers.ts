@@ -1,6 +1,5 @@
 import { NO_MOVIE_COVER, NO_MOVIE_POSTER, NO_PERSON_PHOTO } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
-import { getMediaImagesProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
 // Function that shuffles the array
@@ -60,10 +59,7 @@ export function formatRuntime(runtime: number) {
 }
 
 // Helper function to build poster and cover image paths
-export function getMediaImages<T extends IBase>({
-  media,
-  type,
-}: getMediaImagesProps<T>) {
+export function getMediaImages<T extends IBase>(media: T, type?: string) {
   // Building images paths
   const posterPath =
     type !== "person"

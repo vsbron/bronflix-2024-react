@@ -23,7 +23,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
   const [isBioExpanded, setIsBioExpanded] = useState<boolean>(false);
 
   // Getting images paths
-  const { posterPath } = getMediaImages({ media: person, type: "person" });
+  const { posterPath } = getMediaImages(person, "person");
 
   // Handling the person data
   const formattedBirthday = formatDate(birthday);

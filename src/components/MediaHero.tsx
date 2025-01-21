@@ -6,7 +6,7 @@ import { DimOverlay } from "@/components/ui/Overlays";
 
 function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
   // Getting images paths
-  const { posterPath, backgroundImage } = getMediaImages({ media });
+  const { posterPath, backgroundImage } = getMediaImages(media);
 
   // Returned JSX
   return (
