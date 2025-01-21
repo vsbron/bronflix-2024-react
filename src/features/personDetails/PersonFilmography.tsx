@@ -58,16 +58,15 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
         {credits.map((media) => {
           const roles = media.roles!.join(", ");
           return (
-            <div
-              className="flex justify-between relative flex-wrap"
-              key={media.id}
-            >
-              <div className="bg-stone-950 pr-2 text-2xl whitespace-nowrap">
-                {media.year || "TBA"}
-                <span className="inline-block mx-3">·</span>
+            <div className="flex items-end relative" key={media.id}>
+              <div className="bg-stone-950 pr-2 text-2xl flex">
+                <div className="whitespace-nowrap">
+                  {media.year || "TBA"}
+                  <span className="inline-block mx-3">·</span>
+                </div>
                 <Link
                   to={`/${media.type}/${media.id}`}
-                  className="text-red-300 hover:text-stone-50 whitespace-nowrap"
+                  className="text-red-300 hover:text-stone-50"
                 >
                   {media.title}
                 </Link>
@@ -75,7 +74,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
               <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
                 {roles}
               </div>
-              <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10"></div>
+              <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10" />
             </div>
           );
         })}
@@ -92,7 +91,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
     modifiedCast.length + modifiedCrew.length > FILMOGRAPHY_LIMIT;
 
   // Setting the state for the expanded filmography
-  const [isExpanded, setIsExpanded] = useState<boolean>(isBigFilmography);
+  const [isExpanded, setIsExpanded] = useState<boolean>(!isBigFilmography);
 
   // Click handler
   const handleExpand = () => {

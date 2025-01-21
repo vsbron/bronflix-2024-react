@@ -49,7 +49,7 @@ function ExploreMore() {
         </Button>
       </div>
       <div
-        className="absolute -top-10 -bottom-16 right-0 w-[80%] -z-10 bg-center overflow-hidden opacity-80"
+        className="absolute -top-10 -bottom-16 right-0 w-[50%] -z-10 bg-center overflow-hidden opacity-80"
         style={{ perspective: "50rem" }}
       >
         <div
