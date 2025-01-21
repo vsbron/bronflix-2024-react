@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { PersonFilmographyProps } from "@/lib/types";
 import { IMediaCredit } from "@/lib/typesAPI";
+
+import Button from "@/components/ui/Button";
+import { BlackGradientToTop } from "@/components/ui/Overlays";
 
 function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   // Helper function that sorts the credits array
@@ -23,7 +27,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
     const grouped = credits.reduce((acc, media) => {
       const year = new Date(media.date!).getFullYear();
       const key = `${year}-${media.title || media.name}`;
-      const role = media.job || media.character || "TBA";
+      const role = media.job || media.character;
 
       if (!acc[key]) {
         acc[key] = {
@@ -33,10 +37,9 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
           roles: [role],
           id: media.id,
         };
-      } else {
+      } else if (role) {
         acc[key].roles.push(role);
       }
-
       return acc;
     }, {} as Record<string, any>);
 
@@ -45,6 +48,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
   // Helper function that spreads the data to an HTML
   const renderCredits = (credits: IMediaCredit[], sectionTitle: string) => {
+    // Guard clause
     if (credits.length === 0) return null;
 
     return (
@@ -58,8 +62,8 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
               key={media.id}
             >
               <div className="bg-stone-950 pr-2 text-2xl whitespace-nowrap">
-                {media.year || "TBA"}{" "}
-                <span className="inline-block mx-2">·</span>{" "}
+                {media.year || "TBA"}
+                <span className="inline-block mx-3">·</span>
                 <Link
                   to={`/${media.type}/${media.id}`}
                   className="text-red-300 hover:text-stone-50 whitespace-nowrap"
@@ -82,13 +86,34 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   const modifiedCast = groupCredits(processCredits(cast));
   const modifiedCrew = groupCredits(processCredits(crew));
 
+  // Setting the state for the expanded filmography
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  // Click handler
+  const handleExpand = () => {
+    setIsExpanded((iE) => !iE);
+  };
+
   // Returned JSX
   return (
     <div className="border-l-[1px] border-main-color px-12">
       <h2 className="mt-0 uppercase">Filmography</h2>
-      <div className="flex flex-col gap-2">
+      <div
+        className="flex flex-col gap-2 overflow-hidden relative"
+        style={{ height: `${isExpanded ? "auto" : "88rem"}` }}
+      >
         {renderCredits(modifiedCast, "Actor")}
         {renderCredits(modifiedCrew, "Production")}
+        {!isExpanded && <BlackGradientToTop height="30rem" />}
+        <div
+          className={`inset-0 top-auto z-10 flex justify-center mt-12 ${
+            isExpanded ? "static" : "absolute"
+          }`}
+        >
+          <Button onClick={handleExpand}>
+            <span>{isExpanded ? "Hide" : "See"} full list</span>
+          </Button>
+        </div>
       </div>
     </div>
   );
