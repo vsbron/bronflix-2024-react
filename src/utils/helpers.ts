@@ -1,5 +1,6 @@
-import { NO_MOVIE_COVER, NO_MOVIE_POSTER } from "@/lib/assets";
+import { NO_MOVIE_COVER, NO_MOVIE_POSTER, NO_PERSON_PHOTO } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
+import { getMediaImagesProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 
 // Function that shuffles the array
@@ -59,16 +60,28 @@ export function formatRuntime(runtime: number) {
 }
 
 // Helper function to build poster and cover image paths
-export function getMediaImages<T extends IBase>(media: T) {
+export function getMediaImages<T extends IBase>({
+  media,
+  type,
+}: getMediaImagesProps<T>) {
   // Building images paths
-  const posterPath = media.poster_path
-    ? `${MEDIA_IMG_URL}w500${media.poster_path}`
-    : NO_MOVIE_POSTER;
-  const backgroundImage = `url(${
-    media.backdrop_path
-      ? `${MEDIA_IMG_URL}original${media.backdrop_path}`
-      : NO_MOVIE_COVER
-  })`;
+  const posterPath =
+    type !== "person"
+      ? media.poster_path
+        ? `${MEDIA_IMG_URL}w500${media.poster_path}`
+        : NO_MOVIE_POSTER
+      : media.profile_path
+      ? `${MEDIA_IMG_URL}w500${media.profile_path}`
+      : NO_PERSON_PHOTO;
+
+  const backgroundImage =
+    type !== "person"
+      ? `url(${
+          media.backdrop_path
+            ? `${MEDIA_IMG_URL}original${media.backdrop_path}`
+            : NO_MOVIE_COVER
+        })`
+      : "";
 
   return { posterPath, backgroundImage };
 }

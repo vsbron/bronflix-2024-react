@@ -96,7 +96,7 @@ export interface IShow {
   vote_count?: number;
 }
 export interface IPerson {
-  id: number;
+  id: string;
   name: string;
   gender: number;
   profile_path: string;
@@ -153,16 +153,16 @@ export interface ICollection extends IBase {
   poster_path: string;
 }
 export interface IGenre {
-  id: number;
+  id: string;
   name: string;
 }
 export interface IProductionCompany {
-  id: number;
+  id: string;
   logo_path: string;
   name: string;
 }
 export interface ISeason {
-  id: number;
+  id: string;
   name: string;
   overview: string;
   poster_path: string;

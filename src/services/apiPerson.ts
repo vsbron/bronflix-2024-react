@@ -106,7 +106,7 @@ export async function getMovieCastCrew(movieId: string): Promise<ICastCrew> {
 }
 
 // API for getting persons` credited work
-export async function getPersonCredits(personId: number): Promise<{
+export async function getPersonCredits(personId: string): Promise<{
   movies: { cast: IMediaCredit[]; crew: IMediaCredit[] };
   shows: { cast: IMediaCredit[]; crew: IMediaCredit[] };
 }> {

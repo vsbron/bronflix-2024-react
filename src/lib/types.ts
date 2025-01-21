@@ -126,3 +126,9 @@ export type PersonFilmographyProps = {
   crew: IMediaCredit[];
 };
 export type PersonNotableWorkProps = { credits: IMediaCredit[] };
+
+// Helpers
+export type getMediaImagesProps<T> = {
+  media: T;
+  type?: string;
+};

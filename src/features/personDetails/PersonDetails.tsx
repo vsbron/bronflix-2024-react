@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import { GENDERS, MEDIA_IMG_URL } from "@/lib/constants";
+import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
-import { formatDate } from "@/utils/helpers";
+import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
@@ -21,6 +21,9 @@ function PersonDetails({ person }: PersonDetailsProps) {
 
   // Setting the state for expanded biography text
   const [isBioExpanded, setIsBioExpanded] = useState<boolean>(false);
+
+  // Getting images paths
+  const { posterPath } = getMediaImages({ media: person, type: "person" });
 
   // Handling the person data
   const formattedBirthday = formatDate(birthday);
@@ -41,7 +44,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
     <>
       <div className={`flex gap-10`}>
         <img
-          src={`${MEDIA_IMG_URL}w400${person.profile_path}`}
+          src={posterPath}
           className="rounded-lg w-[20rem]"
           alt={person.name}
           title={`${person.name} photo`}
