@@ -142,6 +142,7 @@ export interface IMediaCredit {
   vote_average: number;
   character?: string;
   roles?: string[];
+  genre_ids?: number[];
 }
 
 /* Misc */

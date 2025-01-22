@@ -20,8 +20,16 @@ export const NOTABLE_WORK_LIMIT = 15;
 export const NOTABLE_POPULARITY_LIMIT = 10;
 export const NOTABLE_SCORE_LIMIT = 7.5;
 export const NOTABLE_SCORE_SECONDARY = 7;
+export const NOTABLE_SCORE_LAST = 6.5;
 
 export const FILMOGRAPHY_LIMIT = 40;
+
+export const EXCLUDED_GENRE_IDS = [
+  10763, // News
+  10764, // Reality
+  10767, // Talk
+  99, // Documentary
+];
 
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",

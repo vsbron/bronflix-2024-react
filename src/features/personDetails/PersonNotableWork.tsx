@@ -1,5 +1,7 @@
 import {
+  EXCLUDED_GENRE_IDS,
   NOTABLE_POPULARITY_LIMIT,
+  NOTABLE_SCORE_LAST,
   NOTABLE_SCORE_LIMIT,
   NOTABLE_SCORE_SECONDARY,
   NOTABLE_WORK_LIMIT,
@@ -16,7 +18,9 @@ function PersonNotableWork({ credits }: PersonNotableWorkProps) {
     return credits.reduce<any[]>((acc, movie) => {
       const isNotable =
         movie.popularity > NOTABLE_POPULARITY_LIMIT &&
-        movie.vote_average >= scoreLimit;
+        movie.vote_average >= scoreLimit &&
+        movie.character &&
+        !movie.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id));
 
       // Checking if media is unique
       const isUnique = !acc.some((m) => m.id === movie.id);
@@ -35,6 +39,11 @@ function PersonNotableWork({ credits }: PersonNotableWorkProps) {
   // Fallback to secondary filtering if empty
   if (notableWork.length <= 3) {
     notableWork = filterNotableWork(credits, NOTABLE_SCORE_SECONDARY);
+  }
+
+  // Fallback to last filtering if empty
+  if (notableWork.length <= 5) {
+    notableWork = filterNotableWork(credits, NOTABLE_SCORE_LAST);
   }
 
   // Sort and slice to get the final result
