@@ -8,12 +8,12 @@ import {
   PreviewMergedProps,
   PreviewsProps,
 } from "@/lib/types";
-import { IBase } from "@/lib/typesAPI";
+import { IBase, IMediaCredit } from "@/lib/typesAPI";
 
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
 import PreviewImage from "@/components/previews/PreviewImage";
 
-function Previews<T extends IBase>({
+function Previews<T extends IMediaCredit>({
   rawPreviews,
   pages = 2,
   width,

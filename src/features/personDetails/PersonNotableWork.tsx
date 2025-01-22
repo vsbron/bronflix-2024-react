@@ -15,18 +15,18 @@ import { IMediaCredit } from "@/lib/typesAPI";
 function PersonNotableWork({ credits }: PersonNotableWorkProps) {
   // Filtering out the notable work
   const filterNotableWork = (credits: IMediaCredit[], scoreLimit: number) => {
-    return credits.reduce<any[]>((acc, movie) => {
+    return credits.reduce<any[]>((acc, media) => {
       const isNotable =
-        movie.popularity > NOTABLE_POPULARITY_LIMIT &&
-        movie.vote_average >= scoreLimit &&
-        movie.character &&
-        !movie.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id));
+        media.popularity > NOTABLE_POPULARITY_LIMIT &&
+        media.vote_average >= scoreLimit &&
+        (media.character || media.job) &&
+        !media.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id));
 
       // Checking if media is unique
-      const isUnique = !acc.some((m) => m.id === movie.id);
+      const isUnique = !acc.some((m) => m.id === media.id);
 
       // If it's unique and passes condition, add it to an array
-      if (isNotable && isUnique) acc.push(movie);
+      if (isNotable && isUnique) acc.push(media);
 
       // Return the array
       return acc;

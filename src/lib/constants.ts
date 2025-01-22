@@ -25,10 +25,11 @@ export const NOTABLE_SCORE_LAST = 6.5;
 export const FILMOGRAPHY_LIMIT = 40;
 
 export const EXCLUDED_GENRE_IDS = [
+  99, // Documentary
+  10762, // Kids
   10763, // News
   10764, // Reality
   10767, // Talk
-  99, // Documentary
 ];
 
 export const LANGUAGES: { [key: string]: string } = {
