@@ -16,12 +16,13 @@ function PersonNotableWork({ credits }: PersonNotableWorkProps) {
   // Filtering out the notable work
   const filterNotableWork = (credits: IMediaCredit[], scoreLimit: number) => {
     return credits.reduce<any[]>((acc, media) => {
+      // Creating filtering boolean based on whether media is popular, above chosen rating, has a role for Person, has genre, and excludes genres we don't need
       const isNotable =
         media.popularity > NOTABLE_POPULARITY_LIMIT &&
         media.vote_average >= scoreLimit &&
         (media.character || media.job) &&
+        media.genre_ids!.length > 0 &&
         !media.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id));
-
       // Checking if media is unique
       const isUnique = !acc.some((m) => m.id === media.id);
 
