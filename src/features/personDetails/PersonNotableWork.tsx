@@ -33,7 +33,7 @@ function PersonNotableWork({ credits }: PersonNotableWorkProps) {
   let notableWork = filterNotableWork(credits, NOTABLE_SCORE_LIMIT);
 
   // Fallback to secondary filtering if empty
-  if (notableWork.length === 0) {
+  if (notableWork.length <= 3) {
     notableWork = filterNotableWork(credits, NOTABLE_SCORE_SECONDARY);
   }
 

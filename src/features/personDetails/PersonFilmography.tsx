@@ -38,7 +38,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
           roles: [role],
           id: media.id,
         };
-      } else if (role) {
+      } else {
         acc[key].roles.push(role);
       }
       return acc;
@@ -56,7 +56,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
       <div>
         <h3 className="mt-4">{sectionTitle}</h3>
         {credits.map((media) => {
-          const roles = media.roles!.join(", ");
+          const roles = media.roles!.filter(role => role !== "").join(", ");
           return (
             <div className="flex items-end relative" key={media.id}>
               <div className="bg-stone-950 pr-2 text-2xl flex">
