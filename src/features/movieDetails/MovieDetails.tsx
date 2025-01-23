@@ -22,7 +22,7 @@ import Heading from "@/components/ui/Heading";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
-  const trailer = useTrailer(movie);
+  const trailer = useTrailer(movie, "movie");
 
   // Destructuring data
   const {

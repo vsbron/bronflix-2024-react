@@ -19,7 +19,7 @@ import useTrailer from "@/hooks/useTrailer";
 
 function ShowDetails({ show }: { show: IShow }) {
   // Getting the trailer from the custom hook
-  const trailer = useTrailer(show);
+  const trailer = useTrailer(show, "tv");
 
   // Destructuring data
   const {

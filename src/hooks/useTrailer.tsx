@@ -5,7 +5,7 @@ import useVideo from "@/context/VideoContext";
 import { MEDIA_URL } from "@/lib/constants";
 import { IBase, IVideo } from "@/lib/typesAPI";
 
-function useTrailer(movie: IBase) {
+function useTrailer(media: IBase, type: string) {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
   const { isOpen } = useVideo();
@@ -23,7 +23,7 @@ function useTrailer(movie: IBase) {
     async function fetchVideo() {
       try {
         const response = await fetch(
-          `${MEDIA_URL}/movie/${movie.id}/videos?api_key=${
+          `${MEDIA_URL}/${type}/${media.id}/videos?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }`,
           { signal }
@@ -51,7 +51,7 @@ function useTrailer(movie: IBase) {
     return () => {
       controller.abort();
     };
-  }, [movie, isOpen]);
+  }, [media, isOpen]);
 
   // Returning video
   return video;
