@@ -5,7 +5,7 @@ import useVideo from "@/context/VideoContext";
 import { MEDIA_URL } from "@/lib/constants";
 import { IBase, IVideo } from "@/lib/typesAPI";
 
-function useTrailer(media: IBase, type: string) {
+function useTrailer(media: IBase, type: "tv" | "movie") {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
   const { isOpen } = useVideo();

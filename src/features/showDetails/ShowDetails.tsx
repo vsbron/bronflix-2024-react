@@ -21,79 +21,73 @@ function ShowDetails({ show }: { show: IShow }) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(show, "tv");
 
+  console.log(show);
+
   // Destructuring data
   const {
     name,
     tagline,
-    // release_date,
+    first_air_date,
+    last_air_date,
     genres,
     origin_country: country,
     original_language: language,
-    // runtime,
     vote_average: score,
     vote_count: count,
-    // budget,
     overview,
-    production_companies: companies,
-    // belongs_to_collection: collection,
+    networks: companies,
+    number_of_seasons,
+    number_of_episodes,
+    status,
   } = show;
 
   // Handling the show data
-  const headingTitle = `${show.name} (${new Date(show.first_air_date)
-    .getFullYear()
-    .toString()})`;
-  // const genres = show.genres.map((genre: IGenre) => genre.name).join(", ");
-  const originCountry = show.origin_country
-    .map((country: string) => country)
-    .join(", ");
-  const productionCompanies = show.production_companies
-    .map((company: IProductionCompany) => company.name)
-    .join(", ");
+  const headingTitle = `${name} (${
+    first_air_date ? new Date(first_air_date).getFullYear().toString() : "TBA"
+  })`;
+  const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
+  const originCountry = country.map((country: string) => country).join(", ");
+  const studio = companies.at(0);
 
   // Returned JSX
   return (
     <section>
       <Heading>{headingTitle}</Heading>
       <MediaHero media={show} posterWidth="40rem">
-        {/* {!!collection && <MovieCollectionLink collection={collection} />} */}
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-gray-400">
-            {/* <ScorePreview
+            <ScorePreview
               score={score}
               count={count}
               isHighlighted={true}
               isBig={true}
-            /> */}
+            />
           </div>
           <div className="text-[4rem] -my-5 font-heading">{name}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
             {tagline}
           </div>
           <div className="contents text-2xl">
-            {/* <div>{genresList}</div> */}
+            <div>{genresList}</div>
             <div className="flex gap-8">
-              {/* <IconWrapper icon={<CalendarIcon />}>
-                {formatDate(release_date)}
-              </IconWrapper> */}
-              <IconWrapper icon={<LanguageIcon />}>
-                {LANGUAGES[language]}
+              <IconWrapper icon={<CalendarIcon />}>
+                {formatDate(first_air_date)} - {formatDate(last_air_date)}
               </IconWrapper>
-              {/* <IconWrapper icon={<ClockIcon />}>
-                {formatRuntime(runtime)}
-              </IconWrapper> */}
             </div>
             <div className="flex gap-8 mb-2">
               <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
-              {/* {studio && (
+              <IconWrapper icon={<LanguageIcon />}>
+                {LANGUAGES[language]}
+              </IconWrapper>
+              {studio && (
                 <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
-              )} */}
-              {/* {budget !== 0 && (
-                <IconWrapper icon={<BanknotesIcon />}>
-                  ${budget.toLocaleString()}
-                </IconWrapper>
-              )} */}
+              )}
             </div>
           </div>
+
+          <div>Seasons: {number_of_seasons}</div>
+          <div>Episodes: {number_of_episodes}</div>
+          <div>Status: {status}</div>
           {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
           <TrailerButton video={trailer!} />
         </div>

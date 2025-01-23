@@ -78,10 +78,10 @@ export interface IShow {
   genres: IGenre[];
   in_production?: boolean;
   languages?: string[];
-  last_air_date?: string;
+  last_air_date: string;
   last_episode_to_air?: any /**/;
   next_episode_to_air?: string;
-  networks?: IProductionCompany[];
+  networks: IProductionCompany[];
   number_of_episodes?: number;
   number_of_seasons?: number;
   origin_country: string[];
@@ -94,7 +94,7 @@ export interface IShow {
   spoken_languages?: { english_name: string }[];
   status?: string;
   type?: Media;
-  vote_average?: number;
+  vote_average: number;
   vote_count?: number;
 }
 export interface IPerson {
