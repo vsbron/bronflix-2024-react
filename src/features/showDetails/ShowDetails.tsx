@@ -1,27 +1,24 @@
-import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
-import { IGenre, IProductionCompany, IShow } from "@/lib/typesAPI";
-
-import Heading from "@/components/ui/Heading";
-import ScorePreview from "@/components/ScorePreview";
-import MediaHero from "@/components/MediaHero";
-import IconWrapper from "@/components/IconWrapper";
 import {
-  BanknotesIcon,
   CalendarIcon,
-  ClockIcon,
   FilmIcon,
   GlobeAltIcon,
   LanguageIcon,
 } from "@heroicons/react/24/outline";
-import { formatDate, formatRuntime } from "@/utils/helpers";
-import TrailerButton from "@/components/TrailerButton";
+
 import useTrailer from "@/hooks/useTrailer";
+import { COUNTRIES, LANGUAGES } from "@/lib/constants";
+import { IGenre, IShow } from "@/lib/typesAPI";
+import { formatDate } from "@/utils/helpers";
+
+import Heading from "@/components/ui/Heading";
+import IconWrapper from "@/components/IconWrapper";
+import MediaHero from "@/components/MediaHero";
+import ScorePreview from "@/components/ScorePreview";
+import TrailerButton from "@/components/TrailerButton";
 
 function ShowDetails({ show }: { show: IShow }) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(show, "tv");
-
-  console.log(show);
 
   // Destructuring data
   const {
@@ -41,12 +38,14 @@ function ShowDetails({ show }: { show: IShow }) {
     status,
   } = show;
 
+  console.log(language);
+
   // Handling the show data
   const headingTitle = `${name} (${
     first_air_date ? new Date(first_air_date).getFullYear().toString() : "TBA"
   })`;
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
-  const originCountry = country.map((country: string) => country).join(", ");
+  const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
   const studio = companies.at(0);
 
   // Returned JSX

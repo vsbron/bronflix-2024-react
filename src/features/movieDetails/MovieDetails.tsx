@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import useTrailer from "@/hooks/useTrailer";
-import { LANGUAGES } from "@/lib/constants";
+import { COUNTRIES, LANGUAGES } from "@/lib/constants";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { formatDate, formatRuntime } from "@/utils/helpers";
@@ -46,7 +46,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     release_date ? new Date(release_date).getFullYear().toString() : "TBA"
   })`;
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
-  const originCountry = country.map((country: string) => country).join(", ");
+  const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
   const studio = companies.at(0);
 
   // Returned JSX
@@ -77,12 +77,14 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               <IconWrapper icon={<LanguageIcon />}>
                 {LANGUAGES[language]}
               </IconWrapper>
+              {language}
               <IconWrapper icon={<ClockIcon />}>
                 {formatRuntime(runtime)}
               </IconWrapper>
             </div>
             <div className="flex gap-8 mb-2">
               <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
+              {country}
               {studio && (
                 <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
               )}

@@ -32,16 +32,64 @@ export const EXCLUDED_GENRE_IDS = [
   10767, // Talk
 ];
 
+export const COUNTRIES: { [key: string]: string } = {
+  US: "United States",
+  GB: "England",
+  DE: "Germany",
+  FR: "France",
+  IT: "Italy",
+  KR: "South Korea",
+  CH: "China",
+  JP: "Japan",
+  CA: "Canada",
+  RU: "Russia",
+
+  CZ: "Czech Republic",
+  NL: "Netherlands",
+  NO: "Norway",
+  ES: "Spain",
+  IE: "Ireland",
+  DK: "Denmark",
+  HU: "Hungary",
+  SE: "Sweden",
+  IL: "Israel",
+
+  BR: "Brazil",
+  MX: "Mexico",
+  AU: "Australia",
+
+  MY: "Malaysia",
+  IN: "India",
+  ZA: "South Africa",
+
+  SA: "Saudi Arabia",
+};
+
 export const LANGUAGES: { [key: string]: string } = {
   en: "English",
   es: "Spanish",
-  fr: "French",
+
   de: "German",
+  fr: "French",
   it: "Italian",
+  ko: "Korean",
+  zh: "Chinese",
   ja: "Japanese",
   ru: "Russian",
-  zh: "Chinese",
-  ko: "Korean",
+
+  cs: "Czech",
+  no: "Norwegian",
+  nl: "Dutch",
+  hu: "Hungarian",
+  sv: "Swedish",
+  he: "Hebrew",
+
+  pt: "Portuguese",
+
+  af: "African",
+  ar: "Arabic",
+  hi: "Hindi",
+  te: "Telugu",
   th: "Thai",
 };
 
