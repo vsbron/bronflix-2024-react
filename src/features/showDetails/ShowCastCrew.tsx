@@ -11,6 +11,8 @@ function ShowCastCrew({ showId }: ShowCastCrewProps) {
   // Getting the fetched cast and setting the ref for ribbon element
   const { isLoading, data, error } = useShowCast(showId);
 
+  console.log(data);
+
   // Guard clauses
   if (isLoading) return <Loader />;
   if (error || !data)
@@ -26,7 +28,7 @@ function ShowCastCrew({ showId }: ShowCastCrewProps) {
   // Filtering the cast and crew arrays
   const shortenCast = cast.slice(0, 25);
   const shortenCrew = crew
-    .filter((crewPerson) => CREW_JOBS.includes(crewPerson.job))
+    .filter((crewPerson) => CREW_JOBS.includes(crewPerson.department))
     .sort((a, b) => CREW_JOBS.indexOf(a.job) - CREW_JOBS.indexOf(b.job));
 
   // Returned JSX

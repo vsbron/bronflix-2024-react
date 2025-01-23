@@ -121,6 +121,7 @@ export interface ICrew extends IBase {
   name: string;
   profile_path: string;
   job: string;
+  department: string;
 }
 
 export interface ICredits {

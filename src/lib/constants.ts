@@ -54,6 +54,7 @@ export const CREW_JOBS = [
   "Director of Photography",
   "Producer",
   "Executive Producer",
+  "Production",
 ];
 
 export const GENDERS = ["N/A", "Female", "Male"];

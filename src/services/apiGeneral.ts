@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { ICastCrew, IMovieList } from "@/lib/typesAPI";
+import { IBase, ICastCrew } from "@/lib/typesAPI";
 
 // API for getting media cast and crew
 export async function getMediaCastCrew(
@@ -9,9 +9,9 @@ export async function getMediaCastCrew(
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/${type}/${mediaId}/credits?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }&language=en-US`
+      `${MEDIA_URL}/${type}/${mediaId}/${
+        type === "tv" ? "aggregate_" : ""
+      }credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`
     );
 
     // Guard clause
@@ -23,6 +23,8 @@ export async function getMediaCastCrew(
 
     // Getting the actual data
     const data = await response.json();
+
+    console.log(data);
 
     // Return the actor
     return data;
@@ -43,7 +45,7 @@ export async function getMediaCastCrew(
 export async function getMediaSimilar(
   mediaId: string,
   type: string
-): Promise<IMovieList[]> {
+): Promise<IBase[]> {
   try {
     // Fetching the data
     const response = await fetch(
