@@ -12,7 +12,7 @@ import {
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
-type PreviewSubtitles = "character" | "job";
+type PreviewSubtitles = "character" | "job" | "department";
 export type Media = "person" | "tv" | "movies";
 export type RibbonDirections = "left" | "right";
 

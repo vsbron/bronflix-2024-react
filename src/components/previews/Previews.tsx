@@ -123,7 +123,7 @@ function PreviewItem<T extends IBase>({
       </Link>
       {subtitle && (
         <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
-          {media[subtitle] as string}
+          {(media[subtitle] as string) || media.roles!.at(0)!.character}
         </div>
       )}
     </div>

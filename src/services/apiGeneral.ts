@@ -24,8 +24,6 @@ export async function getMediaCastCrew(
     // Getting the actual data
     const data = await response.json();
 
-    console.log(data);
-
     // Return the actor
     return data;
   } catch (error: unknown) {

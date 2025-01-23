@@ -15,6 +15,8 @@ export interface IBase {
   character?: string;
   job?: string;
   type?: Media;
+  department?: string;
+  roles?: { character: string }[];
 }
 export interface IMovieList extends IBase {
   title: string;

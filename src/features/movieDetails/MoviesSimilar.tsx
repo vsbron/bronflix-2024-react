@@ -21,7 +21,7 @@ function MoviesSimilar({ movieId }: MoviesSimilarProps) {
   // Returned JSX
   return (
     <section>
-      <Heading as="h3">You may also like</Heading>
+      <Heading as="h3">Movies you may also like</Heading>
       <Previews
         rawPreviews={similarMovies}
         width="18rem"

@@ -6,27 +6,27 @@ import Loader from "@/components/ui/Loader";
 import { useShowSimilar } from "@/features/showDetails/useShowSimilar";
 
 function ShowSimilar({ showId }: ShowSimilarProps) {
-  // Getting the similar movies data from the React Query
-  const { isLoading, data: similarMovies, error } = useShowSimilar(showId);
+  // Getting the similar shows data from the React Query
+  const { isLoading, data: similarShows, error } = useShowSimilar(showId);
 
   // Guard clauses
   if (isLoading) return <Loader />;
-  if (error || !similarMovies)
+  if (error || !similarShows)
     return (
       <div className="text-red-500">
-        {error?.message || "Error fetching similar movies"}
+        {error?.message || "Error fetching similar shows"}
       </div>
     );
 
   // Returned JSX
   return (
     <section>
-      <Heading as="h3">You may also like</Heading>
+      <Heading as="h3">Shows you may also like</Heading>
       <Previews
-        rawPreviews={similarMovies}
-        width="18rem"
-        height="27rem"
-        type="movies"
+        rawPreviews={similarShows}
+        height="20rem"
+        type="tv"
+        isTwoRows={true}
       />
     </section>
   );
