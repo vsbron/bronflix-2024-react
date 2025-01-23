@@ -1,6 +1,6 @@
 import { MovieCastCrewProps } from "@/lib/types";
 import { ICast, ICrew } from "@/lib/typesAPI";
-import { CREW_JOBS } from "@/lib/constants";
+import { CAST_MAX, CREW_JOBS, CREW_MAX } from "@/lib/constants";
 
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
@@ -24,10 +24,11 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   const { cast, crew } = data;
 
   // Filtering the cast and crew arrays
-  const shortenCast = cast.slice(0, 25);
+  const shortenCast = cast.slice(0, CAST_MAX);
   const shortenCrew = crew
     .filter((crewPerson) => CREW_JOBS.includes(crewPerson.job))
-    .sort((a, b) => CREW_JOBS.indexOf(a.job) - CREW_JOBS.indexOf(b.job));
+    .sort((a, b) => CREW_JOBS.indexOf(a.job) - CREW_JOBS.indexOf(b.job))
+    .slice(0, CREW_MAX);
 
   // Returned JSX
   return (

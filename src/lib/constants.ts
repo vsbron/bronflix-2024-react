@@ -16,6 +16,8 @@ export const PREVIEWS_GAP_CLASS = `gap-${PREVIEWS_GAP / 2.5}`;
 export const SCROLL_BY_ONE_MULTIPLIER = 3;
 export const BIO_PREVIEW_LENGTH = 400;
 
+export const CAST_MAX = 25;
+export const CREW_MAX = 15;
 export const NOTABLE_WORK_LIMIT = 15;
 export const NOTABLE_POPULARITY_LIMIT = 8;
 export const NOTABLE_SCORE_LIMIT = 7.5;

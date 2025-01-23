@@ -56,23 +56,27 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
       <div>
         <h3 className="mt-4">{sectionTitle}</h3>
         {credits.map((media) => {
-          const roles = media.roles!.filter(role => role !== "").join(", ");
+          // Destructuring and handling media data
+          const { id, title, type, year, roles } = media;
+          const combinedRoles = roles!.filter((role) => role !== "").join(", ");
+
+          // Build credits list
           return (
-            <div className="flex items-end relative" key={media.id}>
+            <div className="flex items-end relative" key={`${type}-${id}`}>
               <div className="bg-stone-950 pr-2 text-2xl flex">
                 <div className="whitespace-nowrap">
-                  {media.year || "TBA"}
+                  {year || "TBA"}
                   <span className="inline-block mx-3">·</span>
                 </div>
                 <Link
-                  to={`/${media.type}/${media.id}`}
+                  to={`/${type}/${id}`}
                   className="text-red-300 hover:text-stone-50"
                 >
-                  {media.title}
+                  {title}
                 </Link>
               </div>
               <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
-                {roles}
+                {combinedRoles}
               </div>
               <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10" />
             </div>
