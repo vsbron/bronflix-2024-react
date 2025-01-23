@@ -77,14 +77,12 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               <IconWrapper icon={<LanguageIcon />}>
                 {LANGUAGES[language]}
               </IconWrapper>
-              {language}
               <IconWrapper icon={<ClockIcon />}>
                 {formatRuntime(runtime)}
               </IconWrapper>
             </div>
             <div className="flex gap-8 mb-2">
               <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
-              {country}
               {studio && (
                 <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
               )}

@@ -38,8 +38,6 @@ function ShowDetails({ show }: { show: IShow }) {
     status,
   } = show;
 
-  console.log(language);
-
   // Handling the show data
   const headingTitle = `${name} (${
     first_air_date ? new Date(first_air_date).getFullYear().toString() : "TBA"
