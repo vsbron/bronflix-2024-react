@@ -17,7 +17,7 @@ export const SCROLL_BY_ONE_MULTIPLIER = 3;
 export const BIO_PREVIEW_LENGTH = 400;
 
 export const NOTABLE_WORK_LIMIT = 15;
-export const NOTABLE_POPULARITY_LIMIT = 10;
+export const NOTABLE_POPULARITY_LIMIT = 8;
 export const NOTABLE_SCORE_LIMIT = 7.5;
 export const NOTABLE_SCORE_SECONDARY = 7;
 export const NOTABLE_SCORE_LAST = 6.5;

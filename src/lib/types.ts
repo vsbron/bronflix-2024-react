@@ -7,6 +7,7 @@ import {
   IMovie,
   IMovieList,
   IPerson,
+  IShow,
 } from "./typesAPI";
 
 /* Unions */
@@ -126,3 +127,10 @@ export type PersonFilmographyProps = {
   crew: IMediaCredit[];
 };
 export type PersonNotableWorkProps = { credits: IMediaCredit[] };
+
+// Show page
+export type ShowCastCrewProps = { showId: string };
+export type ShowDetailsProps = { show: IShow };
+export type ShowSimilarProps = {
+  showId: string;
+};

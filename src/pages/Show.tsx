@@ -6,6 +6,8 @@ import { IShow } from "@/lib/typesAPI";
 import { getShow } from "@/services/apiShows";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
+import ShowCastCrew from "@/features/showDetails/ShowCastCrew";
+import ShowSimilar from "@/features/showDetails/ShowSimilar";
 
 // Show data loader
 export const showLoader = async ({
@@ -47,6 +49,8 @@ function Show() {
 
       {/* Content */}
       <ShowDetails show={show} />
+      <ShowCastCrew showId={show.id} />
+      <ShowSimilar showId={show.id} />
     </>
   );
 }
