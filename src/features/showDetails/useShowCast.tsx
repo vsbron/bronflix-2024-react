@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getShowCastCrew } from "@/services/apiPerson";
+import { getMediaCastCrew } from "@/services/apiGeneral";
 
 export function useShowCast(showId: string) {
   // Fetching the data using React Query
   const { isLoading, data, error } = useQuery({
     queryKey: ["show-cast-crew", showId],
-    queryFn: () => getShowCastCrew(showId!),
+    queryFn: () => getMediaCastCrew(showId, "tv"),
   });
 
   // Return fetched data

@@ -1,0 +1,78 @@
+import { MEDIA_URL } from "@/lib/constants";
+import { ICastCrew, IMovieList } from "@/lib/typesAPI";
+
+// API for getting media cast and crew
+export async function getMediaCastCrew(
+  mediaId: string,
+  type: string
+): Promise<ICastCrew> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}/${type}/${mediaId}/credits?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }&language=en-US`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the cast & crew data: ${response.statusText}}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the actor
+    return data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw new Error("An error occurred while fetching cast & crew data");
+    } else {
+      console.error(error);
+      throw new Error(
+        "An unknown error occurred while fetching cast & crew data."
+      );
+    }
+  }
+}
+
+// API for getting similar media
+export async function getMediaSimilar(
+  mediaId: string,
+  type: string
+): Promise<IMovieList[]> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}/${type}/${mediaId}/similar?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch related ${type} data: ${response.statusText}}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the movies
+    return data.results;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw new Error(`An error occurred while fetching related ${type} data`);
+    } else {
+      console.error(error);
+      throw new Error(
+        `An unknown error occurred while fetching related ${type} data.`
+      );
+    }
+  }
+}

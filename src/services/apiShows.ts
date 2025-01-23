@@ -65,38 +65,3 @@ export async function getShow(showId: string): Promise<IShow> {
     }
   }
 }
-
-// API for getting similar shows
-export async function getShowSimilar(showId: string): Promise<IShowList[]> {
-  try {
-    // Fetching the data
-    const response = await fetch(
-      `${MEDIA_URL}/tv/${showId}/similar?api_key=${
-        import.meta.env.VITE_TMDB_API_KEY
-      }`
-    );
-
-    // Guard clause
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch related movies data: ${response.statusText}}`
-      );
-    }
-
-    // Getting the actual data
-    const data = await response.json();
-
-    // Return the movies
-    return data.results;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching related movies data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching related movies data."
-      );
-    }
-  }
-}

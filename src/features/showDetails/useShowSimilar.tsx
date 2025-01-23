@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getShowSimilar } from "@/services/apiShows";
+import { getMediaSimilar } from "@/services/apiGeneral";
 
 export function useShowSimilar(showId: string) {
   // Fetching the data using React Query
   const { isLoading, data, error } = useQuery({
     queryKey: ["show-similar", showId],
-    queryFn: () => getShowSimilar(showId),
+    queryFn: () => getMediaSimilar(showId, "tv"),
   });
 
   // Return fetched data
