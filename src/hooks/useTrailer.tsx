@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import useVideo from "@/context/VideoContext";
 
 import { MEDIA_URL } from "@/lib/constants";
-import { IMovieList, IVideo } from "@/lib/typesAPI";
+import { IBase, IVideo } from "@/lib/typesAPI";
 
-function useTrailer(movie: IMovieList) {
+function useTrailer(movie: IBase) {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
   const { isOpen } = useVideo();
