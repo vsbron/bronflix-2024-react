@@ -3,6 +3,7 @@ import {
   FilmIcon,
   GlobeAltIcon,
   LanguageIcon,
+  ClockIcon,
 } from "@heroicons/react/24/outline";
 
 import useTrailer from "@/hooks/useTrailer";
@@ -33,7 +34,7 @@ function ShowDetails({ show }: { show: IShow }) {
     vote_count: count,
     overview,
     networks: companies,
-    number_of_seasons,
+    number_of_seasons: seasons = 1,
     number_of_episodes,
     status,
   } = show;
@@ -45,6 +46,7 @@ function ShowDetails({ show }: { show: IShow }) {
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
   const studio = companies.at(0);
+  const isEnded = status === "Ended" || status === "Cancelled";
 
   // Returned JSX
   return (
@@ -68,8 +70,15 @@ function ShowDetails({ show }: { show: IShow }) {
             <div>{genresList}</div>
             <div className="flex gap-8">
               <IconWrapper icon={<CalendarIcon />}>
-                {formatDate(first_air_date)} - {formatDate(last_air_date)}
+                {formatDate(first_air_date)} -{" "}
+                {isEnded ? formatDate(last_air_date) : "Present"}
               </IconWrapper>
+            </div>
+            <div className="flex gap-8">
+              <IconWrapper icon={<ClockIcon />}>{status}</IconWrapper>
+              <span className="-mx-3">|</span>
+              {seasons} Season
+              {seasons > 1 && "s"}, {number_of_episodes} episodes
             </div>
             <div className="flex gap-8 mb-2">
               <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
@@ -82,9 +91,6 @@ function ShowDetails({ show }: { show: IShow }) {
             </div>
           </div>
 
-          <div>Seasons: {number_of_seasons}</div>
-          <div>Episodes: {number_of_episodes}</div>
-          <div>Status: {status}</div>
           {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
           <TrailerButton video={trailer!} />
         </div>

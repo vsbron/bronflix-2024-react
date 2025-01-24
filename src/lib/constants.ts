@@ -62,6 +62,7 @@ export const COUNTRIES: { [key: string]: string } = {
 
   MY: "Malaysia",
   IN: "India",
+  TH: "Thailand",
   ZA: "South Africa",
 
   SA: "Saudi Arabia",
