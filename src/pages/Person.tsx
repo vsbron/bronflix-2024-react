@@ -91,7 +91,10 @@ function Person() {
         <Heading>{person.name}</Heading>
         <div className="flex flex-col gap-10">
           <PersonDetails person={person} />
-          <PersonNotableWork credits={isActor ? cast : crew} />
+          <PersonNotableWork
+            credits={isActor ? cast : crew}
+            personName={name}
+          />
         </div>
         <PersonFilmography cast={cast} crew={crew} />
       </div>

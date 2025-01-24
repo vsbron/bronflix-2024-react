@@ -7,22 +7,25 @@ import {
   NOTABLE_WORK_LIMIT,
 } from "@/lib/constants";
 import { PersonNotableWorkProps } from "@/lib/types";
+import { IMediaCredit } from "@/lib/typesAPI";
 
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
-import { IMediaCredit } from "@/lib/typesAPI";
 
-function PersonNotableWork({ credits }: PersonNotableWorkProps) {
+function PersonNotableWork({ credits, personName }: PersonNotableWorkProps) {
   // Filtering out the notable work
   const filterNotableWork = (credits: IMediaCredit[], scoreLimit: number) => {
     return credits.reduce<any[]>((acc, media) => {
-      // Creating filtering boolean based on whether media is popular, above chosen rating, has a role for Person, has genre, and excludes genres we don't need
+      // Creating filtering boolean based on whether media has genres we need, a role for Person (not playing himself), is popular and above rating we set
       const isNotable =
-        media.popularity > NOTABLE_POPULARITY_LIMIT &&
-        media.vote_average >= scoreLimit &&
-        (media.character || media.job) &&
         media.genre_ids!.length > 0 &&
-        !media.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id));
+        !media.genre_ids!.some((id) => EXCLUDED_GENRE_IDS.includes(id)) &&
+        (media.character || media.job) &&
+        media.character !== personName &&
+        media.character !== "Self" &&
+        media.popularity > NOTABLE_POPULARITY_LIMIT &&
+        media.vote_average >= scoreLimit;
+
       // Checking if media is unique
       const isUnique = !acc.some((m) => m.id === media.id);
 

@@ -126,7 +126,10 @@ export type PersonFilmographyProps = {
   cast: IMediaCredit[];
   crew: IMediaCredit[];
 };
-export type PersonNotableWorkProps = { credits: IMediaCredit[] };
+export type PersonNotableWorkProps = {
+  credits: IMediaCredit[];
+  personName: string;
+};
 
 // Show page
 export type ShowCastCrewProps = { showId: string };
