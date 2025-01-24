@@ -7,6 +7,7 @@ import { getShow } from "@/services/apiShows";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
 import ShowCastCrew from "@/features/showDetails/ShowCastCrew";
+import ShowSeasons from "@/features/showDetails/ShowSeasons";
 import ShowSimilar from "@/features/showDetails/ShowSimilar";
 
 // Show data loader
@@ -24,7 +25,7 @@ function Show() {
   const show = useLoaderData() as IShow;
 
   // Destructuring some data
-  const { name, first_air_date } = show;
+  const { name, first_air_date, seasons } = show;
 
   // Returned JSX
   return (
@@ -49,6 +50,7 @@ function Show() {
 
       {/* Content */}
       <ShowDetails show={show} />
+      {seasons && <ShowSeasons seasons={seasons} />}
       <ShowCastCrew showId={show.id} />
       <ShowSimilar showId={show.id} />
     </>
