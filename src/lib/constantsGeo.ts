@@ -50,6 +50,7 @@ export const COUNTRIES: { [key: string]: string } = {
   PH: "Philippines",
   SA: "Saudi Arabia",
   ZA: "South Africa",
+  SU: "Soviet Union",
   VN: "Vietnam",
 };
 

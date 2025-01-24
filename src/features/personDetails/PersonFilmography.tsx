@@ -75,8 +75,10 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
                   {title}
                 </Link>
               </div>
-              <div className="bg-stone-950 pl-2 text-[1.4rem] whitespace-nowrap ml-auto">
-                {combinedRoles}
+              <div className="bg-stone-950 pl-2 text-[1.4rem] ml-auto text-right">
+                <span className="inline-block max-w-[40rem]">
+                  {combinedRoles}
+                </span>
               </div>
               <div className="absolute left-0 right-0 bottom-2 h-[1px] border-b border-dashed border-stone-600 -z-10" />
             </div>
