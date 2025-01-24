@@ -3,7 +3,8 @@ import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/solid";
 
 import { useGenres } from "@/context/GenresContext";
 import useTrailer from "@/hooks/useTrailer";
-import { LANGUAGES, MEDIA_IMG_URL } from "@/lib/constants";
+import { MEDIA_IMG_URL } from "@/lib/constants";
+import { LANGUAGES } from "@/lib/constantsGeo";
 import { MovieHighlightProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 
@@ -32,11 +33,11 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Get the genres from Context API
   const { genres } = useGenres();
-  const trailer = useTrailer(movie);
+  const trailer = useTrailer(movie, "movie");
 
   // Handling the movie data
   // prettier-ignore
-  const genreNames = genre_ids?.map((id: number) => {
+  const genreNames = genre_ids?.map((id: string) => {
     const genre = genres.find((genre: IGenre) => genre.id === id);
     return genre ? genre.name : null}).filter(Boolean).join(", ") || "";
   const shortenOverview =

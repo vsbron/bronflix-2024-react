@@ -27,7 +27,7 @@ export interface IMovieList extends IBase {
   original_language?: string;
   vote_average: number;
   vote_count: number;
-  genre_ids?: number[];
+  genre_ids?: string[];
 }
 export interface IShowList extends IBase {
   name: string;

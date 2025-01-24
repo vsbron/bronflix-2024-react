@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import useTrailer from "@/hooks/useTrailer";
-import { COUNTRIES, LANGUAGES } from "@/lib/constants";
+import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { IGenre, IShow } from "@/lib/typesAPI";
 import { formatDate } from "@/utils/helpers";
 

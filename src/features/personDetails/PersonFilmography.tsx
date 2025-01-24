@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { FILMOGRAPHY_LIMIT } from "@/lib/constants";
 import { PersonFilmographyProps } from "@/lib/types";
 import { IMediaCredit } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
-import { FILMOGRAPHY_LIMIT } from "@/lib/constants";
 
 function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   // Helper function that sorts the credits array
