@@ -14,7 +14,7 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the actors data: ${response.statusText}}`
+        `Failed to fetch the actors data: ${response.statusText}`
       );
     }
 
@@ -49,9 +49,7 @@ export async function getPerson(movieId: string): Promise<IPerson> {
 
     // Guard clause
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch the movie data: ${response.statusText}}`
-      );
+      throw new Error(`Failed to fetch the movie data: ${response.statusText}`);
     }
 
     // Getting the actual data

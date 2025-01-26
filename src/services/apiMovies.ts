@@ -14,7 +14,7 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the movies data: ${response.statusText}}`
+        `Failed to fetch the movies data: ${response.statusText}`
       );
     }
 
@@ -49,9 +49,7 @@ export async function getMovie(movieId: string): Promise<IMovie> {
 
     // Guard clause
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch the movie data: ${response.statusText}}`
-      );
+      throw new Error(`Failed to fetch the movie data: ${response.statusText}`);
     }
 
     // Getting the actual data

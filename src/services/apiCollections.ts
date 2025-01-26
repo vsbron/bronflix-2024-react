@@ -16,7 +16,7 @@ export async function getMovieCollection(
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the collection data: ${response.statusText}}`
+        `Failed to fetch the collection data: ${response.statusText}`
       );
     }
 

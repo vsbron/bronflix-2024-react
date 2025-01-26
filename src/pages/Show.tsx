@@ -7,7 +7,7 @@ import { getShow } from "@/services/apiShows";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
 import ShowCastCrew from "@/features/showDetails/ShowCastCrew";
-import ShowSeasons from "@/features/showDetails/ShowSeasons";
+import ShowSeasonsList from "@/features/showDetails/ShowSeasonsList";
 import ShowSimilar from "@/features/showDetails/ShowSimilar";
 
 // Show data loader
@@ -50,7 +50,7 @@ function Show() {
 
       {/* Content */}
       <ShowDetails show={show} />
-      {seasons && <ShowSeasons seasons={seasons} />}
+      {seasons && <ShowSeasonsList seasons={seasons} />}
       <ShowCastCrew showId={show.id} />
       <ShowSimilar showId={show.id} />
     </>

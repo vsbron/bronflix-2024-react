@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { APIFetchType, IShow, IShowList } from "@/lib/typesAPI";
+import { APIFetchType, ISeason, IShow, IShowList } from "@/lib/typesAPI";
 
 // API for getting the shows
 export async function getShows(type: APIFetchType): Promise<IShowList[]> {
@@ -13,9 +13,7 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
 
     // Guard clause
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch the shows data: ${response.statusText}}`
-      );
+      throw new Error(`Failed to fetch the shows data: ${response.statusText}`);
     }
 
     // Getting the actual data
@@ -47,7 +45,7 @@ export async function getShow(showId: string): Promise<IShow> {
 
     // Guard clause
     if (!response.ok) {
-      throw new Error(`Failed to fetch the show data: ${response.statusText}}`);
+      throw new Error(`Failed to fetch the show data: ${response.statusText}`);
     }
 
     // Getting the actual data
@@ -62,6 +60,42 @@ export async function getShow(showId: string): Promise<IShow> {
     } else {
       console.error(error);
       throw new Error("An unknown error occurred while fetching show data.");
+    }
+  }
+}
+
+// API for getting show's specific season
+export async function getSeason(
+  seasonNumber: string,
+  showId: string
+): Promise<ISeason> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}/tv/${showId}/season/${seasonNumber}?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the season data: ${response.statusText}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the show
+    return data;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(error.message);
+      throw new Error("An error occurred while fetching season data");
+    } else {
+      console.error(error);
+      throw new Error("An unknown error occurred while fetching season data.");
     }
   }
 }

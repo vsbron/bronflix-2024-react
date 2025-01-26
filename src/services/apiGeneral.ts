@@ -17,7 +17,7 @@ export async function getMediaCastCrew(
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the cast & crew data: ${response.statusText}}`
+        `Failed to fetch the cast & crew data: ${response.statusText}`
       );
     }
 
@@ -55,7 +55,7 @@ export async function getMediaSimilar(
     // Guard clause
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch related ${type} data: ${response.statusText}}`
+        `Failed to fetch related ${type} data: ${response.statusText}`
       );
     }
 

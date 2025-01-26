@@ -19,6 +19,7 @@ import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import TermsOfUse from "@/pages/TermsOfUse";
 import { HelmetProvider } from "react-helmet-async";
+import Season, { seasonLoader } from "./pages/Season";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -63,6 +64,12 @@ const router = createBrowserRouter([
         element: <Show />,
         loader: showLoader,
         errorElement: <ErrorMedia type="show" />,
+      },
+      {
+        path: "/shows/:showId/season/:seasonNumber",
+        element: <Season />,
+        loader: seasonLoader,
+        errorElement: <ErrorMedia type="season" />,
       },
       {
         path: "/actors",
