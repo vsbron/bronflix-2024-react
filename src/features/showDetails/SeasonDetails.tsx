@@ -15,6 +15,14 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   if (isLoading) return <Loader />;
   if (!data || error) return <div>Sorry, couldn't get this season data</div>;
 
+  const { episodes } = data;
+
+  const seasonHalf1 = episodes.slice(0, Math.round(episodes.length / 2));
+  const seasonHalf2 = episodes.slice(
+    Math.round(episodes.length / 2),
+    episodes.length
+  );
+
   // Returned JSX
   return (
     <div className={`grid ${PREVIEWS_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
@@ -30,10 +38,17 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
       </div>
       <div className="col-span-full">
         <h3>Episodes:</h3>
-        <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-          {data.episodes.map((episode: IEpisode) => (
-            <SeasonEpisode episode={episode} key={episode.id} />
-          ))}
+        <div className="grid grid-cols-2 gap-12">
+          <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
+            {seasonHalf1.map((episode: IEpisode) => (
+              <SeasonEpisode episode={episode} key={episode.id} />
+            ))}
+          </div>
+          <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
+            {seasonHalf2.map((episode: IEpisode) => (
+              <SeasonEpisode episode={episode} key={episode.id} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

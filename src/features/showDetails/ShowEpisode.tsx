@@ -19,22 +19,27 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
 
   // Setting the snapshot image
   const snapshot = still_path
-    ? `${MEDIA_IMG_URL}original${still_path}`
+    ? `${MEDIA_IMG_URL}w500${still_path}`
     : NO_SHOW_COVER;
+
+  // Shortening the overview
+  const splitOverview = overview.split(". ").slice(0, 2).join(". ");
 
   // Returned JSX
   return (
     <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
-      <div className="relative basis-[30rem] flex-shrink-0">
-        <img src={snapshot} className="rounded-lg w-full" />
+      <div className="relative basis-[30rem] flex-shrink-0 pb-[16.875rem] overflow-hidden rounded-lg ">
+        <img src={snapshot} className="object-cover absolute inset-0" />
         <ScorePreview score={vote_average} />
       </div>
       <div className="flex flex-col justify-end">
-        <div>
-          Episode {episode_number} ({runtime} minutes) | {formatDate(air_date)}
+        <div className="text-[1.5rem] flex gap-3 -mb-2">
+          Ep. {episode_number} ({formatDate(air_date)}
+          <span>|</span>
+          {runtime} minutes)
         </div>
-        <div className="font-heading text-4xl">{name}</div>
-        <div>{overview}</div>
+        <div className="font-heading text-[2.5rem] mb-1">{name}</div>
+        <div className="text-2xl">{splitOverview}</div>
       </div>
     </div>
   );
