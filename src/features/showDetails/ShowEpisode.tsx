@@ -35,12 +35,16 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
         <ScorePreview score={vote_average} />
       </div>
       <div className="flex flex-col justify-end">
-        <div className="text-[1.5rem] flex gap-3 -mb-2">
-          Ep. {episode_number} ({formatDate(air_date)}
-          <span>|</span>
-          {runtime} minutes)
+        <div className="text-[1.5rem] -mb-2 text-stone-400 font-medium">
+          Episode {episode_number}
         </div>
-        <div className="font-heading text-[2.5rem] mb-1">{name}</div>
+        <div className="font-heading text-[2.5rem]">{name}</div>
+
+        <div className="text-xl mb-2 flex gap-3">
+          Aired on: {formatDate(air_date)}
+          <span>•</span>
+          {runtime} minutes
+        </div>
         <div className="text-2xl">{splitOverview}</div>
       </div>
     </div>
