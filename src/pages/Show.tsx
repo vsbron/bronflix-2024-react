@@ -7,8 +7,8 @@ import { getShow } from "@/services/apiShows";
 
 import ShowDetails from "@/features/showDetails/ShowDetails";
 import ShowCastCrew from "@/features/showDetails/ShowCastCrew";
-import ShowSeasonsList from "@/features/showDetails/ShowSeasonsList";
 import ShowSimilar from "@/features/showDetails/ShowSimilar";
+import ShowSeasons from "@/features/showDetails/ShowSeasons";
 
 // Show data loader
 export const showLoader = async ({
@@ -50,7 +50,7 @@ function Show() {
 
       {/* Content */}
       <ShowDetails show={show} />
-      {seasons && <ShowSeasonsList seasons={seasons} />}
+      {seasons && <ShowSeasons seasons={seasons} />}
       <ShowCastCrew showId={show.id} />
       <ShowSimilar showId={show.id} />
     </>
