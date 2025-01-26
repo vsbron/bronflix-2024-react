@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
 function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
+  // Getting the search params and setting the state for selected season
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Filtering out non-seasons
@@ -16,7 +17,8 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
 
   // Click handler
   const changeSeasonHandler = (num: number) => {
-    setSearchParams({ season: num.toString() });
+    searchParams.set("season", num.toString());
+    setSearchParams(searchParams);
   };
 
   // Returned JSX
