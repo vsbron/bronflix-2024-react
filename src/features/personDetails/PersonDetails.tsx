@@ -6,6 +6,7 @@ import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 
 function PersonDetails({ person }: PersonDetailsProps) {
   // Destructuring data
@@ -30,9 +31,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
   const formattedDeathday = deathday ? formatDate(deathday) : null;
 
   // Formatting the biography
-  const formattedBio = biography
-    .split("\n\n")
-    .map((paragraph, i) => <p key={i}>{paragraph}</p>);
+  const formattedBio = FormatTextBlock(biography);
 
   // Toggle bio handler
   function toggleBioHandler() {
@@ -62,7 +61,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
         <div>
           <Heading as="h3">Biography</Heading>
           <div>
-            <div className="mb-4">
+            <div className="mb-10">
               {isBioExpanded ? formattedBio : formattedBio[0]}
             </div>
             {formattedBio.length > 1 && (

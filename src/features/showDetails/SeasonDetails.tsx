@@ -8,6 +8,7 @@ import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import SeasonEpisode from "@/features/showDetails/ShowEpisode";
 import { useSeason } from "@/features/showDetails/useSeason";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 
 function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   // Getting the season data from React Query
@@ -20,6 +21,9 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   // Destructuring the fetched data
   const { name, episodes, air_date, poster_path, vote_average, overview } =
     data;
+
+  // Formatting the overview
+  const formattedOverview = FormatTextBlock(overview);
 
   // Cutting the seasons' episodes to two, for two columns
   const midIndex = Math.ceil(episodes.length / 2);
@@ -44,7 +48,7 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
         <div className="font-heading text-5xl mb-2">{name}</div>
         <div className="text-xl mb-4">Aired on: {formatDate(air_date)}</div>
         <div className="w-1/2 text-2xl">
-          {overview || "No overview available for this season."}
+          {formattedOverview || "No overview available for this season."}
         </div>
       </div>
       <div className="col-span-full">
