@@ -174,7 +174,19 @@ export interface ISeason {
   episode_count: number;
   season_number: number;
   vote_average: number;
+  episodes: IEpisode[];
 }
+export interface IEpisode {
+  id: string;
+  name: string;
+  episode_number: number;
+  still_path: string;
+  vote_average: number;
+  runtime: number;
+  overview: string;
+  air_date: string;
+}
+
 export interface IVideo {
   key: string;
   type: string;

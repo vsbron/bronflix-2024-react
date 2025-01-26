@@ -3,6 +3,9 @@ import { useSeason } from "./useSeason";
 import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { formatDate } from "@/utils/helpers";
 import ScorePreview from "@/components/ScorePreview";
+import { NO_SHOW_COVER } from "@/lib/assets";
+import { IEpisode } from "@/lib/typesAPI";
+import ShowEpisode from "./ShowEpisode";
 
 function SeasonDetails({ seasonNumber }: { seasonNumber: number }) {
   // Getting the season data from React Query
@@ -30,27 +33,9 @@ function SeasonDetails({ seasonNumber }: { seasonNumber: number }) {
       <div className="col-span-full">
         <h3>Episodes:</h3>
         <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-          {data.episodes.map((episode) => {
-            return (
-              <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
-                <div className="relative basis-[30rem] flex-shrink-0">
-                  <img
-                    src={`${MEDIA_IMG_URL}w500${episode.still_path}`}
-                    className="rounded-lg w-full"
-                  />
-                  <ScorePreview score={episode.vote_average} />
-                </div>
-                <div className="flex flex-col justify-end">
-                  <div>
-                    Episode {episode.episode_number} ({episode.runtime} minutes)
-                    | {formatDate(episode.air_date)}
-                  </div>
-                  <div className="font-heading text-4xl">{episode.name}</div>
-                  <div>{episode.overview}</div>
-                </div>
-              </div>
-            );
-          })}
+          {data.episodes.map((episode: IEpisode) => (
+            <ShowEpisode episode={episode} key={episode.id} />
+          ))}
         </div>
       </div>
     </div>
