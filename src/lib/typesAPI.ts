@@ -90,7 +90,7 @@ export interface IShow {
   popularity?: number;
   production_companies: IProductionCompany[];
   production_countries: { name: string }[];
-  seasons?: ISeason[];
+  seasons: ISeason[];
   spoken_languages?: { english_name: string }[];
   status?: string;
   type?: Media;

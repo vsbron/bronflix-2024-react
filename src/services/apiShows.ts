@@ -66,8 +66,8 @@ export async function getShow(showId: string): Promise<IShow> {
 
 // API for getting show's specific season
 export async function getSeason(
-  seasonNumber: string,
-  showId: string
+  showId: string,
+  seasonNumber: number
 ): Promise<ISeason> {
   try {
     // Fetching the data

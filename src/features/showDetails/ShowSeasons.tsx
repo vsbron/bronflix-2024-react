@@ -1,41 +1,37 @@
-import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { ISeason } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import SeasonDetails from "@/features/showDetails/SeasonDetails";
 
 function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
-  // Getting the search params and setting the state for selected season
-  const [searchParams, setSearchParams] = useSearchParams();
+  // Setting the state for chosen season
+  const [chosenSeason, setChosenSeason] = useState<number>();
 
   // Filtering out non-seasons
   const onlySeasons = seasons.filter((season) =>
     season.name.includes("Season")
   );
 
-  // Click handler
-  const changeSeasonHandler = (num: number) => {
-    searchParams.set("season", num.toString());
-    setSearchParams(searchParams);
-  };
-
   // Returned JSX
   return (
     <section>
       <Heading as="h2">Seasons</Heading>
-      <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
+      <div className={`flex ${PREVIEWS_GAP_CLASS} mb-6`}>
         {onlySeasons.map((season) => {
           return (
             <Button key={season.id}>
-              <span onClick={() => changeSeasonHandler(season.season_number)}>
+              <span onClick={() => setChosenSeason(season.season_number)}>
                 {season.name}
               </span>
             </Button>
           );
         })}
       </div>
+      {chosenSeason && <SeasonDetails seasonNumber={chosenSeason} />}
     </section>
   );
 }
