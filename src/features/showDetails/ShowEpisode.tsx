@@ -23,7 +23,9 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
     : NO_SHOW_COVER;
 
   // Shortening the overview
-  const splitOverview = overview.split(". ").slice(0, 2).join(". ");
+  const splitOverview = overview
+    ? overview.split(". ").slice(0, 2).join(". ")
+    : "No overview available for this episode";
 
   // Returned JSX
   return (

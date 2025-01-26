@@ -4,7 +4,7 @@ import { IEpisode } from "@/lib/typesAPI";
 import { formatDate } from "@/utils/helpers";
 
 import Loader from "@/components/ui/Loader";
-import SeasonEpisode from "./ShowEpisode";
+import SeasonEpisode from "@/features/showDetails/ShowEpisode";
 import { useSeason } from "@/features/showDetails/useSeason";
 
 function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
@@ -15,26 +15,28 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   if (isLoading) return <Loader />;
   if (!data || error) return <div>Sorry, couldn't get this season data</div>;
 
-  const { episodes } = data;
+  // Destructuring the fetched data
+  const { name, episodes, air_date, poster_path, vote_average, overview } =
+    data;
 
-  const seasonHalf1 = episodes.slice(0, Math.round(episodes.length / 2));
-  const seasonHalf2 = episodes.slice(
-    Math.round(episodes.length / 2),
-    episodes.length
-  );
+  // Cutting the seasons' episodes to two, for two columns
+  const midIndex = Math.ceil(episodes.length / 2);
+  const [seasonHalf1, seasonHalf2] = [
+    episodes.slice(0, midIndex),
+    episodes.slice(midIndex),
+  ];
 
   // Returned JSX
   return (
     <div className={`grid ${PREVIEWS_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
-      <img
-        src={`${MEDIA_IMG_URL}w500${data.poster_path}`}
-        className="rounded-lg"
-      />
+      <img src={`${MEDIA_IMG_URL}w500${poster_path}`} className="rounded-lg" />
       <div className="flex flex-col justify-end ">
-        <div>{data.vote_average}</div>
-        <div>{data.name}</div>
-        <div>{formatDate(data.air_date)}</div>
-        <div className="w-1/2">{data.overview}</div>
+        <div>{vote_average}</div>
+        <div>{name}</div>
+        <div>{formatDate(air_date)}</div>
+        <div className="w-1/2">
+          {overview || "No overview available for this season."}
+        </div>
       </div>
       <div className="col-span-full">
         <h3>Episodes:</h3>
