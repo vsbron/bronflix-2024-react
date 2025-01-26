@@ -1,12 +1,13 @@
-import ScorePreview from "@/components/ScorePreview";
 import { NO_SHOW_COVER } from "@/lib/assets";
 import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
-import { IEpisode } from "@/lib/typesAPI";
+import { SeasonEpisodeProps } from "@/lib/types";
 import { formatDate } from "@/utils/helpers";
 
-function ShowEpisode({ episode }: { episode: IEpisode }) {
+import ScorePreview from "@/components/ScorePreview";
+
+function SeasonEpisode({ episode }: SeasonEpisodeProps) {
+  // Destructuring episode data
   const {
-    id,
     name,
     episode_number,
     still_path,
@@ -16,12 +17,14 @@ function ShowEpisode({ episode }: { episode: IEpisode }) {
     air_date,
   } = episode;
 
+  // Setting the snapshot image
   const snapshot = still_path
     ? `${MEDIA_IMG_URL}original${still_path}`
     : NO_SHOW_COVER;
 
+  // Returned JSX
   return (
-    <div className={`flex ${PREVIEWS_GAP_CLASS}`} key={id}>
+    <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
       <div className="relative basis-[30rem] flex-shrink-0">
         <img src={snapshot} className="rounded-lg w-full" />
         <ScorePreview score={vote_average} />
@@ -37,4 +40,4 @@ function ShowEpisode({ episode }: { episode: IEpisode }) {
   );
 }
 
-export default ShowEpisode;
+export default SeasonEpisode;

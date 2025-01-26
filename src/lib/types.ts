@@ -2,6 +2,7 @@ import { ReactNode, RefObject } from "react";
 import {
   IBase,
   ICollection,
+  IEpisode,
   IGenre,
   IMediaCredit,
   IMovie,
@@ -137,3 +138,5 @@ export type ShowDetailsProps = { show: IShow };
 export type ShowSimilarProps = {
   showId: string;
 };
+export type SeasonDetailsProps = { seasonNumber: number };
+export type SeasonEpisodeProps = { episode: IEpisode };
