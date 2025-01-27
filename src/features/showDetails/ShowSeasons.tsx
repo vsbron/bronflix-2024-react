@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { PREVIEWS_GAP_CLASS, SEASON_TYPES } from "@/lib/constants";
 import { ISeason } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
@@ -13,7 +13,7 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
 
   // Filtering out non-seasons
   const onlySeasons = seasons.filter((season) =>
-    season.name.includes("Season")
+    SEASON_TYPES.some((type) => season.name.toLowerCase().includes(type))
   );
 
   const handleSeason = (seasonNumber: number) => {
@@ -25,7 +25,7 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
   // Returned JSX
   return (
     <section>
-      <Heading as="h2">Seasons</Heading>
+      <Heading as="h2">Episode Guide</Heading>
       <div className={`flex ${PREVIEWS_GAP_CLASS} mb-6 flex-wrap`}>
         {onlySeasons.map((season) => {
           return (

@@ -9,6 +9,7 @@ import Loader from "@/components/ui/Loader";
 import SeasonEpisode from "@/features/showDetails/ShowEpisode";
 import { useSeason } from "@/features/showDetails/useSeason";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
+import { NO_SHOW_POSTER } from "@/lib/assets";
 
 function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   // Getting the season data from React Query
@@ -23,7 +24,9 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
     data;
 
   // Formatting the overview
-  const formattedOverview = FormatTextBlock(overview);
+  const formattedOverview = overview
+    ? FormatTextBlock(overview)
+    : "No overview available for this season.";
 
   // Cutting the seasons' episodes to two, for two columns
   const midIndex = Math.ceil(episodes.length / 2);
@@ -32,13 +35,18 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
     episodes.slice(midIndex),
   ];
 
+  // Setting the poster image
+  const poster = poster_path
+    ? `${MEDIA_IMG_URL}w500${poster_path}`
+    : NO_SHOW_POSTER;
+
   // Returned JSX
   return (
     <div className={`grid ${PREVIEWS_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
       <div className="relative">
         <ScorePreview score={vote_average} />
         <img
-          src={`${MEDIA_IMG_URL}w500${poster_path}`}
+          src={poster}
           className="rounded-lg"
           alt={`Season poster`}
           title={`Poster of the ${name}`}
@@ -47,12 +55,10 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
       <div className="flex flex-col justify-end ">
         <div className="font-heading text-5xl mb-2">{name}</div>
         <div className="text-xl mb-4">Aired on: {formatDate(air_date)}</div>
-        <div className="w-1/2 text-2xl">
-          {formattedOverview || "No overview available for this season."}
-        </div>
+        <div className="w-1/2 text-2xl">{formattedOverview}</div>
       </div>
       <div className="col-span-full">
-        <Heading as="h3">Episodes</Heading>
+        <Heading as="h3">{`${name} Episodes`}</Heading>
         <div className="grid grid-cols-2 gap-12">
           <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
             {seasonHalf1.map((episode: IEpisode) => (

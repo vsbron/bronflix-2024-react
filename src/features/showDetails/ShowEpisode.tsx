@@ -31,7 +31,12 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
   return (
     <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
       <div className="relative basis-[30rem] flex-shrink-0 pb-[16.875rem] overflow-hidden rounded-lg">
-        <img src={snapshot} className="object-cover absolute inset-0" />
+        <img
+          src={snapshot}
+          className="object-cover absolute inset-0"
+          alt="Episode still"
+          title={name}
+        />
         <ScorePreview score={vote_average} />
       </div>
       <div className="flex flex-col justify-end">

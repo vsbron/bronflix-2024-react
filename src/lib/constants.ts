@@ -34,6 +34,8 @@ export const EXCLUDED_GENRE_IDS = [
   10767, // Talk
 ];
 
+export const SEASON_TYPES = ["season", "miniseries"];
+
 export const CREW_JOBS = [
   "Director",
   "Writer",
