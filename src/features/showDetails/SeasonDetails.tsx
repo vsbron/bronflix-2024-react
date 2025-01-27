@@ -28,6 +28,8 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   const { name, episodes, air_date, poster_path, vote_average, overview } =
     data;
 
+  console.log(air_date);
+
   // Formatting the overview
   const formattedOverview = overview
     ? FormatTextBlock(overview)
@@ -59,24 +61,26 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
       </div>
       <div className="flex flex-col justify-end ">
         <div className="font-heading text-5xl mb-2">{name}</div>
-        <div className="text-xl mb-4">Aired on: {formatDate(air_date)}</div>
+        <div className="text-xl mb-4">Air date: {formatDate(air_date)}</div>
         <div className="w-1/2 text-2xl">{formattedOverview}</div>
       </div>
-      <div className="col-span-full">
-        <Heading as="h3">{`${name} Episodes`}</Heading>
-        <div className="grid grid-cols-2 gap-12">
-          <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-            {seasonHalf1.map((episode: IEpisode) => (
-              <SeasonEpisode episode={episode} key={episode.id} />
-            ))}
-          </div>
-          <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-            {seasonHalf2.map((episode: IEpisode) => (
-              <SeasonEpisode episode={episode} key={episode.id} />
-            ))}
+      {episodes.length > 0 && (
+        <div className="col-span-full">
+          <Heading as="h3">{`${name} Episodes`}</Heading>
+          <div className="grid grid-cols-2 gap-12">
+            <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
+              {seasonHalf1.map((episode: IEpisode) => (
+                <SeasonEpisode episode={episode} key={episode.id} />
+              ))}
+            </div>
+            <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
+              {seasonHalf2.map((episode: IEpisode) => (
+                <SeasonEpisode episode={episode} key={episode.id} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -23,8 +23,6 @@ function ShowCastCrew({ showId }: ShowCastCrewProps) {
   // Destructuring the data
   const { cast, crew } = data;
 
-  console.log(crew);
-
   // Filtering the cast and crew arrays
   const shortenCast = cast.slice(0, CAST_MAX);
   const shortenCrew = crew

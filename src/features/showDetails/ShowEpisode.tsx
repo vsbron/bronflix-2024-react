@@ -46,9 +46,12 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
         <div className="font-heading text-[2.5rem]">{name}</div>
 
         <div className="text-xl mb-2 flex gap-3">
-          Aired on: {formatDate(air_date)}
-          <span>•</span>
-          {runtime} minutes
+          Air date: {formatDate(air_date)}
+          {runtime && (
+            <>
+              <span>•</span> {runtime} minutes
+            </>
+          )}
         </div>
         <div className="text-2xl">{splitOverview}</div>
       </div>

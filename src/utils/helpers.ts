@@ -35,7 +35,7 @@ export function scoreColor(score: number) {
 // Function that formats the date
 export function formatDate(dateString: string) {
   // Guard clause
-  if (dateString === "") return "TBA";
+  if (!dateString) return "TBA";
 
   // Returned formatted date
   return new Date(dateString).toLocaleString("en-US", {
