@@ -1,6 +1,10 @@
 # BroNflix
 
-This project reimagines a Netflix-inspired application using modern technologies, providing an interactive platform for exploring movies, shows, and actors.
+This is a Netflix-inspired application built with modern technologies, providing an interactive platform for exploring movies, shows, and actors.
+
+It features an index page, as well as separate pages for movies, shows, and people, along with additional technical pages. Key functionalities include dynamic content from the TMDB API, a sleek and responsive UI, and intuitive navigation.
+
+---
 
 ## Contents
 
@@ -10,71 +14,87 @@ This project reimagines a Netflix-inspired application using modern technologies
    - [Index Page](#index-page)
    - [Movie Page](#movie-page)
    - [Show Page](#show-page)
-   - [Actor Page](#actor-page)
+   - [Person Page](#person-page)
+   - [Collection Page](#collection-page)
 4. [Technical Details](#technical-details)
+5. [Live version](#live-version)
 
 ---
 
 ## Project Overview
 
-The app includes the following sections and pages:
+BroNflix allows users to explore movies, TV shows, and actors with dynamic content fetched from the TMDB API. It includes:
 
-- **Main Sections:** Featured Movies, Trending Shows, Trending Actors, and Top Rated Movies.
-- **Individual Pages:** Detailed information pages for movies, shows, and actors, dynamically fetched based on ID.
-- **Core Components:** A responsive header, side navigation, and footer for smooth navigation.
+- **Core Components**: A responsive header, side navigation, and footer for smooth navigation.
+- **Dynamic Content**: Movies, shows, and actors are fetched from the TMDB API and shuffled on every visit, providing a fresh set of recommendations.
+- **Modern UI/UX**: Sleek design with a responsive layout and intuitive navigation.
+
+---
 
 ## Features
 
-- **Dynamic Content:** Movies, shows, and actors are fetched from the TMDB API and displayed in a shuffled order for a fresh experience.
-- **Interactive Sections:** A featured movie section with auto-cycling and manual navigation.
-- **Detailed Pages:** Explore in-depth details for movies, shows, and actors on dedicated pages.
-- **Modern UI/UX:** Sleek design with responsive layout and intuitive navigation.
+- **Interactive Content**: The index page includes a variety of sections such as 'What's Hot?', 'Trending Shows', 'Trending Actors', and more, offering a dynamic browsing experience. Each section presents a carousel of movies, shows, and actors, offering users a variety of recommendations.
+- **Detailed Pages**: Each movie, show, and actor has its dedicated page with rich information, including posters, overviews, cast/crew, and similar recommendations.
+- **Seamless Navigation**: Users can click on items to navigate to their respective pages for more detailed information.
+
+---
 
 ## Page Descriptions
 
-### Index Page
+### **Index Page**
 
-- **Featured Movie:**  
-  Highlights a selected movie with basic details and an option to watch its trailer. Automatically cycles to the next featured movie, with manual navigation controls available.
+The main page features several sections, including:
 
-- **Trending Content:**  
-  Displays shuffled lists of popular shows, trending actors, and critically acclaimed movies & shows, offering a variety of recommendations on a single page.
+- **What's Hot?**: A carousel showcasing movies, where the selected movie displays detailed information like name, score, genres, and offers options to view the trailer or navigate to its page.
+- **Trending Content**: A dynamic mix of carousels featuring trending shows, actors, top-rated movies, and top-rated shows, allowing users to explore popular content across various categories. Each item in the carousels is clickable and takes the user to the respective movie, show, or actor page. All content on the index page is shuffled for a fresh set of recommendations with every visit.
 
-### Movie Page
+### **Movie Page**
 
-- Displays a poster and cover of the movie alongside detailed information, including:
-  - Ratings, release date, country, studio, budget, overview of the movie, etc.
-  - Option to watch the movie trailer directly on the page.
-- Showcases the cast, including main actors and key crew members such as the director, writers, composer, producers and others.
-- Includes a section labeled "You May Also Like," featuring similar movies or recommendations.
+Displays comprehensive information about a movie, including:
 
-### Show Page
+- Movie poster, cover image, ratings, release information, and other essential details.
+- A button to watch the trailer.
+- If the movie is part of a collection, a button to explore the collection.
+- Cast carousel featuring actors photos and their roles.
+- Crew section highlighting key contributors such as the director, writer, and producer.
+- "Movies You May Also Like" carousel with genre-based recommendations.
 
-- Features in-depth details about a selected show.
+### **Show Page**
 
-### Person Page
+Similar to the movie page, but with additional details:
 
-- Displays detailed information about the person, including:
-  - Name, birthday, place of birth, and biography.
-- Showcases notable works with a movie poster carousel, featuring clickable movie posters that link to individual movie pages.
-- Includes an expandable filmography section, displaying:
-  - Roles for actors (e.g., character names).
-  - Job titles for crew members (e.g., director, producer, writer).
+- Displays the series' timespan, current status, and number of episodes.
+- An episode guide, where users can choose a season and view episodes with overviews, air dates, and snapshot.
+- Series cast carousel featuring actors photos and their roles.
+- Crew section highlighting key contributors such as producers.
+- "Shows You May Also Like" carousel for recommendations.
 
-### Collection Page
+### **Person Page**
 
-- Accessed from a movie page within a collection
-- Displays the movie's poster, along with a brief overview and a list of movies included in the collection.
+Provides in-depth details about an actor or crew member:
+
+- Displays a profile image, name, gender, birthday, and biography.
+- A "Notable Work" carousel featuring the movies and shows they are most known for.
+- A complete filmography list, including both acting and crew roles, with each entry clickable for more details.
+
+### **Collection Page**
+
+- Accessed from a movie page within a collection.
+- Displays the movie's poster, a brief overview, and a list of movies included in the collection.
+
+---
 
 ## Technical Details
 
-- **Framework:** React with TypeScript for type safety and scalability.
-- **Routing:** React Router v6.4 for seamless navigation.
-- **Icons:** HeroIcons for modern and consistent UI elements.
-- **State Management:** Context API for managing global state.
-- **API:** TMDB API for fetching movies, shows, and actor data.
-- **Meta Management:** React Helmet Async for handling dynamic meta tags and improving SEO and social sharing.
+- **Framework**: React with TypeScript for type safety and scalability.
+- **Routing**: React Router v6.4 for seamless navigation.
+- **Icons**: HeroIcons for modern and consistent UI elements.
+- **State Management**: Context API for managing global state.
+- **API**: TMDB API for fetching movies, shows, and actor data.
+- **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
 
-## Live version
+---
+
+## Live version (VPN might be needed)
 
 https://vsbronflix.netlify.app/
