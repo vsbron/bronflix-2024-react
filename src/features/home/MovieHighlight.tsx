@@ -33,7 +33,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Get the genres from Context API
   const { genres } = useGenres();
-  const trailer = useTrailer(movie, "movie");
+  const trailer = useTrailer(movie.id, "movie");
 
   // Handling the movie data
   // prettier-ignore

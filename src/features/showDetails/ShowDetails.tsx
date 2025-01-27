@@ -19,7 +19,7 @@ import TrailerButton from "@/components/TrailerButton";
 
 function ShowDetails({ show }: { show: IShow }) {
   // Getting the trailer from the custom hook
-  const trailer = useTrailer(show, "tv");
+  const trailer = useTrailer(show.id, "tv");
 
   // Destructuring data
   const {

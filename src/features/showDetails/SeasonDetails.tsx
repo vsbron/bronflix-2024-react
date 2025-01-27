@@ -28,8 +28,6 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   const { name, episodes, air_date, poster_path, vote_average, overview } =
     data;
 
-  console.log(air_date);
-
   // Formatting the overview
   const formattedOverview = overview
     ? FormatTextBlock(overview)

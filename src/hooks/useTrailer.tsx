@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import useVideo from "@/context/VideoContext";
 
 import { MEDIA_URL } from "@/lib/constants";
-import { IBase, IVideo } from "@/lib/typesAPI";
+import { IVideo } from "@/lib/typesAPI";
 
-function useTrailer(media: IBase, type: "tv" | "movie") {
+function useTrailer(id: string, type: "tv" | "movie" | "season") {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
   const { isOpen } = useVideo();
@@ -19,11 +19,26 @@ function useTrailer(media: IBase, type: "tv" | "movie") {
     const controller = new AbortController();
     const { signal } = controller;
 
+    let fetchURL;
+    switch (type) {
+      case "tv":
+      case "movie":
+        fetchURL = `${MEDIA_URL}/${type}/${id}/videos?api_key=${
+          import.meta.env.VITE_TMDB_API_KEY
+        }`;
+        break;
+      case "season":
+        fetchURL = `${MEDIA_URL}/tv/${id}/season//videos?api_key=${
+          import.meta.env.VITE_TMDB_API_KEY
+        }`;
+        break;
+    }
+
     // Fetching data
     async function fetchVideo() {
       try {
         const response = await fetch(
-          `${MEDIA_URL}/${type}/${media.id}/videos?api_key=${
+          `${MEDIA_URL}/${type}/${id}/videos?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }`,
           { signal }
@@ -51,7 +66,7 @@ function useTrailer(media: IBase, type: "tv" | "movie") {
     return () => {
       controller.abort();
     };
-  }, [media, isOpen]);
+  }, [id, isOpen]);
 
   // Returning video
   return video;
