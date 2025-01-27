@@ -6,6 +6,8 @@ module.exports = {
       backgroundImage: {
         "button-gradient":
           "linear-gradient(to right, var(--color-red--950), var(--color-red--900))",
+        "button-gradient--active":
+          "linear-gradient(to right, var(--color-red--700), var(--color-red--600))",
         "featured-gradient-1":
           "linear-gradient(to right, var(--color-black), transparent)",
         "featured-gradient-2":

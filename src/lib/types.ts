@@ -91,7 +91,11 @@ export type ScorePreviewProps = {
 // UI
 export type BlackGradientToTopProps = { height: string };
 export type BlackGradientToRightProps = { width: string };
-export type ButtonProps = { onClick?: () => void; children: ReactNode };
+export type ButtonProps = {
+  isActive?: boolean;
+  onClick?: () => void;
+  children: ReactNode;
+};
 export type FooterHeadingProps = { children: string };
 export type HeadingProps = { children: string; as?: Headings };
 export type NavItemProps = { icon: ReactNode; title: string };

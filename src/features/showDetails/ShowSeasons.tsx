@@ -30,7 +30,10 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
       <div className={`flex ${PREVIEWS_GAP_CLASS} mb-6 flex-wrap`}>
         {onlySeasons.map((season) => {
           return (
-            <Button key={season.id}>
+            <Button
+              key={season.id}
+              isActive={season.season_number === chosenSeason}
+            >
               <span onClick={() => handleSeason(season.season_number)}>
                 {season.name}
               </span>
