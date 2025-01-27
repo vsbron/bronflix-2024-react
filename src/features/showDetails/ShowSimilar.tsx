@@ -17,6 +17,7 @@ function ShowSimilar({ showId }: ShowSimilarProps) {
         {error?.message || "Error fetching similar shows"}
       </div>
     );
+  if (similarShows.length === 0) return null;
 
   // Returned JSX
   return (

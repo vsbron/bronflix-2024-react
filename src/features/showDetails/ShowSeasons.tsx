@@ -13,9 +13,10 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
 
   // Filtering out non-seasons
   const onlySeasons = seasons.filter((season) =>
-    SEASON_TYPES.some((type) => season.name.toLowerCase().includes(type))
+    SEASON_TYPES.some((type) => !season.name.toLowerCase().includes(type))
   );
 
+  // Handle season change
   const handleSeason = (seasonNumber: number) => {
     seasonNumber === chosenSeason
       ? setChosenSeason(null)

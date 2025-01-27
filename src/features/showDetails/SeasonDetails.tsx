@@ -1,6 +1,8 @@
+import { NO_SHOW_POSTER } from "@/lib/assets";
 import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { SeasonDetailsProps } from "@/lib/types";
 import { IEpisode } from "@/lib/typesAPI";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
 import ScorePreview from "@/components/ScorePreview";
@@ -8,8 +10,6 @@ import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import SeasonEpisode from "@/features/showDetails/ShowEpisode";
 import { useSeason } from "@/features/showDetails/useSeason";
-import { FormatTextBlock } from "@/utils/FormatTextBlock";
-import { NO_SHOW_POSTER } from "@/lib/assets";
 
 function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
   // Getting the season data from React Query
@@ -17,7 +17,12 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
 
   // Guard clauses
   if (isLoading) return <Loader />;
-  if (!data || error) return <div>Sorry, couldn't get this season data</div>;
+  if (!data || error)
+    return (
+      <div className="text-red-500">
+        {error?.message || "Error fetching season data"}
+      </div>
+    );
 
   // Destructuring the fetched data
   const { name, episodes, air_date, poster_path, vote_average, overview } =

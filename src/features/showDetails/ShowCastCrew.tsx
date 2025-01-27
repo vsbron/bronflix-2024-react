@@ -23,6 +23,8 @@ function ShowCastCrew({ showId }: ShowCastCrewProps) {
   // Destructuring the data
   const { cast, crew } = data;
 
+  console.log(crew);
+
   // Filtering the cast and crew arrays
   const shortenCast = cast.slice(0, CAST_MAX);
   const shortenCrew = crew
@@ -33,19 +35,22 @@ function ShowCastCrew({ showId }: ShowCastCrewProps) {
   // Returned JSX
   return (
     <>
-      <section>
-        <Heading as="h2">Cast & Characters</Heading>
-        {/* The Cast */}
-        <Previews
-          rawPreviews={shortenCast as ICast[]}
-          height="26rem"
-          width="18rem"
-          type="person"
-          subtitle="character"
-        />
-      </section>
+      {/* The Cast (if available) */}
+      {shortenCast.length > 0 && (
+        <section>
+          <Heading as="h2">Cast & Characters</Heading>
+          {/* The Cast */}
+          <Previews
+            rawPreviews={shortenCast as ICast[]}
+            height="26rem"
+            width="18rem"
+            type="person"
+            subtitle="character"
+          />
+        </section>
+      )}
       {/* The Crew (if available) */}
-      {crew.length > 0 && (
+      {shortenCrew.length > 0 && (
         <section>
           <Heading as="h2">Crew</Heading>
           <Previews
