@@ -10,9 +10,9 @@ import Separator from "@/components/ui/Separator";
 import ActorsTrending from "@/features/home/ActorsTrending";
 import ExploreMore from "@/features/home/ExploreMore";
 import HeroSection from "@/features/home/HeroSection";
-import MoviesTopRated from "@/features/home/MoviesTopRated";
+import MoviesAcclaimed from "@/features/home/MoviesAcclaimed";
+import ShowsPopular from "@/features/home/ShowsPopular";
 import ShowsTopRated from "@/features/home/ShowsTopRated";
-import ShowsTrending from "@/features/home/ShowsTrending";
 
 function Home() {
   // Returned JSX
@@ -28,12 +28,12 @@ function Home() {
 
       {/* Content */}
       <HeroSection />
-      <ShowsTrending />
+      <ShowsPopular />
       <ActorsTrending />
       <Separator />
       <ExploreMore />
       <Separator />
-      <MoviesTopRated />
+      <MoviesAcclaimed />
       <ShowsTopRated />
     </>
   );

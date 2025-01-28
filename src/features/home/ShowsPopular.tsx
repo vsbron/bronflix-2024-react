@@ -4,7 +4,7 @@ import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 
-function ShowsTrending() {
+function ShowsPopular() {
   // Getting the trending shows and ref for ribbon element
   const { isLoading, shows, error } = useShowsTrending();
 
@@ -20,10 +20,10 @@ function ShowsTrending() {
   // Returned JSX
   return (
     <section>
-      <Heading as="h2">TRENDING SHOWS</Heading>
+      <Heading as="h2">POPULAR SHOWS</Heading>
       <Previews rawPreviews={shows} height="19rem" type="tv" isTwoRows={true} />
     </section>
   );
 }
 
-export default ShowsTrending;
+export default ShowsPopular;

@@ -4,7 +4,7 @@ import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 
-function MoviesTopRated() {
+function MoviesAcclaimed() {
   // Getting the top rated movies and ref for ribbon element
   const { isLoading, movies, error } = useMoviesTopRated();
 
@@ -20,10 +20,10 @@ function MoviesTopRated() {
   // Returned JSX
   return (
     <section>
-      <Heading as="h2">TOP RATED MOVIES</Heading>
+      <Heading as="h2">Critically Acclaimed Movies</Heading>
       <Previews rawPreviews={movies} pages={3} height="40rem" type="movies" />
     </section>
   );
 }
 
-export default MoviesTopRated;
+export default MoviesAcclaimed;
