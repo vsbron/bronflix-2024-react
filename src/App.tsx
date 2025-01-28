@@ -63,6 +63,8 @@ const router = createBrowserRouter([
         path: "/shows/:showId",
         element: <Show />,
         loader: showLoader,
+        shouldRevalidate: ({ currentUrl, nextUrl }) =>
+          currentUrl.pathname !== nextUrl.pathname,
         errorElement: <ErrorMedia type="show" />,
       },
       {

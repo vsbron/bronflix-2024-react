@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { PREVIEWS_GAP_CLASS, SEASON_TYPES } from "@/lib/constants";
 import { ISeason } from "@/lib/typesAPI";
@@ -8,19 +8,26 @@ import Heading from "@/components/ui/Heading";
 import SeasonDetails from "@/features/showDetails/SeasonDetails";
 
 function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
-  // Setting the state for chosen season
-  const [chosenSeason, setChosenSeason] = useState<number | null>();
+  // Access and manipulate search parameters
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Retrieve the chosen season from searchParams
+  const chosenSeason = searchParams.get("season");
 
   // Filtering out non-seasons
   const onlySeasons = seasons.filter((season) =>
     SEASON_TYPES.some((type) => !season.name.toLowerCase().includes(type))
   );
 
+  // Checking whether chosen season even exists
+  const isSeason = Number(chosenSeason) <= onlySeasons.length;
+
   // Handle season change
   const handleSeason = (seasonNumber: number) => {
-    seasonNumber === chosenSeason
-      ? setChosenSeason(null)
-      : setChosenSeason(seasonNumber);
+    String(seasonNumber) === chosenSeason
+      ? searchParams.delete("season")
+      : searchParams.set("season", seasonNumber.toString());
+    setSearchParams(searchParams);
   };
 
   // Returned JSX
@@ -32,7 +39,7 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
           return (
             <Button
               key={season.id}
-              isActive={season.season_number === chosenSeason}
+              isActive={String(season.season_number) === chosenSeason}
             >
               <span onClick={() => handleSeason(season.season_number)}>
                 {season.name}
@@ -41,7 +48,15 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
           );
         })}
       </div>
-      {chosenSeason && <SeasonDetails seasonNumber={chosenSeason} />}
+      {chosenSeason &&
+        (isSeason ? (
+          <SeasonDetails seasonNumber={chosenSeason} />
+        ) : (
+          <div>
+            Season {chosenSeason} is not available for this show. Please select
+            a valid season from the options above.
+          </div>
+        ))}
     </section>
   );
 }

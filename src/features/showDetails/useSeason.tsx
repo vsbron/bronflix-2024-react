@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getSeason } from "@/services/apiShows";
 
-export function useSeason(seasonNumber: number) {
+export function useSeason(seasonNumber: string) {
   // Getting the show ID from URL
   const { showId } = useParams();
 

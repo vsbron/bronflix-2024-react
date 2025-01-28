@@ -142,5 +142,5 @@ export type ShowDetailsProps = { show: IShow };
 export type ShowSimilarProps = {
   showId: string;
 };
-export type SeasonDetailsProps = { seasonNumber: number };
+export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
