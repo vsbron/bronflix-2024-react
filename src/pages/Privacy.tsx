@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
+
 import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
+
 import Heading from "@/components/ui/Heading";
 
 function Privacy() {

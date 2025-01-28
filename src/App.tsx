@@ -9,18 +9,20 @@ import Layout from "@/components/ui/Layout";
 
 import Home from "@/pages/Home";
 import ActorsMain from "@/pages/ActorsMain";
-import Person, { personLoader } from "@/pages/Person";
 import MoviesMain from "@/pages/MoviesMain";
 import Movie, { movieLoader } from "@/pages/Movie";
 import MovieCollection, {
   movieCollectionLoader,
 } from "@/pages/MovieCollection";
+import Person, { personLoader } from "@/pages/Person";
 import ShowsMain from "@/pages/ShowsMain";
 import Show, { showLoader } from "@/pages/Show";
+
+import AppInfo from "./pages/AppInfo";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
-import TermsOfUse from "@/pages/TermsOfUse";
 import Sitemap from "./pages/Sitemap";
+import TermsOfUse from "@/pages/TermsOfUse";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -81,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/site-map",
         element: <Sitemap />,
+      },
+      {
+        path: "/app-info",
+        element: <AppInfo />,
       },
       {
         path: "/privacy",

@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
-import { Link } from "react-router-dom";
 
 function Sitemap() {
   // Returned JSX
