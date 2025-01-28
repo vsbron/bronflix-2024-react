@@ -16,6 +16,10 @@ export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
 export const META_SITEMAP_DESC =
   "Explore the comprehensive sitemap of BroNflix, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features.";
 
+export const META_ABOUT_US_TITLE = `About Us${META_TITLE_END}`;
+export const META_ABOUT_US_DESC =
+  "Learn more about BroNflix, our mission, and the features that make it a unique platform for discovering movies, shows, and actors. Get insights into the technology and vision behind BroNflix.";
+
 export const META_APP_INFO_TITLE = `App Info${META_TITLE_END}`;
 export const META_APP_INFO_DESC =
   "Learn more about BroNflix, our mission, and the features that make it a unique platform for discovering movies, shows, and actors. Get insights into the technology and vision behind BroNflix.";

@@ -18,6 +18,7 @@ import Person, { personLoader } from "@/pages/Person";
 import ShowsMain from "@/pages/ShowsMain";
 import Show, { showLoader } from "@/pages/Show";
 
+import AboutUs from "./pages/AboutUs";
 import AppInfo from "./pages/AppInfo";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/site-map",
         element: <Sitemap />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/app-info",
