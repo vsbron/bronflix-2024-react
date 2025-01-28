@@ -11,6 +11,11 @@ export const META_MAIN_KEYW =
   "movies, tv shows, entertainment, streaming, genres, recommendations, BroNflix, film, series, movie database";
 
 // Other pages
+
+export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
+export const META_SITEMAP_DESC =
+  "Explore the comprehensive sitemap of BroNflix, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features.";
+
 export const META_PRIVACY_TITLE = `Privacy Policy${META_TITLE_END}`;
 export const META_PRIVACY_DESC =
   "At BroNflix, your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our platform.";
