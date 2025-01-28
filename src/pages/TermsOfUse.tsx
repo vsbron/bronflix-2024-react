@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 import { META_TERMS_DESC, META_TERMS_TITLE } from "@/lib/metaTags";
 
+import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
 
 function TermsOfUse() {
@@ -18,7 +19,7 @@ function TermsOfUse() {
       {/*Content */}
       <section>
         <Heading>Terms of Use</Heading>
-        <div className="max-w-[100rem]">
+        <ContentWall>
           <p>
             Welcome to BroNflix. By accessing or using our website, you agree to
             comply with these Terms of Use and our Privacy Policy. If you do not
@@ -124,7 +125,7 @@ function TermsOfUse() {
               <a href="tel:+16195551212">+1 (619) 555-12-12</a>
             </li>
           </ul>
-        </div>
+        </ContentWall>
       </section>
     </>
   );

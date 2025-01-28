@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 
+import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
 
 function Privacy() {
@@ -18,7 +19,7 @@ function Privacy() {
       {/* Content */}
       <section>
         <Heading>Privacy Policy</Heading>
-        <div className="max-w-[100rem]">
+        <ContentWall>
           <p>
             At BroNflix, your privacy is important to us. This Privacy Policy
             explains how we collect, use, and protect your information when you
@@ -167,7 +168,7 @@ function Privacy() {
               <a href="tel:+16195551212">+1 (619) 555-12-12</a>
             </li>
           </ul>
-        </div>
+        </ContentWall>
       </section>
     </>
   );

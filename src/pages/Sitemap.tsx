@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 
 import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
 
+import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
 
 function Sitemap() {
@@ -19,7 +20,7 @@ function Sitemap() {
       {/* Content */}
       <section>
         <Heading>Site Map</Heading>
-        <div className="max-w-[100rem]">
+        <ContentWall>
           <p>
             Welcome to the Sitemap of BroNflix! Here, you'll find an organized
             layout of all the key sections and pages available on the platform,
@@ -39,7 +40,7 @@ function Sitemap() {
           <div className="flex gap-48">
             <div>
               <h3>Main pages</h3>
-              <ul className="list-disc pl-2">
+              <ul>
                 <li>
                   <Link to="/">Home</Link>
                 </li>
@@ -59,7 +60,7 @@ function Sitemap() {
             </div>
             <div>
               <h3>Additional pages</h3>
-              <ul className="list-disc pl-2">
+              <ul>
                 <li>
                   <Link to="/app-info">App Info</Link>
                 </li>
@@ -79,7 +80,7 @@ function Sitemap() {
             </div>
           </div>
           <h3>Social accounts</h3>
-          <ul className="list-disc pl-2">
+          <ul>
             <li>
               <a href="" target="_blank">
                 Facebook
@@ -101,7 +102,7 @@ function Sitemap() {
               </a>
             </li>
           </ul>
-        </div>
+        </ContentWall>
       </section>
     </>
   );

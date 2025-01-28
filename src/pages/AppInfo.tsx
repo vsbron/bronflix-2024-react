@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { META_APP_INFO_DESC, META_APP_INFO_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import ContentWall from "@/components/ui/ContentWall";
 
 function AppInfo() {
   // Returned JSX
@@ -18,7 +19,7 @@ function AppInfo() {
       {/* Content */}
       <section>
         <Heading>App Info</Heading>
-        <div className="max-w-[100rem]">
+        <ContentWall>
           <p>
             This is a Netflix-inspired application built with modern
             technologies, providing an interactive platform for exploring
@@ -234,7 +235,7 @@ function AppInfo() {
               information based on the page the user is on.
             </li>
           </ul>
-        </div>
+        </ContentWall>
       </section>
     </>
   );

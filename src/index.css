@@ -109,6 +109,21 @@ ul a:focus,
   }
 }
 
+/* Content wall */
+.content-wall {
+  ul {
+    list-style-type: disc;
+    padding-left: 1rem;
+
+    ul {
+      list-style-type: circle;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/* Footer */
 footer a {
   color: var(--color-white--400);
   transition: color 0.2s ease;
