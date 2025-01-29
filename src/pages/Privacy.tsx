@@ -26,7 +26,7 @@ function Privacy() {
             visit our website, register or log in, and use our contact form. By
             using our services, you agree to the terms of this Privacy Policy.
           </p>
-          <h2>Information We Collect</h2>
+          <Heading as="h2">Information We Collect</Heading>
           <p>We may collect the following types of information:</p>
           <ul>
             <li>
@@ -50,7 +50,7 @@ function Privacy() {
             </li>
           </ul>
 
-          <h2>How We Use Your Information</h2>
+          <Heading as="h3">How We Use Your Information</Heading>
           <p>
             We may use the information we collect for the following purposes:
           </p>
@@ -88,7 +88,7 @@ function Privacy() {
             </li>
           </ul>
 
-          <h2>Cookies and Tracking Technologies</h2>
+          <Heading as="h2">Cookies and Tracking Technologies</Heading>
           <p>
             We use cookies and similar tracking technologies to collect data
             about how you interact with our website. Cookies help us:
@@ -116,7 +116,7 @@ function Privacy() {
             your data.
           </p>
 
-          <h2>Your Rights</h2>
+          <Heading as="h3">Your Rights</Heading>
           <p>
             Depending on your location and applicable laws, you may have the
             right to access, update, or delete your personal information. If you
@@ -124,7 +124,7 @@ function Privacy() {
             Contact Email].
           </p>
 
-          <h2>Third-Party Links</h2>
+          <Heading as="h3">Third-Party Links</Heading>
           <p>
             Our website may contain links to third-party websites. We are not
             responsible for the privacy practices or content of those websites.
@@ -132,7 +132,7 @@ function Privacy() {
             personal information.
           </p>
 
-          <h2>Children's Privacy</h2>
+          <Heading as="h3">Children's Privacy</Heading>
           <p>
             Our services are not intended for children under the age of 13, and
             we do not knowingly collect personal information from children. If
@@ -140,7 +140,7 @@ function Privacy() {
             child under 13, we will take steps to delete that information.
           </p>
 
-          <h2>Changes to This Privacy Policy</h2>
+          <Heading as="h3">Changes to This Privacy Policy</Heading>
           <p>
             We may update this Privacy Policy from time to time. When we make
             changes, we will update the "Effective Date" at the top of this
