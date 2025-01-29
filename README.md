@@ -82,7 +82,9 @@ Provides in-depth details about an actor or crew member:
 - Accessed from a movie page within a collection.
 - Displays the movie's poster, a brief overview, and a list of movies included in the collection.
 
----
+### Additional pages
+
+Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, Terms of Use and Privacy Policy,
 
 ## Technical Details
 
@@ -92,6 +94,7 @@ Provides in-depth details about an actor or crew member:
 - **State Management**: Context API for managing global state.
 - **API**: TMDB API for fetching movies, shows, and actor data.
 - **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
+- **Form Handling**: React Hook Form is used for handling the contact form, with Zod providing schema-based validation to ensure form data integrity.
 
 ---
 
