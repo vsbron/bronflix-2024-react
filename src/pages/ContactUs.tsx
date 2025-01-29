@@ -4,6 +4,7 @@ import { META_CONTACT_DESC, META_CONTACT_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
 import ContentWall from "@/components/ui/ContentWall";
+import ContactForm from "@/components/ContactForm";
 
 function ContactUs() {
   // Returned JSX
@@ -36,8 +37,7 @@ function ContactUs() {
             information, and an overall engaging platform for all movie
             enthusiasts.
           </p>
-
-          <Heading as="h3">Contact Form</Heading>
+          <ContactForm />
         </ContentWall>
       </section>
     </>

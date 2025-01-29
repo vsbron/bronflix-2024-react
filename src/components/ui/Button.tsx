@@ -10,7 +10,7 @@ function Button({ isActive = false, onClick, children }: ButtonProps) {
 
   // Returned JSX
   return (
-    <div
+    <button
       className={`inline-block font-bold rounded-lg cursor-pointer text-white hover:bg-none hover:bg-stone-50 hover:text-red-900 ${
         isActive ? "bg-button-gradient--active" : "bg-button-gradient"
       }`}
@@ -19,7 +19,7 @@ function Button({ isActive = false, onClick, children }: ButtonProps) {
       {Children.map(children, (child) =>
         isValidElement(child) ? cloneElement(child, newProps) : child
       )}
-    </div>
+    </button>
   );
 }
 

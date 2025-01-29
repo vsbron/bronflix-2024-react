@@ -10,6 +10,8 @@ import {
   IPerson,
   IShow,
 } from "./typesAPI";
+import { z } from "zod";
+import { contactFormSchema } from "./contactFormSchema";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -98,7 +100,8 @@ export type ButtonProps = {
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };
-export type HeadingProps = { children: string; as?: Headings, id?: string };
+export type FormData = z.infer<typeof contactFormSchema>;
+export type HeadingProps = { children: string; as?: Headings; id?: string };
 export type NavItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
