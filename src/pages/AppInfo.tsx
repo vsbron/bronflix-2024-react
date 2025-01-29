@@ -34,7 +34,7 @@ function AppInfo() {
 
           <hr />
 
-          <h2>Contents</h2>
+          <Heading as="h2">Contents</Heading>
           <ul>
             <li>
               <a href="#project-overview">Project Overview</a>
@@ -72,7 +72,7 @@ function AppInfo() {
 
           <hr />
 
-          <h2 id="project-overview">Project Overview</h2>
+          <Heading as="h2" id="project-overview">Project Overview</Heading>
           <p>
             BroNflix allows users to explore movies, TV shows, and actors with
             dynamic content fetched from the TMDB API. It includes:
@@ -94,7 +94,7 @@ function AppInfo() {
           </ul>
 
           <hr />
-          <h2 id="features">Features</h2>
+          <Heading as="h2" id="features">Features</Heading>
           <ul>
             <li>
               <strong>Interactive Content</strong>: The index page includes a
@@ -116,9 +116,9 @@ function AppInfo() {
 
           <hr />
 
-          <h2 id="page-descriptions">Page Descriptions</h2>
+          <Heading as="h2" id="page-descriptions">Page Descriptions</Heading>
 
-          <h3 id="index-page">Index Page</h3>
+          <Heading as="h3" id="index-page">Index Page</Heading>
           <p>The main page features several sections, including:</p>
           <ul>
             <li>
@@ -138,7 +138,7 @@ function AppInfo() {
             </li>
           </ul>
 
-          <h3 id="movie-page">Movie Page</h3>
+          <Heading as="h3" id="movie-page">Movie Page</Heading>
           <p>Displays comprehensive information about a movie, including:</p>
           <ul>
             <li>
@@ -161,7 +161,7 @@ function AppInfo() {
             </li>
           </ul>
 
-          <h3 id="show-page">Show Page</h3>
+          <Heading as="h3" id="show-page">Show Page</Heading>
           <p>Similar to the movie page, but with additional details:</p>
           <ul>
             <li>
@@ -181,7 +181,7 @@ function AppInfo() {
             <li>"Shows You May Also Like" carousel for recommendations.</li>
           </ul>
 
-          <h3 id="person-page">Person Page</h3>
+          <Heading as="h3" id="person-page">Person Page</Heading>
           <p>Provides in-depth details about an actor or crew member:</p>
           <ul>
             <li>
@@ -197,7 +197,7 @@ function AppInfo() {
             </li>
           </ul>
 
-          <h3 id="collection-page">Collection Page</h3>
+          <Heading as="h3" id="collection-page">Collection Page</Heading>
           <p>
             Accessed from a movie page within a collection. Displays the movie's
             poster, a brief overview, and a list of movies included in the
@@ -206,7 +206,7 @@ function AppInfo() {
 
           <hr />
 
-          <h2 id="technical-details">Technical Details</h2>
+          <Heading as="h2" id="technical-details">Technical Details</Heading>
           <ul>
             <li>
               <strong>Framework</strong>: React with TypeScript for type safety

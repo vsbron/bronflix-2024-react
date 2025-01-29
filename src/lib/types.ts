@@ -98,7 +98,7 @@ export type ButtonProps = {
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };
-export type HeadingProps = { children: string; as?: Headings };
+export type HeadingProps = { children: string; as?: Headings, id?: string };
 export type NavItemProps = { icon: ReactNode; title: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
