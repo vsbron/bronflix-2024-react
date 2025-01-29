@@ -24,6 +24,10 @@ export const META_APP_INFO_TITLE = `App Info${META_TITLE_END}`;
 export const META_APP_INFO_DESC =
   "Learn more about BroNflix, our mission, and the features that make it a unique platform for discovering movies, shows, and actors. Get insights into the technology and vision behind BroNflix.";
 
+export const META_CONTACT_TITLE = `Contact Us${META_TITLE_END}`;
+export const META_CONTACT_DESC =
+  "Get in touch with us at BroNflix! Whether you have questions, feedback, or suggestions, we're here to hear from you.";
+
 export const META_PRIVACY_TITLE = `Privacy Policy${META_TITLE_END}`;
 export const META_PRIVACY_DESC =
   "At BroNflix, your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal information when you use our platform.";

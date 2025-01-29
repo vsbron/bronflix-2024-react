@@ -20,6 +20,7 @@ import Show, { showLoader } from "@/pages/Show";
 
 import AboutUs from "./pages/AboutUs";
 import AppInfo from "./pages/AppInfo";
+import ContactUs from "./pages/ContactUs";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import Sitemap from "./pages/Sitemap";
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: "/app-info",
         element: <AppInfo />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
       },
       {
         path: "/privacy",
