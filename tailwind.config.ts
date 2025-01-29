@@ -55,6 +55,16 @@ module.exports = {
         ".border-main-color": {
           borderColor: "var(--color-white--700)",
         },
+        ".input-styles": {
+          fontSize: "1.75rem",
+          padding: "0.5rem 1rem",
+          backgroundColor: "var(--color-stone-950)",
+          borderRadius: "0.375rem",
+          outline: "none",
+          border: "var(--color-red--900) 1px solid",
+          height: "4rem",
+          minWidth: "25rem",
+        },
       });
     },
   ],
