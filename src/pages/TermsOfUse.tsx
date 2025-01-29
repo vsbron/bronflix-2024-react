@@ -26,21 +26,21 @@ function TermsOfUse() {
             agree with these terms, please do not use our website.
           </p>
 
-          <h3>1. Acceptance of Terms</h3>
+          <Heading as="h3">1. Acceptance of Terms</Heading>
           <p>
             By accessing or using BroNflix, you agree to be bound by these Terms
             of Use and any applicable laws and regulations. If you do not agree
             to these terms, you should not use our website or services.
           </p>
 
-          <h3>2. Use of the Website</h3>
+          <Heading as="h3">2. Use of the Website</Heading>
           <p>
             You may use the website for personal, non-commercial purposes only.
             You are prohibited from using the website for illegal purposes or
             violating any applicable local, state, or international laws.
           </p>
 
-          <h3>3. User Account</h3>
+          <Heading as="h3">3. User Account</Heading>
           <p>
             To use certain features of the website, you may need to register for
             an account. You agree to provide accurate, current, and complete
@@ -48,7 +48,7 @@ function TermsOfUse() {
             information up to date.
           </p>
 
-          <h3>4. Prohibited Activities</h3>
+          <Heading as="h3">4. Prohibited Activities</Heading>
           <p>You agree not to engage in the following activities:</p>
           <ul>
             <li>Spamming or sending unsolicited communications</li>
@@ -60,7 +60,7 @@ function TermsOfUse() {
             <li>Violating copyright or intellectual property rights</li>
           </ul>
 
-          <h3>5. Intellectual Property</h3>
+          <Heading as="h3">5. Intellectual Property</Heading>
           <p>
             All content, features, and functionality on the website are the
             exclusive property of BroNflix or its licensors. You may not use,
@@ -68,7 +68,7 @@ function TermsOfUse() {
             permission from us.
           </p>
 
-          <h3>6. Disclaimers and Limitation of Liability</h3>
+          <Heading as="h3">6. Disclaimers and Limitation of Liability</Heading>
           <p>
             The website and its content are provided "as is" without any
             warranties of any kind, either express or implied. We do not
@@ -77,28 +77,28 @@ function TermsOfUse() {
             use or inability to use the website.
           </p>
 
-          <h3>7. Termination</h3>
+          <Heading as="h3">7. Termination</Heading>
           <p>
             We reserve the right to suspend or terminate your access to the
             website at any time, with or without notice, if we believe you have
             violated these Terms of Use or for any other reason.
           </p>
 
-          <h3>8. Third-Party Links</h3>
+          <Heading as="h3">8. Third-Party Links</Heading>
           <p>
             Our website may contain links to third-party websites. We do not
             control or endorse these sites, and we are not responsible for their
             content or privacy practices.
           </p>
 
-          <h3>9. Governing Law</h3>
+          <Heading as="h3">9. Governing Law</Heading>
           <p>
             These Terms of Use are governed by the laws of [Your Country/State],
             and any disputes arising from these terms will be resolved in the
             courts of [Your Jurisdiction].
           </p>
 
-          <h3>10. Changes to Terms</h3>
+          <Heading as="h3">10. Changes to Terms</Heading>
           <p>
             We may update or change these Terms of Use from time to time. Any
             changes will be posted on this page, and the "Effective Date" will
