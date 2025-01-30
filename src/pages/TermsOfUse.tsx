@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
+import { SITE_NAME } from "@/lib/constants";
 import { META_TERMS_DESC, META_TERMS_TITLE } from "@/lib/metaTags";
 
 import ContentWall from "@/components/ui/ContentWall";
@@ -21,16 +22,16 @@ function TermsOfUse() {
         <Heading>Terms of Use</Heading>
         <ContentWall>
           <p>
-            Welcome to BroNflix. By accessing or using our website, you agree to
-            comply with these Terms of Use and our Privacy Policy. If you do not
-            agree with these terms, please do not use our website.
+            Welcome to {SITE_NAME}. By accessing or using our website, you agree
+            to comply with these Terms of Use and our Privacy Policy. If you do
+            not agree with these terms, please do not use our website.
           </p>
 
           <Heading as="h3">1. Acceptance of Terms</Heading>
           <p>
-            By accessing or using BroNflix, you agree to be bound by these Terms
-            of Use and any applicable laws and regulations. If you do not agree
-            to these terms, you should not use our website or services.
+            By accessing or using {SITE_NAME}, you agree to be bound by these
+            Terms of Use and any applicable laws and regulations. If you do not
+            agree to these terms, you should not use our website or services.
           </p>
 
           <Heading as="h3">2. Use of the Website</Heading>
@@ -63,7 +64,7 @@ function TermsOfUse() {
           <Heading as="h3">5. Intellectual Property</Heading>
           <p>
             All content, features, and functionality on the website are the
-            exclusive property of BroNflix or its licensors. You may not use,
+            exclusive property of {SITE_NAME} or its licensors. You may not use,
             copy, or distribute any of the content without prior written
             permission from us.
           </p>
@@ -112,7 +113,7 @@ function TermsOfUse() {
           </p>
           <ul>
             <li>
-              <strong>BroNflix</strong>
+              <strong>{SITE_NAME}</strong>
             </li>
             <li>
               <strong>Email:</strong>{" "}

@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
+import { SITE_NAME } from "@/lib/constants";
 import { META_APP_INFO_DESC, META_APP_INFO_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
@@ -72,10 +73,12 @@ function AppInfo() {
 
           <hr />
 
-          <Heading as="h2" id="project-overview">Project Overview</Heading>
+          <Heading as="h2" id="project-overview">
+            Project Overview
+          </Heading>
           <p>
-            BroNflix allows users to explore movies, TV shows, and actors with
-            dynamic content fetched from the TMDB API. It includes:
+            {SITE_NAME} allows users to explore movies, TV shows, and actors
+            with dynamic content fetched from the TMDB API. It includes:
           </p>
           <ul>
             <li>
@@ -94,7 +97,9 @@ function AppInfo() {
           </ul>
 
           <hr />
-          <Heading as="h2" id="features">Features</Heading>
+          <Heading as="h2" id="features">
+            Features
+          </Heading>
           <ul>
             <li>
               <strong>Interactive Content</strong>: The index page includes a
@@ -116,9 +121,13 @@ function AppInfo() {
 
           <hr />
 
-          <Heading as="h2" id="page-descriptions">Page Descriptions</Heading>
+          <Heading as="h2" id="page-descriptions">
+            Page Descriptions
+          </Heading>
 
-          <Heading as="h3" id="index-page">Index Page</Heading>
+          <Heading as="h3" id="index-page">
+            Index Page
+          </Heading>
           <p>The main page features several sections, including:</p>
           <ul>
             <li>
@@ -138,7 +147,9 @@ function AppInfo() {
             </li>
           </ul>
 
-          <Heading as="h3" id="movie-page">Movie Page</Heading>
+          <Heading as="h3" id="movie-page">
+            Movie Page
+          </Heading>
           <p>Displays comprehensive information about a movie, including:</p>
           <ul>
             <li>
@@ -161,7 +172,9 @@ function AppInfo() {
             </li>
           </ul>
 
-          <Heading as="h3" id="show-page">Show Page</Heading>
+          <Heading as="h3" id="show-page">
+            Show Page
+          </Heading>
           <p>Similar to the movie page, but with additional details:</p>
           <ul>
             <li>
@@ -181,7 +194,9 @@ function AppInfo() {
             <li>"Shows You May Also Like" carousel for recommendations.</li>
           </ul>
 
-          <Heading as="h3" id="person-page">Person Page</Heading>
+          <Heading as="h3" id="person-page">
+            Person Page
+          </Heading>
           <p>Provides in-depth details about an actor or crew member:</p>
           <ul>
             <li>
@@ -197,7 +212,9 @@ function AppInfo() {
             </li>
           </ul>
 
-          <Heading as="h3" id="collection-page">Collection Page</Heading>
+          <Heading as="h3" id="collection-page">
+            Collection Page
+          </Heading>
           <p>
             Accessed from a movie page within a collection. Displays the movie's
             poster, a brief overview, and a list of movies included in the
@@ -206,7 +223,9 @@ function AppInfo() {
 
           <hr />
 
-          <Heading as="h2" id="technical-details">Technical Details</Heading>
+          <Heading as="h2" id="technical-details">
+            Technical Details
+          </Heading>
           <ul>
             <li>
               <strong>Framework</strong>: React with TypeScript for type safety

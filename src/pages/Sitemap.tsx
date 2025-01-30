@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
+import { SITE_NAME } from "@/lib/constants";
 import { META_SITEMAP_DESC, META_SITEMAP_TITLE } from "@/lib/metaTags";
 
 import ContentWall from "@/components/ui/ContentWall";
@@ -22,10 +23,11 @@ function Sitemap() {
         <Heading>Site Map</Heading>
         <ContentWall>
           <p>
-            Welcome to the Sitemap of BroNflix! Here, you'll find an organized
-            layout of all the key sections and pages available on the platform,
-            designed to help you easily navigate and discover the content you're
-            looking for, whether it's movies, TV shows, actors, or more.
+            Welcome to the Sitemap of {SITE_NAME}! Here, you'll find an
+            organized layout of all the key sections and pages available on the
+            platform, designed to help you easily navigate and discover the
+            content you're looking for, whether it's movies, TV shows, actors,
+            or more.
           </p>
           <p>
             The Sitemap includes links to our main sections, such as the Index
@@ -34,7 +36,7 @@ function Sitemap() {
             offering a curated list of content to browse through. These sections
             provide an easy way to discover new movies, TV shows, and actors
             without diving into individual pages. Additionally, you'll find
-            information about upcoming features, ensuring that BroNflix
+            information about upcoming features, ensuring that {SITE_NAME}
             continues to evolve and improve.
           </p>
           <div className="flex gap-48">

@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
+import { SITE_NAME } from "@/lib/constants";
 import { META_CONTACT_DESC, META_CONTACT_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
@@ -24,11 +25,11 @@ function ContactUs() {
           <p>
             Have questions, feedback, or suggestions? We'd love to hear from
             you! Whether you want to report an issue, share your thoughts on
-            BroNflix, or just say hello, feel free to reach out.
+            {SITE_NAME}, or just say hello, feel free to reach out.
           </p>
 
           <p>
-            Our goal is to make BroNflix an enjoyable and seamless experience
+            Our goal is to make {SITE_NAME} an enjoyable and seamless experience
             for movie lovers. If you have any ideas for improvements, feature
             requests, or general thoughts on how to enhance the platform, we're
             always open to suggestions. Found a bug? Noticed something that

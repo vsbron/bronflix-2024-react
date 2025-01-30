@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
+import { SITE_NAME } from "@/lib/constants";
 import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 
 import ContentWall from "@/components/ui/ContentWall";
@@ -21,7 +22,7 @@ function Privacy() {
         <Heading>Privacy Policy</Heading>
         <ContentWall>
           <p>
-            At BroNflix, your privacy is important to us. This Privacy Policy
+            At {SITE_NAME}, your privacy is important to us. This Privacy Policy
             explains how we collect, use, and protect your information when you
             visit our website, register or log in, and use our contact form. By
             using our services, you agree to the terms of this Privacy Policy.
@@ -155,7 +156,7 @@ function Privacy() {
           </p>
           <ul>
             <li>
-              <strong>BroNflix</strong>
+              <strong>{SITE_NAME}</strong>
             </li>
             <li>
               <strong>Email:</strong>{" "}
