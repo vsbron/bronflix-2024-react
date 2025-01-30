@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import bg from "@/assets/explore-bg-2x.jpg";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
@@ -53,10 +52,8 @@ function ExploreMore() {
         style={{ perspective: "50rem" }}
       >
         <div
-          className="absolute -top-1/4 right-0 h-[150%] w-[80rem] bg-[100%_auto] animate-exploreMoreBg"
+          className="absolute -top-1/4 right-0 h-[150%] w-[80rem] bg-[100%_auto] exploreMoreBg animate-exploreMoreBg"
           style={{
-            backgroundImage: `url(${bg})`,
-            backgroundPosition: "top right",
             transform: "rotateY(-15deg)",
             transformOrigin: "right center",
           }}

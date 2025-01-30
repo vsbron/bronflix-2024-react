@@ -144,3 +144,15 @@ footer a:hover svg,
 footer a:focus svg {
   fill: var(--color-white);
 }
+
+.exploreMoreBg {
+  background-position: top right;
+  background-size: 100% auto;
+  background-image: url("assets/explore-bg.jpg");
+  background-image: image-set(
+    url("assets/explore-bg.webp") type("image/webp"),
+    url("assets/explore-bg.jpg") type("image/jpeg"),
+    url("assets/explore-bg-2x.webp") type("image/webp") 2x,
+    url("assets/explore-bg-2x.jpg") type("image/jpeg") 2x
+  );
+}
