@@ -22,13 +22,14 @@ function ErrorForm() {
       {/*Content */}
       <section>
         <Heading>Error Sending the Form</Heading>
-        <p>We couldn't process your request due to an error.</p>
         <p>
+          We couldn't process your request due to an error.
+          <br />
           Please{" "}
           <span className="link" onClick={() => navigate(-1)}>
             try again
           </span>{" "}
-          later
+          later.
         </p>
       </section>
     </>

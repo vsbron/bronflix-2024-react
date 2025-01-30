@@ -108,9 +108,14 @@ function ContactForm() {
           />
         </FormGroup>
 
-        <Button type="submit" disabled={isSubmitting}>
-          <span>Submit</span>
-        </Button>
+        <div className={`flex gap-10 ${PREVIEWS_GAP_CLASS}`}>
+          <Button type="reset" disabled={isSubmitting}>
+            <span>Reset</span>
+          </Button>
+          <Button type="submit" disabled={isSubmitting}>
+            <span>Submit</span>
+          </Button>
+        </div>
       </form>
     </>
   );
