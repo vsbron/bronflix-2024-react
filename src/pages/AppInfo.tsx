@@ -61,6 +61,9 @@ function AppInfo() {
                 <li>
                   <a href="#collection-page">Collection Page</a>
                 </li>
+                <li>
+                  <a href="#additional-pages">Additional Pages</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -221,6 +224,14 @@ function AppInfo() {
             collection.
           </p>
 
+          <Heading as="h3" id="additional-pages">
+            Additional Pages
+          </Heading>
+          <p>
+            Includes supplementary pages such as Contact Us, App Info, About Us,
+            Site Map, Terms of Use and Privacy Policy,
+          </p>
+
           <hr />
 
           <Heading as="h2" id="technical-details">
@@ -252,6 +263,11 @@ function AppInfo() {
               manage dynamic meta tags, improving SEO and social sharing by
               dynamically adjusting the title, description, and other meta
               information based on the page the user is on.
+            </li>
+            <li>
+              <strong>Form Handling</strong>: React Hook Form is used for
+              handling the contact form, with Zod providing schema-based
+              validation to ensure form data integrity.
             </li>
           </ul>
         </ContentWall>

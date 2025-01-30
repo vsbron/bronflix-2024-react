@@ -16,6 +16,7 @@ It features an index page, as well as separate pages for movies, shows, and peop
    - [Show Page](#show-page)
    - [Person Page](#person-page)
    - [Collection Page](#collection-page)
+   - [Additional Pages](#additional-pages)
 4. [Technical Details](#technical-details)
 5. [Live version](#live-version)
 
@@ -82,7 +83,7 @@ Provides in-depth details about an actor or crew member:
 - Accessed from a movie page within a collection.
 - Displays the movie's poster, a brief overview, and a list of movies included in the collection.
 
-### Additional pages
+### **Additional pages**
 
 Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, Terms of Use and Privacy Policy,
 
