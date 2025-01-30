@@ -58,7 +58,7 @@ module.exports = {
         ".input-styles": {
           fontSize: "1.75rem",
           padding: "0.5rem 1rem",
-          backgroundColor: "var(--color-stone-950)",
+          backgroundColor: "var(--color-black)",
           borderRadius: "0.375rem",
           outline: "none",
           border: "var(--color-red--900) 1px solid",
