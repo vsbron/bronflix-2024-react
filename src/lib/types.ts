@@ -94,9 +94,11 @@ export type ScorePreviewProps = {
 export type BlackGradientToTopProps = { height: string };
 export type BlackGradientToRightProps = { width: string };
 export type ButtonProps = {
-  isActive?: boolean;
   onClick?: () => void;
   children: ReactNode;
+  isActive?: boolean;
+  type?: "submit" | "reset";
+  disabled?: boolean;
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };

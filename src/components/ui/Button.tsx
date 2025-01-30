@@ -2,7 +2,13 @@ import { Children, cloneElement, isValidElement } from "react";
 
 import { ButtonProps } from "@/lib/types";
 
-function Button({ isActive = false, onClick, children }: ButtonProps) {
+function Button({
+  onClick,
+  children,
+  isActive = false,
+  type,
+  disabled = false,
+}: ButtonProps) {
   // Creating new props for the children component
   const newProps = {
     style: { display: "inline-block", padding: "0.75rem 1.5rem" },
@@ -15,6 +21,8 @@ function Button({ isActive = false, onClick, children }: ButtonProps) {
         isActive ? "bg-button-gradient--active" : "bg-button-gradient"
       }`}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       {Children.map(children, (child) =>
         isValidElement(child) ? cloneElement(child, newProps) : child
