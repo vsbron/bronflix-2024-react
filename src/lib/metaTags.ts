@@ -36,6 +36,14 @@ export const META_TERMS_TITLE = `Terms of Use${META_TITLE_END}`;
 export const META_TERMS_DESC =
   "Your ultimate platform for exploring movies and TV shows. By using BroNflix, you agree to abide by the following terms and conditions. Please review them carefully before using the site.";
 
+export const META_ERROR_FORM_TITLE = `Form Error${META_TITLE_END}`;
+export const META_ERROR_FORM_DESC =
+  "Something went wrong while submitting your message. Please try again or contact us through other means. We apologize for the inconvenience.";
+
+export const META_SUCCESS_FORM_TITLE = `Form Success${META_TITLE_END}`;
+export const META_SUCCESS_FORM_DESC =
+  "Your message has been successfully sent! We'll get back to you as soon as possible. Thank you for reaching out to BroNflix!";
+
 export const META_NOT_FOUND_TITLE = `Page Not Found${META_TITLE_END}`;
 export const META_NOT_FOUND_DESC =
   "The page you're looking for doesn't exist. Please check the URL or return to the homepage.";

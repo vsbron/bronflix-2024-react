@@ -21,9 +21,11 @@ import Show, { showLoader } from "@/pages/Show";
 import AboutUs from "./pages/AboutUs";
 import AppInfo from "./pages/AppInfo";
 import ContactUs from "./pages/ContactUs";
+import ErrorForm from "./pages/ErrorForm";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
 import Sitemap from "./pages/Sitemap";
+import Success from "./pages/Success";
 import TermsOfUse from "@/pages/TermsOfUse";
 
 // Setting up the query client
@@ -105,6 +107,14 @@ const router = createBrowserRouter([
       {
         path: "/terms",
         element: <TermsOfUse />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/error-form",
+        element: <ErrorForm />,
       },
       {
         path: "/*",

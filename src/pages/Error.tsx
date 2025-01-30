@@ -18,7 +18,7 @@ function Error() {
 
       {/*Content */}
       <section>
-        <Heading as="h1">Error</Heading>
+        <Heading>Error</Heading>
         <p>Oops! Something went wrong</p>
         <ProceedOptions />
       </section>
