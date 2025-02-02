@@ -12,7 +12,7 @@ export const META_MAIN_KEYW = `movies, tv shows, entertainment, streaming, genre
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
 export const META_SITEMAP_DESC = `Explore the comprehensive sitemap of ${SITE_NAME}, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features.`;
 
-export const META_SEARCH_TITLE = `Search results${META_TITLE_END}`;
+export const META_SEARCH_TITLE = `search results${META_TITLE_END}`;
 export const META_SEARCH_DESC = `Browse search results on ${SITE_NAME}. Discover movies, TV shows, and actors that match your search, with detailed info, ratings, and more.`;
 
 export const META_ABOUT_US_TITLE = `About Us${META_TITLE_END}`;
