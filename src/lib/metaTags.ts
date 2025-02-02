@@ -9,9 +9,11 @@ export const META_MAIN_DESC = `${SITE_NAME} is your ultimate platform for explor
 export const META_MAIN_KEYW = `movies, tv shows, entertainment, streaming, genres, recommendations, ${SITE_NAME}, film, series, movie database`;
 
 // Other pages
-
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
 export const META_SITEMAP_DESC = `Explore the comprehensive sitemap of ${SITE_NAME}, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features.`;
+
+export const META_SEARCH_TITLE = `Search results${META_TITLE_END}`;
+export const META_SEARCH_DESC = `Browse search results on ${SITE_NAME}. Discover movies, TV shows, and actors that match your search, with detailed info, ratings, and more.`;
 
 export const META_ABOUT_US_TITLE = `About Us${META_TITLE_END}`;
 export const META_ABOUT_US_DESC = `Learn more about ${SITE_NAME}, our mission, and the features that make it a unique platform for discovering movies, shows, and actors. Get insights into the technology and vision behind ${SITE_NAME}.`;

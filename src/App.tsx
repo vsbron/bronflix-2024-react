@@ -27,6 +27,7 @@ import Privacy from "@/pages/Privacy";
 import Sitemap from "./pages/Sitemap";
 import Success from "./pages/Success";
 import TermsOfUse from "@/pages/TermsOfUse";
+import SearchResults from "./pages/SearchResults";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
         element: <Person />,
         loader: personLoader,
         errorElement: <ErrorMedia type="person" />,
+      },
+      {
+        path: "/search",
+        element: <SearchResults />,
       },
       {
         path: "/site-map",
