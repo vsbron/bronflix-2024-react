@@ -61,8 +61,8 @@ function Search() {
 
   // Use Effect for calling fetch function when query is updated
   useEffect(() => {
-    // Calling the async function if the query length is longer than three characters
-    inputText.trim().length > 3 && debouncedFetchSearch();
+    // Calling the async function if the query length is longer than three characters, otherwise clear the results
+    inputText.trim().length > 3 ? debouncedFetchSearch() : setBriefResults({});
 
     // Cleanup function on component unmount
     return () => {
