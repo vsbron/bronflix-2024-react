@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { MEDIA_URL } from "@/lib/constants";
 
@@ -81,6 +81,9 @@ function Search() {
     // Redirecting user to search page
     navigate(`/search?q=${encodeURIComponent(inputText)}`);
 
+    // Reset the search input field
+    setInputText("");
+
     // Disabling submitting state
     setIsSubmitting(false);
   };
@@ -88,23 +91,37 @@ function Search() {
   // Returned JSX
   return (
     <form
-      className="flex gap-4"
+      className="flex gap-4 relative"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => inputText === "" && setIsHovered(false)}
       onSubmit={(e) => handleSearch(e)}
     >
-      <button className="block w-12" disabled={isSubmitting}>
+      <button type="submit" className="block w-12" disabled={isSubmitting}>
         <MagnifyingGlassIcon />
       </button>
       <input
         type="text"
         className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.4rem] ${
-          isHovered ? "w-96 opacity-100 px-4" : "w-0 opacity-0 p-0"
+          isHovered ? "w-96 opacity-100 pl-4 pr-[3rem]" : "w-0 opacity-0 p-0"
         } transition-all duration-200`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Search..."
       />
+      <button
+        type="reset"
+        className={`block w-8 text-stone-950 absolute right-3 top-2 z-10 transition-opacity ${
+          inputText.length > 0
+            ? "opacity-1 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => {
+          setInputText("");
+        }}
+        disabled={isSubmitting}
+      >
+        <XMarkIcon />
+      </button>
     </form>
   );
 }
