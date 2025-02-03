@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -11,7 +11,9 @@ function Search() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [briefResults, setBriefResults] = useState<SearchResultsObj>({});
+  const [briefResults, setBriefResults] = useState<SearchResultsObj | null>(
+    null
+  );
   const [error, setError] = useState<string | null>(null);
 
   // Getting the navigate function from useNavigate hook
@@ -63,7 +65,9 @@ function Search() {
   // Use Effect for calling fetch function when query is updated
   useEffect(() => {
     // Calling the async function if the query length is longer than three characters, otherwise clear the results
-    inputText.trim().length > MIN_SEARCH_CHARS ? debouncedFetchSearch() : setBriefResults({});
+    inputText.trim().length > MIN_SEARCH_CHARS
+      ? debouncedFetchSearch()
+      : setBriefResults(null);
 
     // Cleanup function on component unmount
     return () => {
@@ -123,6 +127,22 @@ function Search() {
       >
         <XMarkIcon />
       </button>
+      {briefResults !== null && (
+        <div className="absolute top-20 z-50">
+          {briefResults.briefData.map((media) => (
+            <div key={media.id}>
+              <Link
+                to={`${media.media_type === "movie" ? "movies" : "shows"}/${
+                  media.id
+                }`}
+              >
+                {media.title || media.name} (
+                {media.release_date || media.first_air_date})
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </form>
   );
 }

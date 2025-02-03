@@ -193,7 +193,6 @@ export interface IVideo {
   site: string;
 }
 
-
 /* SEARCH */
 export interface SearchResultsObj {
   briefData: SearchedMedia[];
@@ -203,10 +202,12 @@ export interface SearchResultsObj {
 interface SearchedMedia {
   backdrop_path: string;
   first_air_date: string;
+  release_date: string;
   genre_ids: number[];
   id: string;
   media_type: string;
   name: string;
+  title: string;
   origin_country: string[];
   overview: string;
   popularity: number;
