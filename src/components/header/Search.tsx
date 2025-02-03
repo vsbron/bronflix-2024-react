@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { MEDIA_URL } from "@/lib/constants";
+import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
+import { SearchResultsObj } from "@/lib/typesAPI";
 
 function Search() {
   // Setting the states for hovering effect, input text, form status and error message
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [briefResults, setBriefResults] = useState<any>({});
+  const [briefResults, setBriefResults] = useState<SearchResultsObj>({});
   const [error, setError] = useState<string | null>(null);
 
   // Getting the navigate function from useNavigate hook
@@ -62,7 +63,7 @@ function Search() {
   // Use Effect for calling fetch function when query is updated
   useEffect(() => {
     // Calling the async function if the query length is longer than three characters, otherwise clear the results
-    inputText.trim().length > 3 ? debouncedFetchSearch() : setBriefResults({});
+    inputText.trim().length > MIN_SEARCH_CHARS ? debouncedFetchSearch() : setBriefResults({});
 
     // Cleanup function on component unmount
     return () => {

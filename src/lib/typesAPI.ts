@@ -192,3 +192,25 @@ export interface IVideo {
   type: string;
   site: string;
 }
+
+
+/* SEARCH */
+export interface SearchResultsObj {
+  briefData: SearchedMedia[];
+  totalResults: number;
+}
+
+interface SearchedMedia {
+  backdrop_path: string;
+  first_air_date: string;
+  genre_ids: number[];
+  id: string;
+  media_type: string;
+  name: string;
+  origin_country: string[];
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  vote_average: number;
+  vote_count: number;
+}
