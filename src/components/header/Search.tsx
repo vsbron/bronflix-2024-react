@@ -5,6 +5,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
 import { SearchResultsObj } from "@/lib/typesAPI";
+import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
 
 function Search() {
   // Setting the states for hovering effect, input text, form status and error message
@@ -93,6 +94,8 @@ function Search() {
     setIsSubmitting(false);
   };
 
+  console.log(briefResults);
+
   // Returned JSX
   return (
     <form
@@ -128,19 +131,16 @@ function Search() {
         <XMarkIcon />
       </button>
       {briefResults !== null && (
-        <div className="absolute top-20 z-50">
+        <div className="absolute top-20 z-50 bg-red-950 left-16 right-0 px-6 py-4 flex flex-col gap-10">
           {briefResults.briefData.map((media) => (
-            <div key={media.id}>
-              <Link
-                to={`${media.media_type === "movie" ? "movies" : "shows"}/${
-                  media.id
-                }`}
-              >
-                {media.title || media.name} (
-                {media.release_date || media.first_air_date})
-              </Link>
-            </div>
+            <SearchPreviewSmall media={media} key={media.id} />
           ))}
+          <Link
+            to={`/search?q=${encodeURIComponent(inputText)}`}
+            className="text-center"
+          >
+            See all results ({briefResults.totalResults})
+          </Link>
         </div>
       )}
     </form>
