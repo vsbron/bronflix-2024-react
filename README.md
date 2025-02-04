@@ -37,6 +37,7 @@ BroNflix allows users to explore movies, TV shows, and actors with dynamic conte
 - **Interactive Content**: The index page includes a variety of sections such as 'What's Hot?', 'Trending Shows', 'Trending Actors', and more, offering a dynamic browsing experience. Each section presents a carousel of movies, shows, and actors, offering users a variety of recommendations.
 - **Detailed Pages**: Each movie, show, and actor has its dedicated page with rich information, including posters, overviews, cast/crew, and similar recommendations.
 - **Seamless Navigation**: Users can click on items to navigate to their respective pages for more detailed information.
+- **Search**: The search bar at the top of the page allows users to search for movies, TV shows, or people. It displays the top three results instantly, with the option to view all available results.
 
 ---
 
