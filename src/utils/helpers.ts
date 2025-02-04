@@ -81,3 +81,11 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
 
   return { posterPath, backgroundImage };
 }
+
+// Helper function to build poster and profile image paths for search results
+export function getMediaImagesSearch(
+  path: string | undefined,
+  defaultImage: string
+): string {
+  return path ? `${MEDIA_IMG_URL}w500${path}` : defaultImage;
+}

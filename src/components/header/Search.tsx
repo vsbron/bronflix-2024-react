@@ -11,9 +11,10 @@ import {
 import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
+import Loader from "../ui/Loader";
 
 function Search() {
-  // Setting the states for hovering effect, input text, form status and error message
+  // Setting the states for hovering effect, input text, form status and results list
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
