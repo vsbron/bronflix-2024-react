@@ -25,7 +25,7 @@ export const NOTABLE_SCORE_LIMIT = 7.5;
 export const NOTABLE_SCORE_SECONDARY = 7;
 export const NOTABLE_SCORE_LAST = 6.5;
 
-export const MIN_SEARCH_CHARS = 3;
+export const MIN_SEARCH_CHARS = 2;
 
 export const FILMOGRAPHY_LIMIT = 40;
 

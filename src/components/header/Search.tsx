@@ -9,6 +9,7 @@ import {
   PREVIEWS_GAP_CLASS,
 } from "@/lib/constants";
 import { SearchResultsObj } from "@/lib/typesAPI";
+
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
 
 function Search() {
@@ -19,7 +20,6 @@ function Search() {
   const [briefResults, setBriefResults] = useState<SearchResultsObj | null>(
     null
   );
-  const [error, setError] = useState<string | null>(null);
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
@@ -57,7 +57,6 @@ function Search() {
         // Else, handle error
         const errorMessage = e instanceof Error ? e.message : String(e);
         console.error(errorMessage);
-        setError(errorMessage);
       }
     }
   };
@@ -98,7 +97,12 @@ function Search() {
     setIsSubmitting(false);
   };
 
-  console.log(briefResults);
+  // Search clear function
+  const clearSearch = () => {
+    setInputText("");
+    setBriefResults(null);
+    setIsHovered(false);
+  };
 
   // Returned JSX
   return (
@@ -127,9 +131,7 @@ function Search() {
             ? "opacity-1 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
-        onClick={() => {
-          setInputText("");
-        }}
+        onClick={clearSearch}
         disabled={isSubmitting}
       >
         <XMarkIcon />
@@ -137,16 +139,28 @@ function Search() {
       {briefResults !== null && (
         <div
           className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 left-16 right-0 px-6 py-4 flex flex-col text-2xl ${PREVIEWS_GAP_CLASS}`}
+          onClick={clearSearch}
         >
-          {briefResults.briefData.map((media) => (
-            <SearchPreviewSmall media={media} key={media.id} />
-          ))}
-          <Link
-            to={`/search?q=${encodeURIComponent(inputText)}`}
-            className="text-center pt-3 border-t border-stone-50 hover:text-red-300"
-          >
-            See all results ({briefResults.totalResults})
-          </Link>
+          {briefResults.totalResults > 0 ? (
+            <>
+              {briefResults.briefData.map((media) => (
+                <SearchPreviewSmall media={media} key={media.id} />
+              ))}
+              <Link
+                to={`/search?q=${encodeURIComponent(inputText)}`}
+                className="text-center pt-3 border-t border-stone-50 hover:text-red-300"
+              >
+                See all results ({briefResults.totalResults})
+              </Link>
+            </>
+          ) : (
+            <div className="text-stone-500">
+              No results found for
+              <br />
+              <em>"{inputText}"</em>.
+              <span className="block mt-2">Try a different search term.</span>
+            </div>
+          )}
         </div>
       )}
     </form>

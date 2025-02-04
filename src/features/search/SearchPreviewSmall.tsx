@@ -1,5 +1,6 @@
-import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { Link } from "react-router-dom";
+
+import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 
 function SearchPreviewSmall({ media }: { media: any }) {
   // Destructuring media data
