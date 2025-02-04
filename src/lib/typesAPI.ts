@@ -198,20 +198,28 @@ export interface SearchResultsObj {
   briefData: SearchedMedia[];
   totalResults: number;
 }
+export interface SearchResultsObjSmall {
+  briefData: SearchedMedia[];
+  totalResults: number;
+}
 
-interface SearchedMedia {
-  backdrop_path: string;
-  first_air_date: string;
-  release_date: string;
-  genre_ids: number[];
+export interface SearchedMediaSmall {
   id: string;
-  media_type: string;
   name: string;
   title: string;
+  media_type: string;
+  first_air_date: string;
+  release_date: string;
+  poster_path: string;
+  profile_path: string;
+}
+
+interface SearchedMedia extends SearchedMediaSmall {
+  backdrop_path: string;
+  genre_ids: number[];
   origin_country: string[];
   overview: string;
   popularity: number;
-  poster_path: string;
   vote_average: number;
   vote_count: number;
 }

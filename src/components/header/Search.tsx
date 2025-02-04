@@ -8,7 +8,7 @@ import {
   MIN_SEARCH_CHARS,
   PREVIEWS_GAP_CLASS,
 } from "@/lib/constants";
-import { SearchResultsObj } from "@/lib/typesAPI";
+import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
 
@@ -17,9 +17,8 @@ function Search() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [briefResults, setBriefResults] = useState<SearchResultsObj | null>(
-    null
-  );
+  const [briefResults, setBriefResults] =
+    useState<SearchResultsObjSmall | null>(null);
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();

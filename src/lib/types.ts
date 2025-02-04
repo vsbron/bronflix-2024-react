@@ -9,6 +9,7 @@ import {
   IMovieList,
   IPerson,
   IShow,
+  SearchedMediaSmall,
 } from "./typesAPI";
 import { z } from "zod";
 import { contactFormSchema } from "./contactFormSchema";
@@ -150,3 +151,6 @@ export type ShowSimilarProps = {
 };
 export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
+
+// Search
+export type SearchPreviewSmallProps = { media: SearchedMediaSmall };

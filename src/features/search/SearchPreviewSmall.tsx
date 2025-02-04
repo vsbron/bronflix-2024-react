@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
 import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { SearchPreviewSmallProps } from "@/lib/types";
 
-function SearchPreviewSmall({ media }: { media: any }) {
+function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
   // Destructuring media data
   const {
     id,
