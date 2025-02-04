@@ -3,7 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
+import {
+  MEDIA_URL,
+  MIN_SEARCH_CHARS,
+  PREVIEWS_GAP_CLASS,
+} from "@/lib/constants";
 import { SearchResultsObj } from "@/lib/typesAPI";
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
 
@@ -131,13 +135,15 @@ function Search() {
         <XMarkIcon />
       </button>
       {briefResults !== null && (
-        <div className="absolute top-20 z-50 bg-red-950 left-16 right-0 px-6 py-4 flex flex-col gap-10">
+        <div
+          className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 left-16 right-0 px-6 py-4 flex flex-col text-2xl ${PREVIEWS_GAP_CLASS}`}
+        >
           {briefResults.briefData.map((media) => (
             <SearchPreviewSmall media={media} key={media.id} />
           ))}
           <Link
             to={`/search?q=${encodeURIComponent(inputText)}`}
-            className="text-center"
+            className="text-center pt-3 border-t border-stone-50 hover:text-red-300"
           >
             See all results ({briefResults.totalResults})
           </Link>

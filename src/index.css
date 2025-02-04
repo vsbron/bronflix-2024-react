@@ -78,12 +78,14 @@ ul {
   margin: 1.5rem 0 2rem 1rem;
 }
 
+a {
+  transition: color 0.2s ease;
+}
 p a,
 ul a,
 .link {
   color: var(--color-rose--300);
   cursor: pointer;
-  transition: color 0.2s ease;
 }
 
 p a:hover,
