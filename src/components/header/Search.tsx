@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -25,9 +25,6 @@ function Search() {
 
   // Fetch data based on a search query function
   const fetchSearch = async () => {
-    // Trimming query
-    if (!inputText.trim()) return;
-
     try {
       // Fetching the data
       const res = await fetch(
@@ -79,21 +76,13 @@ function Search() {
   }, [inputText, debouncedFetchSearch]);
 
   // Search submission handler
-  const handleSearch = (e: React.FormEvent) => {
-    // Prevent default behavior
-    e.preventDefault();
-
-    // Enabling submitting state
-    setIsSubmitting(true);
-
-    // Redirecting user to search page
-    navigate(`/search?q=${encodeURIComponent(inputText)}`);
-
-    // Reset the search input field
-    setInputText("");
-
-    // Disabling submitting state
-    setIsSubmitting(false);
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault(); // Prevent default behavior
+    if (!inputText.trim()) return; // Guard clause
+    setIsSubmitting(true); // Enabling submitting state
+    navigate(`/search?q=${encodeURIComponent(inputText)}`); // Redirecting user to search page
+    setInputText(""); // Reset the search input field
+    setIsSubmitting(false); // Disabling submitting state
   };
 
   // Search clear function

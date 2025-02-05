@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { META_SEARCH_DESC, META_SEARCH_TITLE } from "@/lib/metaTags";
 
-import Heading from "@/components/ui/Heading";
+import SearchResultsList from "@/features/search/SearchResultsList";
 
 function SearchResults() {
   // Getting the searched query from search params
@@ -23,12 +23,7 @@ function SearchResults() {
       </Helmet>
 
       {/*Content */}
-      <section>
-        <Heading>Search results</Heading>
-        <h3>
-          Showing results for: <em>"{query}"</em>
-        </h3>
-      </section>
+      <SearchResultsList query={query!} />
     </>
   );
 }
