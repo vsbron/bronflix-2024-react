@@ -6,7 +6,7 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MEDIA_URL}/person/popular?api_key=${
+      `${MEDIA_URL}person/popular?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1`
     );
@@ -42,7 +42,7 @@ export async function getPerson(movieId: string): Promise<IPerson> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/person/${movieId}?api_key=${
+      `${MEDIA_URL}person/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );
@@ -76,8 +76,8 @@ export async function getPersonCredits(personId: string): Promise<{
   // Creating urls for fetching
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const endpoints = [
-    `${MEDIA_URL}/person/${personId}/movie_credits?api_key=${API_KEY}`,
-    `${MEDIA_URL}/person/${personId}/tv_credits?api_key=${API_KEY}`,
+    `${MEDIA_URL}person/${personId}/movie_credits?api_key=${API_KEY}`,
+    `${MEDIA_URL}person/${personId}/tv_credits?api_key=${API_KEY}`,
   ];
 
   try {

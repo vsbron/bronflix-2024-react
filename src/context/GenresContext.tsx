@@ -21,7 +21,7 @@ export function GenresProvider({ children }: GenresProviderProps) {
     async function fetchGenres() {
       try {
         const response = await fetch(
-          `${MEDIA_URL}/genre/movie/list?api_key=${
+          `${MEDIA_URL}genre/movie/list?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }&language=en-US`,
           { signal }

@@ -11,7 +11,6 @@ import {
 import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
-import Loader from "../ui/Loader";
 
 function Search() {
   // Setting the states for hovering effect, input text, form status and results list
@@ -32,7 +31,7 @@ function Search() {
     try {
       // Fetching the data
       const res = await fetch(
-        `${MEDIA_URL}/search/multi?api_key=${
+        `${MEDIA_URL}search/multi?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
         }&query=${inputText}`
       );
@@ -118,11 +117,13 @@ function Search() {
       <input
         type="text"
         className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.4rem] ${
-          isHovered ? "w-96 opacity-100 pl-4 pr-[3rem]" : "w-0 opacity-0 p-0"
+          isHovered
+            ? "w-[28rem] opacity-100 pl-5 pr-[3rem]"
+            : "w-0 opacity-0 p-0"
         } transition-all duration-200`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="Search..."
+        placeholder="Search for movies, shows or person..."
       />
       <button
         type="reset"

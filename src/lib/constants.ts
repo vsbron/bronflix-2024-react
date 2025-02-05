@@ -1,6 +1,6 @@
 export const SITE_NAME = "BroNflix";
 
-export const MEDIA_URL = "https://api.themoviedb.org/3";
+export const MEDIA_URL = "https://api.themoviedb.org/3/";
 export const MEDIA_IMG_URL = "https://image.tmdb.org/t/p/";
 export const EMAILJS_PUBLIC_KEY = "Z6SWDyMbtxfzu4GzU";
 
@@ -28,7 +28,6 @@ export const NOTABLE_SCORE_LAST = 6.5;
 export const MIN_SEARCH_CHARS = 2;
 
 export const FILMOGRAPHY_LIMIT = 40;
-
 export const EXCLUDED_GENRE_IDS = [
   99, // Documentary
   10762, // Kids

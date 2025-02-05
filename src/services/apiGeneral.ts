@@ -9,7 +9,7 @@ export async function getMediaCastCrew(
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/${type}/${mediaId}/${
+      `${MEDIA_URL}${type}/${mediaId}/${
         type === "tv" ? "aggregate_" : ""
       }credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`
     );
@@ -47,7 +47,7 @@ export async function getMediaSimilar(
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/${type}/${mediaId}/similar?api_key=${
+      `${MEDIA_URL}${type}/${mediaId}/similar?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );

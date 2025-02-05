@@ -6,7 +6,7 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   try {
     // Fetch the data
     const response = await fetch(
-      `${MEDIA_URL}/movie/${type}?api_key=${
+      `${MEDIA_URL}movie/${type}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }&page=1&include_adult=false`
     );
@@ -42,7 +42,7 @@ export async function getMovie(movieId: string): Promise<IMovie> {
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/movie/${movieId}?api_key=${
+      `${MEDIA_URL}movie/${movieId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );

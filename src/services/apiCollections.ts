@@ -8,7 +8,7 @@ export async function getMovieCollection(
   try {
     // Fetching the data
     const response = await fetch(
-      `${MEDIA_URL}/collection/${collectionId}?api_key=${
+      `${MEDIA_URL}collection/${collectionId}?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
       }`
     );

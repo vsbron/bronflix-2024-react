@@ -23,12 +23,12 @@ function useTrailer(id: string, type: "tv" | "movie" | "season") {
     switch (type) {
       case "tv":
       case "movie":
-        fetchURL = `${MEDIA_URL}/${type}/${id}/videos?api_key=${
+        fetchURL = `${MEDIA_URL}${type}/${id}/videos?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
         }`;
         break;
       case "season":
-        fetchURL = `${MEDIA_URL}/tv/${id}/season//videos?api_key=${
+        fetchURL = `${MEDIA_URL}tv/${id}/season//videos?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
         }`;
         break;
@@ -38,7 +38,7 @@ function useTrailer(id: string, type: "tv" | "movie" | "season") {
     async function fetchVideo() {
       try {
         const response = await fetch(
-          `${MEDIA_URL}/${type}/${id}/videos?api_key=${
+          `${MEDIA_URL}${type}/${id}/videos?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }`,
           { signal }
