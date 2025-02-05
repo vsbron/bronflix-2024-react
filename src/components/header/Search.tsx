@@ -81,7 +81,7 @@ function Search() {
     if (!inputText.trim()) return; // Guard clause
     setIsSubmitting(true); // Enabling submitting state
     navigate(`/search?q=${encodeURIComponent(inputText)}`); // Redirecting user to search page
-    setInputText(""); // Reset the search input field
+    clearSearch(); // Reset the search component
     setIsSubmitting(false); // Disabling submitting state
   };
 
