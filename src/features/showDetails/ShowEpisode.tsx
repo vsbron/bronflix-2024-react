@@ -1,7 +1,7 @@
 import { NO_SHOW_COVER } from "@/lib/assets";
 import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { SeasonEpisodeProps } from "@/lib/types";
-import { formatDate } from "@/utils/helpers";
+import { formatDate, shortenText } from "@/utils/helpers";
 
 import ScorePreview from "@/components/ScorePreview";
 
@@ -23,9 +23,7 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
     : NO_SHOW_COVER;
 
   // Shortening the overview
-  const splitOverview = overview
-    ? overview.split(". ").slice(0, 2).join(". ")
-    : "No overview available for this episode";
+  const shortenOverview = shortenText(overview, 150);
 
   // Returned JSX
   return (
@@ -53,7 +51,7 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
             </>
           )}
         </div>
-        <div className="text-2xl">{splitOverview}</div>
+        <div className="text-2xl">{shortenOverview}</div>
       </div>
     </div>
   );

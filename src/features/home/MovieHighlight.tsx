@@ -16,6 +16,7 @@ import {
   BlackGradientToRight,
   BlackGradientToTop,
 } from "@/components/ui/Overlays";
+import { shortenText } from "@/utils/helpers";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Destructuring data
@@ -40,10 +41,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
   const genreNames = genre_ids?.map((id: string) => {
     const genre = genres.find((genre: IGenre) => genre.id === id);
     return genre ? genre.name : null}).filter(Boolean).join(", ") || "";
-  const shortenOverview =
-    overview.length > 150
-      ? overview.slice(0, 150).trim().split(" ").slice(0, -1).join(" ") + "..."
-      : overview;
+  const shortenOverview = shortenText(overview, 150);
   const backgroundImage = `url(${MEDIA_IMG_URL}/original/${backdrop_path})`;
 
   // Returned JSX

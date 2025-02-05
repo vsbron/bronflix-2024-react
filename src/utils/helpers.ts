@@ -63,6 +63,15 @@ export function formatRuntime(runtime: number) {
   return `${hours}h ${minutes}m`;
 }
 
+// Function that limits large texts
+export function shortenText(text: string, limit: number) {
+  const shortenedText =
+    text.length > limit
+      ? text.slice(0, 250).trim().split(" ").slice(0, -1).join(" ") + "..."
+      : text;
+  return shortenedText;
+}
+
 // Helper function to build poster and cover image paths
 export function getMediaImages<T extends IBase>(media: T, type?: string) {
   // Building images paths

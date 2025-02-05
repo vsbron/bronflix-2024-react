@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { SearchPreviewProps } from "@/lib/types";
-import { getSearchMediaData } from "@/utils/helpers";
+import { getSearchMediaData, shortenText } from "@/utils/helpers";
 
 import ScorePreview from "@/components/ScorePreview";
 
@@ -14,10 +14,7 @@ function SearchPreview({ media }: SearchPreviewProps) {
   const { title, overview, vote_average } = media;
 
   // Shortening the overview
-  const shortenOverview =
-    overview.length > 250
-      ? overview.slice(0, 250).trim().split(" ").slice(0, -1).join(" ") + "..."
-      : overview;
+  const shortenOverview = shortenText(overview, 250);
 
   // Returned JSX
   return (
