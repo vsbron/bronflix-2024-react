@@ -12,7 +12,7 @@ function SearchPreview({ media }: SearchPreviewProps) {
   return (
     <div>
       <Link
-        to={`${mediaType}/${media.id}`}
+        to={`/${mediaType}/${media.id}`}
         className={`flex ${PREVIEWS_GAP_CLASS} items-end hover:text-red-300`}
       >
         <img
