@@ -23,18 +23,20 @@ function SearchResultsList({ query }: { query: string }) {
       <h3>
         Showing results for: <em>"{query}"</em>
       </h3>
-      {data.total_results > 0 ? (
-        data.results.map((media: any) => (
-          <SearchPreview media={media} key={media.id} />
-        ))
-      ) : (
-        <div className="text-stone-500">
-          No results found for
-          <br />
-          <em>"{query}"</em>.
-          <span className="block mt-2">Try a different search term.</span>
-        </div>
-      )}
+      <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
+        {data.total_results > 0 ? (
+          data.results.map((media: any) => (
+            <SearchPreview media={media} key={media.id} />
+          ))
+        ) : (
+          <div className="text-stone-500">
+            No results found for
+            <br />
+            <em>"{query}"</em>.
+            <span className="block mt-2">Try a different search term.</span>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

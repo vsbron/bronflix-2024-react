@@ -8,7 +8,8 @@ import {
 
 import useTrailer from "@/hooks/useTrailer";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
-import { IGenre, IShow } from "@/lib/typesAPI";
+import { ShowDetailsProps } from "@/lib/types";
+import { IGenre } from "@/lib/typesAPI";
 import { formatDate } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
@@ -17,7 +18,7 @@ import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
 
-function ShowDetails({ show }: { show: IShow }) {
+function ShowDetails({ show }: ShowDetailsProps) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(show.id, "tv");
 

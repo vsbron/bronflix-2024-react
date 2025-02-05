@@ -11,32 +11,36 @@ function SearchPreview({ media }: SearchPreviewProps) {
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
 
   // Destructuring additional media data
-  const { overview, vote_average } = media;
+  const { title, overview, vote_average } = media;
+
+  // Shortening the overview
+  const shortenOverview =
+    overview.length > 250
+      ? overview.slice(0, 250).trim().split(" ").slice(0, -1).join(" ") + "..."
+      : overview;
 
   // Returned JSX
   return (
-    <div>
-      <Link
-        to={`/${mediaType}/${media.id}`}
-        className={`flex ${PREVIEWS_GAP_CLASS} items-end hover:text-red-300`}
-      >
-        <div className="relative">
-          <img
-            src={mediaImage}
-            className="rounded-md"
-            width={160}
-            height={120}
-            alt={mediaTitle}
-            title={mediaTitle}
-          />
-          {vote_average !== null ? <ScorePreview score={vote_average} /> : ""}
-        </div>
-        <div>
-          <div>{mediaTitle}</div>
-          <div>{overview}</div>
-        </div>
-      </Link>
-    </div>
+    <Link
+      to={`/${mediaType}/${media.id}`}
+      className={`flex ${PREVIEWS_GAP_CLASS} items-end hover:text-red-300`}
+    >
+      <div className="relative basis-[17.5rem] flex-shrink-0 overflow-hidden rounded-lg">
+        <img
+          src={mediaImage}
+          className="rounded-md"
+          width={175}
+          height={300}
+          alt={mediaTitle}
+          title={mediaTitle}
+        />
+        {vote_average !== null ? <ScorePreview score={vote_average} /> : ""}
+      </div>
+      <div>
+        <div className="font-heading text-5xl mb-2">{title}</div>
+        <div className="text-2xl">{shortenOverview}</div>
+      </div>
+    </Link>
   );
 }
 
