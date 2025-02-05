@@ -36,7 +36,11 @@ function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
       mediaType = "movies";
       mediaImage = getMediaImagesSearch(poster_path, NO_MOVIE_POSTER);
   }
-  const date = new Date(release_date || first_air_date).getFullYear() || "TBA";
+  const date = release_date || first_air_date;
+  const releaseDate = date ? new Date(date).getFullYear() : "TBA";
+  const finalMediaTitle = `${mediaTitle} ${
+    mediaType !== "person" && `(${releaseDate})`
+  }`;
 
   // Returned JSX
   return (
@@ -45,10 +49,15 @@ function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
         to={`${mediaType}/${id}`}
         className={`flex ${PREVIEWS_GAP_CLASS} items-end hover:text-red-300`}
       >
-        <img src={mediaImage} width={40} height={120} className="rounded-md" />
-        <div>
-          {mediaTitle} {mediaType !== "person" && `(${date})`}
-        </div>
+        <img
+          src={mediaImage}
+          className="rounded-md"
+          width={40}
+          height={120}
+          alt={finalMediaTitle}
+          title={finalMediaTitle}
+        />
+        <div>{finalMediaTitle}</div>
       </Link>
     </div>
   );
