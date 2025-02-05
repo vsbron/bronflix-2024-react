@@ -11,10 +11,10 @@ function SearchPreview({ media }: SearchPreviewProps) {
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
 
   // Destructuring additional media data
-  const { title, overview, vote_average } = media;
+  const { title, name, overview, vote_average } = media;
 
   // Shortening the overview
-  const shortenOverview = shortenText(overview, 250);
+  const shortenOverview = overview && shortenText(overview, 250);
 
   // Returned JSX
   return (
@@ -31,11 +31,15 @@ function SearchPreview({ media }: SearchPreviewProps) {
           alt={mediaTitle}
           title={mediaTitle}
         />
-        {vote_average !== null ? <ScorePreview score={vote_average} /> : ""}
+        {vote_average ? <ScorePreview score={vote_average} /> : ""}
       </div>
       <div>
-        <div className="font-heading text-5xl mb-2">{title}</div>
-        <div className="text-2xl">{shortenOverview}</div>
+        <div className="font-heading text-5xl mb-2">{title || name}</div>
+        {overview && (
+          <div className="text-2xl">
+            {shortenOverview || "No overview available"}
+          </div>
+        )}
       </div>
     </Link>
   );
