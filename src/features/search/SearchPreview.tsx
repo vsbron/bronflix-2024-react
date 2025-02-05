@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
 import { SearchPreviewProps } from "@/lib/types";
 import { getSearchMediaData } from "@/utils/helpers";
+
 import ScorePreview from "@/components/ScorePreview";
 
 function SearchPreview({ media }: SearchPreviewProps) {
   // Getting all the necessary data for the preview
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
 
-  console.log(media);
-
+  // Destructuring additional media data
   const { overview, vote_average } = media;
 
   // Returned JSX
@@ -29,7 +29,7 @@ function SearchPreview({ media }: SearchPreviewProps) {
             alt={mediaTitle}
             title={mediaTitle}
           />
-          {vote_average ? <ScorePreview score={vote_average} /> : ""}
+          {vote_average !== null ? <ScorePreview score={vote_average} /> : ""}
         </div>
         <div>
           <div>{mediaTitle}</div>

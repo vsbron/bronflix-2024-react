@@ -27,7 +27,7 @@ function ScorePreview({
           (isBig
             ? "text-[1.75rem] leading-[2.25rem] px-4"
             : "text-2xl px-3.5 py-2")
-        } ${!isHighlighted && "absolute top-3 left-3 font-medium rounded-lg"} `}
+        } ${!isHighlighted && "absolute top-3 left-3 font-medium rounded-lg"}`}
       >
         {score > 0 ? adjustedScore : "Not Rated"}
       </div>

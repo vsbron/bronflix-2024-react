@@ -119,7 +119,9 @@ export function getSearchMediaData(media: SearchedMediaSmall) {
   }
   const date = release_date || first_air_date;
   const releaseDate = date ? new Date(date).getFullYear() : "TBA";
-  mediaTitle = `${mediaTitle} ${mediaType !== "person" && `(${releaseDate})`}`;
+  mediaTitle = `${mediaTitle} ${
+    mediaType !== "person" ? `(${releaseDate})` : ""
+  }`;
 
   // Return the object with data
   return { mediaTitle, mediaType, mediaImage };

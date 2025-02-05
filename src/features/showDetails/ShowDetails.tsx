@@ -81,7 +81,9 @@ function ShowDetails({ show }: { show: IShow }) {
               {seasons > 1 && "s"}, {number_of_episodes} episodes
             </div>
             <div className="flex gap-8 mb-2">
-              <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
+              <IconWrapper icon={<GlobeAltIcon />}>
+                {originCountry || "Unknown"}
+              </IconWrapper>
               <IconWrapper icon={<LanguageIcon />}>
                 {LANGUAGES[language]}
               </IconWrapper>
