@@ -9,6 +9,7 @@ import {
   IMovieList,
   IPerson,
   IShow,
+  SearchedMedia,
   SearchedMediaSmall,
 } from "./typesAPI";
 import { z } from "zod";
@@ -153,4 +154,5 @@ export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
 
 // Search
+export type SearchPreviewProps = { media: SearchedMedia };
 export type SearchPreviewSmallProps = { media: SearchedMediaSmall };

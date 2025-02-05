@@ -1,6 +1,11 @@
-import { NO_MOVIE_COVER, NO_MOVIE_POSTER, NO_PERSON_PHOTO } from "@/lib/assets";
+import {
+  NO_MOVIE_COVER,
+  NO_MOVIE_POSTER,
+  NO_PERSON_PHOTO,
+  NO_SHOW_POSTER,
+} from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
-import { IBase } from "@/lib/typesAPI";
+import { IBase, SearchedMediaSmall } from "@/lib/typesAPI";
 
 // Function that shuffles the array
 export function shuffleArray<T>(array: T[]): T[] {
@@ -82,7 +87,44 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
   return { posterPath, backgroundImage };
 }
 
-// Helper function to build poster and profile image paths for search results
+// Helper function to get the data for search results
+export function getSearchMediaData(media: SearchedMediaSmall) {
+  // Destructuring some media data
+  const {
+    media_type,
+    poster_path,
+    profile_path,
+    title,
+    release_date,
+    first_air_date,
+  } = media;
+
+  let mediaTitle, mediaType, mediaImage;
+  switch (media_type) {
+    case "tv":
+      mediaTitle = name;
+      mediaType = "shows";
+      mediaImage = getMediaImagesSearch(poster_path, NO_SHOW_POSTER);
+      break;
+    case "person":
+      mediaTitle = name;
+      mediaType = "person";
+      mediaImage = getMediaImagesSearch(profile_path, NO_PERSON_PHOTO);
+      break;
+    default:
+      mediaTitle = title;
+      mediaType = "movies";
+      mediaImage = getMediaImagesSearch(poster_path, NO_MOVIE_POSTER);
+  }
+  const date = release_date || first_air_date;
+  const releaseDate = date ? new Date(date).getFullYear() : "TBA";
+  mediaTitle = `${mediaTitle} ${mediaType !== "person" && `(${releaseDate})`}`;
+
+  // Return the object with data
+  return { mediaTitle, mediaType, mediaImage };
+}
+
+// Helper function to set the correct image
 export function getMediaImagesSearch(
   path: string | undefined,
   defaultImage: string

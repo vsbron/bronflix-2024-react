@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
-import { SearchPreviewSmallProps } from "@/lib/types";
+import { SearchPreviewProps } from "@/lib/types";
 import { getSearchMediaData } from "@/utils/helpers";
 
-function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
+function SearchPreview({ media }: SearchPreviewProps) {
   // Getting all the necessary data for the preview
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
 
@@ -29,4 +29,4 @@ function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
   );
 }
 
-export default SearchPreviewSmall;
+export default SearchPreview;
