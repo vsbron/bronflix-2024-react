@@ -91,10 +91,11 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
 export function getSearchMediaData(media: SearchedMediaSmall) {
   // Destructuring some media data
   const {
+    title,
+    name,
     media_type,
     poster_path,
     profile_path,
-    title,
     release_date,
     first_air_date,
   } = media;

@@ -215,7 +215,6 @@ export interface SearchedMediaSmall {
 }
 
 export interface SearchedMedia extends SearchedMediaSmall {
-  backdrop_path: string;
   genre_ids: number[];
   origin_country: string[];
   overview: string;
