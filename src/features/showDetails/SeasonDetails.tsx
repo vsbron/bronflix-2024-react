@@ -33,13 +33,6 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
     ? FormatTextBlock(overview)
     : "No overview available for this season.";
 
-  // Cutting the seasons' episodes to two, for two columns
-  const midIndex = Math.ceil(episodes.length / 2);
-  const [seasonHalf1, seasonHalf2] = [
-    episodes.slice(0, midIndex),
-    episodes.slice(midIndex),
-  ];
-
   // Setting the poster image
   const poster = poster_path
     ? `${MEDIA_IMG_URL}w500${poster_path}`
@@ -66,16 +59,9 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
         <div className="col-span-full">
           <Heading as="h3">{`${name} Episodes`}</Heading>
           <div className="grid grid-cols-2 gap-12">
-            <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-              {seasonHalf1.map((episode: IEpisode) => (
-                <SeasonEpisode episode={episode} key={episode.id} />
-              ))}
-            </div>
-            <div className={`flex flex-col ${PREVIEWS_GAP_CLASS}`}>
-              {seasonHalf2.map((episode: IEpisode) => (
-                <SeasonEpisode episode={episode} key={episode.id} />
-              ))}
-            </div>
+            {episodes.map((episode: IEpisode) => (
+              <SeasonEpisode episode={episode} key={episode.id} />
+            ))}
           </div>
         </div>
       )}
