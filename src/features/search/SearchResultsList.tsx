@@ -1,11 +1,17 @@
+import { useSearchParams } from "react-router-dom";
+
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
-import { useSearchResults } from "@/features/search/useSearchResults";
 import SearchPreview from "@/features/search/SearchPreview";
+import { useSearchResults } from "@/features/search/useSearchResults";
 
 function SearchResultsList({ query }: { query: string }) {
+  // Getting the page number from search params
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
+
   // Getting the search results data
-  const { isLoading, data, error } = useSearchResults(query);
+  const { isLoading, data, error } = useSearchResults(query, page);
 
   // Guard clauses
   if (isLoading) return <Loader />;
@@ -15,6 +21,11 @@ function SearchResultsList({ query }: { query: string }) {
         {error?.message || "Error fetching cast & crew data"}
       </div>
     );
+
+  const nextPage = () => {
+    searchParams.set("page", "2");
+    setSearchParams(searchParams);
+  };
 
   // Returned JSX
   return (
@@ -37,6 +48,7 @@ function SearchResultsList({ query }: { query: string }) {
           </div>
         )}
       </div>
+      <div onClick={nextPage}>Next</div>
     </section>
   );
 }

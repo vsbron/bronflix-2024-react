@@ -1,13 +1,16 @@
 import { MEDIA_URL } from "@/lib/constants";
 
 // API for getting search results
-export async function getSearchResults(query: string): Promise<any> {
+export async function getSearchResults(
+  query: string,
+  page: number
+): Promise<any> {
   try {
     // Fetching the data
     const response = await fetch(
       `${MEDIA_URL}search/multi?api_key=${
         import.meta.env.VITE_TMDB_API_KEY
-      }&query=${query}`
+      }&query=${query}&page=${page}`
     );
 
     // Guard clause
