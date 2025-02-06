@@ -155,5 +155,7 @@ export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
 
 // Search
+export type SearchPaginationProps = { page: number; totalPages: number };
 export type SearchPreviewProps = { media: SearchedMedia };
 export type SearchPreviewSmallProps = { media: SearchedMediaSmall };
+export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };

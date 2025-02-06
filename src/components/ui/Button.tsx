@@ -17,9 +17,9 @@ function Button({
   // Returned JSX
   return (
     <button
-      className={`inline-block font-bold rounded-lg cursor-pointer text-white hover:bg-none hover:bg-stone-50 hover:text-red-900 ${
+      className={`inline-block font-bold rounded-lg cursor-pointer text-white hover:bg-none hover:bg-stone-50 hover:text-red-900 disabled:cursor-not-allowed  ${
         isActive ? "bg-button-gradient--active" : "bg-button-gradient"
-      }`}
+      } disabled:bg-none disabled:bg-stone-600 disabled:text-stone-50`}
       onClick={onClick}
       type={type}
       disabled={disabled}

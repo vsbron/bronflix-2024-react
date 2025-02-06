@@ -2,10 +2,10 @@ import { useSearchParams } from "react-router-dom";
 
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
+import Separator from "@/components/ui/Separator";
+import SearchPagination from "@/features/search/SearchPagination";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
-import Separator from "@/components/ui/Separator";
-import SearchPagination from "./SearchPagination";
 
 function SearchResultsList({ query }: { query: string }) {
   // Getting the page number from search params
@@ -24,10 +24,8 @@ function SearchResultsList({ query }: { query: string }) {
       </div>
     );
 
-  const nextPage = () => {
-    searchParams.set("page", "2");
-    setSearchParams(searchParams);
-  };
+  // Calculating tht total number of pages
+  const totalPages = Math.ceil(data.total_results / 20);
 
   // Returned JSX
   return (
@@ -55,7 +53,7 @@ function SearchResultsList({ query }: { query: string }) {
         )}
       </div>
       <Separator className="my-10" />
-      <SearchPagination />
+      <SearchPagination page={page} totalPages={totalPages} />
     </section>
   );
 }
