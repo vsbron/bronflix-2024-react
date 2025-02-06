@@ -5,6 +5,7 @@ import Loader from "@/components/ui/Loader";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
 import Separator from "@/components/ui/Separator";
+import SearchPagination from "./SearchPagination";
 
 function SearchResultsList({ query }: { query: string }) {
   // Getting the page number from search params
@@ -53,7 +54,8 @@ function SearchResultsList({ query }: { query: string }) {
           </div>
         )}
       </div>
-      <div onClick={nextPage}>Next</div>
+      <Separator className="my-10" />
+      <SearchPagination />
     </section>
   );
 }
