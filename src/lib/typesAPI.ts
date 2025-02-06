@@ -215,8 +215,6 @@ export interface SearchedMediaSmall {
 }
 
 export interface SearchedMedia extends SearchedMediaSmall {
-  genre_ids: number[];
-  origin_country: string[];
   overview: string;
   popularity: number;
   vote_average: number;

@@ -20,6 +20,8 @@ export async function getSearchResults(query: string): Promise<any> {
     // Getting the actual data
     const data = await response.json();
 
+    console.log(data);
+
     // Return the show
     return data;
   } catch (error: unknown) {
