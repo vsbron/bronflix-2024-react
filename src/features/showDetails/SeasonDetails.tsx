@@ -1,5 +1,5 @@
 import { NO_SHOW_POSTER } from "@/lib/assets";
-import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { MEDIA_IMG_URL, BASE_GAP_CLASS } from "@/lib/constants";
 import { SeasonDetailsProps } from "@/lib/types";
 import { IEpisode } from "@/lib/typesAPI";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
@@ -40,7 +40,7 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
 
   // Returned JSX
   return (
-    <div className={`grid ${PREVIEWS_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
+    <div className={`grid ${BASE_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
       <div className="relative">
         <ScorePreview score={vote_average} />
         <img

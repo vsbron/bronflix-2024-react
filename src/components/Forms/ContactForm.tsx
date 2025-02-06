@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 
 import { FormData } from "@/lib/types";
-import { EMAILJS_PUBLIC_KEY, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { EMAILJS_PUBLIC_KEY, BASE_GAP_CLASS } from "@/lib/constants";
 import { contactFormSchema } from "@/lib/contactFormSchema";
 
 import Button from "@/components/ui/Button";
@@ -49,7 +49,7 @@ function ContactForm() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="contact-form"
-        className={`flex flex-col ${PREVIEWS_GAP_CLASS} items-start`}
+        className={`flex flex-col ${BASE_GAP_CLASS} items-start`}
       >
         <FormGroup>
           <FormLabelError name="Name">
@@ -108,7 +108,7 @@ function ContactForm() {
           />
         </FormGroup>
 
-        <div className={`flex gap-10 ${PREVIEWS_GAP_CLASS}`}>
+        <div className={`flex gap-10 ${BASE_GAP_CLASS}`}>
           <Button type="reset" disabled={isSubmitting}>
             <span>Reset</span>
           </Button>

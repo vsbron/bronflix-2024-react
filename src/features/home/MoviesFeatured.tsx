@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { GenresProvider } from "@/context/GenresContext";
 import { VideoProvider } from "@/context/VideoContext";
-import { MOVIE_CHANGE_INTERVAL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { MOVIE_CHANGE_INTERVAL, BASE_GAP_CLASS } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
@@ -83,7 +83,7 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
           isScrollByOne={true}
         />
         <div
-          className={`flex ${PREVIEWS_GAP_CLASS} w-full overflow-x-hidden`}
+          className={`flex ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
           ref={ribbonRef}
         >
           {movies.map((movie: IMovieList) => (

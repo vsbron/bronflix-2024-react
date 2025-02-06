@@ -3,11 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import {
-  MEDIA_URL,
-  MIN_SEARCH_CHARS,
-  PREVIEWS_GAP_CLASS,
-} from "@/lib/constants";
+import { MEDIA_URL, MIN_SEARCH_CHARS, BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
@@ -128,7 +124,7 @@ function Search() {
       </button>
       {briefResults !== null && (
         <div
-          className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 left-16 right-0 px-6 py-4 flex flex-col text-2xl ${PREVIEWS_GAP_CLASS}`}
+          className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 left-16 right-0 px-6 py-4 flex flex-col text-2xl ${BASE_GAP_CLASS}`}
           onClick={clearSearch}
         >
           {briefResults.totalResults > 0 ? (

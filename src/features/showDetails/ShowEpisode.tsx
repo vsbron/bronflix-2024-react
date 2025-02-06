@@ -1,5 +1,5 @@
 import { NO_SHOW_COVER } from "@/lib/assets";
-import { MEDIA_IMG_URL, PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { MEDIA_IMG_URL, BASE_GAP_CLASS } from "@/lib/constants";
 import { SeasonEpisodeProps } from "@/lib/types";
 import { formatDate, shortenText } from "@/utils/helpers";
 
@@ -27,7 +27,7 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
 
   // Returned JSX
   return (
-    <div className={`flex ${PREVIEWS_GAP_CLASS}`}>
+    <div className={`flex ${BASE_GAP_CLASS}`}>
       <div className="relative basis-[30rem] flex-shrink-0 pb-[16.875rem] overflow-hidden rounded-lg">
         <img
           src={snapshot}

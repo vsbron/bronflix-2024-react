@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-import { PREVIEWS_GAP_CLASS, SEASON_TYPES } from "@/lib/constants";
+import { BASE_GAP_CLASS, SEASON_TYPES } from "@/lib/constants";
 import { ISeason } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
@@ -34,7 +34,7 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
   return (
     <section>
       <Heading as="h2">Episode Guide</Heading>
-      <div className={`flex ${PREVIEWS_GAP_CLASS} mb-6 flex-wrap`}>
+      <div className={`flex ${BASE_GAP_CLASS} mb-6 flex-wrap`}>
         {onlySeasons.map((season) => {
           return (
             <Button

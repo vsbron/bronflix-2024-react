@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { BASE_GAP_CLASS } from "@/lib/constants";
 import {
   PreviewGroupProps,
   PreviewItemProps,
@@ -48,7 +48,7 @@ function Previews<T extends IBase>({
 
       {/* Ribbon */}
       <div
-        className={`flex ${PREVIEWS_GAP_CLASS} w-full overflow-x-hidden`}
+        className={`flex ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
         ref={ribbonRef}
       >
         {/* If there's width provided, then we scroll by one, otherwise by set */}
@@ -138,9 +138,7 @@ function PreviewGroup<T extends IBase>({
 }: PreviewGroupProps<T>) {
   // Returned JSX
   return (
-    <div
-      className={`${PREVIEWS_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}
-    >
+    <div className={`${BASE_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}>
       {previews.map((media) => (
         <Link
           key={media.id}

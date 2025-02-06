@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { PREVIEWS_GAP_CLASS } from "@/lib/constants";
+import { BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchPreviewSmallProps } from "@/lib/types";
 import { getSearchMediaData } from "@/utils/helpers";
 
@@ -13,7 +13,7 @@ function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
     <div>
       <Link
         to={`${mediaType}/${media.id}`}
-        className={`flex ${PREVIEWS_GAP_CLASS} items-end hover:text-red-300`}
+        className={`flex ${BASE_GAP_CLASS} items-end hover:text-red-300`}
       >
         <img
           src={mediaImage}

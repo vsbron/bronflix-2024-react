@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
-import { PREVIEWS_GAP, SCROLL_BY_ONE_MULTIPLIER } from "@/lib/constants";
+import { BASE_GAP, SCROLL_BY_ONE_MULTIPLIER } from "@/lib/constants";
 import {
   ButtonPreviewProps,
   ButtonPreviewArrowProps,
@@ -29,8 +29,8 @@ function ButtonsPreview({
       ribbon.current.scrollBy({
         left:
           direction === "left"
-            ? -ribbonWidth - PREVIEWS_GAP
-            : ribbonWidth + PREVIEWS_GAP,
+            ? -ribbonWidth - BASE_GAP
+            : ribbonWidth + BASE_GAP,
         behavior: "smooth",
       });
     }
