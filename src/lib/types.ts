@@ -162,4 +162,5 @@ export type SearchPaginationProps = {
 };
 export type SearchPreviewProps = { media: SearchedMedia };
 export type SearchPreviewSmallProps = { media: SearchedMediaSmall };
+export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
