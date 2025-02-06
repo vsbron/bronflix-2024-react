@@ -27,6 +27,11 @@ function SearchResultsList({ query }: { query: string }) {
   // Calculating tht total number of pages
   const totalPages = Math.ceil(data.total_results / 20);
 
+  const handlePageChange = (newPage: number) => {
+    if (newPage < 1 || newPage > totalPages) return;
+    setSearchParams({ q: query, page: newPage.toString() });
+  };
+
   // Returned JSX
   return (
     <section>
@@ -53,7 +58,11 @@ function SearchResultsList({ query }: { query: string }) {
         )}
       </div>
       <Separator className="my-10" />
-      <SearchPagination page={page} totalPages={totalPages} />
+      <SearchPagination
+        page={page}
+        totalPages={totalPages}
+        handlePageChange={handlePageChange}
+      />
     </section>
   );
 }
