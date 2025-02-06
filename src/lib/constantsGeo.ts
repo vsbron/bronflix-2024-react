@@ -31,7 +31,7 @@ export const COUNTRIES: { [key: string]: string } = {
   ES: "Spain",
   SE: "Sweden",
   TR: "Turkey",
-  UK: "Ukraine",
+  UA: "Ukraine",
 
   AU: "Australia",
   AR: "Argentina",

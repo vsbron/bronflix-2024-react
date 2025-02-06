@@ -83,6 +83,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             </div>
             <div className="flex gap-8 mb-2">
               <IconWrapper icon={<GlobeAltIcon />}>{originCountry}</IconWrapper>
+              {country}
               {studio && (
                 <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
               )}

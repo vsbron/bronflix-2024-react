@@ -217,6 +217,7 @@ export interface SearchedMediaSmall {
 export interface SearchedMedia extends SearchedMediaSmall {
   overview: string;
   popularity: number;
+  original_language: string;
   vote_average: number;
   vote_count: number;
 }

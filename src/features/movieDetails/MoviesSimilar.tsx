@@ -17,6 +17,7 @@ function MoviesSimilar({ movieId }: MoviesSimilarProps) {
         {error?.message || "Error fetching similar movies"}
       </div>
     );
+  if (similarMovies.length === 0) return null;
 
   // Returned JSX
   return (
