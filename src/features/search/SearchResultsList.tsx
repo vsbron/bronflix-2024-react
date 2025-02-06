@@ -4,6 +4,7 @@ import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
+import Separator from "@/components/ui/Separator";
 
 function SearchResultsList({ query }: { query: string }) {
   // Getting the page number from search params
@@ -34,6 +35,10 @@ function SearchResultsList({ query }: { query: string }) {
       <h3>
         Showing results for: <em>"{query}"</em>
       </h3>
+      <p className="text-2xl mt-2">
+        Page {page} • Total results: {data.total_results}
+      </p>
+      <Separator className="my-10" />
       <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
         {data.total_results > 0 ? (
           data.results.map((media: any) => (

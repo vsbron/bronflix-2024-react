@@ -30,9 +30,9 @@ function Home() {
       <HeroSection />
       <ShowsPopular />
       <ActorsTrending />
-      <Separator />
+      <Separator className="mt-6" />
       <ExploreMore />
-      <Separator />
+      <Separator className="mt-6" />
       <MoviesAcclaimed />
       <ShowsTopRated />
     </>

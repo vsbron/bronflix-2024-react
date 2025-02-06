@@ -38,7 +38,7 @@ module.exports = {
         },
         exploreMoreBgMove: {
           "0%": { backgroundPositionY: "0" },
-          "100%": { backgroundPositionY: "-80rem" },
+          "100%": { backgroundPositionY: "-72rem" },
         },
       },
     },

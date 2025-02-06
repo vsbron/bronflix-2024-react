@@ -107,6 +107,7 @@ export type FooterHeadingProps = { children: string };
 export type FormData = z.infer<typeof contactFormSchema>;
 export type HeadingProps = { children: string; as?: Headings; id?: string };
 export type NavItemProps = { icon: ReactNode; title: string };
+export type SeparatorProps = { className?: string };
 export type WrapperProps = { children: ReactNode; className?: string };
 
 // Home page components
