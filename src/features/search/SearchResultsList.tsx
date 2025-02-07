@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 import { SearchResultsListProps } from "@/lib/types";
+import { SearchedMedia } from "@/lib/typesAPI";
 
 import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
 import Heading from "@/components/ui/Heading";
@@ -52,7 +53,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
           <Separator className="my-10" />
           <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
             {data.total_results > 0 ? (
-              data.results.map((media: any) => (
+              data.results.map((media: SearchedMedia) => (
                 <SearchPreview media={media} key={media.id} />
               ))
             ) : (
