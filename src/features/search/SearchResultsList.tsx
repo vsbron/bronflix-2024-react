@@ -3,10 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import { SearchResultsListProps } from "@/lib/types";
 import { SearchedMedia } from "@/lib/typesAPI";
 
-import ProceedOptions from "@/components/errorBoundary/ProceedOptions";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import Separator from "@/components/ui/Separator";
+
+import SearchNoResults from "@/features/search/SearchNoResults";
 import SearchPagination from "@/features/search/SearchPagination";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
@@ -52,18 +53,9 @@ function SearchResultsList({ query }: SearchResultsListProps) {
 
           <Separator className="my-10" />
           <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-            {data.total_results > 0 ? (
-              data.results.map((media: SearchedMedia) => (
-                <SearchPreview media={media} key={media.id} />
-              ))
-            ) : (
-              <div className="text-stone-500">
-                No results found for
-                <br />
-                <em>"{query}"</em>.
-                <span className="block mt-2">Try a different search term.</span>
-              </div>
-            )}
+            {data.results.map((media: SearchedMedia) => (
+              <SearchPreview media={media} key={media.id} />
+            ))}
           </div>
           <Separator className="my-10" />
           <SearchPagination
@@ -73,12 +65,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
           />
         </>
       ) : (
-        <>
-          <h3 className="mb-8">
-            Sorry, no results were found for <em>"{query}"</em>
-          </h3>
-          <ProceedOptions />
-        </>
+        <SearchNoResults query={query} />
       )}
     </section>
   );
