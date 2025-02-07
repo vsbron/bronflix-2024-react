@@ -46,7 +46,10 @@ function ShowDetails({ show }: ShowDetailsProps) {
   })`;
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
-  const studio = companies.at(0);
+  const studios = companies
+    .map((company) => company.name)
+    .slice(0, 3)
+    .join(", ");
   const isEnded = status === "Ended" || status === "Cancelled";
 
   // Returned JSX
@@ -88,8 +91,8 @@ function ShowDetails({ show }: ShowDetailsProps) {
               <IconWrapper icon={<LanguageIcon />}>
                 {LANGUAGES[language]}
               </IconWrapper>
-              {studio && (
-                <IconWrapper icon={<FilmIcon />}>{studio.name}</IconWrapper>
+              {studios && (
+                <IconWrapper icon={<FilmIcon />}>{studios}</IconWrapper>
               )}
             </div>
           </div>
