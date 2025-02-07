@@ -199,8 +199,16 @@ export interface SearchResultsObj {
   totalResults: number;
 }
 export interface SearchResultsObjSmall {
-  briefData: SearchedMedia[];
+  briefData: SearchedMediaSmall[];
   totalResults: number;
+}
+
+export interface SearchedMedia extends SearchedMediaSmall {
+  overview: string;
+  popularity: number;
+  original_language: string;
+  vote_average: number;
+  vote_count: number;
 }
 
 export interface SearchedMediaSmall {
@@ -212,12 +220,4 @@ export interface SearchedMediaSmall {
   release_date: string;
   poster_path: string;
   profile_path: string;
-}
-
-export interface SearchedMedia extends SearchedMediaSmall {
-  overview: string;
-  popularity: number;
-  original_language: string;
-  vote_average: number;
-  vote_count: number;
 }

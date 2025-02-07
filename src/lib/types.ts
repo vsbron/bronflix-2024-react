@@ -11,6 +11,7 @@ import {
   IShow,
   SearchedMedia,
   SearchedMediaSmall,
+  SearchResultsObjSmall,
 } from "./typesAPI";
 import { z } from "zod";
 import { contactFormSchema } from "./contactFormSchema";
@@ -155,6 +156,11 @@ export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
 
 // Search
+export type SearchBriefResultsProps = {
+  clearSearch: () => void;
+  results: SearchResultsObjSmall;
+  inputText: string;
+};
 export type SearchPaginationProps = {
   page: number;
   totalPages: number;

@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/outline";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
+import { LANGUAGES } from "@/lib/constantsGeo";
 import { SearchPreviewProps } from "@/lib/types";
 import { formatDate, getSearchMediaData, shortenText } from "@/utils/helpers";
 
 import ScorePreview from "@/components/ScorePreview";
 import IconWrapper from "@/components/IconWrapper";
-import { LANGUAGES } from "@/lib/constantsGeo";
 
 function SearchPreview({ media }: SearchPreviewProps) {
   // Getting all the necessary data for the preview
@@ -27,9 +27,8 @@ function SearchPreview({ media }: SearchPreviewProps) {
   // Shortening the overview
   const shortenOverview = overview && shortenText(overview, 250);
 
-  // Setting boolean whether we deal with media or not
+  // Setting boolean whether we deal with media or not and the date
   const isMedia = mediaType !== "person";
-
   const date = release_date || first_air_date;
 
   // Returned JSX

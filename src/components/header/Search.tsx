@@ -1,12 +1,12 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import { MEDIA_URL, MIN_SEARCH_CHARS, BASE_GAP_CLASS } from "@/lib/constants";
+import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
 import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
-import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
+import SearchBriefResults from "./SearchBriefResults";
 
 function Search() {
   // Setting the states for hovering effect, input text, form status and results list
@@ -123,31 +123,11 @@ function Search() {
         <XMarkIcon />
       </button>
       {briefResults !== null && (
-        <div
-          className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 left-16 right-0 px-6 py-4 flex flex-col text-2xl ${BASE_GAP_CLASS}`}
-          onClick={clearSearch}
-        >
-          {briefResults.totalResults > 0 ? (
-            <>
-              {briefResults.briefData.map((media) => (
-                <SearchPreviewSmall media={media} key={media.id} />
-              ))}
-              <Link
-                to={`/search?q=${encodeURIComponent(inputText)}`}
-                className="text-center pt-3 border-t border-stone-50 hover:text-red-300"
-              >
-                See all results ({briefResults.totalResults})
-              </Link>
-            </>
-          ) : (
-            <div className="text-stone-500">
-              No results found for
-              <br />
-              <em>"{inputText}"</em>.
-              <span className="block mt-2">Try a different search term.</span>
-            </div>
-          )}
-        </div>
+        <SearchBriefResults
+          clearSearch={clearSearch}
+          results={briefResults}
+          inputText={inputText}
+        />
       )}
     </form>
   );

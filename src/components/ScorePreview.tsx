@@ -6,7 +6,7 @@ import { scoreColor } from "@/utils/helpers";
 import IconWrapper from "@/components/IconWrapper";
 
 function ScorePreview({
-  score,
+  score = 0,
   count,
   isHighlighted = false,
   isBig = false,
