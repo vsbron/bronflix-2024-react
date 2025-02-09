@@ -112,22 +112,19 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 BroNflix is constantly evolving, with several exciting features planned for future updates:
 
-1. **Search Functionality**  
-   Users will be able to search for movies, shows, and people by name, enhancing the browsing experience.
-
-2. **Authentication**  
+1. **Authentication**  
    A secure authentication system will be implemented, allowing users to sign in, manage their profiles, and personalize their experience.
 
-3. **Main Page for Movies, Shows, and People**  
+2. **Main Page for Movies, Shows, and People**  
    A unified main page will be added, providing a clear overview of all categories—movies, shows, and actors—allowing users to easily explore each.
 
-4. **Favorites & Watchlist**  
+3. **Favorites & Watchlist**  
    Users will have the ability to add movies and shows to their favorites or watchlist, making it easier to keep track of content they want to watch.
 
-5. **Voting System**  
+4. **Voting System**  
    Users will be able to add their votes to movies and shows, contributing to the overall rating and offering a more personalized recommendation experience.
 
-6. **Mobile Layout**  
+5. **Mobile Layout**  
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
 
 ---
