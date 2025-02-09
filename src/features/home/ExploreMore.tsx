@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import { signIn, signOut } from "@/firebase/authService";
 
 function ExploreMore() {
   // Returned JSX
