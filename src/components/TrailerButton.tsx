@@ -8,12 +8,12 @@ function TrailerButton({ video }: TrailerButtonProps) {
   // Returned JSX
   return (
     <ModalProvider>
-      <ModalProvider.Trigger>
+      <ModalProvider.Trigger name="trailer">
         <Button>
           <span>WATCH TRAILER</span>
         </Button>
       </ModalProvider.Trigger>
-      <ModalProvider.Content>
+      <ModalProvider.Content name="trailer">
         <VideoTrailer video={video!} />
       </ModalProvider.Content>
     </ModalProvider>

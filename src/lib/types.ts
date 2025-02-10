@@ -27,14 +27,14 @@ export type GenresContextType = {
   genres: IGenre[];
 };
 export type GenresProviderProps = { children: ReactNode };
-export type ModalContentProps = { children: ReactNode };
+export type ModalContentProps = { children: ReactNode; name: string };
 export type ModalContextProps = {
-  isOpen: boolean;
-  openModal: () => void;
+  activeModal: string | null;
+  openModal: (id: string) => void;
   closeModal: () => void;
 };
 export type ModalProviderProps = { children: ReactNode };
-export type ModalTriggerProps = { children: ReactNode };
+export type ModalTriggerProps = { children: ReactNode; name: string };
 
 /* Components */
 export type ButtonPreviewProps = {

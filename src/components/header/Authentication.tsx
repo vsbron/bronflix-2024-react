@@ -10,20 +10,20 @@ function Authentication() {
   return (
     <ModalProvider>
       <div className={`flex ${BASE_GAP_CLASS}`}>
-        <ModalProvider.Trigger>
+        <ModalProvider.Trigger name="sign-in">
           <Button>
             <span>SIGN IN</span>
           </Button>
         </ModalProvider.Trigger>
-        <ModalProvider.Content>
+        <ModalProvider.Content name="sign-in">
           <SignInForm />
         </ModalProvider.Content>
-        <ModalProvider.Trigger>
+        <ModalProvider.Trigger name="sign-up">
           <Button>
             <span>SIGN UP</span>
           </Button>
         </ModalProvider.Trigger>
-        <ModalProvider.Content>
+        <ModalProvider.Content name="sign-up">
           <SignUpForm />
         </ModalProvider.Content>
       </div>

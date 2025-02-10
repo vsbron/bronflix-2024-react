@@ -10,7 +10,7 @@ import {
 
 // Creating the context
 const ModalContext = createContext<ModalContextProps>({
-  isOpen: false,
+  activeModal: "",
   openModal: () => {},
   closeModal: () => {},
 });
@@ -18,35 +18,35 @@ const ModalContext = createContext<ModalContextProps>({
 // Parent component
 export function ModalProvider({ children }: ModalProviderProps) {
   // Setting the pop up state and click handlers
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+  const openModal = (name: string) => setActiveModal(name);
+  const closeModal = () => setActiveModal(null);
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ModalContext.Provider value={{ activeModal, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   );
 }
 
 // Child components
-function Trigger({ children }: ModalTriggerProps) {
+function Trigger({ children, name }: ModalTriggerProps) {
   // Getting the opening modal function
   const { openModal } = useContext(ModalContext);
 
   // Return JSX
-  return <div onClick={openModal}>{children}</div>;
+  return <div onClick={() => openModal(name)}>{children}</div>;
 }
-function Content({ children }: ModalContentProps) {
+function Content({ children, name }: ModalContentProps) {
   // Getting the modal state and close function
-  const { isOpen, closeModal } = useContext(ModalContext);
+  const { activeModal, closeModal } = useContext(ModalContext);
 
   // Guard clause
-  if (!isOpen) return null;
+  if (activeModal !== name) return null; // Only show modal if it matches activeModal
 
   // useEffect for Escape key press handler
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      event.key === "Escape" && isOpen && closeModal();
+      event.key === "Escape" && closeModal();
     };
 
     // Add the event listener
@@ -56,7 +56,7 @@ function Content({ children }: ModalContentProps) {
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [isOpen]);
+  }, [closeModal]);
 
   // Returned JSX
   return createPortal(
