@@ -14,7 +14,7 @@ import {
   SearchResultsObjSmall,
 } from "./typesAPI";
 import { z } from "zod";
-import { contactFormSchema } from "./contactFormSchema";
+import { contactFormSchema, signInFormSchema } from "./formSchemas";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -105,7 +105,8 @@ export type ButtonProps = {
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };
-export type FormData = z.infer<typeof contactFormSchema>;
+export type ContactFormData = z.infer<typeof contactFormSchema>;
+export type SignInFormData = z.infer<typeof signInFormSchema>;
 export type HeadingProps = { children: string; as?: Headings; id?: string };
 export type NavItemProps = { icon: ReactNode; title: string };
 export type SeparatorProps = { className?: string };

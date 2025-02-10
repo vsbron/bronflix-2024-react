@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
 
-import { FormData } from "@/lib/types";
+import { ContactFormData } from "@/lib/types";
 import { EMAILJS_PUBLIC_KEY, BASE_GAP_CLASS } from "@/lib/constants";
-import { contactFormSchema } from "@/lib/contactFormSchema";
+import { contactFormSchema } from "@/lib/formSchemas";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
@@ -20,7 +20,7 @@ function ContactForm() {
     register,
     handleSubmit,
     formState: { errors: err },
-  } = useForm<FormData>({ resolver: zodResolver(contactFormSchema) });
+  } = useForm<ContactFormData>({ resolver: zodResolver(contactFormSchema) });
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
