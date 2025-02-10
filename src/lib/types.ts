@@ -27,7 +27,11 @@ export type GenresContextType = {
   genres: IGenre[];
 };
 export type GenresProviderProps = { children: ReactNode };
-export type ModalContentProps = { children: ReactNode; name: string };
+export type ModalContentProps = {
+  children: ReactNode;
+  name: string;
+  alternative?: boolean;
+};
 export type ModalContextProps = {
   activeModal: string | null;
   openModal: (id: string) => void;

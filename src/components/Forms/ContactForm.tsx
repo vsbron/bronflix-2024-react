@@ -108,7 +108,7 @@ function ContactForm() {
           />
         </FormGroup>
 
-        <div className={`flex gap-10 ${BASE_GAP_CLASS}`}>
+        <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
           <Button type="reset" disabled={isSubmitting}>
             <span>Reset</span>
           </Button>

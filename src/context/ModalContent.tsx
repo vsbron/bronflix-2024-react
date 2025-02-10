@@ -36,7 +36,7 @@ function Trigger({ children, name }: ModalTriggerProps) {
   // Return JSX
   return <div onClick={() => openModal(name)}>{children}</div>;
 }
-function Content({ children, name }: ModalContentProps) {
+function Content({ children, name, alternative = false }: ModalContentProps) {
   // Getting the modal state and close function
   const { activeModal, closeModal } = useContext(ModalContext);
 
@@ -61,7 +61,11 @@ function Content({ children, name }: ModalContentProps) {
   // Returned JSX
   return createPortal(
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
-      <div className="relative z-30 bg-red-950 p-8 rounded-lg opacity-0 -t-[20rem] animate-showModalPopUp">
+      <div
+        className={`relative z-30 p-8 text-stone-50 rounded-lg opacity-0 -t-[20rem] animate-showModalPopUp ${
+          alternative ? "bg-red-950" : "bg-stone-900"
+        }`}
+      >
         <button
           onClick={closeModal}
           className="absolute -top-2 -right-12 text-white rounded-full text-[2.5rem] leading-1"

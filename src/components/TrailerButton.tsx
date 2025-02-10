@@ -13,7 +13,7 @@ function TrailerButton({ video }: TrailerButtonProps) {
           <span>WATCH TRAILER</span>
         </Button>
       </ModalProvider.Trigger>
-      <ModalProvider.Content name="trailer">
+      <ModalProvider.Content name="trailer" alternative={true}>
         <VideoTrailer video={video!} />
       </ModalProvider.Content>
     </ModalProvider>
