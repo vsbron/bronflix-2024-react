@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GenresProvider } from "@/context/GenresContext";
-import { VideoProvider } from "@/context/VideoContext";
+import { ModalProvider } from "@/context/ModalContent";
 import { MOVIE_CHANGE_INTERVAL, BASE_GAP_CLASS } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
@@ -72,9 +72,9 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   return (
     <div className="relative">
       <GenresProvider>
-        <VideoProvider>
+        <ModalProvider>
           <MovieHighlight movie={chosenMovie} />
-        </VideoProvider>
+        </ModalProvider>
       </GenresProvider>
       <div className="relative">
         <ButtonsPreview

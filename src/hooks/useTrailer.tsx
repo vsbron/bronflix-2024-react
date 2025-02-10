@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import useVideo from "@/context/VideoContext";
+import useVideo from "@/context/ModalContent";
 
 import { MEDIA_URL } from "@/lib/constants";
 import { IVideo } from "@/lib/typesAPI";

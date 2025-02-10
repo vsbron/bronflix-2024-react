@@ -25,7 +25,7 @@ module.exports = {
       animation: {
         exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
         fadeInForwards: "fadeIn .2s ease forwards",
-        showVideoPopUp: "fadeInDown .2s ease forwards .2s",
+        showModalPopUp: "fadeInDown .2s ease forwards .2s",
       },
       keyframes: {
         fadeIn: {
