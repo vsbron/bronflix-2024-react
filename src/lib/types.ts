@@ -109,8 +109,6 @@ export type ButtonProps = {
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };
-export type ContactFormData = z.infer<typeof contactFormSchema>;
-export type SignInFormData = z.infer<typeof signInFormSchema>;
 export type HeadingProps = { children: string; as?: Headings; id?: string };
 export type NavItemProps = { icon: ReactNode; title: string };
 export type SeparatorProps = { className?: string };
@@ -175,3 +173,14 @@ export type SearchPreviewProps = { media: SearchedMedia };
 export type SearchPreviewSmallProps = { media: SearchedMediaSmall };
 export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
+
+// Forms
+
+export type ContactFormData = z.infer<typeof contactFormSchema>;
+export type SignInFormData = z.infer<typeof signInFormSchema>;
+export type FormGroupProps = { children: ReactNode };
+export type FormErrorProps = { children: ReactNode };
+export type FormLabelErrorProps = {
+  name: string;
+  children: ReactNode;
+};

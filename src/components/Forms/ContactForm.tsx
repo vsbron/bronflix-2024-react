@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +8,11 @@ import { ContactFormData } from "@/lib/types";
 import { EMAILJS_PUBLIC_KEY, BASE_GAP_CLASS } from "@/lib/constants";
 import { contactFormSchema } from "@/lib/formSchemas";
 
+import {
+  FormError,
+  FormGroup,
+  FormLabelError,
+} from "@/components/Forms/FormElements";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
@@ -122,25 +127,3 @@ function ContactForm() {
 }
 
 export default ContactForm;
-
-// Helper components
-function FormGroup({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col items-start">{children}</div>;
-}
-function FormLabelError({
-  name,
-  children,
-}: {
-  name: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="flex gap-4 mb-2">
-      <label htmlFor={name.toLowerCase()}>{name}</label>
-      {children}
-    </div>
-  );
-}
-function FormError({ children }: { children: ReactNode }) {
-  return <span className="text-red-300">{children}</span>;
-}

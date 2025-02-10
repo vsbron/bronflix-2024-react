@@ -8,6 +8,7 @@ import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 
 import Button from "@/components/ui/Button";
+import { FormError, FormGroup, FormLabelError } from "./FormElements";
 
 function SignInForm() {
   // Setting the state for the current form status
@@ -83,25 +84,3 @@ function SignInForm() {
 }
 
 export default SignInForm;
-
-// Helper components
-function FormGroup({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col items-start">{children}</div>;
-}
-function FormLabelError({
-  name,
-  children,
-}: {
-  name: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className="flex gap-4 mb-2">
-      <label htmlFor={name.toLowerCase()}>{name}</label>
-      {children}
-    </div>
-  );
-}
-function FormError({ children }: { children: ReactNode }) {
-  return <span className="text-red-300">{children}</span>;
-}
