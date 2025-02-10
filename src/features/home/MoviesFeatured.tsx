@@ -72,9 +72,7 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   return (
     <div className="relative">
       <GenresProvider>
-        <ModalProvider>
-          <MovieHighlight movie={chosenMovie} />
-        </ModalProvider>
+        <MovieHighlight movie={chosenMovie} />
       </GenresProvider>
       <div className="relative">
         <ButtonsPreview
