@@ -42,7 +42,7 @@ function SignInForm() {
       <h3 className="mb-8 mt-0">SIGN IN FORM</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        id="contact-form"
+        id="sign-in-form"
         className={`flex flex-col ${BASE_GAP_CLASS} items-start`}
       >
         <FormGroup>

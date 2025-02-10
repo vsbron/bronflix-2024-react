@@ -17,7 +17,11 @@ export function FormGroup({ children }: FormGroupProps) {
 export function FormLabelError({ name, children }: FormLabelErrorProps) {
   return (
     <div className="flex gap-4 mb-2">
-      <label htmlFor={name.toLowerCase()}>{name}</label>
+      <label
+        htmlFor={name[0].toLowerCase() + name.slice(1).replaceAll(" ", "")}
+      >
+        {name}
+      </label>
       {children}
     </div>
   );

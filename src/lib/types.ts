@@ -14,7 +14,11 @@ import {
   SearchResultsObjSmall,
 } from "./typesAPI";
 import { z } from "zod";
-import { contactFormSchema, signInFormSchema } from "./formSchemas";
+import {
+  contactFormSchema,
+  signInFormSchema,
+  signUpFormSchema,
+} from "./formSchemas";
 
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
@@ -178,6 +182,7 @@ export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 export type SignInFormData = z.infer<typeof signInFormSchema>;
+export type SignUpFormData = z.infer<typeof signUpFormSchema>;
 export type FormGroupProps = { children: ReactNode };
 export type FormErrorProps = { children: ReactNode };
 export type FormLabelErrorProps = {
