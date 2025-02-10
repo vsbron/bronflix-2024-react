@@ -62,7 +62,7 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
   return createPortal(
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
       <div
-        className={`relative z-30 p-8 text-stone-50 rounded-lg opacity-0 -t-[20rem] animate-showModalPopUp ${
+        className={`relative z-30 p-8 text-stone-50 rounded-lg opacity-0 -t-[20rem] min-w-[35rem] animate-showModalPopUp ${
           alternative ? "bg-red-950" : "bg-stone-900"
         }`}
       >

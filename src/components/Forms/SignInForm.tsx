@@ -52,7 +52,7 @@ function SignInForm() {
           <input
             type="text"
             id="email"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("email")}
             placeholder="Enter your email address"
             disabled={isSubmitting}
@@ -66,7 +66,7 @@ function SignInForm() {
           <input
             type="password"
             id="password"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("password")}
             placeholder="Enter your password"
             disabled={isSubmitting}

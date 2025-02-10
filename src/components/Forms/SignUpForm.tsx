@@ -51,7 +51,7 @@ function SignUpForm() {
           </FormLabelError>
           <input
             id="name"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("name")}
             placeholder="Enter your name"
             disabled={isSubmitting}
@@ -65,7 +65,7 @@ function SignUpForm() {
           <input
             type="text"
             id="email"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("email")}
             placeholder="Enter your email address"
             disabled={isSubmitting}
@@ -79,7 +79,7 @@ function SignUpForm() {
           <input
             type="password"
             id="password"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("password")}
             placeholder="Enter your password"
             disabled={isSubmitting}
@@ -93,9 +93,9 @@ function SignUpForm() {
             )}
           </FormLabelError>
           <input
-            type="confirmPassword"
+            type="password"
             id="confirmPassword"
-            className="input-styles"
+            className="input-styles input-wide-styles"
             {...register("confirmPassword")}
             placeholder="Enter your password again"
             disabled={isSubmitting}

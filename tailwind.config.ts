@@ -65,6 +65,9 @@ module.exports = {
           height: "4rem",
           minWidth: "25rem",
         },
+        ".input-wide-styles": {
+          width: "32rem"
+        },
       });
     },
   ],
