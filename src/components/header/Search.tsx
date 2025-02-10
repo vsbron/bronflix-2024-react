@@ -8,6 +8,8 @@ import { SearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "./SearchBriefResults";
 
+let controller: AbortController | null = null;
+
 function Search() {
   // Setting the states for hovering effect, input text, form status and results list
   const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -21,12 +23,17 @@ function Search() {
 
   // Fetch data based on a search query function
   const fetchSearch = async () => {
+    // Set the abort controller
+    controller = new AbortController();
+    const signal = controller.signal;
+
     try {
       // Fetching the data
       const res = await fetch(
         `${MEDIA_URL}search/multi?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
-        }&query=${inputText}`
+        }&query=${inputText}`,
+        { signal }
       );
 
       // Guard clause
@@ -76,6 +83,7 @@ function Search() {
     e.preventDefault(); // Prevent default behavior
     if (!inputText.trim()) return; // Guard clause
     setIsSubmitting(true); // Enabling submitting state
+    controller?.abort(); // Cancel the running fetch from
     navigate(`/search?q=${encodeURIComponent(inputText)}`); // Redirecting user to search page
     clearSearch(); // Reset the search component
     setIsSubmitting(false); // Disabling submitting state
