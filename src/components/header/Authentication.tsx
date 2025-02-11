@@ -1,4 +1,4 @@
-import { ModalProvider } from "@/context/ModalContent";
+import { ModalProvider } from "@/context/ModalContext";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 
 import Button from "@/components/ui/Button";

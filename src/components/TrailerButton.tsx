@@ -1,4 +1,4 @@
-import { ModalProvider } from "@/context/ModalContent";
+import { ModalProvider } from "@/context/ModalContext";
 import { TrailerButtonProps } from "@/lib/types";
 
 import Button from "@/components/ui/Button";

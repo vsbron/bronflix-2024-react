@@ -40,9 +40,6 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
   // Getting the modal state and close function
   const { activeModal, closeModal } = useContext(ModalContext);
 
-  // Guard clause
-  if (activeModal !== name) return null; // Only show modal if it matches activeModal
-
   // useEffect for Escape key press handler
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -57,6 +54,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
       document.removeEventListener("keydown", handleKeyPress);
     };
   }, [closeModal]);
+
+  // Guard clause
+  if (activeModal !== name) return null; // Only show modal if it matches activeModal
 
   // Returned JSX
   return createPortal(

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GenresProvider } from "@/context/GenresContext";
-import { ModalProvider } from "@/context/ModalContent";
+import { ModalProvider } from "@/context/ModalContext";
 import { MOVIE_CHANGE_INTERVAL, BASE_GAP_CLASS } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
