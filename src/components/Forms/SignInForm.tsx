@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
+import { signInUser } from "@/redux/reducers/authReducer";
+import { auth } from "@/utils/firebase";
 
 import {
   FormError,
@@ -15,8 +19,9 @@ import {
 import Button from "@/components/ui/Button";
 
 function SignInForm() {
-  // Setting the state for the current form status
+  // Setting the state for the current form status and error
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Getting the functions and errors from react hook form
   const {
@@ -27,16 +32,41 @@ function SignInForm() {
     resolver: zodResolver(signInFormSchema),
   });
 
-  // Getting the navigate function from useNavigate hook
+  // Getting the navigate and dispatch functions
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Form success handler
-  const onSubmit = () => {
-    // Disable inputs when submission starts
+  const onSubmit = async (data: SignInFormData) => {
+    // Enable submitting state
     setIsSubmitting(true);
+
     try {
-    } catch {
+      // Sign In user
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      console.log(userCredential);
+
+      // Updating the state
+      dispatch(
+        signInUser({
+          uid: userCredential.user.uid,
+          name: userCredential.user.displayName,
+          email: userCredential.user.email,
+        })
+      );
+
+      // Redirect after successful sign-up
+      navigate("/profile");
+    } catch (error: unknown) {
+      console.error(error);
+      setFormError("An error occurred while signing up. Please try again.");
     } finally {
+      // Disabling submitting state
       setIsSubmitting(false);
     }
   };
@@ -82,6 +112,7 @@ function SignInForm() {
             <span>Submit</span>
           </Button>
         </div>
+        {formError && <p className="text-red-500">{formError}</p>}
       </form>
     </>
   );

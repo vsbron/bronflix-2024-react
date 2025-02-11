@@ -149,7 +149,13 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(signInUser({ uid: user.uid, email: user.email }));
+        dispatch(
+          signInUser({
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+          })
+        );
       } else {
         dispatch(signOutUser());
       }

@@ -22,7 +22,7 @@ const authSlice = createSlice({
     signInUser(state, action) {
       state.user = {
         uid: action.payload.uid,
-        name: "John",
+        name: action.payload.name,
         email: action.payload.email,
       };
       state.isAuthenticated = true;

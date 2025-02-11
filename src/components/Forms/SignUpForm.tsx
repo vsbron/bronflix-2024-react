@@ -32,7 +32,7 @@ function SignUpForm() {
     resolver: zodResolver(signUpFormSchema),
   });
 
-  // Getting the navigate function from useNavigate hook
+  // Getting the navigate and dispatch functions
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
