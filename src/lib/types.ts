@@ -9,9 +9,9 @@ import {
   IMovieList,
   IPerson,
   IShow,
-  SearchedMedia,
-  SearchedMediaSmall,
-  SearchResultsObjSmall,
+  iSearchedMedia,
+  iSearchedMediaSmall,
+  iSearchResultsObjSmall,
 } from "./typesAPI";
 import { z } from "zod";
 import {
@@ -165,7 +165,7 @@ export type SeasonEpisodeProps = { episode: IEpisode };
 // Search
 export type SearchBriefResultsProps = {
   clearSearch: () => void;
-  results: SearchResultsObjSmall;
+  results: iSearchResultsObjSmall;
   inputText: string;
 };
 export type SearchPaginationProps = {
@@ -173,8 +173,8 @@ export type SearchPaginationProps = {
   totalPages: number;
   handlePageChange: (newPage: number) => void;
 };
-export type SearchPreviewProps = { media: SearchedMedia };
-export type SearchPreviewSmallProps = { media: SearchedMediaSmall };
+export type SearchPreviewProps = { media: iSearchedMedia };
+export type SearchPreviewSmallProps = { media: iSearchedMediaSmall };
 export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 

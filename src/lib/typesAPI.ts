@@ -194,16 +194,16 @@ export interface IVideo {
 }
 
 /* SEARCH */
-export interface SearchResultsObj {
-  briefData: SearchedMedia[];
+export interface iSearchResultsObj {
+  briefData: iSearchedMedia[];
   totalResults: number;
 }
-export interface SearchResultsObjSmall {
-  briefData: SearchedMediaSmall[];
+export interface iSearchResultsObjSmall {
+  briefData: iSearchedMediaSmall[];
   totalResults: number;
 }
 
-export interface SearchedMedia extends SearchedMediaSmall {
+export interface iSearchedMedia extends iSearchedMediaSmall {
   overview: string;
   popularity: number;
   original_language: string;
@@ -211,7 +211,7 @@ export interface SearchedMedia extends SearchedMediaSmall {
   vote_count: number;
 }
 
-export interface SearchedMediaSmall {
+export interface iSearchedMediaSmall {
   id: string;
   name: string;
   title: string;
@@ -223,6 +223,6 @@ export interface SearchedMediaSmall {
 }
 
 export interface ISearchResults {
-  results: SearchedMedia[];
+  results: iSearchedMedia[];
   total_results: number;
 }

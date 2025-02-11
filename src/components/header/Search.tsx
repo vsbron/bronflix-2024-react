@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
-import { SearchResultsObjSmall } from "@/lib/typesAPI";
+import { iSearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "./SearchBriefResults";
 
