@@ -9,12 +9,12 @@ import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
 import { auth } from "@/utils/firebase";
 
-import Button from "@/components/ui/Button";
 import {
   FormError,
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
+import Button from "@/components/ui/Button";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -38,11 +38,12 @@ function SignUpForm() {
     // Enable submitting state
     setIsSubmitting(true);
 
-    // Register user
     try {
+      // Register user
       await createUserWithEmailAndPassword(auth, data.email, data.password);
 
-      navigate("/profile"); // Redirect after successful sign-up
+      // Redirect after successful sign-up
+      navigate("/profile");
     } catch (error: unknown) {
       console.error(error);
       setFormError("An error occurred while signing up. Please try again.");
@@ -55,7 +56,7 @@ function SignUpForm() {
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8 mt-0">SIGN UP AS A NEW USER</h3>
+      <h3 className="mb-8 mt-0">CREATE A NEW ACCOUNT</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="sign-up-form"

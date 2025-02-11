@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,8 +7,12 @@ import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 
+import {
+  FormError,
+  FormGroup,
+  FormLabelError,
+} from "@/components/forms/FormElements";
 import Button from "@/components/ui/Button";
-import { FormError, FormGroup, FormLabelError } from "./FormElements";
 
 function SignInForm() {
   // Setting the state for the current form status
@@ -39,7 +43,7 @@ function SignInForm() {
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8 mt-0">SIGN IN FORM</h3>
+      <h3 className="mb-8 mt-0">LOG INTO EXISTING ACCOUNT</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="sign-in-form"
