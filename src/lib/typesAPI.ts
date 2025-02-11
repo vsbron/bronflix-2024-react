@@ -221,3 +221,8 @@ export interface SearchedMediaSmall {
   poster_path: string;
   profile_path: string;
 }
+
+export interface ISearchResults {
+  results: SearchedMedia[];
+  total_results: number;
+}

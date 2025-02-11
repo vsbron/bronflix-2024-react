@@ -1,10 +1,11 @@
 import { MEDIA_URL } from "@/lib/constants";
+import { ISearchResults } from "@/lib/typesAPI";
 
 // API for getting search results
 export async function getSearchResults(
   query: string,
   page: number
-): Promise<any> {
+): Promise<ISearchResults> {
   try {
     // Fetching the data
     const response = await fetch(
