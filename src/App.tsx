@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
 import { onAuthStateChanged } from "firebase/auth";
 
-import { signIn, signOut } from "@/redux/reducers/authReducer";
+import { signInUser, signOutUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
 import Home from "@/pages/Home";
@@ -149,9 +149,9 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(signIn({ uid: user.uid, email: user.email }));
+        dispatch(signInUser({ uid: user.uid, email: user.email }));
       } else {
-        dispatch(signOut());
+        dispatch(signOutUser());
       }
     });
 

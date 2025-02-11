@@ -1,13 +1,21 @@
-import avatar from "@/assets/profile.png";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Button from "../ui/Button";
-import { signOut } from "@/redux/reducers/authReducer";
+import { signOut } from "firebase/auth";
+
+import { signOutUser } from "@/redux/reducers/authReducer";
+import { auth } from "@/utils/firebase";
+
+import Button from "@/components/ui/Button";
+import avatar from "@/assets/profile.png";
 
 function User() {
+  // Getting the dispatch function
   const dispatch = useDispatch();
 
+  // Sign Out handler
   const handleSignOut = () => {
-    dispatch(signOut());
+    signOut(auth);
+    dispatch(signOutUser());
   };
 
   // Returned JSX
@@ -21,6 +29,9 @@ function User() {
         alt="BroN"
         title="BroN avatar"
       />
+      <Button>
+        <Link to="/profile">PROFILE</Link>
+      </Button>
       <Button onClick={handleSignOut}>
         <span>LOG OUT</span>
       </Button>

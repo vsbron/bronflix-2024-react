@@ -1,7 +1,7 @@
+import { useSelector } from "react-redux";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { IAuthState, RootState } from "@/lib/typesRedux";
-import { useSelector } from "react-redux";
 
 // Creating initial state
 const initialState: IAuthState = {
@@ -19,7 +19,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     // Logging in
-    signIn(state, action) {
+    signInUser(state, action) {
       state.user = {
         uid: action.payload.uid,
         name: "John",
@@ -28,7 +28,7 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
     },
     // Creating new account
-    signUp(state, action) {
+    signUpUser(state, action) {
       state.user = {
         uid: action.payload.uid,
         name: action.payload.name,
@@ -37,7 +37,7 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
     },
     // Logging out
-    signOut(state) {
+    signOutUser(state) {
       state.user = { uid: null, name: null, email: null };
       state.isAuthenticated = false;
     },
@@ -45,7 +45,7 @@ const authSlice = createSlice({
 });
 
 // Exporting everything out
-export const { signIn, signUp, signOut } = authSlice.actions;
+export const { signInUser, signUpUser, signOutUser } = authSlice.actions;
 export default authSlice.reducer;
 
 // Custom hook for easier use

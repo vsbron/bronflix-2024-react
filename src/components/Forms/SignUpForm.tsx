@@ -8,7 +8,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
-import { signUp } from "@/redux/reducers/authReducer";
+import { signUpUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
 import {
@@ -56,7 +56,7 @@ function SignUpForm() {
 
       // Updating the state
       dispatch(
-        signUp({
+        signUpUser({
           uid: userCredential.user.uid,
           name: userCredential.user.displayName,
           email: userCredential.user.email,
