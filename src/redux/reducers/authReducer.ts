@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { IAuthState } from "@/lib/typesRedux";
+import { IAuthState, RootState } from "@/lib/typesRedux";
+import { useSelector } from "react-redux";
 
 // Creating initial state
 const initialState: IAuthState = {
@@ -37,3 +38,12 @@ const authSlice = createSlice({
 // Exporting everything out
 export const { signIn, signUp, signOut } = authSlice.actions;
 export default authSlice.reducer;
+
+// Custom hook for easier use
+export const useAuth = () => {
+  const user = useSelector((state: RootState) => state.auth.user);
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+  return { user, isAuthenticated };
+};

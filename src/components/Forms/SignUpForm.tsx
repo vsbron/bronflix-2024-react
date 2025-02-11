@@ -15,6 +15,8 @@ import {
   FormLabelError,
 } from "@/components/forms/FormElements";
 import Button from "@/components/ui/Button";
+import { useDispatch } from "react-redux";
+import { signUp } from "@/redux/reducers/authReducer";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -32,6 +34,7 @@ function SignUpForm() {
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Form success handler
   const onSubmit = async (data: SignUpFormData) => {
@@ -40,7 +43,19 @@ function SignUpForm() {
 
     try {
       // Register user
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      // Updating the state
+      dispatch(
+        signUp({
+          uid: userCredential.user.uid,
+          email: userCredential.user.email,
+        })
+      );
 
       // Redirect after successful sign-up
       navigate("/profile");

@@ -30,6 +30,11 @@ import TermsOfUse from "@/pages/TermsOfUse";
 import SearchResults from "./pages/SearchResults";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import { onAuthStateChanged } from "firebase/auth";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { signIn, signOut } from "./redux/reducers/authReducer";
+import { auth } from "./utils/firebase";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -137,6 +142,22 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  // Getting the dispatch function
+  const dispatch = useDispatch();
+
+  // useEffect with event listener for the auth change state
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(signIn({ uid: user.uid, email: user.email }));
+      } else {
+        dispatch(signOut());
+      }
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
+
   // Returned JSX
   return (
     <QueryClientProvider client={queryClient}>
