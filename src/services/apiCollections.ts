@@ -26,14 +26,7 @@ export async function getMovieCollection(
     // Return the collection
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching collection data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching collection data."
-      );
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching collection data");
   }
 }

@@ -27,15 +27,8 @@ export async function getMediaCastCrew(
     // Return the actor
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching cast & crew data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching cast & crew data."
-      );
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching cast & crew data");
   }
 }
 
@@ -65,14 +58,7 @@ export async function getMediaSimilar(
     // Return the movies
     return data.results;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error(`An error occurred while fetching related ${type} data`);
-    } else {
-      console.error(error);
-      throw new Error(
-        `An unknown error occurred while fetching related ${type} data.`
-      );
-    }
+    console.error(error);
+    throw new Error(`An error occurred while fetching related ${type} data`);
   }
 }

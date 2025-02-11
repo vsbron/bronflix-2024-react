@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { APIFetchType, ICollection, IMovie, IMovieList } from "@/lib/typesAPI";
+import { APIFetchType, IMovie, IMovieList } from "@/lib/typesAPI";
 
 // API for getting movies
 export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
@@ -27,13 +27,8 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
     // Return the movies
     return data.results;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching movies data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching movies data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching movies data");
   }
 }
 
@@ -58,12 +53,7 @@ export async function getMovie(movieId: string): Promise<IMovie> {
     // Return the movie
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching movie data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching movie data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching movie data");
   }
 }

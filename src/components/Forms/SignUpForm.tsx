@@ -44,13 +44,8 @@ function SignUpForm() {
 
       navigate("/profile"); // Redirect after successful sign-up
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(error.message);
-        setFormError("An error occurred while signing up. Please try again.");
-      } else {
-        console.error(error);
-        setFormError("An unknown error occurred. Please try again.");
-      }
+      console.error(error);
+      setFormError("An error occurred while signing up. Please try again.");
     } finally {
       // Disabling submitting state
       setIsSubmitting(false);

@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { ICastCrew, IMediaCredit, IPerson, IPersonList } from "@/lib/typesAPI";
+import { IMediaCredit, IPerson, IPersonList } from "@/lib/typesAPI";
 
 // API for getting trending actors
 export async function getTrendingActors(): Promise<IPersonList[]> {
@@ -27,13 +27,8 @@ export async function getTrendingActors(): Promise<IPersonList[]> {
     // Return the actors
     return data.results;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching actors data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching actors data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching actors data");
   }
 }
 
@@ -58,13 +53,8 @@ export async function getPerson(movieId: string): Promise<IPerson> {
     // Return the person
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching actor data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching actor data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching actor data");
   }
 }
 
@@ -100,14 +90,7 @@ export async function getPersonCredits(personId: string): Promise<{
     // Return the combined credits list
     return { movies, shows };
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching person's work data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching person's work data."
-      );
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching person's work data");
   }
 }

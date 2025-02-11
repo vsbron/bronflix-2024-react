@@ -23,19 +23,10 @@ export async function getSearchResults(
     // Getting the actual data
     const data = await response.json();
 
-    console.log(data);
-
     // Return the show
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching search results data");
-    } else {
-      console.error(error);
-      throw new Error(
-        "An unknown error occurred while fetching search results data."
-      );
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching search results data");
   }
 }

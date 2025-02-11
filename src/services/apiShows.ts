@@ -25,13 +25,8 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
     // Return the movies
     return data.results;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching shows data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching shows data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching shows data");
   }
 }
 
@@ -54,13 +49,8 @@ export async function getShow(showId: string): Promise<IShow> {
     // Return the show
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching show data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching show data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching show data");
   }
 }
 
@@ -90,12 +80,7 @@ export async function getSeason(
     // Return the show
     return data;
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.error(error.message);
-      throw new Error("An error occurred while fetching season data");
-    } else {
-      console.error(error);
-      throw new Error("An unknown error occurred while fetching season data.");
-    }
+    console.error(error);
+    throw new Error("An error occurred while fetching season data");
   }
 }
