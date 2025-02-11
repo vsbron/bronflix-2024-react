@@ -2,17 +2,24 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
+import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
-import { FormError, FormGroup, FormLabelError } from "./FormElements";
+import {
+  FormError,
+  FormGroup,
+  FormLabelError,
+} from "@/components/forms/FormElements";
 
 function SignUpForm() {
-  // Setting the state for the current form status
+  // Setting the state for the current form status and error
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   // Getting the functions and errors from react hook form
   const {
@@ -27,19 +34,33 @@ function SignUpForm() {
   const navigate = useNavigate();
 
   // Form success handler
-  const onSubmit = () => {
-    // Disable inputs when submission starts
+  const onSubmit = async (data: SignUpFormData) => {
+    // Enable submitting state
     setIsSubmitting(true);
+
+    // Register user
     try {
-    } catch {
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+
+      navigate("/profile"); // Redirect after successful sign-up
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+        setFormError("An error occurred while signing up. Please try again.");
+      } else {
+        console.error(error);
+        setFormError("An unknown error occurred. Please try again.");
+      }
     } finally {
+      // Disabling submitting state
       setIsSubmitting(false);
     }
   };
+
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8 mt-0">SIGN UP FORM</h3>
+      <h3 className="mb-8 mt-0">SIGN UP AS A NEW USER</h3>
       <form
         onSubmit={handleSubmit(onSubmit)}
         id="sign-up-form"
@@ -107,6 +128,7 @@ function SignUpForm() {
             <span>Submit</span>
           </Button>
         </div>
+        {formError && <p className="text-red-500">{formError}</p>}
       </form>
     </>
   );
