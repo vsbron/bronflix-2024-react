@@ -28,6 +28,8 @@ import Sitemap from "./pages/Sitemap";
 import Success from "./pages/Success";
 import TermsOfUse from "@/pages/TermsOfUse";
 import SearchResults from "./pages/SearchResults";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -88,6 +90,11 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <SearchResults />,
+      },
+      {
+        path: "/profile",
+        element: <ProtectedRoute />,
+        children: [{ index: true, element: <Profile /> }],
       },
       {
         path: "/site-map",
