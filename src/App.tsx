@@ -1,11 +1,12 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { HelmetProvider } from "react-helmet-async";
+import { onAuthStateChanged } from "firebase/auth";
 
-import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
-import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
-import Layout from "@/components/ui/Layout";
+import { signIn, signOut } from "@/redux/reducers/authReducer";
+import { auth } from "@/utils/firebase";
 
 import Home from "@/pages/Home";
 import ActorsMain from "@/pages/ActorsMain";
@@ -17,24 +18,23 @@ import MovieCollection, {
 import Person, { personLoader } from "@/pages/Person";
 import ShowsMain from "@/pages/ShowsMain";
 import Show, { showLoader } from "@/pages/Show";
+import SearchResults from "@/pages/SearchResults";
+import Profile from "@/pages/Profile";
+import ProtectedRoute from "@/pages/ProtectedRoute";
 
-import AboutUs from "./pages/AboutUs";
-import AppInfo from "./pages/AppInfo";
-import ContactUs from "./pages/ContactUs";
-import ErrorForm from "./pages/ErrorForm";
+import AboutUs from "@/pages/AboutUs";
+import AppInfo from "@/pages/AppInfo";
+import ContactUs from "@/pages/ContactUs";
+import ErrorForm from "@/pages/ErrorForm";
 import NotFound from "@/pages/NotFound";
 import Privacy from "@/pages/Privacy";
-import Sitemap from "./pages/Sitemap";
-import Success from "./pages/Success";
+import Sitemap from "@/pages/Sitemap";
+import Success from "@/pages/Success";
 import TermsOfUse from "@/pages/TermsOfUse";
-import SearchResults from "./pages/SearchResults";
-import Profile from "./pages/Profile";
-import ProtectedRoute from "./pages/ProtectedRoute";
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { signIn, signOut } from "./redux/reducers/authReducer";
-import { auth } from "./utils/firebase";
+
+import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
+import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
+import Layout from "@/components/ui/Layout";
 
 // Setting up the query client
 const queryClient = new QueryClient({

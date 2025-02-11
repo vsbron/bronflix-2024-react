@@ -7,6 +7,7 @@ export type AppDispatch = typeof store.dispatch;
 export interface IAuthState {
   user: {
     uid: string | null;
+    name: string | null;
     email: string | null;
   };
   isAuthenticated: boolean;

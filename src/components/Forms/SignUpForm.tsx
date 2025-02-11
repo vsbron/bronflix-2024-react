@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
+import { signUp } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
 import {
@@ -15,8 +17,6 @@ import {
   FormLabelError,
 } from "@/components/forms/FormElements";
 import Button from "@/components/ui/Button";
-import { useDispatch } from "react-redux";
-import { signUp } from "@/redux/reducers/authReducer";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -49,10 +49,16 @@ function SignUpForm() {
         data.password
       );
 
+      // Set the display name after creating the user
+      await updateProfile(userCredential.user, {
+        displayName: data.name,
+      });
+
       // Updating the state
       dispatch(
         signUp({
           uid: userCredential.user.uid,
+          name: userCredential.user.displayName,
           email: userCredential.user.email,
         })
       );

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const initialState: IAuthState = {
   user: {
     uid: null,
+    name: null,
     email: null,
   },
   isAuthenticated: false,
@@ -19,17 +20,25 @@ const authSlice = createSlice({
   reducers: {
     // Logging in
     signIn(state, action) {
-      state.user = { uid: action.payload.uid, email: action.payload.email };
+      state.user = {
+        uid: action.payload.uid,
+        name: "John",
+        email: action.payload.email,
+      };
       state.isAuthenticated = true;
     },
     // Creating new account
     signUp(state, action) {
-      state.user = { uid: action.payload.uid, email: action.payload.email };
+      state.user = {
+        uid: action.payload.uid,
+        name: action.payload.name,
+        email: action.payload.email,
+      };
       state.isAuthenticated = true;
     },
     // Logging out
     signOut(state) {
-      state.user = { uid: null, email: null };
+      state.user = { uid: null, name: null, email: null };
       state.isAuthenticated = false;
     },
   },
