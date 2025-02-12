@@ -179,7 +179,13 @@ export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 
 // Forms
-
+export type AuthFormProps = {
+  children: ReactNode;
+  title: string;
+  submit: (data: Record<string, any>) => void;
+  isSubmitting: boolean;
+  error: string | null;
+};
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 export type SignInFormData = z.infer<typeof signInFormSchema>;
 export type SignUpFormData = z.infer<typeof signUpFormSchema>;

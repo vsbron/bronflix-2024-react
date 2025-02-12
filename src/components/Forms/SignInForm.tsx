@@ -3,21 +3,20 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 import { signInUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
+import AuthForm from "@/components/forms/AuthForm";
 import {
   FormError,
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
-import Button from "@/components/ui/Button";
-import { FirebaseError } from "firebase/app";
 
 function SignInForm() {
   // Setting the state for the current form status and error
@@ -79,11 +78,11 @@ function SignInForm() {
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8 mt-0">LOG INTO EXISTING ACCOUNT</h3>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        id="sign-in-form"
-        className={`flex flex-col ${BASE_GAP_CLASS} items-start`}
+      <AuthForm
+        title="LOG INTO EXISTING ACCOUNT"
+        submit={handleSubmit(onSubmit)}
+        isSubmitting={isSubmitting}
+        error={formError}
       >
         <FormGroup>
           <FormLabelError name="Email">
@@ -112,16 +111,7 @@ function SignInForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-
-        {/* Error message */}
-        {formError && <div className="text-red-500">{formError}</div>}
-
-        <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
-          <Button type="submit" disabled={isSubmitting}>
-            <span>Submit</span>
-          </Button>
-        </div>
-      </form>
+      </AuthForm>
     </>
   );
 }

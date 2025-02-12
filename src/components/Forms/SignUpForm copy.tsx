@@ -6,17 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
+import { BASE_GAP_CLASS } from "@/lib/constants";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
 import { signUpUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
 import {
   FormError,
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
+import Button from "@/components/ui/Button";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -87,11 +88,11 @@ function SignUpForm() {
   // Returned JSX
   return (
     <>
-      <AuthForm
-        title="CREATE A NEW ACCOUNT"
-        submit={handleSubmit(onSubmit)}
-        isSubmitting={isSubmitting}
-        error={formError}
+      <h3 className="mb-8 mt-0">CREATE A NEW ACCOUNT</h3>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        id="sign-up-form"
+        className={`flex flex-col ${BASE_GAP_CLASS} items-start`}
       >
         <FormGroup>
           <FormLabelError name="Name">
@@ -149,7 +150,16 @@ function SignUpForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-      </AuthForm>
+
+        {/* Error message */}
+        {formError && <div className="text-red-500">{formError}</div>}
+
+        <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
+          <Button type="submit" disabled={isSubmitting}>
+            <span>Submit</span>
+          </Button>
+        </div>
+      </form>
     </>
   );
 }

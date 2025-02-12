@@ -4,21 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { signUpFormSchema } from "@/lib/formSchemas";
-import { SignUpFormData } from "@/lib/types";
-import { signUpUser } from "@/redux/reducers/authReducer";
+import { BASE_GAP_CLASS } from "@/lib/constants";
+import { signInFormSchema } from "@/lib/formSchemas";
+import { SignInFormData } from "@/lib/types";
+import { signInUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
 import {
   FormError,
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
+import Button from "@/components/ui/Button";
 
-function SignUpForm() {
+function SignInForm() {
   // Setting the state for the current form status and error
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -28,8 +29,8 @@ function SignUpForm() {
     register,
     handleSubmit,
     formState: { errors: err },
-  } = useForm<SignUpFormData>({
-    resolver: zodResolver(signUpFormSchema),
+  } = useForm<SignInFormData>({
+    resolver: zodResolver(signInFormSchema),
   });
 
   // Getting the navigate and dispatch functions
@@ -37,28 +38,23 @@ function SignUpForm() {
   const dispatch = useDispatch();
 
   // Form success handler
-  const onSubmit = async (data: SignUpFormData) => {
+  const onSubmit = async (data: SignInFormData) => {
     // Enable submitting state
     setIsSubmitting(true);
 
     try {
-      // Register user
-      const userCredential = await createUserWithEmailAndPassword(
+      // Sign In user
+      const userCredential = await signInWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
 
-      // Set the display name after creating the user
-      await updateProfile(userCredential.user, {
-        displayName: data.name,
-      });
-
       // Updating the state
       dispatch(
-        signUpUser({
+        signInUser({
           uid: userCredential.user.uid,
-          name: data.name,
+          name: userCredential.user.displayName,
           email: userCredential.user.email,
         })
       );
@@ -68,11 +64,8 @@ function SignUpForm() {
     } catch (e: unknown) {
       if (e instanceof FirebaseError) {
         console.error(e.message);
-        if (e.code === "auth/weak-password") {
-          setFormError("Password should be at least 6 characters");
-        }
-        if (e.code === "auth/email-already-in-use") {
-          setFormError("Email already in use. Please use another one");
+        if (e.code === "auth/invalid-credential") {
+          setFormError("Wrong username or password. Please try again");
         }
       } else {
         console.error(e);
@@ -83,29 +76,15 @@ function SignUpForm() {
       setIsSubmitting(false);
     }
   };
-
   // Returned JSX
   return (
     <>
-      <AuthForm
-        title="CREATE A NEW ACCOUNT"
-        submit={handleSubmit(onSubmit)}
-        isSubmitting={isSubmitting}
-        error={formError}
+      <h3 className="mb-8 mt-0">LOG INTO EXISTING ACCOUNT</h3>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        id="sign-in-form"
+        className={`flex flex-col ${BASE_GAP_CLASS} items-start`}
       >
-        <FormGroup>
-          <FormLabelError name="Name">
-            {err.name && <FormError>({err.name.message})</FormError>}
-          </FormLabelError>
-          <input
-            id="name"
-            className="input-styles input-wide-styles"
-            {...register("name")}
-            placeholder="Enter your name"
-            disabled={isSubmitting}
-          />
-        </FormGroup>
-
         <FormGroup>
           <FormLabelError name="Email">
             {err.email && <FormError>({err.email.message})</FormError>}
@@ -134,24 +113,17 @@ function SignUpForm() {
           />
         </FormGroup>
 
-        <FormGroup>
-          <FormLabelError name="Confirm Password">
-            {err.confirmPassword && (
-              <FormError>({err.confirmPassword.message})</FormError>
-            )}
-          </FormLabelError>
-          <input
-            type="password"
-            id="confirmPassword"
-            className="input-styles input-wide-styles"
-            {...register("confirmPassword")}
-            placeholder="Enter your password again"
-            disabled={isSubmitting}
-          />
-        </FormGroup>
-      </AuthForm>
+        {/* Error message */}
+        {formError && <div className="text-red-500">{formError}</div>}
+
+        <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
+          <Button type="submit" disabled={isSubmitting}>
+            <span>Submit</span>
+          </Button>
+        </div>
+      </form>
     </>
   );
 }
 
-export default SignUpForm;
+export default SignInForm;
