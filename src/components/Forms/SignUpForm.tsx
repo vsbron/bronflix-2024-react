@@ -9,7 +9,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
 import { signUpUser } from "@/redux/reducers/authReducer";
-import { auth } from "@/utils/firebase";
+import { auth, db } from "@/utils/firebase";
 
 import AuthForm from "@/components/forms/AuthForm";
 import {
@@ -17,6 +17,7 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
+import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -48,6 +49,19 @@ function SignUpForm() {
         data.email,
         data.password
       );
+
+      // Setting the doc in firebase with initial user data
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        name: data.name,
+        email: data.email,
+        createdAt: serverTimestamp(),
+        title: "",
+        likedMovies: [],
+        likedShows: [],
+        likedActors: [],
+        watchlistMovies: [],
+        watchlistShows: [],
+      });
 
       // Updating the state
       dispatch(
