@@ -17,6 +17,7 @@ import {
   FormLabelError,
 } from "@/components/forms/FormElements";
 import Button from "@/components/ui/Button";
+import { FirebaseError } from "firebase/app";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -58,16 +59,26 @@ function SignUpForm() {
       dispatch(
         signUpUser({
           uid: userCredential.user.uid,
-          name: userCredential.user.displayName,
+          name: data.name,
           email: userCredential.user.email,
         })
       );
 
       // Redirect after successful sign-up
       navigate("/profile");
-    } catch (error: unknown) {
-      console.error(error);
-      setFormError("An error occurred while signing up. Please try again.");
+    } catch (e: unknown) {
+      if (e instanceof FirebaseError) {
+        console.error(e.message);
+        if (e.code === "auth/invalid-credential") {
+          setFormError("Wrong username or password. Please try again");
+        }
+        if (e.code === "auth/email-already-in-use") {
+          setFormError("Email already in use. Please use another one");
+        }
+      } else {
+        console.error(e);
+        setFormError("Couldn't sign in due to unknown error");
+      }
     } finally {
       // Disabling submitting state
       setIsSubmitting(false);
@@ -140,12 +151,14 @@ function SignUpForm() {
           />
         </FormGroup>
 
+        {/* Error message */}
+        {formError && <div className="text-red-500">{formError}</div>}
+
         <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
           <Button type="submit" disabled={isSubmitting}>
             <span>Submit</span>
           </Button>
         </div>
-        {formError && <p className="text-red-500">{formError}</p>}
       </form>
     </>
   );
