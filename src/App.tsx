@@ -50,14 +50,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorBoundary />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/movies",
-        element: <MoviesMain />,
-      },
+      { index: true, element: <Home /> },
       {
         path: "/movies/:movieId",
         element: <Movie />,
@@ -71,10 +64,6 @@ const router = createBrowserRouter([
         errorElement: <ErrorMedia type="collection" />,
       },
       {
-        path: "/shows",
-        element: <ShowsMain />,
-      },
-      {
         path: "/shows/:showId",
         element: <Show />,
         loader: showLoader,
@@ -83,60 +72,29 @@ const router = createBrowserRouter([
         errorElement: <ErrorMedia type="show" />,
       },
       {
-        path: "/actors",
-        element: <ActorsMain />,
-      },
-      {
         path: "/person/:personId",
         element: <Person />,
         loader: personLoader,
         errorElement: <ErrorMedia type="person" />,
       },
       {
-        path: "/search",
-        element: <SearchResults />,
-      },
-      {
         path: "/profile",
         element: <ProtectedRoute />,
         children: [{ index: true, element: <Profile /> }],
       },
-      {
-        path: "/site-map",
-        element: <Sitemap />,
-      },
-      {
-        path: "/about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "/app-info",
-        element: <AppInfo />,
-      },
-      {
-        path: "/contact-us",
-        element: <ContactUs />,
-      },
-      {
-        path: "/privacy",
-        element: <Privacy />,
-      },
-      {
-        path: "/terms",
-        element: <TermsOfUse />,
-      },
-      {
-        path: "/success",
-        element: <Success />,
-      },
-      {
-        path: "/error-form",
-        element: <ErrorForm />,
-      },
-      {
-        path: "/*",
-        element: <NotFound />,
-      },
+      { path: "/movies", element: <MoviesMain /> },
+      { path: "/shows", element: <ShowsMain /> },
+      { path: "/actors", element: <ActorsMain /> },
+      { path: "/search", element: <SearchResults /> },
+      { path: "/site-map", element: <Sitemap /> },
+      { path: "/about-us", element: <AboutUs /> },
+      { path: "/app-info", element: <AppInfo /> },
+      { path: "/contact-us", element: <ContactUs /> },
+      { path: "/privacy", element: <Privacy /> },
+      { path: "/terms", element: <TermsOfUse /> },
+      { path: "/success", element: <Success /> },
+      { path: "/error-form", element: <ErrorForm /> },
+      { path: "/*", element: <NotFound /> },
     ],
   },
 ]);
@@ -149,13 +107,7 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(
-          signInUser({
-            uid: user.uid,
-            name: user.displayName,
-            email: user.email,
-          })
-        );
+        dispatch(signInUser({ uid: user.uid, email: user.email }));
       } else {
         dispatch(signOutUser());
       }

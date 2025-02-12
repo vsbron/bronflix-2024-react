@@ -7,7 +7,6 @@ import { IAuthState, RootState } from "@/lib/typesRedux";
 const initialState: IAuthState = {
   user: {
     uid: null,
-    name: null,
     email: null,
   },
   isAuthenticated: false,
@@ -22,7 +21,6 @@ const authSlice = createSlice({
     signInUser(state, action) {
       state.user = {
         uid: action.payload.uid,
-        name: action.payload.name,
         email: action.payload.email,
       };
       state.isAuthenticated = true;
@@ -31,14 +29,13 @@ const authSlice = createSlice({
     signUpUser(state, action) {
       state.user = {
         uid: action.payload.uid,
-        name: action.payload.name,
         email: action.payload.email,
       };
       state.isAuthenticated = true;
     },
     // Logging out
     signOutUser(state) {
-      state.user = { uid: null, name: null, email: null };
+      state.user = { uid: null, email: null };
       state.isAuthenticated = false;
     },
   },

@@ -49,16 +49,10 @@ function SignUpForm() {
         data.password
       );
 
-      // Set the display name after creating the user
-      await updateProfile(userCredential.user, {
-        displayName: data.name,
-      });
-
       // Updating the state
       dispatch(
         signUpUser({
           uid: userCredential.user.uid,
-          name: data.name,
           email: userCredential.user.email,
         })
       );

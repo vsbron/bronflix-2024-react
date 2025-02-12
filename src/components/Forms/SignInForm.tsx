@@ -53,7 +53,6 @@ function SignInForm() {
       dispatch(
         signInUser({
           uid: userCredential.user.uid,
-          name: userCredential.user.displayName,
           email: userCredential.user.email,
         })
       );
