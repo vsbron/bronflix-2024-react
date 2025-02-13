@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 
@@ -9,13 +9,15 @@ import Button from "@/components/ui/Button";
 import avatar from "@/assets/profile.png";
 
 function User() {
-  // Getting the dispatch function
+  // Getting the dispatch and navigate functions
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // Sign Out handler
+  // Sign Out handler (clears session, state and redirect to index)
   const handleSignOut = () => {
     signOut(auth);
     dispatch(signOutUser());
+    navigate("/");
   };
 
   // Returned JSX

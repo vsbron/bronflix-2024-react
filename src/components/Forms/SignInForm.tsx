@@ -9,7 +9,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 import { signInUser } from "@/redux/reducers/authReducer";
-import { auth } from "@/utils/firebase";
+import { auth, db } from "@/utils/firebase";
 
 import AuthForm from "@/components/forms/AuthForm";
 import {
@@ -17,6 +17,7 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
+import { doc, getDoc } from "@firebase/firestore";
 
 function SignInForm() {
   // Setting the state for the current form status and error
@@ -48,6 +49,13 @@ function SignInForm() {
         data.email,
         data.password
       );
+
+      const docSnap = await getDoc(doc(db, "users", userCredential.user.uid));
+      if (docSnap.exists()) {
+        console.log(docSnap.data()); // This should give you a clean object with fields directly
+      } else {
+        console.log("No such document!");
+      }
 
       // Updating the state
       dispatch(
