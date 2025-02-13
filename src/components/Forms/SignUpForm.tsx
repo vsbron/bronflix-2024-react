@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
 
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
-import { signUpUser } from "@/redux/reducers/authReducer";
+import { signOutUser, signUpUser } from "@/redux/reducers/authReducer";
+import { setUserData } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
 import AuthForm from "@/components/forms/AuthForm";
@@ -17,7 +19,6 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
-import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -50,8 +51,16 @@ function SignUpForm() {
         data.password
       );
 
-      // Setting the doc in firebase with initial user data
-      await setDoc(doc(db, "users", userCredential.user.uid), {
+      // Updating the state
+      dispatch(
+        signUpUser({
+          uid: userCredential.user.uid,
+          email: userCredential.user.email,
+        })
+      );
+
+      // Creating new user object
+      const newUser = {
         name: data.name,
         email: data.email,
         createdAt: serverTimestamp(),
@@ -61,19 +70,21 @@ function SignUpForm() {
         likedPeople: [],
         watchlistMovies: [],
         watchlistShows: [],
-      });
+      };
 
-      // Updating the state
-      dispatch(
-        signUpUser({
-          uid: userCredential.user.uid,
-          email: userCredential.user.email,
-        })
-      );
+      // Setting the doc in firebase and updating the state with new user data
+      await setDoc(doc(db, "users", userCredential.user.uid), newUser);
+      dispatch(setUserData(newUser));
 
       // Redirect after successful sign-up
       navigate("/profile");
     } catch (e: unknown) {
+      // Rollback and sign out
+      if (auth.currentUser) {
+        await signOut(auth);
+        dispatch(signOutUser());
+      }
+
       if (e instanceof FirebaseError) {
         console.error(e.message);
         if (e.code === "auth/weak-password") {
