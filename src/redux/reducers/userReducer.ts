@@ -1,7 +1,31 @@
 import { useSelector } from "react-redux";
-import { createSlice } from "@reduxjs/toolkit";
+import { doc, DocumentData, getDoc } from "@firebase/firestore";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { IUserState, RootState } from "@/lib/typesRedux";
+import { db } from "@/utils/firebase";
+
+// Async thunk for fetching user data
+export const fetchUserData = createAsyncThunk<DocumentData | null, string>(
+  "user/fetchUserData",
+  async (uid, { rejectWithValue }) => {
+    try {
+      // Guard clause
+      if (!uid) return null;
+
+      // Get the actual user data
+      const docRef = doc(db, "users", uid);
+      const docSnap = await getDoc(docRef);
+
+      // Return user data
+      if (docSnap.exists()) return docSnap.data();
+      return null; // Return null otherwise
+    } catch (error: unknown) {
+      console.error(error);
+      return rejectWithValue("An error occurred while fetching user data");
+    }
+  }
+);
 
 // Creating initial state
 const initialState: IUserState = {
@@ -15,6 +39,8 @@ const initialState: IUserState = {
   likedPeople: [],
   watchListMovies: [],
   watchListShows: [],
+  isLoading: false,
+  error: null,
 };
 
 // Creating the slice
@@ -24,21 +50,28 @@ const userSlice = createSlice({
   reducers: {
     // Setting the user data
     setUserData(state, action) {
-      state.uid = action.payload.uid;
-      state.name = action.payload.name;
-      state.email = action.payload.email;
-      state.createdAt = action.payload.createdAt;
-      state.title = action.payload.title;
-      state.likedMovies = action.payload.likedMovies;
-      state.likedShows = action.payload.likedShows;
-      state.likedPeople = action.payload.likedPeople;
-      state.watchListMovies = action.payload.watchListMovies;
-      state.watchListShows = action.payload.watchListShows;
+      return { ...state, ...action.payload, isLoading: false, error: null };
     },
     // Clear user data
-    clearUserData(state) {
-      state = initialState;
+    clearUserData() {
+      return initialState;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserData.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserData.fulfilled, (state, action) => {
+        return action.payload
+          ? { ...state, ...action.payload, isLoading: false }
+          : initialState;
+      })
+      .addCase(fetchUserData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = (action.payload as string) || "An unknown error occurred";
+      });
   },
 });
 

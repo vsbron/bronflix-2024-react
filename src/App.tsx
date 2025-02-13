@@ -3,8 +3,10 @@ import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
+import { AppDispatch } from "@/lib/typesRedux";
+import { clearUserData, fetchUserData } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Home from "@/pages/Home";
@@ -34,7 +36,6 @@ import TermsOfUse from "@/pages/TermsOfUse";
 import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
 import Layout from "@/components/ui/Layout";
-import { clearUserData } from "./redux/reducers/userReducer";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -101,19 +102,13 @@ const router = createBrowserRouter([
 
 function App() {
   // Getting the dispatch function
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  // useEffect with event listener for the auth change state
+  // useEffect with that loads user data on load
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-      } else {
-        signOut(auth);
-        dispatch(clearUserData());
-      }
+      user?.uid ? dispatch(fetchUserData(user.uid)) : dispatch(clearUserData());
     });
-
     return unsubscribe;
   }, [dispatch]);
 

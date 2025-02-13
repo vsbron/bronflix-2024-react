@@ -15,4 +15,6 @@ export interface IUserState {
   likedPeople: string[];
   watchListMovies: string[];
   watchListShows: string[];
+  isLoading: boolean;
+  error: string | null;
 }
