@@ -11,3 +11,16 @@ export interface IAuthState {
   };
   isAuthenticated: boolean;
 }
+
+// User slice
+export interface IUserState {
+  name: string;
+  email: string;
+  createdAt: Date;
+  title: string;
+  likedMovies: string[];
+  likedShows: string[];
+  likedPeople: string[];
+  watchListMovies: string[];
+  watchListShows: string[];
+}
