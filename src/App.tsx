@@ -107,6 +107,7 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log(user);
       } else {
         signOut(auth);
         dispatch(clearUserData());

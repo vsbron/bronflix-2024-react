@@ -35,25 +35,15 @@ const userSlice = createSlice({
       state.watchListMovies = action.payload.watchListMovies;
       state.watchListShows = action.payload.watchListShows;
     },
-    reducer2(state, action) {},
     // Clear user data
     clearUserData(state) {
-      state.uid = "";
-      state.name = "";
-      state.email = "";
-      state.createdAt = new Date();
-      state.title = "";
-      state.likedMovies = [];
-      state.likedShows = [];
-      state.likedPeople = [];
-      state.watchListMovies = [];
-      state.watchListShows = [];
+      state = initialState;
     },
   },
 });
 
 // Exporting everything out
-export const { setUserData, reducer2, clearUserData } = userSlice.actions;
+export const { setUserData, clearUserData } = userSlice.actions;
 export default userSlice.reducer;
 
 // Custom hook for easier use
