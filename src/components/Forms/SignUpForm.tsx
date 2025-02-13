@@ -9,7 +9,6 @@ import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
 
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
-import { signOutUser, signUpUser } from "@/redux/reducers/authReducer";
 import { setUserData } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -51,16 +50,9 @@ function SignUpForm() {
         data.password
       );
 
-      // Updating the state
-      dispatch(
-        signUpUser({
-          uid: userCredential.user.uid,
-          email: userCredential.user.email,
-        })
-      );
-
       // Creating new user object
       const newUser = {
+        uid: userCredential.user.uid,
         name: data.name,
         email: data.email,
         createdAt: new Date().getTime(),
@@ -82,7 +74,6 @@ function SignUpForm() {
       // Rollback and sign out
       if (auth.currentUser) {
         await signOut(auth);
-        dispatch(signOutUser());
       }
 
       if (e instanceof FirebaseError) {

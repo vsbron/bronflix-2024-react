@@ -5,12 +5,10 @@ import { RootState } from "@/lib/typesRedux";
 
 function ProtectedRoute() {
   // Checking whether user is authenticated
-  const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
-  );
+  const uid = useSelector((state: RootState) => state.user.uid);
 
   // Returned JSX
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  return uid !== "" ? <Outlet /> : <Navigate to="/" replace />;
 }
 
 export default ProtectedRoute;

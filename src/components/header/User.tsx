@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 
-import { signOutUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
@@ -13,10 +12,9 @@ function User() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Sign Out handler (clears session, state and redirect to index)
+  // Sign Out handler (signs out and redirects to main page)
   const handleSignOut = () => {
     signOut(auth);
-    dispatch(signOutUser());
     navigate("/");
   };
 

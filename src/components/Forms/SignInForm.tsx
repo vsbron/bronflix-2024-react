@@ -9,7 +9,6 @@ import { doc, getDoc } from "@firebase/firestore";
 
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
-import { signInUser, signOutUser } from "@/redux/reducers/authReducer";
 import { setUserData } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -49,15 +48,7 @@ function SignInForm() {
         auth,
         data.email,
         data.password
-      );
-
-      // Updating the state
-      dispatch(
-        signInUser({
-          uid: userCredential.user.uid,
-          email: userCredential.user.email,
-        })
-      );
+      );``
 
       // Getting the user data and setting it to the state
       const docSnap = await getDoc(doc(db, "users", userCredential.user.uid));
@@ -73,7 +64,6 @@ function SignInForm() {
       // Rollback and sign out
       if (auth.currentUser) {
         await signOut(auth);
-        dispatch(signOutUser());
       }
 
       if (e instanceof FirebaseError) {

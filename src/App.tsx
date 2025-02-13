@@ -3,9 +3,8 @@ import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
-import { signInUser, signOutUser } from "@/redux/reducers/authReducer";
 import { auth } from "@/utils/firebase";
 
 import Home from "@/pages/Home";
@@ -107,9 +106,8 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(signInUser({ uid: user.uid, email: user.email }));
       } else {
-        dispatch(signOutUser());
+        signOut(auth);
       }
     });
 

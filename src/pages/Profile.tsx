@@ -7,7 +7,7 @@ import Heading from "@/components/ui/Heading";
 
 function Profile() {
   // Getting the user from the Redux
-  const { name, email } = useUser();
+  const { uid, name, email } = useUser();
 
   // Returned JSX
   return (
@@ -27,6 +27,7 @@ function Profile() {
       <section>
         <h3>Hello {name}</h3>
         <h4>Email: {email}</h4>
+        <h5>ID: {uid}</h5>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit
           eveniet ex consequatur in ducimus pariatur quam laboriosam modi. At
