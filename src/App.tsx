@@ -34,6 +34,7 @@ import TermsOfUse from "@/pages/TermsOfUse";
 import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
 import Layout from "@/components/ui/Layout";
+import { clearUserData } from "./redux/reducers/userReducer";
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -108,6 +109,7 @@ function App() {
       if (user) {
       } else {
         signOut(auth);
+        dispatch(clearUserData());
       }
     });
 

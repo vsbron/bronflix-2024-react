@@ -5,6 +5,7 @@ import { IUserState, RootState } from "@/lib/typesRedux";
 
 // Creating initial state
 const initialState: IUserState = {
+  uid: "",
   name: "",
   email: "",
   createdAt: new Date(),
@@ -23,6 +24,7 @@ const userSlice = createSlice({
   reducers: {
     // Setting the user data
     setUserData(state, action) {
+      state.uid = action.payload.uid;
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.createdAt = action.payload.createdAt;
@@ -34,12 +36,24 @@ const userSlice = createSlice({
       state.watchListShows = action.payload.watchListShows;
     },
     reducer2(state, action) {},
-    reducer3(state, action) {},
+    // Clear user data
+    clearUserData(state) {
+      state.uid = "";
+      state.name = "";
+      state.email = "";
+      state.createdAt = new Date();
+      state.title = "";
+      state.likedMovies = [];
+      state.likedShows = [];
+      state.likedPeople = [];
+      state.watchListMovies = [];
+      state.watchListShows = [];
+    },
   },
 });
 
 // Exporting everything out
-export const { setUserData, reducer2, reducer3 } = userSlice.actions;
+export const { setUserData, reducer2, clearUserData } = userSlice.actions;
 export default userSlice.reducer;
 
 // Custom hook for easier use

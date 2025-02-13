@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { doc, serverTimestamp, setDoc } from "@firebase/firestore";
+import { doc, setDoc } from "@firebase/firestore";
 
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";

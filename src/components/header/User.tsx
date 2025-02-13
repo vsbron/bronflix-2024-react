@@ -6,6 +6,7 @@ import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
 import avatar from "@/assets/profile.png";
+import { clearUserData } from "@/redux/reducers/userReducer";
 
 function User() {
   // Getting the dispatch and navigate functions
@@ -15,6 +16,7 @@ function User() {
   // Sign Out handler (signs out and redirects to main page)
   const handleSignOut = () => {
     signOut(auth);
+    dispatch(clearUserData());
     navigate("/");
   };
 
