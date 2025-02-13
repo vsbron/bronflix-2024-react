@@ -63,7 +63,7 @@ function SignUpForm() {
       const newUser = {
         name: data.name,
         email: data.email,
-        createdAt: serverTimestamp(),
+        createdAt: new Date().getTime(),
         title: "",
         likedMovies: [],
         likedShows: [],
