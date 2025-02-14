@@ -1,16 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { doc, getDoc } from "@firebase/firestore";
 
 import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
-import { setUserData } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
+import { auth } from "@/utils/firebase";
 
 import AuthForm from "@/components/forms/AuthForm";
 import {
@@ -33,9 +30,8 @@ function SignInForm() {
     resolver: zodResolver(signInFormSchema),
   });
 
-  // Getting the navigate and dispatch functions
+  // Getting the navigate function
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // Form success handler
   const onSubmit = async (data: SignInFormData) => {
@@ -44,19 +40,7 @@ function SignInForm() {
 
     try {
       // Sign In user
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );``
-
-      // Getting the user data and setting it to the state
-      const docSnap = await getDoc(doc(db, "users", userCredential.user.uid));
-      if (docSnap.exists()) {
-        dispatch(setUserData(docSnap.data()));
-      } else {
-        throw new Error("Couldn't get the user data");
-      }
+      await signInWithEmailAndPassword(auth, data.email, data.password);
 
       // Redirect after successful sign-up
       navigate("/profile");

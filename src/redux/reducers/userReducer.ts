@@ -61,16 +61,20 @@ const userSlice = createSlice({
     builder
       .addCase(fetchUserData.pending, (state) => {
         state.isLoading = true;
-        state.error = null;
       })
       .addCase(fetchUserData.fulfilled, (state, action) => {
-        return action.payload
-          ? { ...state, ...action.payload, isLoading: false }
-          : initialState;
-      })
-      .addCase(fetchUserData.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = (action.payload as string) || "An unknown error occurred";
+        if (action.payload) {
+          state.uid = action.payload.uid;
+          state.name = action.payload.name;
+          state.email = action.payload.email;
+        } else {
+          state.uid = "";
+        }
+      })
+      .addCase(fetchUserData.rejected, (state) => {
+        state.isLoading = false;
+        state.uid = "";
       });
   },
 });
