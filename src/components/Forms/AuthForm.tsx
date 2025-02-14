@@ -9,6 +9,7 @@ function AuthForm({
   submit,
   isSubmitting,
   error,
+  buttonText,
 }: AuthFormProps) {
   // Returned JSX
   return (
@@ -24,7 +25,7 @@ function AuthForm({
 
         <div className={`flex gap-10 ${BASE_GAP_CLASS} mt-4`}>
           <Button type="submit" disabled={isSubmitting}>
-            <span>Submit</span>
+            <span>{isSubmitting ? "Please wait..." : buttonText}</span>
           </Button>
         </div>
       </form>

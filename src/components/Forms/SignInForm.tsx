@@ -72,6 +72,7 @@ function SignInForm() {
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
         error={formError}
+        buttonText="SIGN IN"
       >
         <FormGroup>
           <FormLabelError name="Email">

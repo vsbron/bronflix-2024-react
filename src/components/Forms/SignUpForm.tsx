@@ -102,6 +102,7 @@ function SignUpForm() {
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
         error={formError}
+        buttonText="SIGN UP"
       >
         <FormGroup>
           <FormLabelError name="Name">

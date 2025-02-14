@@ -185,6 +185,7 @@ export type AuthFormProps = {
   submit: (data: Record<string, any>) => void;
   isSubmitting: boolean;
   error: string | null;
+  buttonText: string;
 };
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 export type SignInFormData = z.infer<typeof signInFormSchema>;
