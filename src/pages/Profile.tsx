@@ -4,10 +4,11 @@ import { META_TITLE_END } from "@/lib/metaTags";
 import { useUser } from "@/redux/reducers/userReducer";
 
 import Heading from "@/components/ui/Heading";
+import { formatDate } from "@/utils/helpers";
 
 function Profile() {
   // Getting the user from the Redux
-  const { uid, name, email } = useUser();
+  const { uid, name, email, createdAt } = useUser();
 
   // Returned JSX
   return (
@@ -28,6 +29,7 @@ function Profile() {
         <h3>Hello {name}</h3>
         <h4>Email: {email}</h4>
         <h5>ID: {uid}</h5>
+        <h5>Created at: {formatDate(createdAt)}</h5>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit
           eveniet ex consequatur in ducimus pariatur quam laboriosam modi. At

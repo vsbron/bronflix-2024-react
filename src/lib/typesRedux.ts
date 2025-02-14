@@ -8,7 +8,7 @@ export interface IUserState {
   uid: string;
   name: string;
   email: string;
-  createdAt: Date;
+  createdAt: string;
   title: string;
   likedMovies: string[];
   likedShows: string[];

@@ -6,6 +6,7 @@ import {
   ClockIcon,
 } from "@heroicons/react/24/outline";
 
+import { ModalProvider } from "@/context/ModalContext";
 import useTrailer from "@/hooks/useTrailer";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
@@ -17,7 +18,6 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
-import { ModalProvider } from "@/context/ModalContext";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Getting the trailer from the custom hook

@@ -32,7 +32,7 @@ const initialState: IUserState = {
   uid: "",
   name: "",
   email: "",
-  createdAt: new Date(),
+  createdAt: "",
   title: "",
   likedMovies: [],
   likedShows: [],
@@ -68,6 +68,7 @@ const userSlice = createSlice({
           state.uid = action.payload.uid;
           state.name = action.payload.name;
           state.email = action.payload.email;
+          state.createdAt = new Date().toISOString();
         } else {
           state.uid = "";
         }

@@ -29,7 +29,7 @@ function useTrailer(id: string, type: "tv" | "movie" | "season") {
         }`;
         break;
       case "season":
-        fetchURL = `${MEDIA_URL}tv/${id}/season//videos?api_key=${
+        fetchURL = `${MEDIA_URL}tv/${id}/season/videos?api_key=${
           import.meta.env.VITE_TMDB_API_KEY
         }`;
         break;
