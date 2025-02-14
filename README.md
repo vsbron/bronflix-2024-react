@@ -37,6 +37,7 @@ BroNflix allows users to explore movies, TV shows, and actors with dynamic conte
 - **Interactive Content**: The index page includes a variety of sections such as 'What's Hot?', 'Trending Shows', 'Trending Actors', and more, offering a dynamic browsing experience. Each section presents a carousel of movies, shows, and actors, offering users a variety of recommendations.
 - **Detailed Pages**: Each movie, show, and actor has its dedicated page with rich information, including posters, overviews, cast/crew, and similar recommendations.
 - **Seamless Navigation**: Users can click on items to navigate to their respective pages for more detailed information.
+- **User Authentication**: Users can sign up, log in, and access their personalized profile, enhancing their experience with saved preferences and recommendations.
 
 ### Search Functionality
 
@@ -100,8 +101,9 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 - **Framework**: React with TypeScript for type safety and scalability.
 - **Routing**: React Router v6.4 for seamless navigation.
+- **State Management**: Redux for managing global state.
+- **Authentication**: Firebase Authentication and Firestore are used to handle secure user sign-up, login, and persistent user data for personalized experiences.
 - **Icons**: HeroIcons for modern and consistent UI elements.
-- **State Management**: Context API for managing global state.
 - **API**: TMDB API for fetching movies, shows, and actor data.
 - **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
 - **Form Handling**: React Hook Form is used for handling the contact form, with Zod providing schema-based validation to ensure form data integrity.
@@ -112,19 +114,16 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 BroNflix is constantly evolving, with several exciting features planned for future updates:
 
-1. **Authentication**  
-   A secure authentication system will be implemented, allowing users to sign in, manage their profiles, and personalize their experience.
-
-2. **Main Page for Movies, Shows, and People**  
+1. **Main Page for Movies, Shows, and People**  
    A unified main page will be added, providing a clear overview of all categories—movies, shows, and actors—allowing users to easily explore each.
 
-3. **Favorites & Watchlist**  
+2. **Favorites & Watchlist**  
    Users will have the ability to add movies and shows to their favorites or watchlist, making it easier to keep track of content they want to watch.
 
-4. **Voting System**  
+3. **Voting System**  
    Users will be able to add their votes to movies and shows, contributing to the overall rating and offering a more personalized recommendation experience.
 
-5. **Mobile Layout**  
+4. **Mobile Layout**  
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
 
 ---

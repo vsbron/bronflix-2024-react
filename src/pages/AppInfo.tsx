@@ -120,6 +120,11 @@ function AppInfo() {
               <strong>Seamless Navigation</strong>: Users can click on items to
               navigate to their respective pages for more detailed information.
             </li>
+            <li>
+              <strong>User Authentication</strong>: Users can sign up, log in,
+              and access their personalized profile, enhancing their experience
+              with saved preferences and recommendations.
+            </li>
           </ul>
 
           <hr />
@@ -247,12 +252,17 @@ function AppInfo() {
               navigation.
             </li>
             <li>
-              <strong>Icons</strong>: HeroIcons for modern and consistent UI
-              elements.
+              <strong>State Management</strong>: Redux for managing global
+              state.
             </li>
             <li>
-              <strong>State Management</strong>: Context API for managing global
-              state.
+              <strong>Authentication</strong>: Firebase Authentication and
+              Firestore are used to handle secure user sign-up, login, and
+              persistent user data for personalized experiences.
+            </li>
+            <li>
+              <strong>Icons</strong>: HeroIcons for modern and consistent UI
+              elements.
             </li>
             <li>
               <strong>API</strong>: TMDB API for fetching movies, shows, and
