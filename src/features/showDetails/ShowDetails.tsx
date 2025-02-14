@@ -17,6 +17,7 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
+import { ModalProvider } from "@/context/ModalContext";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Getting the trailer from the custom hook
@@ -98,7 +99,9 @@ function ShowDetails({ show }: ShowDetailsProps) {
           </div>
 
           {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
-          <TrailerButton video={trailer!} />
+          <ModalProvider>
+            <TrailerButton video={trailer!} />
+          </ModalProvider>
         </div>
       </MediaHero>
     </section>

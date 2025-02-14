@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 
-import useVideo from "@/context/ModalContext";
-
+import useModal from "@/context/ModalContext";
 import { MEDIA_URL } from "@/lib/constants";
 import { IVideo } from "@/lib/typesAPI";
 
 function useTrailer(id: string, type: "tv" | "movie" | "season") {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
-  const { isOpen } = useVideo();
+
+  // Get current modal name
+  const { activeModal } = useModal();
 
   // Use effect that fetches trailer
   useEffect(() => {
-    // Prevent fetch if modal is open (on index)
-    if (isOpen) return;
+    // Prevent fetch if modal is open
+    if (activeModal === "trailer") return;
 
     // Creating controller for cleanup function
     const controller = new AbortController();
@@ -66,7 +67,7 @@ function useTrailer(id: string, type: "tv" | "movie" | "season") {
     return () => {
       controller.abort();
     };
-  }, [id, isOpen]);
+  }, [id, activeModal]);
 
   // Returning video
   return video;

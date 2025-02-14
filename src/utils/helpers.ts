@@ -5,7 +5,7 @@ import {
   NO_SHOW_POSTER,
 } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
-import { IBase, iSearchedMediaSmall } from "@/lib/typesAPI";
+import { IBase, ISearchedMediaSmall } from "@/lib/typesAPI";
 
 // Function that shuffles the array
 export function shuffleArray<T>(array: T[]): T[] {
@@ -97,7 +97,7 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
 }
 
 // Helper function to get the data for search results
-export function getSearchMediaData(media: iSearchedMediaSmall) {
+export function getSearchMediaData(media: ISearchedMediaSmall) {
   // Destructuring some media data
   const {
     title,

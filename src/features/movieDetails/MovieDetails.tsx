@@ -19,6 +19,7 @@ import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import MediaHero from "@/components/MediaHero";
 import TrailerButton from "@/components/TrailerButton";
 import Heading from "@/components/ui/Heading";
+import { ModalProvider } from "@/context/ModalContext";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
@@ -94,7 +95,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             </div>
           </div>
           {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
-          <TrailerButton video={trailer!} />
+          <ModalProvider>
+            <TrailerButton video={trailer!} />
+          </ModalProvider>
         </div>
       </MediaHero>
     </section>

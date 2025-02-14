@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 
 import { GenresProvider } from "@/context/GenresContext";
-import { ModalProvider } from "@/context/ModalContext";
 import { MOVIE_CHANGE_INTERVAL, BASE_GAP_CLASS } from "@/lib/constants";
 import { MoviesFeaturedProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
-import MovieHighlight from "./MovieHighlight";
 import ButtonsPreview from "@/components/previews/ButtonsPreview";
 import PreviewImage from "@/components/previews/PreviewImage";
+import MovieHighlight from "@/features/home/MovieHighlight";
+import { ModalProvider } from "@/context/ModalContext";
 
 function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   // Setting the state for the chosen movie and ref for ribbon element
@@ -72,7 +72,9 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
   return (
     <div className="relative">
       <GenresProvider>
-        <MovieHighlight movie={chosenMovie} />
+        <ModalProvider>
+          <MovieHighlight movie={chosenMovie} />
+        </ModalProvider>
       </GenresProvider>
       <div className="relative">
         <ButtonsPreview

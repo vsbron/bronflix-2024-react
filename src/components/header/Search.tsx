@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
-import { iSearchResultsObjSmall } from "@/lib/typesAPI";
+import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "./SearchBriefResults";
 
@@ -16,7 +16,7 @@ function Search() {
   const [inputText, setInputText] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [briefResults, setBriefResults] =
-    useState<SearchResultsObjSmall | null>(null);
+    useState<ISearchResultsObjSmall | null>(null);
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ function Search() {
     } catch (e: unknown) {
       // Checking if error message is because of cleanup function
       if (e instanceof DOMException && e.name === "AbortError") {
-        console.log("Fetch aborted"); // Log for controlled aborts
+        console.error("Fetch aborted"); // Log for controlled aborts
       } else {
         // Else, handle error
         const errorMessage = e instanceof Error ? e.message : String(e);

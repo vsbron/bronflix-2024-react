@@ -21,6 +21,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const openModal = (name: string) => setActiveModal(name);
   const closeModal = () => setActiveModal(null);
+
   return (
     <ModalContext.Provider value={{ activeModal, openModal, closeModal }}>
       {children}

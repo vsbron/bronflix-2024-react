@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
 import { SearchResultsListProps } from "@/lib/types";
-import { iSearchedMedia } from "@/lib/typesAPI";
+import { ISearchedMedia } from "@/lib/typesAPI";
 
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
@@ -53,7 +53,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
 
           <Separator className="my-10" />
           <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-            {data.results.map((media: iSearchedMedia) => (
+            {data.results.map((media: ISearchedMedia) => (
               <SearchPreview media={media} key={media.id} />
             ))}
           </div>

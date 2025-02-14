@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchBriefResultsProps } from "@/lib/types";
-import { iSearchedMediaSmall } from "@/lib/typesAPI";
+import { ISearchedMediaSmall } from "@/lib/typesAPI";
 
 import SearchPreviewSmall from "@/features/search/SearchPreviewSmall";
 
@@ -19,7 +19,7 @@ function SearchBriefResults({
     >
       {results.totalResults > 0 ? (
         <>
-          {results.briefData.map((media: iSearchedMediaSmall) => (
+          {results.briefData.map((media: ISearchedMediaSmall) => (
             <SearchPreviewSmall media={media} key={media.id} />
           ))}
           <Link
