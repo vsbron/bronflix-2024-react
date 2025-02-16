@@ -69,7 +69,8 @@ const userSlice = createSlice({
           state.uid = action.payload.uid;
           state.name = action.payload.name;
           state.email = action.payload.email;
-          state.createdAt = new Date().toISOString();
+          state.title = action.payload.title;
+          state.createdAt = action.payload.createdAt;
         } else {
           state.uid = "";
         }
