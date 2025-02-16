@@ -21,7 +21,7 @@ function ProfileDetails() {
     <section>
       <Heading>Profile</Heading>
       <div className={`grid grid-cols-[auto_1fr] ${BASE_GAP_CLASS} items-end`}>
-        <img src={avatarSrc} className="rounded-lg" />
+        <img src={avatarSrc} className="rounded-lg w-[25rem]" />
         <div className="flex flex-col gap-2 items-start">
           <h2 className="m-0 text-6xl">{name}</h2>
           <div className="text-[2rem] italic text-stone-400">{title}</div>
@@ -34,7 +34,7 @@ function ProfileDetails() {
               {birthday !== "Unknown" ? formatDate(birthday) : birthday}
             </IconWrapper>
           </div>
-          <div className="text-2xl text-stone-400 italic mt-3">
+          <div className="text-2xl text-stone-400 italic mt-4">
             — Member since {formatDate(createdAt)}
           </div>
           <div className={`flex ${BASE_GAP_CLASS}`}>
