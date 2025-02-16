@@ -18,7 +18,7 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/forms/FormElements";
-import { DEFAULT_TITLES } from "@/lib/constants";
+import { DEFAULT_TITLES, GENDERS } from "@/lib/constants";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -59,6 +59,8 @@ function SignUpForm() {
         createdAt: new Date().getTime(),
         title:
           DEFAULT_TITLES[Math.floor(Math.random() * DEFAULT_TITLES.length)],
+        gender: GENDERS[0],
+        birthday: "Unknown",
         likedMovies: [],
         likedShows: [],
         likedPeople: [],

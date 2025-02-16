@@ -35,6 +35,8 @@ const initialState: IUserState = {
   createdAt: "",
   avatar: "",
   title: "",
+  gender: "N/A",
+  birthday: "",
   likedMovies: [],
   likedShows: [],
   likedPeople: [],
@@ -70,6 +72,8 @@ const userSlice = createSlice({
           state.name = action.payload.name;
           state.email = action.payload.email;
           state.title = action.payload.title;
+          state.gender = action.payload.gender;
+          state.birthday = action.payload.birthday;
           state.createdAt = action.payload.createdAt;
         } else {
           state.uid = "";

@@ -11,6 +11,8 @@ export interface IUserState {
   createdAt: string;
   avatar: string;
   title: string;
+  gender: string;
+  birthday: string;
   likedMovies: string[];
   likedShows: string[];
   likedPeople: string[];
