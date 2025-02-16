@@ -9,6 +9,7 @@ export interface IUserState {
   name: string;
   email: string;
   createdAt: string;
+  avatar: string;
   title: string;
   likedMovies: string[];
   likedShows: string[];

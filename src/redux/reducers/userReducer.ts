@@ -33,6 +33,7 @@ const initialState: IUserState = {
   name: "",
   email: "",
   createdAt: "",
+  avatar: "",
   title: "",
   likedMovies: [],
   likedShows: [],

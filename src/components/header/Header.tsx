@@ -1,7 +1,8 @@
+import { useUser } from "@/redux/reducers/userReducer";
+
 import Authentication from "@/components/header/Authentication";
 import Search from "@/components/header/Search";
 import User from "@/components/header/User";
-import { useUser } from "@/redux/reducers/userReducer";
 
 function Header() {
   // Getting the user id

@@ -6,8 +6,8 @@ import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
-import noAvatarPNG from "@/assets/noAvatar.png";
-import noAvatarWEBP from "@/assets/noAvatar.webp";
+import NO_AVATAR_PNG from "@/assets/noAvatar.png";
+import NO_AVATAR_WEVP from "@/assets/noAvatar.webp";
 
 function User() {
   // Getting the user name from the redux
@@ -28,9 +28,9 @@ function User() {
   return (
     <div className="flex gap-6 items-center">
       <picture>
-        <source srcSet={noAvatarWEBP} type="image/webp" />
+        <source srcSet={NO_AVATAR_PNG} type="image/webp" />
         <img
-          src={noAvatarPNG}
+          src={NO_AVATAR_PNG}
           className="rounded-full"
           width={50}
           height={50}
