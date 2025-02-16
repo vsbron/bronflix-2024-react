@@ -3,12 +3,12 @@ import { Helmet } from "react-helmet-async";
 import { META_TITLE_END } from "@/lib/metaTags";
 import { useUser } from "@/redux/reducers/userReducer";
 
-import Heading from "@/components/ui/Heading";
-import { formatDate } from "@/utils/helpers";
+import Separator from "@/components/ui/Separator";
+import ProfileDetails from "@/features/profile/ProfileDetails";
 
 function Profile() {
-  // Getting the user from the Redux
-  const { uid, name, email, createdAt } = useUser();
+  // Getting the user name from the Redux
+  const { name } = useUser();
 
   // Returned JSX
   return (
@@ -24,19 +24,13 @@ function Profile() {
       </Helmet>
 
       {/* Content */}
-      <Heading>Profile</Heading>
-      <section>
-        <h3>Hello {name}</h3>
-        <h4>Email: {email}</h4>
-        <h5>ID: {uid}</h5>
-        <h5>Created at: {formatDate(createdAt)}</h5>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit
-          eveniet ex consequatur in ducimus pariatur quam laboriosam modi. At
-          esse adipisci cupiditate excepturi beatae quaerat quam voluptatem
-          earum aliquam ipsa.
-        </p>
-      </section>
+      <ProfileDetails />
+      <Separator />
+      {/* <MoviesToWatch />
+      <ShowsToWatch />
+      <LikedMovies />
+      <LikedShows />
+      <LikedActors /> */}
     </>
   );
 }
