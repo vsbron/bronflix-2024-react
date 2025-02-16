@@ -29,7 +29,6 @@ function Profile() {
       <ProfileDetails />
       <Separator />
       <WatchList />
-      <Separator />
       <FavoritesList />
     </>
   );
