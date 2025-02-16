@@ -5,9 +5,11 @@ import { useUser } from "@/redux/reducers/userReducer";
 
 import Separator from "@/components/ui/Separator";
 import ProfileDetails from "@/features/profile/ProfileDetails";
+import WatchList from "@/features/profile/WatchList";
+import FavoritesList from "@/features/profile/FavoritesList";
 
 function Profile() {
-  // Getting the user name from the Redux
+  // Getting the user name from the Redux store
   const { name } = useUser();
 
   // Returned JSX
@@ -26,11 +28,9 @@ function Profile() {
       {/* Content */}
       <ProfileDetails />
       <Separator />
-      {/* <MoviesToWatch />
-      <ShowsToWatch />
-      <LikedMovies />
-      <LikedShows />
-      <LikedActors /> */}
+      <WatchList />
+      <Separator />
+      <FavoritesList />
     </>
   );
 }
