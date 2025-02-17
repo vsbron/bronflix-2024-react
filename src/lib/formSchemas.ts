@@ -40,13 +40,13 @@ export const editProfileFormSchema = z.object({
 });
 
 // Schema for password change
-export const passwordChangeFormSchema = z
+export const changePasswordFormSchema = z
   .object({
     currentPassword: z
       .string()
       .nonempty("Old password is required")
       .min(6, "Old password must be at least 6 characters"),
-    password: z
+    newPassword: z
       .string()
       .nonempty("New password is required")
       .min(6, "New password must be at least 6 characters"),
@@ -55,7 +55,7 @@ export const passwordChangeFormSchema = z
       .nonempty("Confirm password is required")
       .min(6, "Confirm password must be at least 6 characters"),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.newPassword === data.confirmPassword, {
     message: "Passwords do not match",
     path: ["confirmPassword"],
   });

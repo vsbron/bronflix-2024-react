@@ -15,7 +15,9 @@ import {
 } from "./typesAPI";
 import { z } from "zod";
 import {
+  changePasswordFormSchema,
   contactFormSchema,
+  editProfileFormSchema,
   signInFormSchema,
   signUpFormSchema,
 } from "./formSchemas";
@@ -190,6 +192,8 @@ export type AuthFormProps = {
 export type ContactFormData = z.infer<typeof contactFormSchema>;
 export type SignInFormData = z.infer<typeof signInFormSchema>;
 export type SignUpFormData = z.infer<typeof signUpFormSchema>;
+export type ChangePasswordFormData = z.infer<typeof changePasswordFormSchema>;
+export type EditProfileFormData = z.infer<typeof editProfileFormSchema>;
 export type FormGroupProps = { children: ReactNode };
 export type FormErrorProps = { children: ReactNode };
 export type FormLabelErrorProps = {
