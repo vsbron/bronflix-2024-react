@@ -62,6 +62,9 @@ function AppInfo() {
                   <a href="#collection-page">Collection Page</a>
                 </li>
                 <li>
+                  <a href="#profile-page">Profile Page</a>
+                </li>
+                <li>
                   <a href="#additional-pages">Additional Pages</a>
                 </li>
               </ul>
@@ -228,6 +231,36 @@ function AppInfo() {
             poster, a brief overview, and a list of movies included in the
             collection.
           </p>
+
+          <Heading as="h3" id="profile-page">
+            Profile Page
+          </Heading>
+          <p>
+            The Profile Page serves as the user's hub, displaying their personal
+            details and curated lists.
+          </p>
+          <ul>
+            <li>
+              User Information: Shows the user's avatar, name, and other basic
+              details.
+            </li>
+            <li>
+              Watchlist: A section where users can track movies and TV shows
+              they plan to watch.
+            </li>
+            <li>
+              Favorites: Separate lists for favorite movies, TV shows, and
+              people (actors/crew).
+            </li>
+            <li>
+              Profile Editing: Allows users to update their personal details,
+              such as name and avatar.
+            </li>
+            <li>
+              Password Update: Provides an option to change the account password
+              securely.
+            </li>
+          </ul>
 
           <Heading as="h3" id="additional-pages">
             Additional Pages

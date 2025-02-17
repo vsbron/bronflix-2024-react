@@ -16,6 +16,7 @@ It features an index page, as well as separate pages for movies, shows, and peop
    - [Show Page](#show-page)
    - [Person Page](#person-page)
    - [Collection Page](#collection-page)
+   - [Profile Page](#profile-page)
    - [Additional Pages](#additional-pages)
 4. [Technical Details](#technical-details)
 5. [Live version](#live-version)
@@ -92,6 +93,16 @@ Provides in-depth details about an actor or crew member:
 
 - Accessed from a movie page within a collection.
 - Displays the movie's poster, a brief overview, and a list of movies included in the collection.
+
+### **Profile Page**
+
+The Profile Page serves as the user's hub, displaying their personal details and curated lists.
+
+- User Information: Shows the user's avatar, name, and other basic details.
+- Profile Editing: Allows users to update their personal details, such as name and avatar.
+- Password Update: Provides an option to change the account password securely.
+- Watchlist: A section where users can track movies and TV shows they plan to watch.
+- Favorites: Separate lists for favorite movies, TV shows, and people (actors/crew).
 
 ### **Additional pages**
 
