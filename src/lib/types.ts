@@ -198,5 +198,5 @@ export type FormGroupProps = { children: ReactNode };
 export type FormErrorProps = { children: ReactNode };
 export type FormLabelErrorProps = {
   name: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
