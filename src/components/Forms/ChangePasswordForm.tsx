@@ -12,7 +12,7 @@ import { changePasswordFormSchema } from "@/lib/formSchemas";
 import { ChangePasswordFormData } from "@/lib/types";
 import { auth } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
+import FormWrap from "@/components/forms/FormWrap";
 import {
   FormError,
   FormGroup,
@@ -69,7 +69,7 @@ function ChangePasswordForm() {
   // Returned JSX
   return (
     <>
-      <AuthForm
+      <FormWrap
         title="SET A NEW PASSWORD"
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
@@ -123,7 +123,7 @@ function ChangePasswordForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-      </AuthForm>
+      </FormWrap>
     </>
   );
 }

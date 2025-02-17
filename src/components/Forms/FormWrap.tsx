@@ -1,16 +1,16 @@
 import { BASE_GAP_CLASS } from "@/lib/constants";
-import { AuthFormProps } from "@/lib/types";
+import { FormWrapProps } from "@/lib/types";
 
 import Button from "@/components/ui/Button";
 
-function AuthForm({
+function FormWrap({
   children,
   title,
   submit,
   isSubmitting,
   error,
   buttonText,
-}: AuthFormProps) {
+}: FormWrapProps) {
   // Returned JSX
   return (
     <>
@@ -33,4 +33,4 @@ function AuthForm({
   );
 }
 
-export default AuthForm;
+export default FormWrap;

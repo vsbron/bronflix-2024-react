@@ -9,7 +9,7 @@ import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 import { auth } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
+import FormWrap from "@/components/forms/FormWrap";
 import {
   FormError,
   FormGroup,
@@ -67,7 +67,7 @@ function SignInForm() {
   // Returned JSX
   return (
     <>
-      <AuthForm
+      <FormWrap
         title="LOG INTO EXISTING ACCOUNT"
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
@@ -101,7 +101,7 @@ function SignInForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-      </AuthForm>
+      </FormWrap>
     </>
   );
 }

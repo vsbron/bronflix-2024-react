@@ -10,7 +10,7 @@ import { EditProfileFormData } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
+import FormWrap from "@/components/forms/FormWrap";
 import {
   FormError,
   FormGroup,
@@ -71,7 +71,7 @@ function EditProfileForm() {
   // Returned JSX
   return (
     <>
-      <AuthForm
+      <FormWrap
         title="EDIT YOUR PROFILE DETAILS"
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
@@ -146,7 +146,7 @@ function EditProfileForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-      </AuthForm>
+      </FormWrap>
     </>
   );
 }

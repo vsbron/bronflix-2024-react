@@ -12,7 +12,7 @@ import { SignUpFormData } from "@/lib/types";
 import { setUserData } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
-import AuthForm from "@/components/forms/AuthForm";
+import FormWrap from "@/components/forms/FormWrap";
 import {
   FormError,
   FormGroup,
@@ -101,7 +101,7 @@ function SignUpForm() {
   // Returned JSX
   return (
     <>
-      <AuthForm
+      <FormWrap
         title="CREATE A NEW ACCOUNT"
         submit={handleSubmit(onSubmit)}
         isSubmitting={isSubmitting}
@@ -164,7 +164,7 @@ function SignUpForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
-      </AuthForm>
+      </FormWrap>
     </>
   );
 }

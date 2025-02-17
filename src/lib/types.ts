@@ -181,7 +181,7 @@ export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 
 // Forms
-export type AuthFormProps = {
+export type FormWrapProps = {
   children: ReactNode;
   title: string;
   submit: (data: Record<string, any>) => void;
