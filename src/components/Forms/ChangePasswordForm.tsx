@@ -56,13 +56,15 @@ function ChangePasswordForm() {
 
       // Update the password
       await updatePassword(auth.currentUser, data.newPassword);
+
+      // Close the form
+      closeModal();
     } catch (e: unknown) {
       console.error(e);
       setFormError("Couldn't change password due to unknown error");
     } finally {
       // Disabling submitting state
       setIsSubmitting(false);
-      closeModal(); // Close the form
     }
   };
 

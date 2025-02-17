@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { doc, setDoc } from "@firebase/firestore";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
-import { signUpFormSchema } from "@/lib/formSchemas";
+import useModal from "@/context/ModalContext";
+import { editProfileFormSchema } from "@/lib/formSchemas";
 import { EditProfileFormData } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
@@ -22,8 +22,12 @@ function EditProfileForm() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formError, setFormError] = useState<string | null>(null);
 
+  // Getting close function from Modal
+  const { closeModal } = useModal();
+
   // Getting the user data from redux store
   const { name, email, title, gender, birthday } = useUser();
+  const dateForInput = new Date(birthday).toISOString().split("T")[0];
 
   // Getting the functions and errors from react hook form
   const {
@@ -31,11 +35,10 @@ function EditProfileForm() {
     handleSubmit,
     formState: { errors: err },
   } = useForm<EditProfileFormData>({
-    resolver: zodResolver(signUpFormSchema),
+    resolver: zodResolver(editProfileFormSchema),
   });
 
   // Getting the navigate and dispatch functions
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   // Form success handler
@@ -51,17 +54,35 @@ function EditProfileForm() {
         return;
       }
 
-      const newUser = {};
+      // Getting the current user data
+      const userRef = doc(db, "users", auth.currentUser.uid);
+      const userSnap = await getDoc(userRef);
 
-      // Setting the doc in firebase and updating the state with new user data
-      await setDoc(doc(db, "users", auth.currentUser.uid), newUser);
-      dispatch(setUserData(newUser));
+      // Guard clause
+      if (!userSnap.exists()) {
+        setFormError("Cannot find user to update");
+        setIsSubmitting(false);
+      }
+      const currentUserData = userSnap.data();
 
-      // Redirect after successful sign-up
-      navigate("/profile");
+      // Setting updated fields
+      const updatedUser = {
+        ...currentUserData,
+        name: data.name,
+        title: data.title,
+        gender: data.gender,
+        birthday: new Date(data.birthday).getTime(),
+      };
+
+      // Updating the doc in firebase and updating the state with new user data
+      await updateDoc(doc(db, "users", auth.currentUser.uid), updatedUser);
+      dispatch(setUserData(updatedUser));
+
+      // Close modal
+      closeModal();
     } catch (e: unknown) {
       console.error(e);
-      setFormError("Couldn't update your detail due to unknown error");
+      setFormError("Couldn't update your details due to unknown error");
     } finally {
       // Disabling submitting state
       setIsSubmitting(false);
@@ -126,11 +147,11 @@ function EditProfileForm() {
             className="input-styles input-wide-styles"
             {...register("gender")}
             disabled={isSubmitting}
-            defaultValue={title}
+            defaultValue={gender}
           >
-            <option value="na">N/A</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+            <option value="N/A">N/A</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>
         </FormGroup>
 
@@ -143,6 +164,7 @@ function EditProfileForm() {
             type="date"
             className="input-styles input-wide-styles"
             {...register("birthday")}
+            defaultValue={dateForInput}
             disabled={isSubmitting}
           />
         </FormGroup>
