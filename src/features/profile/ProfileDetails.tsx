@@ -1,13 +1,16 @@
 import { EnvelopeIcon, UserIcon, CakeIcon } from "@heroicons/react/24/outline";
 
+import { ModalProvider } from "@/context/ModalContext";
 import { NO_AVATAR_PNG } from "@/lib/assets";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate } from "@/utils/helpers";
 
-import Heading from "@/components/ui/Heading";
 import IconWrapper from "@/components/IconWrapper";
+import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
+import EditProfileForm from "@/components/forms/EditProfileForm";
+import ChangePasswordForm from "@/components/forms/ChangePasswordForm";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
@@ -37,14 +40,26 @@ function ProfileDetails() {
           <div className="text-2xl text-stone-400 italic mt-4">
             — Member since {formatDate(createdAt)}
           </div>
-          <div className={`flex ${BASE_GAP_CLASS}`}>
-            <Button>
-              <span>Edit Profile</span>
-            </Button>
-            <Button>
-              <span>Update Password</span>
-            </Button>
-          </div>
+          <ModalProvider>
+            <div className={`flex ${BASE_GAP_CLASS}`}>
+              <ModalProvider.Trigger name="edit-profile">
+                <Button>
+                  <span>Edit Profile</span>
+                </Button>
+              </ModalProvider.Trigger>
+              <ModalProvider.Content name="edit-profile">
+                <EditProfileForm />
+              </ModalProvider.Content>
+              <ModalProvider.Trigger name="change-password">
+                <Button>
+                  <span>Update Password</span>
+                </Button>
+              </ModalProvider.Trigger>
+              <ModalProvider.Content name="change-password">
+                <ChangePasswordForm />
+              </ModalProvider.Content>
+            </div>
+          </ModalProvider>
         </div>
       </div>
     </section>
