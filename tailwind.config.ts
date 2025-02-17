@@ -64,9 +64,15 @@ module.exports = {
           border: "var(--color-red--900) 1px solid",
           height: "4rem",
           minWidth: "25rem",
+          "&:disabled": {
+            backgroundColor: "var(--color-white--700)",
+            color: "var(--color-white--500)",
+            cursor: "not-allowed",
+            pointerEvents: "none",
+          },
         },
         ".input-wide-styles": {
-          width: "32rem"
+          width: "32rem",
         },
       });
     },

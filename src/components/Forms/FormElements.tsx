@@ -19,6 +19,7 @@ export function FormLabelError({ name, children }: FormLabelErrorProps) {
     <div className="flex gap-4 mb-2">
       <label
         htmlFor={name[0].toLowerCase() + name.slice(1).replaceAll(" ", "")}
+        className="text-2xl"
       >
         {name}
       </label>
