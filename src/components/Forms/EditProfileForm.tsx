@@ -168,6 +168,19 @@ function EditProfileForm() {
             disabled={isSubmitting}
           />
         </FormGroup>
+
+        <FormGroup>
+          <FormLabelError name="Avatar">
+            {err.avatar && <FormError>({err.avatar.message})</FormError>}
+          </FormLabelError>
+          <input
+            id="avatar"
+            type="file"
+            className="input-styles input-wide-styles"
+            {...register("avatar")}
+            disabled={isSubmitting}
+          />
+        </FormGroup>
       </FormWrap>
     </>
   );
