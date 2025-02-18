@@ -2,11 +2,11 @@ import { useState } from "react";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
-import { FormatTextBlock } from "@/utils/FormatTextBlock";
 
 function PersonDetails({ person }: PersonDetailsProps) {
   // Destructuring data
@@ -48,13 +48,16 @@ function PersonDetails({ person }: PersonDetailsProps) {
           alt={person.name}
           title={`${person.name} photo`}
         />
-        <div className="flex flex-col justify-end">
+        <div className="flex flex-col justify-end items-start">
           <div className="text-[4rem] font-heading">{name}</div>
           <div>Gender: {GENDERS[gender]}</div>
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>
           {formattedDeathday && <div>Deathday: {formattedDeathday}</div>}
-          {place_of_birth && <div>Place of Birth: {place_of_birth}</div>}
+          <div className="mb-6">Place of Birth: {place_of_birth}</div>
+          <Button>
+            <span>Add to Favorites</span>
+          </Button>
         </div>
       </div>
       {biography && (

@@ -7,19 +7,22 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/outline";
 
+import { ModalProvider } from "@/context/ModalContext";
 import useTrailer from "@/hooks/useTrailer";
+import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
-import ScorePreview from "@/components/ScorePreview";
-import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import MediaHero from "@/components/MediaHero";
+import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
+import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
+import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import { ModalProvider } from "@/context/ModalContext";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting the trailer from the custom hook
@@ -37,7 +40,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     vote_average: score,
     vote_count: count,
     budget,
-    overview,
+    overview = "No overview available for this movie",
     production_companies: companies,
     belongs_to_collection: collection,
   } = movie;
@@ -49,6 +52,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const genresList = genres.map((genre: IGenre) => genre.name).join(", ");
   const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
   const studio = companies.at(0);
+  const formattedOverview = FormatTextBlock(overview);
 
   // Returned JSX
   return (
@@ -94,10 +98,18 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               )}
             </div>
           </div>
-          {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
-          <ModalProvider>
-            <TrailerButton video={trailer!} />
-          </ModalProvider>
+          <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
+          <div className={`flex ${BASE_GAP_CLASS}`}>
+            <ModalProvider>
+              <TrailerButton video={trailer!} />
+            </ModalProvider>
+            <Button>
+              <span>Add to Favorites</span>
+            </Button>
+            <Button>
+              <span>Add to Watch list</span>
+            </Button>
+          </div>
         </div>
       </MediaHero>
     </section>

@@ -8,9 +8,11 @@ import {
 
 import { ModalProvider } from "@/context/ModalContext";
 import useTrailer from "@/hooks/useTrailer";
+import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
+import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
@@ -18,6 +20,7 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
+import Button from "@/components/ui/Button";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Getting the trailer from the custom hook
@@ -34,7 +37,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
     original_language: language,
     vote_average: score,
     vote_count: count,
-    overview,
+    overview = "No overview available for this show",
     networks: companies,
     number_of_seasons: seasons = 1,
     number_of_episodes,
@@ -52,6 +55,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
     .slice(0, 3)
     .join(", ");
   const isEnded = status === "Ended" || status === "Cancelled";
+  const formattedOverview = FormatTextBlock(overview);
 
   // Returned JSX
   return (
@@ -98,10 +102,18 @@ function ShowDetails({ show }: ShowDetailsProps) {
             </div>
           </div>
 
-          {overview && <div className="max-w-[65rem] mb-6">{overview}</div>}
-          <ModalProvider>
-            <TrailerButton video={trailer!} />
-          </ModalProvider>
+          <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
+          <div className={`flex ${BASE_GAP_CLASS}`}>
+            <ModalProvider>
+              <TrailerButton video={trailer!} />
+            </ModalProvider>
+            <Button>
+              <span>Add to Favorites</span>
+            </Button>
+            <Button>
+              <span>Add to Watch list</span>
+            </Button>
+          </div>
         </div>
       </MediaHero>
     </section>
