@@ -245,6 +245,15 @@ function AppInfo() {
               details.
             </li>
             <li>
+              Profile Editing: Allows users to update their personal details,
+              such as name and other fields (Uploading avatar is not supported
+              due to absence of online storage).
+            </li>
+            <li>
+              Password Update: Provides an option to change the account password
+              securely.
+            </li>
+            <li>
               Watchlist: A section where users can track movies and TV shows
               they plan to watch.
             </li>
@@ -253,12 +262,9 @@ function AppInfo() {
               people (actors/crew).
             </li>
             <li>
-              Profile Editing: Allows users to update their personal details,
-              such as name and other.
-            </li>
-            <li>
-              Password Update: Provides an option to change the account password
-              securely.
+              If a movie, show, or person is included in any of the user's
+              lists, the corresponding icon will be displayed on the media's
+              preview across the site.
             </li>
           </ul>
 
