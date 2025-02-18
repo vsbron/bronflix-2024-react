@@ -5,10 +5,15 @@ import { IBase } from "@/lib/typesAPI";
 
 import ScorePreview from "@/components/ScorePreview";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
+import { useUser } from "@/redux/reducers/userReducer";
+import AddToUserList from "./AddToUserList";
 
 function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
   // Getting the image data
   const { imageKey, fallback } = getImageData(type);
+
+  // Getting user id from redux store
+  const { uid } = useUser();
 
   // Build the final image path
   const imgPath = media[posters ? "poster_path" : imageKey];
@@ -36,6 +41,7 @@ function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
       {media.vote_average !== undefined && (
         <ScorePreview score={media.vote_average} />
       )}
+      {uid && <AddToUserList />}
     </div>
   );
 }
