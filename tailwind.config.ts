@@ -75,10 +75,12 @@ module.exports = {
           width: "32rem",
         },
         ".add-to-user-list-ui": {
-          "svg": {
-            filter: "drop-shadow(0 0 .2rem var(--color-black))"
-          }
-        }
+          svg: {
+            filter: "drop-shadow(0 0 .45rem var(--color-white))",
+            stroke: "var(--color-white--200)",
+            strokeWidth: ".18rem",
+          },
+        },
       });
     },
   ],
