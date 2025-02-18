@@ -170,7 +170,9 @@ function EditProfileForm() {
         </FormGroup>
 
         <FormGroup>
-          <FormLabelError name="Avatar" />
+          <FormLabelError name="Avatar">
+            <FormError>(Disabled due storage absence)</FormError>
+          </FormLabelError>
           <input
             id="avatar"
             type="file"
