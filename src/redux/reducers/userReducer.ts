@@ -74,6 +74,7 @@ const userSlice = createSlice({
           state.gender = action.payload.gender;
           state.birthday = action.payload.birthday;
           state.createdAt = action.payload.createdAt;
+          state.likedPeople = action.payload.likedPeople;
         } else {
           state.uid = "";
         }

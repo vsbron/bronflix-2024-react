@@ -12,11 +12,11 @@ export interface IUserState {
   title: string;
   gender: string;
   birthday: string;
-  likedMovies: string[];
-  likedShows: string[];
-  likedPeople: string[];
-  watchListMovies: string[];
-  watchListShows: string[];
+  likedMovies: number[];
+  likedShows: number[];
+  likedPeople: number[];
+  watchListMovies: number[];
+  watchListShows: number[];
   isLoading: boolean;
   error: string | null;
 }

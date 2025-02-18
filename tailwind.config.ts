@@ -74,6 +74,11 @@ module.exports = {
         ".input-wide-styles": {
           width: "32rem",
         },
+        ".add-to-user-list-ui": {
+          "svg": {
+            filter: "drop-shadow(0 0 .2rem var(--color-black))"
+          }
+        }
       });
     },
   ],

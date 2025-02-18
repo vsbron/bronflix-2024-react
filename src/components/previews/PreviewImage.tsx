@@ -2,11 +2,11 @@ import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { PreviewImageProps } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
+import { useUser } from "@/redux/reducers/userReducer";
 
 import ScorePreview from "@/components/ScorePreview";
+import IsInUserList from "@/components/previews/IsInUserList";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
-import { useUser } from "@/redux/reducers/userReducer";
-import AddToUserList from "./AddToUserList";
 
 function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
   // Getting the image data
@@ -41,7 +41,7 @@ function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
       {media.vote_average !== undefined && (
         <ScorePreview score={media.vote_average} />
       )}
-      {uid && <AddToUserList />}
+      {uid && <IsInUserList type={type} id={media.id} />}
     </div>
   );
 }

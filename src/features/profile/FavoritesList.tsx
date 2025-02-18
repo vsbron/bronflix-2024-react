@@ -1,6 +1,6 @@
 import { useUser } from "@/redux/reducers/userReducer";
 
-import Heading from "@/components/ui/Heading"
+import Heading from "@/components/ui/Heading";
 
 function FavoritesList() {
   // Getting the user's favorites from the Redux store
@@ -12,9 +12,9 @@ function FavoritesList() {
       <Heading as="h2">Your Favorites</Heading>
       <div>Movies</div>
       <div>Shows</div>
-      <div>People</div>
+      <div>Actors</div>
     </section>
-  )
+  );
 }
 
-export default FavoritesList
+export default FavoritesList;

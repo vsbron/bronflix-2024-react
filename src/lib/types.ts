@@ -61,6 +61,7 @@ export type IconWrapperProps = {
   icon: ReactNode;
   children: ReactNode;
 };
+export type IsInUserListProps = { type: string; id: string };
 export type PreviewsProps<T> = {
   rawPreviews: T[];
   pages?: number;
