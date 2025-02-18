@@ -170,15 +170,12 @@ function EditProfileForm() {
         </FormGroup>
 
         <FormGroup>
-          <FormLabelError name="Avatar">
-            {err.avatar && <FormError>({err.avatar.message})</FormError>}
-          </FormLabelError>
+          <FormLabelError name="Avatar" />
           <input
             id="avatar"
             type="file"
             className="input-styles input-wide-styles"
-            {...register("avatar")}
-            disabled={isSubmitting}
+            disabled={true}
           />
         </FormGroup>
       </FormWrap>

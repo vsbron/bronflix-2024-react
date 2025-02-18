@@ -9,7 +9,6 @@ export interface IUserState {
   name: string;
   email: string;
   createdAt: string;
-  avatar: string;
   title: string;
   gender: string;
   birthday: string;

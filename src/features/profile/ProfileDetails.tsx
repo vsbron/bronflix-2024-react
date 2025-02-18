@@ -14,17 +14,14 @@ import ChangePasswordForm from "@/components/forms/ChangePasswordForm";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
-  const { name, title, email, createdAt, avatar, gender, birthday } = useUser();
-
-  // Setting the avatar image source
-  const avatarSrc = avatar || NO_AVATAR_PNG;
+  const { name, title, email, createdAt, gender, birthday } = useUser();
 
   // Returned JSX
   return (
     <section>
       <Heading>Profile</Heading>
       <div className={`grid grid-cols-[auto_1fr] ${BASE_GAP_CLASS} items-end`}>
-        <img src={avatarSrc} className="rounded-lg w-[25rem]" />
+        <img src={NO_AVATAR_PNG} className="rounded-lg w-[25rem]" />
         <div className="flex flex-col gap-2 items-start">
           <h2 className="m-0 text-6xl">{name}</h2>
           <div className="text-[2rem] italic text-stone-400">{title}</div>

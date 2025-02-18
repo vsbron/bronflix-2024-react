@@ -254,7 +254,7 @@ function AppInfo() {
             </li>
             <li>
               Profile Editing: Allows users to update their personal details,
-              such as name and avatar.
+              such as name and other.
             </li>
             <li>
               Password Update: Provides an option to change the account password

@@ -37,7 +37,6 @@ export const editProfileFormSchema = z.object({
   title: z.string(),
   gender: z.enum(["N/A", "Female", "Male"]),
   birthday: z.string(),
-  avatar: z.string(),
 });
 
 // Schema for password change
