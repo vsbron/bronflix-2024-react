@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -30,9 +29,6 @@ function SignInForm() {
     resolver: zodResolver(signInFormSchema),
   });
 
-  // Getting the navigate function
-  const navigate = useNavigate();
-
   // Form success handler
   const onSubmit = async (data: SignInFormData) => {
     // Enable submitting state
@@ -41,9 +37,6 @@ function SignInForm() {
     try {
       // Sign In user
       await signInWithEmailAndPassword(auth, data.email, data.password);
-
-      // Redirect after successful sign-up
-      navigate("/profile");
     } catch (e: unknown) {
       // Rollback and sign out
       if (auth.currentUser) {
