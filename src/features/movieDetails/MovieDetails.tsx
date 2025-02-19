@@ -13,7 +13,7 @@ import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
-import { useUser } from "@/redux/reducers/userReducer";
+import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
@@ -24,6 +24,9 @@ import TrailerButton from "@/components/TrailerButton";
 import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import { auth, db } from "@/utils/firebase";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
+import { useDispatch } from "react-redux";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting user data from Redux store
@@ -31,6 +34,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
 
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie.id, "movie");
+
+  // Getting the navigate and dispatch functions
+  const dispatch = useDispatch();
 
   // Destructuring data
   const {
@@ -60,8 +66,58 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const formattedOverview = FormatTextBlock(overview);
 
   // User lists buttons handlers
-  const addToFavoritesHandler = () => {};
-  const addToWatchListHandler = () => {};
+  const addToFavoritesHandler = async () => {
+    try {
+      // Getting the current user data
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) {
+        console.error("Cannot find user data");
+        return;
+      }
+      const currentUserData = userSnap.data();
+
+      // Setting updated fields
+      const updatedUser = {
+        ...currentUserData,
+        likedMovies: [...likedMovies, id],
+      };
+
+      // Updating the doc in firebase and updating the state with new user data
+      await updateDoc(doc(db, "users", auth!.currentUser!.uid), updatedUser);
+      dispatch(setUserData(updatedUser));
+    } catch (e: unknown) {
+      console.error(e);
+    }
+  };
+  const addToWatchListHandler = async () => {
+    try {
+      // Getting the current user data
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) {
+        console.error("Cannot find user data");
+        return;
+      }
+      const currentUserData = userSnap.data();
+
+      // Setting updated fields
+      const updatedUser = {
+        ...currentUserData,
+        watchlistMovies: [...watchlistMovies, id],
+      };
+
+      // Updating the doc in firebase and updating the state with new user data
+      await updateDoc(doc(db, "users", auth!.currentUser!.uid), updatedUser);
+      dispatch(setUserData(updatedUser));
+    } catch (e: unknown) {
+      console.error(e);
+    }
+  };
 
   // Returned JSX
   return (

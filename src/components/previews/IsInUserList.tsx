@@ -1,7 +1,7 @@
 import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
 
-import { useUser } from "@/redux/reducers/userReducer";
 import { IsInUserListProps } from "@/lib/types";
+import { useUser } from "@/redux/reducers/userReducer";
 
 function IsInUserList({ type, id }: IsInUserListProps) {
   // Get the personal lists from Redux store
@@ -30,9 +30,17 @@ function IsInUserList({ type, id }: IsInUserListProps) {
 
   // Returned JSX
   return (
-    <div className="absolute top-3 right-3 z-10 w-10 flex flex-col gap-2">
-      {isLiked && <div className="bg-red-800 rounded-full p-1"><HeartIcon className="text-red-300" /></div>}
-      {isInWatchList && <div className="bg-orange-800 rounded-full p-1"><EyeIcon className="text-orange-300" /></div>}
+    <div className="absolute top-3 right-3 z-10 w-[2.2rem] flex flex-col gap-2">
+      {isLiked && (
+        <div className="bg-red-800 rounded-full p-1">
+          <HeartIcon className="text-red-200" />
+        </div>
+      )}
+      {isInWatchList && (
+        <div className="bg-orange-800 rounded-full p-1">
+          <EyeIcon className="text-orange-200" />
+        </div>
+      )}
     </div>
   );
 }
