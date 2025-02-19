@@ -1,3 +1,5 @@
+import { useDispatch } from "react-redux";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import {
   BanknotesIcon,
   CalendarIcon,
@@ -15,6 +17,7 @@ import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
+import { auth, db } from "@/utils/firebase";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
@@ -24,9 +27,6 @@ import TrailerButton from "@/components/TrailerButton";
 import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import { auth, db } from "@/utils/firebase";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
-import { useDispatch } from "react-redux";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting user data from Redux store
@@ -40,7 +40,6 @@ function MovieDetails({ movie }: MovieDetailsProps) {
 
   // Destructuring data
   const {
-    id,
     title,
     tagline,
     release_date,
@@ -82,7 +81,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
-        likedMovies: [...likedMovies, id],
+        likedMovies: [...likedMovies, movie.id],
       };
 
       // Updating the doc in firebase and updating the state with new user data
@@ -108,7 +107,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
-        watchlistMovies: [...watchlistMovies, id],
+        watchlistMovies: [...watchlistMovies, movie.id],
       };
 
       // Updating the doc in firebase and updating the state with new user data
