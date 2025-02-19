@@ -7,8 +7,12 @@ import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
+import { useUser } from "@/redux/reducers/userReducer";
 
 function PersonDetails({ person }: PersonDetailsProps) {
+  // Getting user data from Redux store
+  const { uid, likedPeople } = useUser();
+
   // Destructuring data
   const {
     name,
@@ -38,6 +42,9 @@ function PersonDetails({ person }: PersonDetailsProps) {
     setIsBioExpanded((iE) => !iE);
   }
 
+  // User lists buttons handlers
+  const addToFavoritesHandler = () => {};
+
   // Returned JSX
   return (
     <>
@@ -55,9 +62,11 @@ function PersonDetails({ person }: PersonDetailsProps) {
           <div>Birthday: {formattedBirthday}</div>
           {formattedDeathday && <div>Deathday: {formattedDeathday}</div>}
           <div className="mb-6">Place of Birth: {place_of_birth}</div>
-          <Button>
-            <span>Add to Favorites</span>
-          </Button>
+          {uid && (
+            <Button onClick={addToFavoritesHandler}>
+              <span>Add to Favorites</span>
+            </Button>
+          )}
         </div>
       </div>
       {biography && (

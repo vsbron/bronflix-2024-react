@@ -12,6 +12,7 @@ import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
+import { useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
@@ -23,6 +24,9 @@ import TrailerButton from "@/components/TrailerButton";
 import Button from "@/components/ui/Button";
 
 function ShowDetails({ show }: ShowDetailsProps) {
+  // Getting user data from Redux store
+  const { uid, likedShows, watchListShows } = useUser();
+
   // Getting the trailer from the custom hook
   const trailer = useTrailer(show.id, "tv");
 
@@ -56,6 +60,10 @@ function ShowDetails({ show }: ShowDetailsProps) {
     .join(", ");
   const isEnded = status === "Ended" || status === "Cancelled";
   const formattedOverview = FormatTextBlock(overview);
+
+  // User lists buttons handlers
+  const addToFavoritesHandler = () => {};
+  const addToWatchListHandler = () => {};
 
   // Returned JSX
   return (
@@ -107,12 +115,16 @@ function ShowDetails({ show }: ShowDetailsProps) {
             <ModalProvider>
               <TrailerButton video={trailer!} />
             </ModalProvider>
-            <Button>
-              <span>Add to Favorites</span>
-            </Button>
-            <Button>
-              <span>Add to Watch list</span>
-            </Button>
+            {uid && (
+              <>
+                <Button onClick={addToFavoritesHandler}>
+                  <span>Add to Favorites</span>
+                </Button>
+                <Button onClick={addToWatchListHandler}>
+                  <span>Add to Watch list</span>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </MediaHero>

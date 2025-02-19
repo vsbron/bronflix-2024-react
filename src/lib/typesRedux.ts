@@ -20,3 +20,16 @@ export interface IUserState {
   isLoading: boolean;
   error: string | null;
 }
+
+// Reducers
+type ListKey =
+  | "likedMovies"
+  | "likedShows"
+  | "likedPeople"
+  | "watchListMovies"
+  | "watchListShows";
+
+export interface ToggleItemPayload {
+  listKey: ListKey;
+  id: number;
+}

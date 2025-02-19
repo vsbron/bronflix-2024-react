@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { doc, DocumentData, getDoc } from "@firebase/firestore";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IUserState, RootState } from "@/lib/typesRedux";
+import { IUserState, RootState, ToggleItemPayload } from "@/lib/typesRedux";
 import { db } from "@/utils/firebase";
 
 // Async thunk for fetching user data
@@ -58,6 +58,19 @@ const userSlice = createSlice({
     clearUserData() {
       return initialState;
     },
+    // Add media to the user list
+    toggleItemInList(state, action: PayloadAction<ToggleItemPayload>) {
+      const { listKey, id } = action.payload;
+
+      // Explicitly assert that state[listKey] is an array
+      const list = state[listKey] as number[];
+
+      // Check if media already in the list and then add/remove it
+      const exists = list.includes(id);
+      state[listKey] = exists
+        ? list.filter((itemId) => itemId !== id)
+        : [...list, id];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -87,7 +100,8 @@ const userSlice = createSlice({
 });
 
 // Exporting everything out
-export const { setUserData, clearUserData } = userSlice.actions;
+export const { setUserData, clearUserData, toggleItemInList } =
+  userSlice.actions;
 export default userSlice.reducer;
 
 // Custom hook for easier use
