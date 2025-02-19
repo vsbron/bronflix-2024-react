@@ -4,7 +4,7 @@ import Heading from "@/components/ui/Heading"
 
 function WatchList() {
   // Getting the user's watch lists from the Redux store
-  const { watchListMovies, watchListShows } = useUser();
+  const { watchlistMovies, watchlistShows } = useUser();
 
   // Returned JSX
   return (

@@ -4,7 +4,7 @@ import useModal from "@/context/ModalContext";
 import { MEDIA_URL } from "@/lib/constants";
 import { IVideo } from "@/lib/typesAPI";
 
-function useTrailer(id: string, type: "tv" | "movie" | "season") {
+function useTrailer(id: number, type: "tv" | "movie" | "season") {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
 

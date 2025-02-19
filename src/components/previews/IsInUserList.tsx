@@ -6,27 +6,26 @@ import { IsInUserListProps } from "@/lib/types";
 function IsInUserList({ type, id }: IsInUserListProps) {
   // Get the personal lists from Redux store
   const {
-    watchListMovies,
-    watchListShows,
+    watchlistMovies,
+    watchlistShows,
     likedMovies,
     likedPeople,
     likedShows,
   } = useUser();
 
-  // Converting ID to number
-  const idNum = parseInt(id);
-
   // Checking whether media is liked or is in watch list
   let isLiked, isInWatchList;
   switch (type) {
-    case "movie":
-      isLiked = likedMovies.includes(idNum);
-      isInWatchList = watchListMovies.includes(idNum);
+    case "movies":
+      isLiked = likedMovies.includes(id);
+      isInWatchList = watchlistMovies.includes(id);
+      break;
     case "tv":
-      isLiked = likedShows.includes(idNum);
-      isInWatchList = watchListShows.includes(idNum);
+      isLiked = likedShows.includes(id);
+      isInWatchList = watchlistShows.includes(id);
+      break;
     default:
-      isLiked = likedPeople.includes(idNum);
+      isLiked = likedPeople.includes(id);
   }
 
   // Returned JSX

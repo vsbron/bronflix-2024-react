@@ -40,7 +40,7 @@ export type ModalContentProps = {
 };
 export type ModalContextProps = {
   activeModal: string | null;
-  openModal: (id: string) => void;
+  openModal: (id: number) => void;
   closeModal: () => void;
 };
 export type ModalProviderProps = { children: ReactNode };
@@ -61,7 +61,7 @@ export type IconWrapperProps = {
   icon: ReactNode;
   children: ReactNode;
 };
-export type IsInUserListProps = { type: string; id: string };
+export type IsInUserListProps = { type: string; id: number };
 export type PreviewsProps<T> = {
   rawPreviews: T[];
   pages?: number;

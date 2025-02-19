@@ -4,7 +4,7 @@ export type APIFetchType = "popular" | "top_rated";
 
 /* Fetched lists */
 export interface IBase {
-  id: string;
+  id: number;
   name?: string;
   title?: string;
   poster_path?: string;
@@ -42,7 +42,7 @@ export interface IPersonList extends IBase {
 
 /* Individual data*/
 export interface IMovie {
-  id: string;
+  id: number;
   title: string;
   tagline: string;
   overview: string;
@@ -66,7 +66,7 @@ export interface IMovie {
   vote_count: number;
 }
 export interface IShow {
-  id: string;
+  id: number;
   name: string;
   tagline?: string;
   overview?: string;
@@ -98,7 +98,7 @@ export interface IShow {
   vote_count?: number;
 }
 export interface IPerson {
-  id: string;
+  id: number;
   name: string;
   gender: number;
   profile_path: string;
@@ -132,7 +132,7 @@ export interface ICredits {
 }
 
 export interface IMediaCredit {
-  id: string;
+  id: number;
   title?: string;
   name?: string;
   date?: string;
@@ -157,16 +157,16 @@ export interface ICollection extends IBase {
   poster_path: string;
 }
 export interface IGenre {
-  id: string;
+  id: number;
   name: string;
 }
 export interface IProductionCompany {
-  id: string;
+  id: number;
   logo_path: string;
   name: string;
 }
 export interface ISeason {
-  id: string;
+  id: number;
   name: string;
   overview: string;
   poster_path: string;
@@ -177,7 +177,7 @@ export interface ISeason {
   episodes: IEpisode[];
 }
 export interface IEpisode {
-  id: string;
+  id: number;
   name: string;
   episode_number: number;
   still_path: string;
@@ -212,7 +212,7 @@ export interface ISearchedMedia extends ISearchedMediaSmall {
 }
 
 export interface ISearchedMediaSmall {
-  id: string;
+  id: number;
   name: string;
   title: string;
   media_type: string;

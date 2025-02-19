@@ -15,8 +15,8 @@ export interface IUserState {
   likedMovies: number[];
   likedShows: number[];
   likedPeople: number[];
-  watchListMovies: number[];
-  watchListShows: number[];
+  watchlistMovies: number[];
+  watchlistShows: number[];
   isLoading: boolean;
   error: string | null;
 }
@@ -26,8 +26,8 @@ type ListKey =
   | "likedMovies"
   | "likedShows"
   | "likedPeople"
-  | "watchListMovies"
-  | "watchListShows";
+  | "watchlistMovies"
+  | "watchlistShows";
 
 export interface ToggleItemPayload {
   listKey: ListKey;

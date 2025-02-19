@@ -39,8 +39,8 @@ const initialState: IUserState = {
   likedMovies: [],
   likedShows: [],
   likedPeople: [],
-  watchListMovies: [],
-  watchListShows: [],
+  watchlistMovies: [],
+  watchlistShows: [],
   isLoading: false,
   error: null,
 };
@@ -59,18 +59,18 @@ const userSlice = createSlice({
       return initialState;
     },
     // Add media to the user list
-    toggleItemInList(state, action: PayloadAction<ToggleItemPayload>) {
-      const { listKey, id } = action.payload;
+    // toggleItemInList(state, action: PayloadAction<ToggleItemPayload>) {
+    //   const { listKey, id } = action.payload;
 
-      // Explicitly assert that state[listKey] is an array
-      const list = state[listKey] as number[];
+    //   // Explicitly assert that state[listKey] is an array
+    //   const list = state[listKey] as number[];
 
-      // Check if media already in the list and then add/remove it
-      const exists = list.includes(id);
-      state[listKey] = exists
-        ? list.filter((itemId) => itemId !== id)
-        : [...list, id];
-    },
+    //   // Check if media already in the list and then add/remove it
+    //   const exists = list.includes(id);
+    //   state[listKey] = exists
+    //     ? list.filter((itemId) => itemId !== id)
+    //     : [...list, id];
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -88,6 +88,8 @@ const userSlice = createSlice({
           state.birthday = action.payload.birthday;
           state.createdAt = action.payload.createdAt;
           state.likedPeople = action.payload.likedPeople;
+          state.likedMovies = action.payload.likedMovies;
+          state.watchlistMovies = action.payload.watchlistMovies;
         } else {
           state.uid = "";
         }
@@ -100,7 +102,7 @@ const userSlice = createSlice({
 });
 
 // Exporting everything out
-export const { setUserData, clearUserData, toggleItemInList } =
+export const { setUserData, clearUserData } =
   userSlice.actions;
 export default userSlice.reducer;
 

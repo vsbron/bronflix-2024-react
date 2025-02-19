@@ -25,7 +25,7 @@ import Button from "@/components/ui/Button";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Getting user data from Redux store
-  const { uid, likedShows, watchListShows } = useUser();
+  const { uid, likedShows, watchlistShows } = useUser();
 
   // Getting the trailer from the custom hook
   const trailer = useTrailer(show.id, "tv");

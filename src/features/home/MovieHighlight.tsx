@@ -38,7 +38,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Handling the movie data
   // prettier-ignore
-  const genreNames = genre_ids?.map((id: string) => {
+  const genreNames = genre_ids?.map((id: number) => {
     const genre = genres.find((genre: IGenre) => genre.id === id);
     return genre ? genre.name : null}).filter(Boolean).join(", ") || "";
   const shortenOverview = shortenText(overview, 150);

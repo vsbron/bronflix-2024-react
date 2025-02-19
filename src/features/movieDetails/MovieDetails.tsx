@@ -27,7 +27,7 @@ import Heading from "@/components/ui/Heading";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting user data from Redux store
-  const { uid, likedMovies, watchListMovies } = useUser();
+  const { uid, likedMovies, watchlistMovies } = useUser();
 
   // Getting the trailer from the custom hook
   const trailer = useTrailer(movie.id, "movie");
