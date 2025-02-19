@@ -64,6 +64,10 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const studio = companies.at(0);
   const formattedOverview = FormatTextBlock(overview);
 
+  // Checking if movie already in any lists
+  const isLiked = likedMovies.includes(movie.id);
+  const isInWatchList = watchlistMovies.includes(movie.id);
+
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
@@ -170,10 +174,12 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             {uid && (
               <>
                 <Button onClick={addToFavoritesHandler}>
-                  <span>Add to Favorites</span>
+                  <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
                 </Button>
                 <Button onClick={addToWatchListHandler}>
-                  <span>Add to Watch list</span>
+                  <span>
+                    {isInWatchList ? "Remove from" : "Add to"} Watch list
+                  </span>
                 </Button>
               </>
             )}

@@ -67,6 +67,10 @@ function ShowDetails({ show }: ShowDetailsProps) {
   const isEnded = status === "Ended" || status === "Cancelled";
   const formattedOverview = FormatTextBlock(overview);
 
+  // Checking if show already in any lists
+  const isLiked = likedShows.includes(show.id);
+  const isInWatchList = watchlistShows.includes(show.id);
+
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
@@ -174,10 +178,12 @@ function ShowDetails({ show }: ShowDetailsProps) {
             {uid && (
               <>
                 <Button onClick={addToFavoritesHandler}>
-                  <span>Add to Favorites</span>
+                  <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
                 </Button>
                 <Button onClick={addToWatchListHandler}>
-                  <span>Add to Watch list</span>
+                  <span>
+                    {isInWatchList ? "Remove from" : "Add to"} Watch list
+                  </span>
                 </Button>
               </>
             )}

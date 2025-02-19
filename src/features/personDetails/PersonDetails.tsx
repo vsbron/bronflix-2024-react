@@ -30,6 +30,9 @@ function PersonDetails({ person }: PersonDetailsProps) {
     known_for_department,
   } = person;
 
+  // Checking if person already in the favorites list
+  const isLiked = likedPeople.includes(person.id);
+
   // Setting the state for expanded biography text
   const [isBioExpanded, setIsBioExpanded] = useState<boolean>(false);
 
@@ -95,7 +98,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
           <div className="mb-6">Place of Birth: {place_of_birth}</div>
           {uid && (
             <Button onClick={addToFavoritesHandler}>
-              <span>Add to Favorites</span>
+              <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
             </Button>
           )}
         </div>
