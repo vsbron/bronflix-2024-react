@@ -65,10 +65,15 @@ function PersonDetails({ person }: PersonDetailsProps) {
       }
       const currentUserData = userSnap.data();
 
+      // Checking whether we need to add or remove person from the list
+      const updatedList = isLiked
+        ? likedPeople.filter((personId) => personId !== person.id)
+        : [...likedPeople, person.id];
+
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
-        likedPeople: [...likedPeople, person.id],
+        likedPeople: updatedList,
       };
 
       // Updating the doc in firebase and updating the state with new user data

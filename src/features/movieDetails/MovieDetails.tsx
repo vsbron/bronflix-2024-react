@@ -82,10 +82,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       }
       const currentUserData = userSnap.data();
 
+      // Checking whether we need to add or remove movie from the list
+      const updatedList = isLiked
+        ? likedMovies.filter((movieId) => movieId !== movie.id)
+        : [...likedMovies, movie.id];
+
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
-        likedMovies: [...likedMovies, movie.id],
+        likedMovies: updatedList,
       };
 
       // Updating the doc in firebase and updating the state with new user data
@@ -108,10 +113,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       }
       const currentUserData = userSnap.data();
 
+      // Checking whether we need to add or remove movie from the list
+      const updatedList = isInWatchList
+        ? watchlistMovies.filter((movieId) => movieId !== movie.id)
+        : [...watchlistMovies, movie.id];
+
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
-        watchlistMovies: [...watchlistMovies, movie.id],
+        watchlistMovies: updatedList,
       };
 
       // Updating the doc in firebase and updating the state with new user data
