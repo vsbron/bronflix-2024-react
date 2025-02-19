@@ -30,9 +30,9 @@ function IsInUserList({ type, id }: IsInUserListProps) {
 
   // Returned JSX
   return (
-    <div className="absolute top-3 right-3 z-10 w-8 flex flex-col gap-1 add-to-user-list-ui">
-      {isLiked && <HeartIcon className="text-red-600 " />}
-      {isInWatchList && <EyeIcon className="text-orange-400" />}
+    <div className="absolute top-3 right-3 z-10 w-10 flex flex-col gap-2">
+      {isLiked && <div className="bg-red-800 rounded-full p-1"><HeartIcon className="text-red-300" /></div>}
+      {isInWatchList && <div className="bg-orange-800 rounded-full p-1"><EyeIcon className="text-orange-300" /></div>}
     </div>
   );
 }
