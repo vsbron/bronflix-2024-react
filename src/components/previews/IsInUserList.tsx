@@ -17,15 +17,15 @@ function IsInUserList({ type, id }: IsInUserListProps) {
   let isLiked, isInWatchList;
   switch (type) {
     case "movies":
-      isLiked = likedMovies.includes(id);
-      isInWatchList = watchlistMovies.includes(id);
+      isLiked = likedMovies.some((movie) => movie.id === id);
+      isInWatchList = watchlistMovies.some((movie) => movie.id === id);
       break;
     case "tv":
-      isLiked = likedShows.includes(id);
-      isInWatchList = watchlistShows.includes(id);
+      isLiked = likedShows.some((show) => show.id === id);
+      isInWatchList = watchlistShows.some((show) => show.id === id);
       break;
     default:
-      isLiked = likedPeople.includes(id);
+      isLiked = likedPeople.some((person) => person.id === id);
   }
 
   // Returned JSX
