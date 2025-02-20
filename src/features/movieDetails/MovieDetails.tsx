@@ -24,9 +24,9 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
-import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting user data from Redux store

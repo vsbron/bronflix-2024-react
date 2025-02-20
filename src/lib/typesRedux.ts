@@ -1,5 +1,5 @@
+import { IBase } from "@/lib/typesAPI";
 import store from "@/redux/store";
-import { IBase } from "./typesAPI";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

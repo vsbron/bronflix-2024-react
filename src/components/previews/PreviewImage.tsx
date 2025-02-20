@@ -8,7 +8,13 @@ import ScorePreview from "@/components/ScorePreview";
 import IsInUserList from "@/components/previews/IsInUserList";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
 
-function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
+function PreviewImage({
+  media,
+  type = "movie",
+  children,
+  posters,
+  hud = true,
+}: PreviewImageProps) {
   // Getting the image data
   const { imageKey, fallback } = getImageData(type);
 
@@ -41,7 +47,7 @@ function PreviewImage({ media, type, children, posters }: PreviewImageProps) {
       {media.vote_average !== undefined && (
         <ScorePreview score={media.vote_average} />
       )}
-      {uid && <IsInUserList type={type} id={media.id} />}
+      {hud && uid && <IsInUserList type={type} id={media.id} />}
     </div>
   );
 }

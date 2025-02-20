@@ -93,9 +93,10 @@ export type PreviewMergedProps<T> = {
 };
 export type PreviewImageProps = {
   media: IBase;
-  type: string;
+  type?: string;
   children?: ReactNode;
   posters?: boolean;
+  hud?: boolean;
 };
 export type ScorePreviewProps = {
   score: number;

@@ -24,8 +24,12 @@ function IsInUserList({ type, id }: IsInUserListProps) {
       isLiked = likedShows.some((show) => show.id === id);
       isInWatchList = watchlistShows.some((show) => show.id === id);
       break;
-    default:
+    case "person":
       isLiked = likedPeople.some((person) => person.id === id);
+      break;
+    default:
+      isLiked = false;
+      isInWatchList = false;
   }
 
   // Returned JSX
