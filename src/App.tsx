@@ -10,12 +10,12 @@ import { clearUserData, fetchUserData } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Home from "@/pages/Home";
-import ActorsMain from "@/pages/ActorsMain";
 import MoviesMain from "@/pages/MoviesMain";
 import Movie, { movieLoader } from "@/pages/Movie";
 import MovieCollection, {
   movieCollectionLoader,
 } from "@/pages/MovieCollection";
+import PersonMain from "@/pages/ActorsMain";
 import Person, { personLoader } from "@/pages/Person";
 import ShowsMain from "@/pages/ShowsMain";
 import Show, { showLoader } from "@/pages/Show";
@@ -85,7 +85,7 @@ const router = createBrowserRouter([
       },
       { path: "/movies", element: <MoviesMain /> },
       { path: "/shows", element: <ShowsMain /> },
-      { path: "/actors", element: <ActorsMain /> },
+      { path: "/person", element: <PersonMain /> },
       { path: "/search", element: <SearchResults /> },
       { path: "/site-map", element: <Sitemap /> },
       { path: "/about-us", element: <AboutUs /> },

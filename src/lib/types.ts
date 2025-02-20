@@ -182,6 +182,12 @@ export type SearchPreviewSmallProps = { media: ISearchedMediaSmall };
 export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 
+// Profile
+export type MediaListProps = {
+  items: IBase[];
+  type: "movies" | "shows" | "person";
+};
+
 // Forms
 export type FormWrapProps = {
   children: ReactNode;
