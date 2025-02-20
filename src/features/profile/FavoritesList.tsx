@@ -42,7 +42,7 @@ function FavoritesList() {
       <div className={`flex ${BASE_GAP_CLASS}`}>
         {likedPeople.map((person) => (
           <Link
-            to={`/movies/${person.id}`}
+            to={`/person/${person.id}`}
             className="basis-[14rem] h-[21rem]"
             key={person.id}
           >

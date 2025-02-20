@@ -90,7 +90,12 @@ function ShowDetails({ show }: ShowDetailsProps) {
         ? likedShows.filter((storedShow) => storedShow.id !== show.id)
         : [
             ...likedShows,
-            { id: show.id, name: show.name, poster_path: show.poster_path },
+            {
+              id: show.id,
+              name: show.name,
+              poster_path: show.poster_path,
+              vote_average: show.vote_average,
+            },
           ];
 
       // Setting updated fields
@@ -124,7 +129,12 @@ function ShowDetails({ show }: ShowDetailsProps) {
         ? watchlistShows.filter((storedShow) => storedShow.id !== show.id)
         : [
             ...watchlistShows,
-            { id: show.id, name: show.name, poster_path: show.poster_path },
+            {
+              id: show.id,
+              name: show.name,
+              poster_path: show.poster_path,
+              vote_average: show.vote_average,
+            },
           ];
 
       // Setting updated fields
