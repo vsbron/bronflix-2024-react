@@ -27,7 +27,10 @@ function EditProfileForm() {
 
   // Getting the user data from redux store
   const { name, email, title, gender, birthday } = useUser();
-  const dateForInput = new Date(birthday).toISOString().split("T")[0];
+  const dateForInput =
+    birthday !== "Unknown"
+      ? new Date(birthday).toISOString().split("T")[0]
+      : new Date().toISOString().split("T");
 
   // Getting the functions and errors from react hook form
   const {
@@ -71,7 +74,8 @@ function EditProfileForm() {
         name: data.name,
         title: data.title,
         gender: data.gender,
-        birthday: new Date(data.birthday).getTime(),
+        birthday:
+          data.birthday !== "" ? new Date(data.birthday).getTime() : "Unknown",
       };
 
       // Updating the doc in firebase and updating the state with new user data
