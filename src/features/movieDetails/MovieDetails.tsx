@@ -65,8 +65,8 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const formattedOverview = FormatTextBlock(overview);
 
   // Checking if movie already in any lists
-  const isLiked = likedMovies.includes(movie.id);
-  const isInWatchList = watchlistMovies.includes(movie.id);
+  const isLiked = likedMovies.some((m) => m.id === movie.id);
+  const isInWatchList = watchlistMovies.some((m) => m.id === movie.id);
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
@@ -84,8 +84,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
 
       // Checking whether we need to add or remove movie from the list
       const updatedList = isLiked
-        ? likedMovies.filter((movieId) => movieId !== movie.id)
-        : [...likedMovies, movie.id];
+        ? likedMovies.filter((storedMovie) => storedMovie.id !== movie.id)
+        : [
+            ...likedMovies,
+            {
+              id: movie.id,
+              title: movie.title,
+              poster_path: movie.poster_path,
+            },
+          ];
 
       // Setting updated fields
       const updatedUser = {
@@ -115,8 +122,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
 
       // Checking whether we need to add or remove movie from the list
       const updatedList = isInWatchList
-        ? watchlistMovies.filter((movieId) => movieId !== movie.id)
-        : [...watchlistMovies, movie.id];
+        ? watchlistMovies.filter((storedMovie) => storedMovie.id !== movie.id)
+        : [
+            ...watchlistMovies,
+            {
+              id: movie.id,
+              title: movie.title,
+              poster_path: movie.poster_path,
+            },
+          ];
 
       // Setting updated fields
       const updatedUser = {

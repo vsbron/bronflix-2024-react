@@ -1,4 +1,5 @@
 import store from "@/redux/store";
+import { IBase } from "./typesAPI";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
@@ -12,11 +13,11 @@ export interface IUserState {
   title: string;
   gender: string;
   birthday: string;
-  likedMovies: number[];
-  likedShows: number[];
-  likedPeople: number[];
-  watchlistMovies: number[];
-  watchlistShows: number[];
+  likedMovies: IBase[];
+  likedShows: IBase[];
+  likedPeople: IBase[];
+  watchlistMovies: IBase[];
+  watchlistShows: IBase[];
   isLoading: boolean;
   error: string | null;
 }

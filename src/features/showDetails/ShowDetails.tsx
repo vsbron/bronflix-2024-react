@@ -68,8 +68,8 @@ function ShowDetails({ show }: ShowDetailsProps) {
   const formattedOverview = FormatTextBlock(overview);
 
   // Checking if show already in any lists
-  const isLiked = likedShows.includes(show.id);
-  const isInWatchList = watchlistShows.includes(show.id);
+  const isLiked = likedShows.some((s) => s.id === show.id);
+  const isInWatchList = watchlistShows.some((s) => s.id === show.id);
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
@@ -87,8 +87,11 @@ function ShowDetails({ show }: ShowDetailsProps) {
 
       // Checking whether we need to add or remove show from the list
       const updatedList = isLiked
-        ? likedShows.filter((showId) => showId !== show.id)
-        : [...likedShows, show.id];
+        ? likedShows.filter((storedShow) => storedShow.id !== show.id)
+        : [
+            ...likedShows,
+            { id: show.id, name: show.name, poster_path: show.poster_path },
+          ];
 
       // Setting updated fields
       const updatedUser = {
@@ -118,8 +121,11 @@ function ShowDetails({ show }: ShowDetailsProps) {
 
       // Checking whether we need to add or remove movie from the list
       const updatedList = isInWatchList
-        ? watchlistShows.filter((showId) => showId !== show.id)
-        : [...watchlistShows, show.id];
+        ? watchlistShows.filter((storedShow) => storedShow.id !== show.id)
+        : [
+            ...watchlistShows,
+            { id: show.id, name: show.name, poster_path: show.poster_path },
+          ];
 
       // Setting updated fields
       const updatedUser = {

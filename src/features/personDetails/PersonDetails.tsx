@@ -31,7 +31,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
   } = person;
 
   // Checking if person already in the favorites list
-  const isLiked = likedPeople.includes(person.id);
+  const isLiked = likedPeople.some((p) => p.id === person.id);
 
   // Setting the state for expanded biography text
   const [isBioExpanded, setIsBioExpanded] = useState<boolean>(false);
@@ -67,8 +67,15 @@ function PersonDetails({ person }: PersonDetailsProps) {
 
       // Checking whether we need to add or remove person from the list
       const updatedList = isLiked
-        ? likedPeople.filter((personId) => personId !== person.id)
-        : [...likedPeople, person.id];
+        ? likedPeople.filter((storedPerson) => storedPerson.id !== person.id)
+        : [
+            ...likedPeople,
+            {
+              id: person.id,
+              name: person.name,
+              profile_path: person.profile_path,
+            },
+          ];
 
       // Setting updated fields
       const updatedUser = {
