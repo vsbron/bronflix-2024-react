@@ -14,7 +14,7 @@ export function useSearchResults(query: string, page: number) {
   });
 
   // Adding the query, but with increased page number (if not on the last page)
-  page < data!.total_pages &&
+  page < data?.total_pages! &&
     queryClient.prefetchQuery({
       queryKey: ["search", query, page + 1],
       queryFn: () => getSearchResults(query, page + 1),
