@@ -225,4 +225,5 @@ export interface ISearchedMediaSmall {
 export interface ISearchResults {
   results: ISearchedMedia[];
   total_results: number;
+  total_pages: number;
 }
