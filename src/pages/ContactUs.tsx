@@ -3,9 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { SITE_NAME } from "@/lib/constants";
 import { META_CONTACT_DESC, META_CONTACT_TITLE } from "@/lib/metaTags";
 
+import ContactForm from "@/components/forms/ContactForm";
 import Heading from "@/components/ui/Heading";
 import ContentWall from "@/components/ui/ContentWall";
-import ContactForm from "@/components/forms/ContactForm";
 
 function ContactUs() {
   // Returned JSX
