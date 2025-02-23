@@ -120,6 +120,7 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 - **API**: TMDB API for fetching movies, shows, and actor data.
 - **Meta Management**: React Helmet Async is used to manage dynamic meta tags, improving SEO and social sharing by dynamically adjusting the title, description, and other meta information based on the page the user is on.
 - **Form Handling**: React Hook Form is used for handling the contact form, with Zod providing schema-based validation to ensure form data integrity.
+- **Code Splitting**: The app optimizes its initial load time by dynamically loading components as needed, reducing the overall bundle size and improving performance.
 
 ---
 
@@ -130,13 +131,10 @@ BroNflix is constantly evolving, with several exciting features planned for futu
 1. **Main Page for Movies, Shows, and People**  
    A unified main page will be added, providing a clear overview of all categories—movies, shows, and actors—allowing users to easily explore each.
 
-2. **Favorites & Watchlist**  
-   Users will have the ability to add movies and shows to their favorites or watchlist, making it easier to keep track of content they want to watch.
-
-3. **Voting System**  
+2. **Voting System**  
    Users will be able to add their votes to movies and shows, contributing to the overall rating and offering a more personalized recommendation experience.
 
-4. **Mobile Layout**  
+3. **Mobile Layout**  
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
 
 ---

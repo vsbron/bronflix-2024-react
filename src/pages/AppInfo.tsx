@@ -318,6 +318,11 @@ function AppInfo() {
               handling the contact form, with Zod providing schema-based
               validation to ensure form data integrity.
             </li>
+            <li>
+              <strong>Code Splitting</strong>: The app optimizes its initial
+              load time by dynamically loading components as needed, reducing
+              the overall bundle size and improving performance.
+            </li>
           </ul>
         </ContentWall>
       </section>
