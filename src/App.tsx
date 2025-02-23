@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -9,33 +9,37 @@ import { AppDispatch } from "@/lib/typesRedux";
 import { clearUserData, fetchUserData } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
-import Home from "@/pages/Home";
-import MoviesMain from "@/pages/MoviesMain";
-import Movie, { movieLoader } from "@/pages/Movie";
-import MovieCollection, {
-  movieCollectionLoader,
-} from "@/pages/MovieCollection";
-import PersonMain from "@/pages/ActorsMain";
-import Person, { personLoader } from "@/pages/Person";
-import ShowsMain from "@/pages/ShowsMain";
-import Show, { showLoader } from "@/pages/Show";
-import SearchResults from "@/pages/SearchResults";
-import Profile from "@/pages/Profile";
-import ProtectedRoute from "@/pages/ProtectedRoute";
-
-import AboutUs from "@/pages/AboutUs";
-import AppInfo from "@/pages/AppInfo";
-import ContactUs from "@/pages/ContactUs";
-import ErrorForm from "@/pages/ErrorForm";
-import NotFound from "@/pages/NotFound";
-import Privacy from "@/pages/Privacy";
-import Sitemap from "@/pages/Sitemap";
-import Success from "@/pages/Success";
-import TermsOfUse from "@/pages/TermsOfUse";
+import { movieLoader } from "@/pages/Movie";
+import { movieCollectionLoader } from "@/pages/MovieCollection";
+import { personLoader } from "@/pages/Person";
+import { showLoader } from "@/pages/Show";
 
 import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
 import Layout from "@/components/ui/Layout";
+import Loader from "@/components/ui/Loader";
+
+const Home = lazy(() => import("@/pages/Home"));
+const MoviesMain = lazy(() => import("@/pages/MoviesMain"));
+const Movie = lazy(() => import("@/pages/Movie"));
+const MovieCollection = lazy(() => import("@/pages/MovieCollection"));
+const PersonMain = lazy(() => import("@/pages/ActorsMain"));
+const Person = lazy(() => import("@/pages/Person"));
+const ShowsMain = lazy(() => import("@/pages/ShowsMain"));
+const Show = lazy(() => import("@/pages/Show"));
+const SearchResults = lazy(() => import("@/pages/SearchResults"));
+const Profile = lazy(() => import("@/pages/Profile"));
+const ProtectedRoute = lazy(() => import("@/pages/ProtectedRoute"));
+
+const AboutUs = lazy(() => import("@/pages/AboutUs"));
+const AppInfo = lazy(() => import("@/pages/AppInfo"));
+const ContactUs = lazy(() => import("@/pages/ContactUs"));
+const ErrorForm = lazy(() => import("@/pages/ErrorForm"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Sitemap = lazy(() => import("@/pages/Sitemap"));
+const Success = lazy(() => import("@/pages/Success"));
+const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 
 // Setting up the query client
 const queryClient = new QueryClient({
@@ -115,9 +119,11 @@ function App() {
   // Returned JSX
   return (
     <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <RouterProvider router={router} />
-      </HelmetProvider>
+      <Suspense fallback={<Loader />}>
+        <HelmetProvider>
+          <RouterProvider router={router} />
+        </HelmetProvider>
+      </Suspense>
     </QueryClientProvider>
   );
 }

@@ -22,6 +22,8 @@ import {
   signUpFormSchema,
 } from "./formSchemas";
 
+export type LayoutProps = { children?: ReactNode };
+
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
 type PreviewSubtitles = "character" | "job" | "department";

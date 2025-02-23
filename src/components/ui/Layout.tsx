@@ -1,5 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 
+import { LayoutProps } from "@/lib/types";
 import BackspaceNavigation from "@/utils/BackspaceNavigation";
 import ScrollToTop from "@/utils/ScrollToTop";
 
@@ -9,7 +10,7 @@ import Sidebar from "@/components/header/Sidebar";
 import Loader from "@/components/ui/Loader";
 import Wrapper from "@/components/ui/Wrapper";
 
-function Layout() {
+function Layout({ children }: LayoutProps) {
   // Getting the navigation object from the hook
   const navigation = useNavigation();
 
@@ -24,7 +25,11 @@ function Layout() {
       <Header />
       <Sidebar />
       <main className="w-screen ml-[7.5rem] min-h-screen overflow-x-hidden">
-        <Wrapper>{isLoading ? <Loader /> : <Outlet />}</Wrapper>
+        {children ? (
+          children
+        ) : (
+          <Wrapper>{isLoading ? <Loader /> : <Outlet />}</Wrapper>
+        )}
         <Footer />
       </main>
     </div>
