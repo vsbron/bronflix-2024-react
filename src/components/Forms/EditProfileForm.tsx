@@ -10,12 +10,12 @@ import { EditProfileFormData } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
-import FormWrap from "@/components/forms/FormWrap";
+import FormWrap from "@/components/Forms/FormWrap";
 import {
   FormError,
   FormGroup,
   FormLabelError,
-} from "@/components/forms/FormElements";
+} from "@/components/Forms/FormElements";
 
 function EditProfileForm() {
   // Setting the state for the current form status and error

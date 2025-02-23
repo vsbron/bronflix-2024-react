@@ -5,7 +5,7 @@ import { META_CONTACT_DESC, META_CONTACT_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
 import ContentWall from "@/components/ui/ContentWall";
-import ContactForm from "@/components/forms/CntctFrm";
+import ContactForm from "@/components/Forms/ContactForm";
 
 function ContactUs() {
   // Returned JSX

@@ -9,8 +9,8 @@ import { formatDate } from "@/utils/helpers";
 import IconWrapper from "@/components/IconWrapper";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
-import EditProfileForm from "@/components/forms/EditProfileForm";
-import ChangePasswordForm from "@/components/forms/ChangePasswordForm";
+import EditProfileForm from "@/components/Forms/EditProfileForm";
+import ChangePasswordForm from "@/components/Forms/ChangePasswordForm";
 
 function ProfileDetails() {
   // Getting the user data from the Redux

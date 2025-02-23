@@ -12,12 +12,12 @@ import { SignUpFormData } from "@/lib/types";
 import { setUserData } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
-import FormWrap from "@/components/forms/FormWrap";
+import FormWrap from "@/components/Forms/FormWrap";
 import {
   FormError,
   FormGroup,
   FormLabelError,
-} from "@/components/forms/FormElements";
+} from "@/components/Forms/FormElements";
 import { DEFAULT_TITLES, GENDERS } from "@/lib/constants";
 
 function SignUpForm() {

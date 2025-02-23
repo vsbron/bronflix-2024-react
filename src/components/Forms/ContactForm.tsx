@@ -12,7 +12,7 @@ import {
   FormError,
   FormGroup,
   FormLabelError,
-} from "@/components/forms/FormElements";
+} from "@/components/Forms/FormElements";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 

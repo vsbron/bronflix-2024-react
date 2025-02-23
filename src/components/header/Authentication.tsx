@@ -2,8 +2,8 @@ import { ModalProvider } from "@/context/ModalContext";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 
 import Button from "@/components/ui/Button";
-import SignInForm from "@/components/forms/SignInForm";
-import SignUpForm from "@/components/forms/SignUpForm";
+import SignInForm from "@/components/Forms/SignInForm";
+import SignUpForm from "@/components/Forms/SignUpForm";
 
 function Authentication() {
   // Returned JSX

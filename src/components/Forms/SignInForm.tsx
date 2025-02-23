@@ -8,12 +8,12 @@ import { signInFormSchema } from "@/lib/formSchemas";
 import { SignInFormData } from "@/lib/types";
 import { auth } from "@/utils/firebase";
 
-import FormWrap from "@/components/forms/FormWrap";
+import FormWrap from "@/components/Forms/FormWrap";
 import {
   FormError,
   FormGroup,
   FormLabelError,
-} from "@/components/forms/FormElements";
+} from "@/components/Forms/FormElements";
 
 function SignInForm() {
   // Setting the state for the current form status and error
