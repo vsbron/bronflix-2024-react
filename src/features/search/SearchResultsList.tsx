@@ -34,8 +34,8 @@ function SearchResultsList({ query }: SearchResultsListProps) {
 
   // Page change handler
   const handlePageChange = (newPage: number) => {
-    if (newPage < 1 || newPage > totalPages) return;
     setSearchParams({ q: query, page: newPage.toString() });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Returned JSX
