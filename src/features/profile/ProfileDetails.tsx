@@ -15,7 +15,7 @@ import FormAvatars from "@/components/Forms/FormAvatars";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
-  const { name, title, email, createdAt, gender, birthday } = useUser();
+  const { name, title, email, createdAt, gender, birthday, avatar } = useUser();
 
   // Returned JSX
   return (
@@ -32,10 +32,10 @@ function ProfileDetails() {
               </div>{" "}
               <picture>
                 <source
-                  srcSet={NO_AVATAR.toString().replace(".png", ".webp")}
+                  srcSet={avatar.toString().replace(".png", ".webp")}
                   type="image/webp"
                 />
-                <img src={NO_AVATAR} className="rounded-lg w-[25rem]" />
+                <img src={avatar} className="rounded-lg w-[25rem]" />
               </picture>
             </div>
           </ModalProvider.Trigger>

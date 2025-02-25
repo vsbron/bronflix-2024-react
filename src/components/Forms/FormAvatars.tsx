@@ -3,40 +3,99 @@ import { useEffect, useState } from "react";
 import { AVATARS, NO_AVATAR } from "@/lib/assets";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { avatarImage } from "@/lib/types";
+import { setUserData, useUser } from "@/redux/reducers/userReducer";
 
-import { FormGroup, FormLabelError } from "@/components/Forms/FormElements";
-import { useUser } from "@/redux/reducers/userReducer";
-import Button from "../ui/Button";
+import {
+  FormError,
+  FormGroup,
+  FormLabelError,
+} from "@/components/Forms/FormElements";
+import Button from "@/components/ui/Button";
+import { auth, db } from "@/utils/firebase";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
+import { useDispatch } from "react-redux";
 
 function FormAvatars() {
   // Getting the user data from redux store
   const { avatar } = useUser();
 
-  // Setting the state for the currently chosen avatar
+  // Setting the state for the currently chosen avatar, submitting state and error
   const [currentAvatar, setCurrentAvatar] = useState<string>(avatar);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [avatarError, setAvatarError] = useState<string | null>(null);
 
-  useEffect(() => {}, [currentAvatar]);
+  // Getting the navigate and dispatch functions
+  const dispatch = useDispatch();
+
+  // Use effect that updates the Redux each time new avatar is chosen
+  useEffect(() => {
+    const updateAvatar = async () => {
+      // Enable submitting state
+      setIsSubmitting(true);
+
+      try {
+        // Guard clause
+        if (!auth.currentUser) {
+          setAvatarError("No authenticated user found.");
+          setIsSubmitting(false);
+          return;
+        }
+
+        // Getting the current user data
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        const userSnap = await getDoc(userRef);
+
+        // Guard clause
+        if (!userSnap.exists()) {
+          setAvatarError("Cannot find user to update");
+          setIsSubmitting(false);
+        }
+        const currentUserData = userSnap.data();
+
+        // Setting updated fields
+        const updatedUser = {
+          ...currentUserData,
+          avatar: currentAvatar,
+        };
+
+        // Updating the doc in firebase and updating the state with new user data
+        await updateDoc(doc(db, "users", auth.currentUser.uid), updatedUser);
+        dispatch(setUserData(updatedUser));
+      } catch (e: unknown) {
+        console.error(e);
+        setAvatarError("Couldn't update the avatar due to unknown error");
+      } finally {
+        // Disabling submitting state
+        setIsSubmitting(false);
+      }
+    };
+
+    updateAvatar();
+  }, [currentAvatar]);
 
   // Returned JSX
   return (
     <FormGroup>
       <FormLabelError name="Avatars" />
       <div className={`flex ${BASE_GAP_CLASS} flex-col items-center`}>
+        {avatarError && <FormError>{avatarError}</FormError>}
         <div className="flex gap-2 flex-wrap max-w-[35rem]">
           {AVATARS.map((image) => {
             const imgSrc = (image as avatarImage).default;
             return (
-              <img
-                src={imgSrc}
-                key={imgSrc}
-                width={83}
-                height={83}
+              <div
                 onClick={() => setCurrentAvatar(imgSrc)}
-              />
+                className="cursor-pointer"
+              >
+                <img src={imgSrc} key={imgSrc} width={83} height={83} />
+              </div>
             );
           })}
         </div>
-        <Button onClick={() => setCurrentAvatar(NO_AVATAR)}>
+        <Button
+          onClick={() => setCurrentAvatar(NO_AVATAR)}
+          disabled={isSubmitting}
+        >
           <span>REMOVE AVATAR</span>
         </Button>
       </div>
