@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
-import { AVATARS, NO_AVATAR } from "@/lib/assets";
+import { AVATARS, NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
 import { avatarImage } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
@@ -12,7 +12,7 @@ import Button from "@/components/ui/Button";
 
 function FormAvatars() {
   // Getting the user data from redux store
-  const { avatar } = useUser();
+  const { avatar, gender } = useUser();
 
   // Setting the state for the currently chosen avatar, submitting state and error
   const [currentAvatar, setCurrentAvatar] = useState<string>(avatar);
@@ -68,6 +68,11 @@ function FormAvatars() {
     updateAvatar();
   }, [currentAvatar]);
 
+  // Removing avatar handler (checks gender and assigns correct default avatar)
+  const removeAvatarHandler = () => {
+    setCurrentAvatar(gender === "Female" ? NO_AVATAR_F : NO_AVATAR_M);
+  };
+
   // Returned JSX
   return (
     <div className="flex flex-col items-start gap-3">
@@ -94,10 +99,7 @@ function FormAvatars() {
         })}
       </div>
       <div className="mt-2 self-center">
-        <Button
-          onClick={() => setCurrentAvatar(NO_AVATAR)}
-          disabled={isSubmitting}
-        >
+        <Button onClick={removeAvatarHandler} disabled={isSubmitting}>
           <span>REMOVE AVATAR</span>
         </Button>
       </div>

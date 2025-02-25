@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { doc, DocumentData, getDoc } from "@firebase/firestore";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { NO_AVATAR } from "@/lib/assets";
+import { NO_AVATAR_M } from "@/lib/assets";
 import { IUserState, RootState } from "@/lib/typesRedux";
 import { db } from "@/utils/firebase";
 
@@ -42,7 +42,7 @@ const initialState: IUserState = {
   likedPeople: [],
   watchlistMovies: [],
   watchlistShows: [],
-  avatar: NO_AVATAR,
+  avatar: NO_AVATAR_M,
   isLoading: false,
   error: null,
 };

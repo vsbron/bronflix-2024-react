@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
 import useModal from "@/context/ModalContext";
+import { NO_AVATAR_F, NO_AVATAR_M } from "@/lib/assets";
 import { editProfileFormSchema } from "@/lib/formSchemas";
 import { EditProfileFormData } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
@@ -68,6 +69,17 @@ function EditProfileForm() {
       }
       const currentUserData = userSnap.data();
 
+      // Changing default avatar if gender is swapped
+      let newAvatar = currentUserData!.avatar;
+      if (data.gender === "Female" && currentUserData!.avatar === NO_AVATAR_M) {
+        newAvatar = NO_AVATAR_F;
+      } else if (
+        data.gender === "Male" &&
+        currentUserData!.avatar === NO_AVATAR_F
+      ) {
+        newAvatar = NO_AVATAR_M;
+      }
+
       // Setting updated fields
       const updatedUser = {
         ...currentUserData,
@@ -76,6 +88,7 @@ function EditProfileForm() {
         gender: data.gender,
         birthday:
           data.birthday !== "" ? new Date(data.birthday).getTime() : "Unknown",
+        avatar: newAvatar,
       };
 
       // Updating the doc in firebase and updating the state with new user data
