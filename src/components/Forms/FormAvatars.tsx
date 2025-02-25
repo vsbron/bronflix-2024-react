@@ -75,23 +75,23 @@ function FormAvatars() {
 
   // Returned JSX
   return (
-    <FormGroup>
-      <FormLabelError name="Avatars" />
-      <div className={`flex ${BASE_GAP_CLASS} flex-col items-center`}>
-        {avatarError && <FormError>{avatarError}</FormError>}
-        <div className="flex gap-2 flex-wrap max-w-[35rem]">
-          {AVATARS.map((image) => {
-            const imgSrc = (image as avatarImage).default;
-            return (
-              <div
-                onClick={() => setCurrentAvatar(imgSrc)}
-                className="cursor-pointer"
-              >
-                <img src={imgSrc} key={imgSrc} width={83} height={83} />
-              </div>
-            );
-          })}
-        </div>
+    <div className="flex flex-col items-start gap-3">
+      <div className="text-3xl">Choose an avatar</div>
+      {avatarError && <FormError>{avatarError}</FormError>}
+      <div className="flex gap-2 flex-wrap max-w-[40rem]">
+        {AVATARS.map((image) => {
+          const imgSrc = (image as avatarImage).default;
+          return (
+            <div
+              onClick={() => setCurrentAvatar(imgSrc)}
+              className="cursor-pointer"
+            >
+              <img src={imgSrc} key={imgSrc} width={76} height={76} />
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-2 self-center">
         <Button
           onClick={() => setCurrentAvatar(NO_AVATAR)}
           disabled={isSubmitting}
@@ -99,7 +99,7 @@ function FormAvatars() {
           <span>REMOVE AVATAR</span>
         </Button>
       </div>
-    </FormGroup>
+    </div>
   );
 }
 
