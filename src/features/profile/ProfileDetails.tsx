@@ -1,7 +1,7 @@
 import { EnvelopeIcon, UserIcon, CakeIcon } from "@heroicons/react/24/outline";
 
 import { ModalProvider } from "@/context/ModalContext";
-import { NO_AVATAR_PNG } from "@/lib/assets";
+import { NO_AVATAR } from "@/lib/assets";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate } from "@/utils/helpers";
@@ -29,8 +29,14 @@ function ProfileDetails() {
             <div className="relative text-stone-50 text-4xl cursor-pointer group">
               <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
                 Change avatar
-              </div>
-              <img src={NO_AVATAR_PNG} className="rounded-lg w-[25rem]" />
+              </div>{" "}
+              <picture>
+                <source
+                  srcSet={NO_AVATAR.toString().replace(".png", ".webp")}
+                  type="image/webp"
+                />
+                <img src={NO_AVATAR} className="rounded-lg w-[25rem]" />
+              </picture>
             </div>
           </ModalProvider.Trigger>
           <ModalProvider.Content name="change-avatar">

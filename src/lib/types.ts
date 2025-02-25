@@ -210,3 +210,5 @@ export type FormLabelErrorProps = {
   name: string;
   children?: ReactNode;
 };
+
+export type avatarImage = { default: string };

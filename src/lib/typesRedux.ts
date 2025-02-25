@@ -18,6 +18,7 @@ export interface IUserState {
   likedPeople: IBase[];
   watchlistMovies: IBase[];
   watchlistShows: IBase[];
+  avatar: string;
   isLoading: boolean;
   error: string | null;
 }

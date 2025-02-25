@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import { doc, DocumentData, getDoc, setDoc } from "@firebase/firestore";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { doc, DocumentData, getDoc } from "@firebase/firestore";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { IUserState, RootState, ToggleItemPayload } from "@/lib/typesRedux";
+import { NO_AVATAR } from "@/lib/assets";
+import { IUserState, RootState } from "@/lib/typesRedux";
 import { db } from "@/utils/firebase";
 
 // Async thunk for fetching user data
@@ -41,6 +42,7 @@ const initialState: IUserState = {
   likedPeople: [],
   watchlistMovies: [],
   watchlistShows: [],
+  avatar: NO_AVATAR,
   isLoading: false,
   error: null,
 };
@@ -79,6 +81,7 @@ const userSlice = createSlice({
           state.likedPeople = action.payload.likedPeople;
           state.watchlistMovies = action.payload.watchlistMovies;
           state.watchlistShows = action.payload.watchlistShows;
+          state.avatar = action.payload.avatar;
         } else {
           state.uid = "";
         }
