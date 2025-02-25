@@ -99,8 +99,8 @@ Provides in-depth details about an actor or crew member:
 The Profile Page serves as the user's hub, displaying their personal details and curated lists.
 
 - User Information: Shows the user's avatar, name, and other basic details.
-- Profile Editing: Allows users to update their personal details, such as name and other fields (Uploading avatar is not supported
-  due to absence of online storage).
+- Profile Editing: Allows users to update their personal details, such as name and other fields.
+- Clicking on the avatar lets the user select a new one from the available options.
 - Password Update: Provides an option to change the account password securely.
 - Watchlist: A section where users can track movies and TV shows they plan to watch.
 - Favorites: Separate lists for favorite movies, TV shows, and people (actors/crew).

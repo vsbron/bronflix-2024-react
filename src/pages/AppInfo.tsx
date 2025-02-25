@@ -246,8 +246,11 @@ function AppInfo() {
             </li>
             <li>
               Profile Editing: Allows users to update their personal details,
-              such as name and other fields (Uploading avatar is not supported
-              due to absence of online storage).
+              such as name and other fields.
+            </li>
+            <li>
+              Clicking on the avatar lets the user select a new one from the
+              available options.
             </li>
             <li>
               Password Update: Provides an option to change the account password
