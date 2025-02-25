@@ -1,17 +1,16 @@
 import { EnvelopeIcon, UserIcon, CakeIcon } from "@heroicons/react/24/outline";
 
 import { ModalProvider } from "@/context/ModalContext";
-import { NO_AVATAR } from "@/lib/assets";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
-import Heading from "@/components/ui/Heading";
-import Button from "@/components/ui/Button";
 import EditProfileForm from "@/components/Forms/EditProfileForm";
 import ChangePasswordForm from "@/components/Forms/ChangePasswordForm";
 import FormAvatars from "@/components/Forms/FormAvatars";
+import Heading from "@/components/ui/Heading";
+import Button from "@/components/ui/Button";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
@@ -29,7 +28,7 @@ function ProfileDetails() {
             <div className="relative text-stone-50 text-4xl cursor-pointer group">
               <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
                 Change avatar
-              </div>{" "}
+              </div>
               <picture>
                 <source
                   srcSet={avatar.toString().replace(".png", ".webp")}

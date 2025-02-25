@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
 import { AVATARS, NO_AVATAR } from "@/lib/assets";
-import { BASE_GAP_CLASS } from "@/lib/constants";
 import { avatarImage } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
-
-import {
-  FormError,
-  FormGroup,
-  FormLabelError,
-} from "@/components/Forms/FormElements";
-import Button from "@/components/ui/Button";
 import { auth, db } from "@/utils/firebase";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
-import { useDispatch } from "react-redux";
+
+import { FormError } from "@/components/Forms/FormElements";
+import Button from "@/components/ui/Button";
 
 function FormAvatars() {
   // Getting the user data from redux store
@@ -76,17 +71,24 @@ function FormAvatars() {
   // Returned JSX
   return (
     <div className="flex flex-col items-start gap-3">
-      <div className="text-3xl">Choose an avatar</div>
+      <div className="text-[1.8rem]">Choose an avatar</div>
       {avatarError && <FormError>{avatarError}</FormError>}
-      <div className="flex gap-2 flex-wrap max-w-[40rem]">
-        {AVATARS.map((image) => {
+      <div className="flex gap-1 flex-wrap max-w-[41rem]">
+        {AVATARS.map((image, i) => {
+          // Setting some values for img
           const imgSrc = (image as avatarImage).default;
+          const altText = `Avatar ${i + 1}`;
+          const isActive = imgSrc === currentAvatar;
+
+          // Returned image
           return (
             <div
               onClick={() => setCurrentAvatar(imgSrc)}
-              className="cursor-pointer"
+              className={`cursor-pointer border-[2px] ${
+                isActive ? "border-red-700" : "border-transparent"
+              }`}
             >
-              <img src={imgSrc} key={imgSrc} width={76} height={76} />
+              <img src={imgSrc} key={imgSrc} width={76} alt={altText} />
             </div>
           );
         })}
