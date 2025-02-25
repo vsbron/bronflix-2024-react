@@ -42,7 +42,7 @@ export type ModalContentProps = {
 };
 export type ModalContextProps = {
   activeModal: string | null;
-  openModal: (id: number) => void;
+  openModal: (name: string) => void;
   closeModal: () => void;
 };
 export type ModalProviderProps = { children: ReactNode };

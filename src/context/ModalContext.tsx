@@ -62,18 +62,21 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
   // Returned JSX
   return createPortal(
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
-      <div
-        className={`relative z-30 p-8 text-stone-50 rounded-lg opacity-0 -t-[20rem] min-w-[35rem] animate-showModalPopUp ${
-          alternative ? "bg-red-950" : "bg-stone-900"
-        }`}
-      >
+      <div className="flex items-start gap-4 opacity-0 relative -t-[20rem] animate-showModalPopUp ">
+        <div
+          className={`z-30 p-8 text-stone-50 rounded-lg min-w-[35rem] ${
+            alternative ? "bg-red-950" : "bg-stone-900"
+          } max-h-[95vh] overflow-y-scroll`}
+        >
+          {children}
+        </div>
+
         <button
           onClick={closeModal}
-          className="absolute -top-2 -right-12 text-white rounded-full text-[2.5rem] leading-1"
+          className="text-white rounded-full text-[2.5rem] leading-1"
         >
           ✕
         </button>
-        {children}
       </div>
     </div>,
     document.body

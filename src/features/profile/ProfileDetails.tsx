@@ -11,6 +11,7 @@ import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
 import EditProfileForm from "@/components/Forms/EditProfileForm";
 import ChangePasswordForm from "@/components/Forms/ChangePasswordForm";
+import FormAvatars from "@/components/Forms/FormAvatars";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
@@ -19,25 +20,38 @@ function ProfileDetails() {
   // Returned JSX
   return (
     <section>
-      <Heading>Profile</Heading>
-      <div className={`grid grid-cols-[auto_1fr] ${BASE_GAP_CLASS} items-end`}>
-        <img src={NO_AVATAR_PNG} className="rounded-lg w-[25rem]" />
-        <div className="flex flex-col gap-2 items-start">
-          <h2 className="m-0 text-6xl">{name}</h2>
-          <div className="text-[2rem] italic text-stone-400">{title}</div>
-          <div className="mt-1">
-            <IconWrapper icon={<EnvelopeIcon />}>{email}</IconWrapper>
-          </div>
-          <div className="flex gap-8 text-2xl">
-            <IconWrapper icon={<UserIcon />}>{gender}</IconWrapper>
-            <IconWrapper icon={<CakeIcon />}>
-              {birthday !== "Unknown" ? formatDate(birthday) : birthday}
-            </IconWrapper>
-          </div>
-          <div className="text-2xl text-stone-400 italic mt-4">
-            — Member since {formatDate(createdAt)}
-          </div>
-          <ModalProvider>
+      <ModalProvider>
+        <Heading>Profile</Heading>
+        <div
+          className={`grid grid-cols-[auto_1fr] ${BASE_GAP_CLASS} items-end`}
+        >
+          <ModalProvider.Trigger name="change-avatar">
+            <div className="relative text-stone-50 text-4xl cursor-pointer group">
+              <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                Change avatar
+              </div>
+              <img src={NO_AVATAR_PNG} className="rounded-lg w-[25rem]" />
+            </div>
+          </ModalProvider.Trigger>
+          <ModalProvider.Content name="change-avatar">
+            <FormAvatars />
+          </ModalProvider.Content>
+
+          <div className="flex flex-col gap-2 items-start">
+            <h2 className="m-0 text-6xl">{name}</h2>
+            <div className="text-[2rem] italic text-stone-400">{title}</div>
+            <div className="mt-1">
+              <IconWrapper icon={<EnvelopeIcon />}>{email}</IconWrapper>
+            </div>
+            <div className="flex gap-8 text-2xl">
+              <IconWrapper icon={<UserIcon />}>{gender}</IconWrapper>
+              <IconWrapper icon={<CakeIcon />}>
+                {birthday !== "Unknown" ? formatDate(birthday) : birthday}
+              </IconWrapper>
+            </div>
+            <div className="text-2xl text-stone-400 italic mt-4">
+              — Member since {formatDate(createdAt)}
+            </div>
             <div className={`flex ${BASE_GAP_CLASS}`}>
               <ModalProvider.Trigger name="edit-profile">
                 <Button>
@@ -56,9 +70,9 @@ function ProfileDetails() {
                 <ChangePasswordForm />
               </ModalProvider.Content>
             </div>
-          </ModalProvider>
+          </div>
         </div>
-      </div>
+      </ModalProvider>
     </section>
   );
 }

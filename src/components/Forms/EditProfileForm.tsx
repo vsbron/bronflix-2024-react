@@ -10,12 +10,12 @@ import { EditProfileFormData } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
-import FormWrap from "@/components/Forms/FormWrap";
 import {
   FormError,
   FormGroup,
   FormLabelError,
 } from "@/components/Forms/FormElements";
+import FormWrap from "@/components/Forms/FormWrap";
 
 function EditProfileForm() {
   // Setting the state for the current form status and error
@@ -170,18 +170,6 @@ function EditProfileForm() {
             {...register("birthday")}
             defaultValue={dateForInput}
             disabled={isSubmitting}
-          />
-        </FormGroup>
-
-        <FormGroup>
-          <FormLabelError name="Avatar">
-            <FormError>(Disabled due storage absence)</FormError>
-          </FormLabelError>
-          <input
-            id="avatar"
-            type="file"
-            className="input-styles input-wide-styles"
-            disabled={true}
           />
         </FormGroup>
       </FormWrap>
