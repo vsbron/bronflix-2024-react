@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
 import {
   CalendarIcon,
   FilmIcon,
@@ -14,9 +13,8 @@ import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
-import { setUserData, useUser } from "@/redux/reducers/userReducer";
+import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
-import { auth, db } from "@/utils/firebase";
 import { formatDate } from "@/utils/helpers";
 
 import Heading from "@/components/ui/Heading";
@@ -34,7 +32,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
   const trailer = useTrailer(show.id, "tv");
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
   // Destructuring data
   const {
@@ -74,17 +72,6 @@ function ShowDetails({ show }: ShowDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
-      // Getting the current user data
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) {
-        console.error("Cannot find user data");
-        return;
-      }
-      const currentUserData = userSnap.data();
-
       // Checking whether we need to add or remove show from the list
       const updatedList = isLiked
         ? likedShows.filter((storedShow) => storedShow.id !== show.id)
@@ -98,32 +85,14 @@ function ShowDetails({ show }: ShowDetailsProps) {
             },
           ];
 
-      // Setting updated fields
-      const updatedUser = {
-        ...currentUserData,
-        likedShows: updatedList,
-      };
-
-      // Updating the doc in firebase and updating the state with new user data
-      await updateDoc(doc(db, "users", auth!.currentUser!.uid), updatedUser);
-      dispatch(setUserData(updatedUser));
+      // Update the state and firebase
+      dispatch(updateUserData({ updatedData: { likedShows: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
     }
   };
   const addToWatchListHandler = async () => {
     try {
-      // Getting the current user data
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) {
-        console.error("Cannot find user data");
-        return;
-      }
-      const currentUserData = userSnap.data();
-
       // Checking whether we need to add or remove movie from the list
       const updatedList = isInWatchList
         ? watchlistShows.filter((storedShow) => storedShow.id !== show.id)
@@ -137,15 +106,10 @@ function ShowDetails({ show }: ShowDetailsProps) {
             },
           ];
 
-      // Setting updated fields
-      const updatedUser = {
-        ...currentUserData,
-        watchlistShows: updatedList,
-      };
-
-      // Updating the doc in firebase and updating the state with new user data
-      await updateDoc(doc(db, "users", auth!.currentUser!.uid), updatedUser);
-      dispatch(setUserData(updatedUser));
+      // Update the state and firebase
+      dispatch(
+        updateUserData({ updatedData: { watchlistShows: updatedList } })
+      );
     } catch (e: unknown) {
       console.error(e);
     }

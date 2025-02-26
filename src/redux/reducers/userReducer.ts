@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { doc, DocumentData, getDoc } from "@firebase/firestore";
+import { doc, DocumentData, getDoc, updateDoc } from "@firebase/firestore";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { NO_AVATAR_M } from "@/lib/assets";
 import { IUserState, RootState } from "@/lib/typesRedux";
-import { db } from "@/utils/firebase";
+import { auth, db } from "@/utils/firebase";
 
 // Async thunk for fetching user data
 export const fetchUserData = createAsyncThunk<DocumentData | null, string>(
@@ -27,6 +27,28 @@ export const fetchUserData = createAsyncThunk<DocumentData | null, string>(
     }
   }
 );
+
+export const updateUserData = createAsyncThunk<
+  DocumentData | null,
+  { updatedData: Partial<IUserState> }
+>("user/updateUserData", async ({ updatedData }, { rejectWithValue }) => {
+  const uid = auth!.currentUser!.uid;
+  try {
+    // Guard clause
+    if (!uid) return rejectWithValue("No user ID provided");
+
+    // Getting the current user data
+    const userRef = doc(db, "users", uid);
+    await updateDoc(userRef, updatedData);
+
+    // Fetch the updated data from Firestore to return
+    const updatedDocSnap = await getDoc(userRef);
+    return updatedDocSnap.exists() ? updatedDocSnap.data() : null;
+  } catch (error) {
+    console.error(error);
+    return rejectWithValue("Failed to update user data");
+  }
+});
 
 // Creating initial state
 const initialState: IUserState = {
@@ -89,6 +111,20 @@ const userSlice = createSlice({
       .addCase(fetchUserData.rejected, (state) => {
         state.isLoading = false;
         state.uid = "";
+        state.error = "Failed to get the user data";
+      })
+      .addCase(updateUserData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (action.payload) {
+          Object.assign(state, action.payload);
+        }
+      })
+      .addCase(updateUserData.rejected, (state) => {
+        state.isLoading = false;
+        state.error = "Failed to update the user data";
       });
   },
 });
