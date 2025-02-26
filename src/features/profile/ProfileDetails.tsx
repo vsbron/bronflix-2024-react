@@ -1,6 +1,7 @@
 import { EnvelopeIcon, UserIcon, CakeIcon } from "@heroicons/react/24/outline";
 
 import { ModalProvider } from "@/context/ModalContext";
+import { AVATARS } from "@/lib/assetsAvatars";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate } from "@/utils/helpers";
@@ -11,16 +12,17 @@ import ChangePasswordForm from "@/components/Forms/ChangePasswordForm";
 import FormAvatars from "@/components/Forms/FormAvatars";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
-import { AVATARS } from "@/lib/assets";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
   const { name, title, email, createdAt, gender, birthday, avatar } = useUser();
 
-  // Getting the avatar from AVATARS array
-  const selectedAvatar =
-    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.image
-      ?.default || avatar;
+  // Getting the avatars from AVATARS array
+  const selectedAvatarPng =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.png || avatar;
+  const selectedAvatarWebp =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.webp ||
+    avatar;
 
   // Returned JSX
   return (
@@ -36,11 +38,8 @@ function ProfileDetails() {
                 Change avatar
               </div>
               <picture>
-                <source
-                  srcSet={selectedAvatar!.toString().replace(".png", ".webp")}
-                  type="image/webp"
-                />
-                <img src={selectedAvatar} className="rounded-lg w-[25rem]" />
+                <source srcSet={selectedAvatarWebp} type="image/webp" />
+                <img src={selectedAvatarPng} className="rounded-lg w-[25rem]" />
               </picture>
             </div>
           </ModalProvider.Trigger>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
-import { AVATARS, NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
+import { NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
+import { AVATARS } from "@/lib/assetsAvatars";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -78,9 +79,9 @@ function FormAvatars() {
       <div className="text-[1.8rem]">Choose an avatar</div>
       {avatarError && <FormError>{avatarError}</FormError>}
       <div className="flex gap-1 flex-wrap max-w-[41rem]">
-        {AVATARS.map(({ name, image }) => {
+        {AVATARS.map(({ name, png }) => {
           // Setting some values for img
-          const imgSrc = image.default;
+          const imgSrc = png;
           const altText = `Avatar ${name}`;
           const isActive = imgSrc === currentAvatar;
 

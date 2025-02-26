@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 
+import { AVATARS } from "@/lib/assetsAvatars";
 import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
-import { AVATARS } from "@/lib/assets";
 
 function User() {
   // Getting the user name from the redux
@@ -21,21 +21,20 @@ function User() {
     dispatch(clearUserData());
   };
 
-  // Getting the avatar from AVATARS array
-  const selectedAvatar =
-    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.image
-      ?.default || avatar;
+  // Getting the avatars from AVATARS array
+  const selectedAvatarPng =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.png || avatar;
+  const selectedAvatarWebp =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.webp ||
+    avatar;
 
   // Returned JSX
   return (
     <div className="flex gap-6 items-center">
       <picture>
-        <source
-          srcSet={selectedAvatar!.toString().replace(".png", ".webp")}
-          type="image/webp"
-        />
+        <source srcSet={selectedAvatarWebp} type="image/webp" />
         <img
-          src={selectedAvatar}
+          src={selectedAvatarPng}
           className="rounded-full"
           width={50}
           height={50}
