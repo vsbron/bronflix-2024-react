@@ -189,6 +189,7 @@ export type MediaListProps = {
   items: IBase[];
   type: "movies" | "shows" | "person";
 };
+export type ListTitleProps = { children: string };
 
 // Forms
 export type FormWrapProps = {
