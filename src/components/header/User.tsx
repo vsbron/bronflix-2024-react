@@ -6,6 +6,7 @@ import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Button from "@/components/ui/Button";
+import { AVATARS } from "@/lib/assets";
 
 function User() {
   // Getting the user name from the redux
@@ -20,16 +21,21 @@ function User() {
     dispatch(clearUserData());
   };
 
+  // Getting the avatar from AVATARS array
+  const selectedAvatar =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.image
+      ?.default || avatar;
+
   // Returned JSX
   return (
     <div className="flex gap-6 items-center">
       <picture>
         <source
-          srcSet={avatar.toString().replace(".png", ".webp")}
+          srcSet={selectedAvatar!.toString().replace(".png", ".webp")}
           type="image/webp"
         />
         <img
-          src={avatar}
+          src={selectedAvatar}
           className="rounded-full"
           width={50}
           height={50}

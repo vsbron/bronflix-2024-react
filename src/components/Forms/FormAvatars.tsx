@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
 import { AVATARS, NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
-import { avatarImage } from "@/lib/types";
 import { setUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -79,21 +78,21 @@ function FormAvatars() {
       <div className="text-[1.8rem]">Choose an avatar</div>
       {avatarError && <FormError>{avatarError}</FormError>}
       <div className="flex gap-1 flex-wrap max-w-[41rem]">
-        {AVATARS.map((image, i) => {
+        {AVATARS.map(({ name, image }) => {
           // Setting some values for img
-          const imgSrc = (image as avatarImage).default;
-          const altText = `Avatar ${i + 1}`;
+          const imgSrc = image.default;
+          const altText = `Avatar ${name}`;
           const isActive = imgSrc === currentAvatar;
 
           // Returned image
           return (
             <div
-              onClick={() => setCurrentAvatar(imgSrc)}
+              onClick={() => setCurrentAvatar(name)}
               className={`cursor-pointer border-[2px] ${
                 isActive ? "border-red-700" : "border-transparent"
               }`}
             >
-              <img src={imgSrc} key={imgSrc} width={76} alt={altText} />
+              <img src={imgSrc} key={name} width={76} alt={altText} />
             </div>
           );
         })}

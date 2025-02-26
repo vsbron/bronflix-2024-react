@@ -11,10 +11,16 @@ import ChangePasswordForm from "@/components/Forms/ChangePasswordForm";
 import FormAvatars from "@/components/Forms/FormAvatars";
 import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
+import { AVATARS } from "@/lib/assets";
 
 function ProfileDetails() {
   // Getting the user data from the Redux
   const { name, title, email, createdAt, gender, birthday, avatar } = useUser();
+
+  // Getting the avatar from AVATARS array
+  const selectedAvatar =
+    AVATARS.find((storedAvatar) => storedAvatar.name === avatar)?.image
+      ?.default || avatar;
 
   // Returned JSX
   return (
@@ -31,10 +37,10 @@ function ProfileDetails() {
               </div>
               <picture>
                 <source
-                  srcSet={avatar.toString().replace(".png", ".webp")}
+                  srcSet={selectedAvatar!.toString().replace(".png", ".webp")}
                   type="image/webp"
                 />
-                <img src={avatar} className="rounded-lg w-[25rem]" />
+                <img src={selectedAvatar} className="rounded-lg w-[25rem]" />
               </picture>
             </div>
           </ModalProvider.Trigger>

@@ -5,6 +5,7 @@ import noShowPoster from "@/assets/noMoviePoster.png";
 import noShowCover from "@/assets/noShowCover.png";
 import noAvatarM from "@/assets/noAvatarM.png";
 import noAvatarF from "@/assets/noAvatarF.png";
+import { AvatarImage } from "./types";
 
 export const NO_MOVIE_POSTER = noMoviePoster;
 export const NO_MOVIE_COVER = noMovieCover;
@@ -18,6 +19,12 @@ export const NO_AVATAR_F = noAvatarF;
 const avatarImages = import.meta.glob("@/assets/avatars/*.png", {
   eager: true,
 });
-export const AVATARS = Object.keys(avatarImages).map(
-  (path) => avatarImages[path]
-);
+export const AVATARS: AvatarImage[] = Object.keys(avatarImages).map((path) => {
+  // Extract filename without extension
+  const name = path.split("/").pop()?.replace(".png", "") || "unknown";
+
+  return {
+    name,
+    image: avatarImages[path] as { default: string },
+  };
+});
