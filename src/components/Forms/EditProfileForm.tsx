@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
+import { doc, getDoc } from "@firebase/firestore";
 
 import useModal from "@/context/ModalContext";
 import { NO_AVATAR_F, NO_AVATAR_M } from "@/lib/assets";
 import { editProfileFormSchema } from "@/lib/formSchemas";
 import { EditProfileFormData } from "@/lib/types";
-import { setUserData, useUser } from "@/redux/reducers/userReducer";
+import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
 import {
@@ -43,7 +43,7 @@ function EditProfileForm() {
   });
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
   // Form success handler
   const onSubmit = async (data: EditProfileFormData) => {
@@ -61,12 +61,6 @@ function EditProfileForm() {
       // Getting the current user data
       const userRef = doc(db, "users", auth.currentUser.uid);
       const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) {
-        setFormError("Cannot find user to update");
-        setIsSubmitting(false);
-      }
       const currentUserData = userSnap.data();
 
       // Changing default avatar if gender is swapped
@@ -92,8 +86,7 @@ function EditProfileForm() {
       };
 
       // Updating the doc in firebase and updating the state with new user data
-      await updateDoc(doc(db, "users", auth.currentUser.uid), updatedUser);
-      dispatch(setUserData(updatedUser));
+      dispatch(updateUserData({ updatedData: updatedUser }));
 
       // Close modal
       closeModal();

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
 import { NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
 import { AVATARS } from "@/lib/assetsAvatars";
-import { setUserData, useUser } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
+import { BASE_GAP_CLASS } from "@/lib/constants";
+import { updateUserData, useUser } from "@/redux/reducers/userReducer";
+import { auth } from "@/utils/firebase";
 
 import { FormError } from "@/components/Forms/FormElements";
 import Button from "@/components/ui/Button";
@@ -20,57 +20,40 @@ function FormAvatars() {
   const [avatarError, setAvatarError] = useState<string | null>(null);
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
-  // Use effect that updates the Redux each time new avatar is chosen
-  useEffect(() => {
-    const updateAvatar = async () => {
-      // Enable submitting state
-      setIsSubmitting(true);
+  // Handler to update avatar in Redux and Firebase
+  const updateAvatarHandler = async () => {
+    // Enable submitting state
+    setIsSubmitting(true);
 
-      try {
-        // Guard clause
-        if (!auth.currentUser) {
-          setAvatarError("No authenticated user found.");
-          setIsSubmitting(false);
-          return;
-        }
-
-        // Getting the current user data
-        const userRef = doc(db, "users", auth.currentUser.uid);
-        const userSnap = await getDoc(userRef);
-
-        // Guard clause
-        if (!userSnap.exists()) {
-          setAvatarError("Cannot find user to update");
-          setIsSubmitting(false);
-        }
-        const currentUserData = userSnap.data();
-
-        // Setting updated fields
-        const updatedUser = {
-          ...currentUserData,
-          avatar: currentAvatar,
-        };
-
-        // Updating the doc in firebase and updating the state with new user data
-        await updateDoc(doc(db, "users", auth.currentUser.uid), updatedUser);
-        dispatch(setUserData(updatedUser));
-      } catch (e: unknown) {
-        console.error(e);
-        setAvatarError("Couldn't update the avatar due to unknown error");
-      } finally {
-        // Disabling submitting state
+    try {
+      // Guard clause
+      if (!auth.currentUser) {
+        setAvatarError("No authenticated user found.");
         setIsSubmitting(false);
+        return;
       }
-    };
 
-    updateAvatar();
-  }, [currentAvatar]);
+      // Update the show watchlist in the state and firebase
+      dispatch(updateUserData({ updatedData: { avatar: currentAvatar } }));
+    } catch (e: unknown) {
+      console.error(e);
+      setAvatarError("Couldn't update the avatar due to unknown error");
+    } finally {
+      // Disabling submitting state
+      setIsSubmitting(false);
+    }
+  };
 
   // Removing avatar handler (checks gender and assigns correct default avatar)
   const removeAvatarHandler = () => {
-    setCurrentAvatar(gender === "Female" ? NO_AVATAR_F : NO_AVATAR_M);
+    // Set the new avatar
+    const newAvatar = gender === "Female" ? NO_AVATAR_F : NO_AVATAR_M;
+
+    // Update the state, redux and firestore
+    setCurrentAvatar(newAvatar);
+    dispatch(updateUserData({ updatedData: { avatar: newAvatar } }));
   };
 
   // Returned JSX
@@ -83,7 +66,7 @@ function FormAvatars() {
           // Setting some values for img
           const imgSrc = png;
           const altText = `Avatar ${name}`;
-          const isActive = imgSrc === currentAvatar;
+          const isActive = imgSrc.includes(currentAvatar);
 
           // Returned image
           return (
@@ -98,9 +81,12 @@ function FormAvatars() {
           );
         })}
       </div>
-      <div className="mt-2 self-center">
+      <div className={`mt-2 self-center flex ${BASE_GAP_CLASS}`}>
         <Button onClick={removeAvatarHandler} disabled={isSubmitting}>
           <span>REMOVE AVATAR</span>
+        </Button>
+        <Button onClick={updateAvatarHandler} disabled={isSubmitting}>
+          <span>SAVE AVATAR</span>
         </Button>
       </div>
     </div>

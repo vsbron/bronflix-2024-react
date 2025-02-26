@@ -12,7 +12,7 @@ export interface IUserState {
   createdAt: string;
   title: string;
   gender: string;
-  birthday: string;
+  birthday: string | number;
   likedMovies: IBase[];
   likedShows: IBase[];
   likedPeople: IBase[];
