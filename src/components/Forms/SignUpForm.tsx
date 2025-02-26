@@ -7,6 +7,8 @@ import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, setDoc } from "@firebase/firestore";
 
+import { NO_AVATAR_M } from "@/lib/assets";
+import { DEFAULT_TITLES, GENDERS } from "@/lib/constants";
 import { signUpFormSchema } from "@/lib/formSchemas";
 import { SignUpFormData } from "@/lib/types";
 import { setUserData } from "@/redux/reducers/userReducer";
@@ -18,7 +20,6 @@ import {
   FormGroup,
   FormLabelError,
 } from "@/components/Forms/FormElements";
-import { DEFAULT_TITLES, GENDERS } from "@/lib/constants";
 
 function SignUpForm() {
   // Setting the state for the current form status and error
@@ -61,6 +62,7 @@ function SignUpForm() {
           DEFAULT_TITLES[Math.floor(Math.random() * DEFAULT_TITLES.length)],
         gender: GENDERS[0],
         birthday: "Unknown",
+        avatar: NO_AVATAR_M,
         likedMovies: [],
         likedShows: [],
         likedPeople: [],
