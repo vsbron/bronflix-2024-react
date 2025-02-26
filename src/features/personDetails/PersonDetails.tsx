@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { doc, getDoc, updateDoc } from "@firebase/firestore";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
-import { setUserData, useUser } from "@/redux/reducers/userReducer";
+import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
-import { auth, db } from "@/utils/firebase";
 import { formatDate, getMediaImages } from "@/utils/helpers";
 
-import Heading from "@/components/ui/Heading";
 import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
 
 function PersonDetails({ person }: PersonDetailsProps) {
   // Getting user data from Redux store
   const { uid, likedPeople } = useUser();
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<any>();
 
   // Destructuring data
   const {
@@ -54,17 +52,6 @@ function PersonDetails({ person }: PersonDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
-      // Getting the current user data
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) {
-        console.error("Cannot find user data");
-        return;
-      }
-      const currentUserData = userSnap.data();
-
       // Checking whether we need to add or remove person from the list
       const updatedList = isLiked
         ? likedPeople.filter((storedPerson) => storedPerson.id !== person.id)
@@ -77,15 +64,8 @@ function PersonDetails({ person }: PersonDetailsProps) {
             },
           ];
 
-      // Setting updated fields
-      const updatedUser = {
-        ...currentUserData,
-        likedPeople: updatedList,
-      };
-
-      // Updating the doc in firebase and updating the state with new user data
-      await updateDoc(doc(db, "users", auth!.currentUser!.uid), updatedUser);
-      dispatch(setUserData(updatedUser));
+      // Update the liked people list in the state and firebase
+      dispatch(updateUserData({ updatedData: { likedPeople: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
     }

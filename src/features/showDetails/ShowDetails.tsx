@@ -17,12 +17,12 @@ import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
-import Heading from "@/components/ui/Heading";
 import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import TrailerButton from "@/components/TrailerButton";
 import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Getting user data from Redux store
@@ -85,7 +85,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
             },
           ];
 
-      // Update the state and firebase
+      // Update the liked shows list in the state and firebase
       dispatch(updateUserData({ updatedData: { likedShows: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
@@ -106,7 +106,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
             },
           ];
 
-      // Update the state and firebase
+      // Update the show watchlist in the state and firebase
       dispatch(
         updateUserData({ updatedData: { watchlistShows: updatedList } })
       );
