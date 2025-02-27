@@ -12,10 +12,16 @@ function WatchList() {
   return (
     <section>
       <Heading as="h2">Watch list</Heading>
-      <ListTitle>Movies</ListTitle>
-      <MediaList items={watchlistMovies} type="movies" />
-      <ListTitle>Shows</ListTitle>
-      <MediaList items={watchlistShows} type="shows" />
+      <div className="grid grid-cols-2">
+        <div>
+          <ListTitle>Movies</ListTitle>
+          <MediaList items={watchlistMovies} type="movies" />
+        </div>
+        <div>
+          <ListTitle>Shows</ListTitle>
+          <MediaList items={watchlistShows} type="shows" />
+        </div>
+      </div>
     </section>
   );
 }

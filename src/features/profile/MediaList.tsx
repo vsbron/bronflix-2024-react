@@ -30,7 +30,7 @@ function MediaList({ items, type }: MediaListProps) {
   // Returned JSX
   return (
     <>
-      <div className={`flex ${BASE_GAP_CLASS}`}>
+      <div className={`flex ${BASE_GAP_CLASS} flex-wrap`}>
         {items.map((item) => (
           <Link
             to={`/${type}/${item.id}`}

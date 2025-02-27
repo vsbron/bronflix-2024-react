@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import {
@@ -108,6 +108,8 @@ function PreviewItem<T extends IBase>({
   width,
   subtitle,
 }: PreviewItemProps<T>) {
+  const location = useLocation();
+  const isPersonPath = location.pathname === "/profile";
   // Returned JSX
   return (
     <div
@@ -119,7 +121,7 @@ function PreviewItem<T extends IBase>({
         className="block"
         style={{ height: height }}
       >
-        <PreviewImage media={media} type={type} />
+        <PreviewImage media={media} type={type} hud={!isPersonPath} />
       </Link>
       {subtitle && (
         <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
@@ -158,6 +160,9 @@ function PreviewMerged<T extends IBase>({
   height,
   width,
 }: PreviewMergedProps<T>) {
+  const location = useLocation();
+  const isPersonPath = location.pathname === "/profile";
+
   // Returned JSX
   return (
     <div
@@ -169,7 +174,12 @@ function PreviewMerged<T extends IBase>({
         className="block"
         style={{ height }}
       >
-        <PreviewImage media={media} type={media.type!} posters={true} />
+        <PreviewImage
+          media={media}
+          type={media.type!}
+          posters={true}
+          hud={!isPersonPath}
+        />
       </Link>
     </div>
   );

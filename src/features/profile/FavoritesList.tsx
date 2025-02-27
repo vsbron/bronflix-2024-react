@@ -3,6 +3,7 @@ import { useUser } from "@/redux/reducers/userReducer";
 import Heading from "@/components/ui/Heading";
 import ListTitle from "@/features/profile/ListTitle";
 import MediaList from "@/features/profile/MediaList";
+import Previews from "@/components/previews/Previews";
 
 function FavoritesList() {
   // Getting the user's favorites from the Redux store
@@ -11,12 +12,36 @@ function FavoritesList() {
   return (
     <section>
       <Heading as="h2">Your Favorites</Heading>
-      <ListTitle>Movies</ListTitle>
-      <MediaList items={[...likedMovies].reverse()} type="movies" />
-      <ListTitle>Shows</ListTitle>
-      <MediaList items={[...likedShows].reverse()} type="shows" />
-      <ListTitle>People</ListTitle>
-      <MediaList items={[...likedPeople].reverse()} type="person" />
+      <div className="flex flex-col gap-6">
+        <div>
+          <ListTitle>Movies</ListTitle>
+          <Previews
+            rawPreviews={[...likedMovies].reverse()}
+            width="20rem"
+            height="30rem"
+            type="movies"
+          />
+        </div>
+        <div>
+          <ListTitle>Shows</ListTitle>
+          <Previews
+            rawPreviews={[...likedShows].reverse()}
+            width="18rem"
+            height="27rem"
+            type="tv"
+            merged={true}
+          />
+        </div>
+        <div>
+          <ListTitle>People</ListTitle>
+          <Previews
+            rawPreviews={[...likedPeople].reverse()}
+            width="15rem"
+            height="23rem"
+            type="person"
+          />
+        </div>
+      </div>
     </section>
   );
 }

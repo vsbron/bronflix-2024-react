@@ -27,7 +27,6 @@ function Profile() {
 
       {/* Content */}
       <ProfileDetails />
-      <Separator />
       <WatchList />
       <FavoritesList />
     </>
