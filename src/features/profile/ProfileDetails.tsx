@@ -56,7 +56,9 @@ function ProfileDetails() {
             <div className="flex gap-8 text-2xl">
               <IconWrapper icon={<UserIcon />}>{gender}</IconWrapper>
               <IconWrapper icon={<CakeIcon />}>
-                {birthday !== "Unknown" ? formatDate(birthday) : birthday}
+                {birthday !== "Unknown"
+                  ? formatDate(birthday as string)
+                  : birthday}
               </IconWrapper>
             </div>
             <div className="text-2xl text-stone-400 italic mt-4">

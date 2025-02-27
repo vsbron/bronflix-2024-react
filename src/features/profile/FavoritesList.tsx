@@ -7,17 +7,16 @@ import MediaList from "@/features/profile/MediaList";
 function FavoritesList() {
   // Getting the user's favorites from the Redux store
   const { likedMovies, likedPeople, likedShows } = useUser();
-
   // Returned JSX
   return (
     <section>
       <Heading as="h2">Your Favorites</Heading>
       <ListTitle>Movies</ListTitle>
-      <MediaList items={likedMovies} type="movies" />
+      <MediaList items={[...likedMovies].reverse()} type="movies" />
       <ListTitle>Shows</ListTitle>
-      <MediaList items={likedShows} type="shows" />
+      <MediaList items={[...likedShows].reverse()} type="shows" />
       <ListTitle>People</ListTitle>
-      <MediaList items={likedPeople} type="person" />
+      <MediaList items={[...likedPeople].reverse()} type="person" />
     </section>
   );
 }
