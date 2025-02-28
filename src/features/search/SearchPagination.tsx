@@ -12,17 +12,17 @@ function SearchPagination({
     <>
       {/* prettier-ignore */}
       <div className="flex items-center gap-6">
-        <Button disabled={page === 1} onClick={()=>handlePageChange(1)}>
+        <Button disabled={page === 1} onClick={()=>handlePageChange(1)} label="Go to the first page">
           <span><SearchSmallArrow dir="left">&laquo;</SearchSmallArrow> First</span>
         </Button>
-        <Button disabled={page === 1} onClick={()=>handlePageChange(page-1)}>
+        <Button disabled={page === 1} onClick={()=>handlePageChange(page-1)} label="Go to previous page">
           <span><SearchSmallArrow dir="left">&lsaquo;</SearchSmallArrow> Prev</span>
         </Button>
         <div className="mx-12">Page <b>{page}</b> out of <b>{totalPages}</b></div>
-        <Button disabled={page === totalPages} onClick={()=>handlePageChange(page+1)}>
+        <Button disabled={page === totalPages} onClick={()=>handlePageChange(page+1)} label="Go to next page">
           <span>Next <SearchSmallArrow dir="right">&rsaquo;</SearchSmallArrow></span>
         </Button>
-        <Button disabled={page === totalPages} onClick={()=>handlePageChange(totalPages)}>
+        <Button disabled={page === totalPages} onClick={()=>handlePageChange(totalPages)} label="Go to the last page">
           <span>Last <SearchSmallArrow dir="right">&raquo;</SearchSmallArrow></span>
         </Button>
       </div>

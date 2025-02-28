@@ -67,7 +67,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         </div>
         <p className="mt-0 mb-6">{shortenOverview}</p>
         <div className="flex gap-6">
-          <Button>
+          <Button label={`Learn more about ${title}`}>
             <Link to={`/movies/${id}`}>
               <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />
               LEARN MORE

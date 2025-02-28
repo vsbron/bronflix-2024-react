@@ -43,10 +43,10 @@ function User() {
         />
       </picture>
 
-      <Button>
+      <Button label="Go to profile page">
         <Link to="/profile">PROFILE</Link>
       </Button>
-      <Button onClick={handleSignOut}>
+      <Button onClick={handleSignOut} label="Sign out">
         <span>LOG OUT</span>
       </Button>
     </div>

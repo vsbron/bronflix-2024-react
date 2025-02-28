@@ -108,7 +108,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
           {formattedDeathday && <div>Deathday: {formattedDeathday}</div>}
           <div className="mb-6">Place of Birth: {place_of_birth}</div>
           {uid && (
-            <Button onClick={addToFavoritesHandler}>
+            <Button onClick={addToFavoritesHandler} label="Add to favorites">
               <span>
                 <HeartIcon className="w-8 inline-block pb-1 mr-2" />
                 {isLiked ? "Remove from" : "Add to"} Favorites

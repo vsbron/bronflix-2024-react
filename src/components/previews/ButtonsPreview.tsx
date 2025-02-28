@@ -59,6 +59,7 @@ function ButtonsPreviewArrow({ dir, clickHandler }: ButtonPreviewArrowProps) {
     <button
       className="cursor-pointer w-16 hover:text-red-500 transition-colors duration-300"
       onClick={() => clickHandler(dir)}
+      aria-label={`Scroll ${dir}`}
     >
       {dir === "left" ? <ChevronLeftIcon /> : <ChevronRightIcon />}
     </button>

@@ -116,6 +116,7 @@ export type ButtonProps = {
   isActive?: boolean;
   type?: "submit" | "reset";
   disabled?: boolean;
+  label?: string;
 };
 export type ContentWallProps = { children: ReactNode };
 export type FooterHeadingProps = { children: string };

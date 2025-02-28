@@ -8,6 +8,7 @@ function Button({
   isActive = false,
   type,
   disabled = false,
+  label,
 }: ButtonProps) {
   // Creating new props for the children component
   const newProps = {
@@ -23,6 +24,7 @@ function Button({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      aria-label={label}
     >
       {Children.map(children, (child) =>
         isValidElement(child) ? cloneElement(child, newProps) : child

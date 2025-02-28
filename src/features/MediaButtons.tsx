@@ -162,13 +162,13 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
       </ModalProvider>
       {uid && (
         <>
-          <Button onClick={addToFavoritesHandler}>
+          <Button onClick={addToFavoritesHandler} label="Add to favorites">
             <span>
               <HeartIcon className="w-8 inline-block pb-1 mr-2" />
               {isLiked ? "Remove from" : "Add to"} Favorites
             </span>
           </Button>
-          <Button onClick={addToWatchListHandler}>
+          <Button onClick={addToWatchListHandler} label="Add to watchlist">
             <span>
               <EyeIcon className="w-8 inline-block pb-1 mr-2" />
               {isInWatchList ? "Remove from" : "Add to"} Watch list

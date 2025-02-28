@@ -11,7 +11,7 @@ function TrailerButton({ video }: TrailerButtonProps) {
   return (
     <>
       <ModalProvider.Trigger name="trailer">
-        <Button>
+        <Button label="Watch the trailer">
           <span>
             <VideoCameraIcon className="w-8 inline-block pb-1 mr-2" />
             WATCH TRAILER
