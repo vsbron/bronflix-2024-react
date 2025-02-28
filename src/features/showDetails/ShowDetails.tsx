@@ -144,7 +144,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        "Couldn't update the Show Watch list due to unknown error"
+        "Couldn't update the Show Watchlist due to unknown error"
       );
     }
   };

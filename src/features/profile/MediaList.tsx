@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { BASE_GAP_CLASS } from "@/lib/constants";
 import { MediaListProps } from "@/lib/types";
 
 import PreviewImage from "@/components/previews/PreviewImage";
@@ -30,7 +29,7 @@ function MediaList({ items, type }: MediaListProps) {
   // Returned JSX
   return (
     <>
-      <div className={`flex ${BASE_GAP_CLASS} flex-wrap`}>
+      <div className="flex gap-4 flex-wrap">
         {items.map((item) => (
           <Link
             to={`/${type}/${item.id}`}
