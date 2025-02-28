@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { doc, getDoc } from "@firebase/firestore";
+import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
 
 import { ModalProvider } from "@/context/ModalContext";
 import useTrailer from "@/hooks/useTrailer";
@@ -9,9 +10,9 @@ import { auth, db } from "@/utils/firebase";
 
 import TrailerButton from "@/components/TrailerButton";
 import Button from "@/components/ui/Button";
-import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
+import { MediaButtonsProps } from "@/lib/types";
 
-function MediaButtons({ type, media }: any) {
+function MediaButtons({ type, media }: MediaButtonsProps) {
   // Getting user data from Redux store
   const { uid, likedMovies, watchlistMovies, likedShows, watchlistShows } =
     useUser();
@@ -19,9 +20,22 @@ function MediaButtons({ type, media }: any) {
   // Getting the trailer from the custom hook
   const trailer = useTrailer(media.id, type);
 
-  // Checking if movie already in any lists
-  const isLiked = likedMovies.some((m) => m.id === media.id);
-  const isInWatchList = watchlistMovies.some((m) => m.id === media.id);
+  // Setting the lists to work with
+  const isMovie = type === "movie";
+  let likedList, watchList;
+  switch (type) {
+    case "movie":
+      likedList = likedMovies;
+      watchList = watchlistMovies;
+      break;
+    default:
+      likedList = likedShows;
+      watchList = watchlistShows;
+  }
+
+  // Checking if media already in any lists
+  const isLiked = likedList.some((m) => m.id === media.id);
+  const isInWatchList = watchList.some((m) => m.id === media.id);
 
   // Getting the navigate and dispatch functions
   const dispatch = useDispatch<any>();
@@ -36,31 +50,50 @@ function MediaButtons({ type, media }: any) {
       // Guard clause
       if (!userSnap.exists()) return;
 
-      // Getting the current list of liked people
+      // Extracting the actual data
       const currentData = userSnap.data();
-      const currentLikedMovieList = Array.isArray(currentData.likedMovies)
+
+      // Setting the current watch lists to work with
+      const updatedFavoritesList = isMovie
         ? currentData.likedMovies
+        : currentData.likedShows;
+
+      const currentLikedList = Array.isArray(updatedFavoritesList)
+        ? updatedFavoritesList
         : [];
 
-      // Checking whether we need to add or movie show from the list
-      const updatedList = currentLikedMovieList.some((m) => m.id === media.id)
-        ? currentLikedMovieList.filter((m) => m.id !== media.id)
+      // Checking whether we need to add or remove movie from the list
+      const updatedList = currentLikedList.some((m) => m.id === media.id)
+        ? currentLikedList.filter((m) => m.id !== media.id)
         : [
-            ...currentLikedMovieList,
-            {
-              id: media.id,
-              title: media.title,
-              poster_path: media.poster_path,
-              vote_average: media.vote_average,
-            },
+            ...currentLikedList,
+            isMovie
+              ? {
+                  id: media.id,
+                  title: media.title,
+                  poster_path: media.poster_path,
+                  vote_average: media.vote_average,
+                }
+              : {
+                  id: media.id,
+                  name: media.name,
+                  poster_path: media.poster_path,
+                  vote_average: media.vote_average,
+                },
           ];
 
       // Update the liked movies list in the state and firebase
-      dispatch(updateUserData({ updatedData: { likedMovies: updatedList } }));
+      dispatch(
+        updateUserData({
+          updatedData: {
+            [isMovie ? "likedMovies" : "likedShows"]: updatedList,
+          },
+        })
+      );
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        "Couldn't update the Favorite Movie list due to unknown error"
+        `Couldn't update the Favorite ${type} list due to unknown error`
       );
     }
   };
@@ -73,33 +106,50 @@ function MediaButtons({ type, media }: any) {
       // Guard clause
       if (!userSnap.exists()) return;
 
-      // Getting the current list of liked people
+      // Extracting the actual data
       const currentData = userSnap.data();
-      const currentMovieWatchlist = Array.isArray(currentData.watchlistMovies)
+
+      // Setting the current watch lists to work with
+      const updatedWatchList = isMovie
         ? currentData.watchlistMovies
+        : currentData.watchlistShows;
+
+      const currentWatchList = Array.isArray(updatedWatchList)
+        ? updatedWatchList
         : [];
 
       // Checking whether we need to add or remove movie from the list
-      const updatedList = currentMovieWatchlist.some((m) => m.id === media.id)
-        ? currentMovieWatchlist.filter((m) => m.id !== media.id)
+      const updatedList = currentWatchList.some((m) => m.id === media.id)
+        ? currentWatchList.filter((m) => m.id !== media.id)
         : [
-            ...currentMovieWatchlist,
-            {
-              id: media.id,
-              title: media.title,
-              poster_path: media.poster_path,
-              vote_average: media.vote_average,
-            },
+            ...currentWatchList,
+            isMovie
+              ? {
+                  id: media.id,
+                  title: media.title,
+                  poster_path: media.poster_path,
+                  vote_average: media.vote_average,
+                }
+              : {
+                  id: media.id,
+                  name: media.name,
+                  poster_path: media.poster_path,
+                  vote_average: media.vote_average,
+                },
           ];
 
-      // Update the movies watchlist in the state and firebase
+      // Update the watchlist in the state and firebase
       dispatch(
-        updateUserData({ updatedData: { watchlistMovies: updatedList } })
+        updateUserData({
+          updatedData: {
+            [isMovie ? "watchlistMovies" : "watchlistShows"]: updatedList,
+          },
+        })
       );
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        "Couldn't update the Movie Watchlist due to unknown error"
+        `Couldn't update the ${type} Watchlist due to unknown error`
       );
     }
   };

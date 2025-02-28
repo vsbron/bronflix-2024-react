@@ -4,7 +4,7 @@ import useModal from "@/context/ModalContext";
 import { MEDIA_URL } from "@/lib/constants";
 import { IVideo } from "@/lib/typesAPI";
 
-function useTrailer(id: number, type: "tv" | "movie" | "season") {
+function useTrailer(id: number, type: "tv" | "movie") {
   // Setting the state for the fetched video
   const [video, setVideo] = useState<string>();
 
@@ -20,30 +20,14 @@ function useTrailer(id: number, type: "tv" | "movie" | "season") {
     const controller = new AbortController();
     const { signal } = controller;
 
-    let fetchURL;
-    switch (type) {
-      case "tv":
-      case "movie":
-        fetchURL = `${MEDIA_URL}${type}/${id}/videos?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
-        }`;
-        break;
-      case "season":
-        fetchURL = `${MEDIA_URL}tv/${id}/season/videos?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
-        }`;
-        break;
-    }
+    let fetchURL = `${MEDIA_URL}${type}/${id}/videos?api_key=${
+      import.meta.env.VITE_TMDB_API_KEY
+    }`;
 
     // Fetching data
     async function fetchVideo() {
       try {
-        const response = await fetch(
-          `${MEDIA_URL}${type}/${id}/videos?api_key=${
-            import.meta.env.VITE_TMDB_API_KEY
-          }`,
-          { signal }
-        );
+        const response = await fetch(fetchURL, { signal });
         const data = await response.json();
 
         // Find the YouTube trailer in the data

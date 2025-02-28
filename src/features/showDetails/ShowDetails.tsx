@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-import { doc, getDoc } from "@firebase/firestore";
 import {
   CalendarIcon,
   FilmIcon,
@@ -8,34 +6,19 @@ import {
   ClockIcon,
 } from "@heroicons/react/24/outline";
 
-import { ModalProvider } from "@/context/ModalContext";
-import useTrailer from "@/hooks/useTrailer";
-import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
-import { updateUserData, useUser } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
-import TrailerButton from "@/components/TrailerButton";
-import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import MediaButtons from "../MediaButtons";
 
 function ShowDetails({ show }: ShowDetailsProps) {
-  // Getting user data from Redux store
-  const { uid, likedShows, watchlistShows } = useUser();
-
-  // Getting the trailer from the custom hook
-  const trailer = useTrailer(show.id, "tv");
-
-  // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
-
   // Destructuring data
   const {
     name,
@@ -66,88 +49,6 @@ function ShowDetails({ show }: ShowDetailsProps) {
     .join(", ");
   const isEnded = status === "Ended" || status === "Cancelled";
   const formattedOverview = FormatTextBlock(overview);
-
-  // Checking if show already in any lists
-  const isLiked = likedShows.some((s) => s.id === show.id);
-  const isInWatchList = watchlistShows.some((s) => s.id === show.id);
-
-  // User lists buttons handlers
-  const addToFavoritesHandler = async () => {
-    try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Getting the current list of liked people
-      const currentData = userSnap.data();
-      const currentLikedShowList = Array.isArray(currentData.likedShows)
-        ? currentData.likedShows
-        : [];
-
-      // Checking whether we need to add or remove show from the list
-      const updatedList = currentLikedShowList.some((s) => s.id === show.id)
-        ? currentLikedShowList.filter((s) => s.id !== show.id)
-        : [
-            ...currentLikedShowList,
-            {
-              id: show.id,
-              name: show.name,
-              poster_path: show.poster_path,
-              vote_average: show.vote_average,
-            },
-          ];
-
-      // Update the favorite show list in the state and firebase
-      dispatch(updateUserData({ updatedData: { likedShows: updatedList } }));
-    } catch (e: unknown) {
-      console.error(e);
-      throw new Error(
-        "Couldn't update the Favorite Show list due to unknown error"
-      );
-    }
-  };
-  const addToWatchListHandler = async () => {
-    try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Getting the current list of liked people
-      const currentData = userSnap.data();
-      const currentShowWatchlist = Array.isArray(currentData.watchlistShows)
-        ? currentData.watchlistShows
-        : [];
-
-      // Checking whether we need to add or remove show from the list
-      const updatedList = currentShowWatchlist.some((s) => s.id === show.id)
-        ? currentShowWatchlist.filter((s) => s.id !== show.id)
-        : [
-            ...currentShowWatchlist,
-            {
-              id: show.id,
-              name: show.name,
-              poster_path: show.poster_path,
-              vote_average: show.vote_average,
-            },
-          ];
-
-      // Update the show watchlist in the state and firebase
-      dispatch(
-        updateUserData({ updatedData: { watchlistShows: updatedList } })
-      );
-    } catch (e: unknown) {
-      console.error(e);
-      throw new Error(
-        "Couldn't update the Show Watchlist due to unknown error"
-      );
-    }
-  };
 
   // Returned JSX
   return (
@@ -193,25 +94,8 @@ function ShowDetails({ show }: ShowDetailsProps) {
               )}
             </div>
           </div>
-
           <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
-          <div className={`flex ${BASE_GAP_CLASS}`}>
-            <ModalProvider>
-              <TrailerButton video={trailer!} />
-            </ModalProvider>
-            {uid && (
-              <>
-                <Button onClick={addToFavoritesHandler}>
-                  <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
-                </Button>
-                <Button onClick={addToWatchListHandler}>
-                  <span>
-                    {isInWatchList ? "Remove from" : "Add to"} Watch list
-                  </span>
-                </Button>
-              </>
-            )}
-          </div>
+          <MediaButtons type={"tv"} media={show} />
         </div>
       </MediaHero>
     </section>
