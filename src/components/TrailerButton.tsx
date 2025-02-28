@@ -1,3 +1,5 @@
+import { VideoCameraIcon } from "@heroicons/react/24/solid";
+
 import { ModalProvider } from "@/context/ModalContext";
 import { TrailerButtonProps } from "@/lib/types";
 
@@ -10,7 +12,10 @@ function TrailerButton({ video }: TrailerButtonProps) {
     <>
       <ModalProvider.Trigger name="trailer">
         <Button>
-          <span>WATCH TRAILER</span>
+          <span>
+            <VideoCameraIcon className="w-8 inline-block pb-1 mr-2" />
+            WATCH TRAILER
+          </span>
         </Button>
       </ModalProvider.Trigger>
       <ModalProvider.Content name="trailer" alternative={true}>

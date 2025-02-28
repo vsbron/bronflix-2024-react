@@ -1,5 +1,3 @@
-import { useDispatch } from "react-redux";
-import { doc, getDoc } from "@firebase/firestore";
 import {
   BanknotesIcon,
   CalendarIcon,
@@ -9,35 +7,21 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/outline";
 
-import { ModalProvider } from "@/context/ModalContext";
-import useTrailer from "@/hooks/useTrailer";
-import { BASE_GAP_CLASS } from "@/lib/constants";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
-import { updateUserData, useUser } from "@/redux/reducers/userReducer";
-import { auth, db } from "@/utils/firebase";
+
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
-import TrailerButton from "@/components/TrailerButton";
-import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
+import MediaButtons from "../MediaButtons";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
-  // Getting user data from Redux store
-  const { uid, likedMovies, watchlistMovies } = useUser();
-
-  // Getting the trailer from the custom hook
-  const trailer = useTrailer(movie.id, "movie");
-
-  // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
-
   // Destructuring data
   const {
     title,
@@ -63,88 +47,6 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const originCountry = country.map((c: string) => COUNTRIES[c]).join(", ");
   const studio = companies.at(0);
   const formattedOverview = FormatTextBlock(overview);
-
-  // Checking if movie already in any lists
-  const isLiked = likedMovies.some((m) => m.id === movie.id);
-  const isInWatchList = watchlistMovies.some((m) => m.id === movie.id);
-
-  // User lists buttons handlers
-  const addToFavoritesHandler = async () => {
-    try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Getting the current list of liked people
-      const currentData = userSnap.data();
-      const currentLikedMovieList = Array.isArray(currentData.likedMovies)
-        ? currentData.likedMovies
-        : [];
-
-      // Checking whether we need to add or movie show from the list
-      const updatedList = currentLikedMovieList.some((m) => m.id === movie.id)
-        ? currentLikedMovieList.filter((m) => m.id !== movie.id)
-        : [
-            ...currentLikedMovieList,
-            {
-              id: movie.id,
-              title: movie.title,
-              poster_path: movie.poster_path,
-              vote_average: movie.vote_average,
-            },
-          ];
-
-      // Update the liked movies list in the state and firebase
-      dispatch(updateUserData({ updatedData: { likedMovies: updatedList } }));
-    } catch (e: unknown) {
-      console.error(e);
-      throw new Error(
-        "Couldn't update the Favorite Movie list due to unknown error"
-      );
-    }
-  };
-  const addToWatchListHandler = async () => {
-    try {
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Getting the current list of liked people
-      const currentData = userSnap.data();
-      const currentMovieWatchlist = Array.isArray(currentData.watchlistMovies)
-        ? currentData.watchlistMovies
-        : [];
-
-      // Checking whether we need to add or remove movie from the list
-      const updatedList = currentMovieWatchlist.some((m) => m.id === movie.id)
-        ? currentMovieWatchlist.filter((m) => m.id !== movie.id)
-        : [
-            ...currentMovieWatchlist,
-            {
-              id: movie.id,
-              title: movie.title,
-              poster_path: movie.poster_path,
-              vote_average: movie.vote_average,
-            },
-          ];
-
-      // Update the movies watchlist in the state and firebase
-      dispatch(
-        updateUserData({ updatedData: { watchlistMovies: updatedList } })
-      );
-    } catch (e: unknown) {
-      console.error(e);
-      throw new Error(
-        "Couldn't update the Movie Watchlist due to unknown error"
-      );
-    }
-  };
 
   // Returned JSX
   return (
@@ -191,23 +93,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
             </div>
           </div>
           <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
-          <div className={`flex ${BASE_GAP_CLASS}`}>
-            <ModalProvider>
-              <TrailerButton video={trailer!} />
-            </ModalProvider>
-            {uid && (
-              <>
-                <Button onClick={addToFavoritesHandler}>
-                  <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
-                </Button>
-                <Button onClick={addToWatchListHandler}>
-                  <span>
-                    {isInWatchList ? "Remove from" : "Add to"} Watch list
-                  </span>
-                </Button>
-              </>
-            )}
-          </div>
+          <MediaButtons type={"movie"} media={movie} />
         </div>
       </MediaHero>
     </section>
