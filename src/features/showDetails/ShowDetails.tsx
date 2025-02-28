@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { doc, getDoc } from "@firebase/firestore";
 import {
   CalendarIcon,
   FilmIcon,
@@ -14,6 +15,7 @@ import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
+import { auth, db } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
@@ -72,11 +74,24 @@ function ShowDetails({ show }: ShowDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
+      // Fetch the latest user data from Firestore
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) return;
+
+      // Getting the current list of liked people
+      const currentData = userSnap.data();
+      const currentLikedShowList = Array.isArray(currentData.likedShows)
+        ? currentData.likedShows
+        : [];
+
       // Checking whether we need to add or remove show from the list
-      const updatedList = isLiked
-        ? likedShows.filter((storedShow) => storedShow.id !== show.id)
+      const updatedList = currentLikedShowList.some((s) => s.id === show.id)
+        ? currentLikedShowList.filter((s) => s.id !== show.id)
         : [
-            ...likedShows,
+            ...currentLikedShowList,
             {
               id: show.id,
               name: show.name,
@@ -85,19 +100,35 @@ function ShowDetails({ show }: ShowDetailsProps) {
             },
           ];
 
-      // Update the liked shows list in the state and firebase
+      // Update the favorite show list in the state and firebase
       dispatch(updateUserData({ updatedData: { likedShows: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
+      throw new Error(
+        "Couldn't update the Favorite Show list due to unknown error"
+      );
     }
   };
   const addToWatchListHandler = async () => {
     try {
-      // Checking whether we need to add or remove movie from the list
-      const updatedList = isInWatchList
-        ? watchlistShows.filter((storedShow) => storedShow.id !== show.id)
+      // Fetch the latest user data from Firestore
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) return;
+
+      // Getting the current list of liked people
+      const currentData = userSnap.data();
+      const currentShowWatchlist = Array.isArray(currentData.watchlistShows)
+        ? currentData.watchlistShows
+        : [];
+
+      // Checking whether we need to add or remove show from the list
+      const updatedList = currentShowWatchlist.some((s) => s.id === show.id)
+        ? currentShowWatchlist.filter((s) => s.id !== show.id)
         : [
-            ...watchlistShows,
+            ...currentShowWatchlist,
             {
               id: show.id,
               name: show.name,
@@ -112,6 +143,9 @@ function ShowDetails({ show }: ShowDetailsProps) {
       );
     } catch (e: unknown) {
       console.error(e);
+      throw new Error(
+        "Couldn't update the Show Watch list due to unknown error"
+      );
     }
   };
 

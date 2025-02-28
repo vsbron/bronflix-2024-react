@@ -67,7 +67,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
         ? currentData.likedPeople
         : [];
 
-      // Checking whether we need to add or remove the person
+      // Checking whether we need to add or remove the person from the list
       const updatedList = currentLikedPeople.some((p) => p.id === person.id)
         ? currentLikedPeople.filter((p) => p.id !== person.id)
         : [
@@ -84,7 +84,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
     } catch (e: unknown) {
       console.error(e);
       throw new Error(
-        "Couldn't update the Favorite Person list du to unknown error"
+        "Couldn't update the Person Favorites list due to unknown error"
       );
     }
   };
