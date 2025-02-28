@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { doc, getDoc } from "@firebase/firestore";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
+import { auth, db } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, getMediaImages } from "@/utils/helpers";
 
@@ -52,11 +54,24 @@ function PersonDetails({ person }: PersonDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
-      // Checking whether we need to add or remove person from the list
-      const updatedList = isLiked
-        ? likedPeople.filter((storedPerson) => storedPerson.id !== person.id)
+      // Fetch the latest user data from Firestore
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) return;
+
+      // Getting the current list of liked people
+      const currentData = userSnap.data();
+      const currentLikedPeople = Array.isArray(currentData.likedPeople)
+        ? currentData.likedPeople
+        : [];
+
+      // Checking whether we need to add or remove the person
+      const updatedList = currentLikedPeople.some((p) => p.id === person.id)
+        ? currentLikedPeople.filter((p) => p.id !== person.id)
         : [
-            ...likedPeople,
+            ...currentLikedPeople,
             {
               id: person.id,
               name: person.name,
@@ -68,6 +83,9 @@ function PersonDetails({ person }: PersonDetailsProps) {
       dispatch(updateUserData({ updatedData: { likedPeople: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
+      throw new Error(
+        "Couldn't update the Favorite Person list du to unknown error"
+      );
     }
   };
 
