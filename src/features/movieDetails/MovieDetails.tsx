@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { doc, getDoc } from "@firebase/firestore";
 import {
   BanknotesIcon,
   CalendarIcon,
@@ -15,6 +16,7 @@ import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
+import { auth, db } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
@@ -69,11 +71,24 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
     try {
-      // Checking whether we need to add or remove movie from the list
-      const updatedList = isLiked
-        ? likedMovies.filter((storedMovie) => storedMovie.id !== movie.id)
+      // Fetch the latest user data from Firestore
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) return;
+
+      // Getting the current list of liked people
+      const currentData = userSnap.data();
+      const currentLikedMovieList = Array.isArray(currentData.likedMovies)
+        ? currentData.likedMovies
+        : [];
+
+      // Checking whether we need to add or movie show from the list
+      const updatedList = currentLikedMovieList.some((m) => m.id === movie.id)
+        ? currentLikedMovieList.filter((m) => m.id !== movie.id)
         : [
-            ...likedMovies,
+            ...currentLikedMovieList,
             {
               id: movie.id,
               title: movie.title,
@@ -86,15 +101,31 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       dispatch(updateUserData({ updatedData: { likedMovies: updatedList } }));
     } catch (e: unknown) {
       console.error(e);
+      throw new Error(
+        "Couldn't update the Favorite Movie list due to unknown error"
+      );
     }
   };
   const addToWatchListHandler = async () => {
     try {
+      // Fetch the latest user data from Firestore
+      const userRef = doc(db, "users", auth!.currentUser!.uid);
+      const userSnap = await getDoc(userRef);
+
+      // Guard clause
+      if (!userSnap.exists()) return;
+
+      // Getting the current list of liked people
+      const currentData = userSnap.data();
+      const currentMovieWatchlist = Array.isArray(currentData.watchlistMovies)
+        ? currentData.watchlistMovies
+        : [];
+
       // Checking whether we need to add or remove movie from the list
-      const updatedList = isInWatchList
-        ? watchlistMovies.filter((storedMovie) => storedMovie.id !== movie.id)
+      const updatedList = currentMovieWatchlist.some((m) => m.id === movie.id)
+        ? currentMovieWatchlist.filter((m) => m.id !== movie.id)
         : [
-            ...watchlistMovies,
+            ...currentMovieWatchlist,
             {
               id: movie.id,
               title: movie.title,
@@ -109,6 +140,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
       );
     } catch (e: unknown) {
       console.error(e);
+      throw new Error(
+        "Couldn't update the Movie Watchlist due to unknown error"
+      );
     }
   };
 
