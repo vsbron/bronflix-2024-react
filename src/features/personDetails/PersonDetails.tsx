@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { doc, getDoc } from "@firebase/firestore";
+import { HeartIcon } from "@heroicons/react/24/solid";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
@@ -108,7 +109,10 @@ function PersonDetails({ person }: PersonDetailsProps) {
           <div className="mb-6">Place of Birth: {place_of_birth}</div>
           {uid && (
             <Button onClick={addToFavoritesHandler}>
-              <span>{isLiked ? "Remove from" : "Add to"} Favorites</span>
+              <span>
+                <HeartIcon className="w-8 inline-block pb-1 mr-2" />
+                {isLiked ? "Remove from" : "Add to"} Favorites
+              </span>
             </Button>
           )}
         </div>

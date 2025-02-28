@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/solid";
+import {
+  BookOpenIcon,
+  CalendarIcon,
+  LanguageIcon,
+} from "@heroicons/react/24/solid";
 
 import { useGenres } from "@/context/GenresContext";
 import useTrailer from "@/hooks/useTrailer";
@@ -38,7 +42,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Handling the movie data
   // prettier-ignore
-  const genreNames = genre_ids?.map((id: number) => {
+  const genreNames = genre_ids?.map((id: number | string) => {
     const genre = genres.find((genre: IGenre) => genre.id === id);
     return genre ? genre.name : null}).filter(Boolean).join(", ") || "";
   const shortenOverview = shortenText(overview, 150);
@@ -64,7 +68,10 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         <p className="mt-0 mb-6">{shortenOverview}</p>
         <div className="flex gap-6">
           <Button>
-            <Link to={`/movies/${id}`}>LEARN MORE</Link>
+            <Link to={`/movies/${id}`}>
+              <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />
+              LEARN MORE
+            </Link>
           </Button>
           <TrailerButton video={trailer!} />
         </div>
