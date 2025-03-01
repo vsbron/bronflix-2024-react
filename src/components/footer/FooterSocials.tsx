@@ -1,11 +1,11 @@
-import FooterHeading from "./FooterHeading";
+import FooterHeading from "@/components/footer/FooterHeading";
 
 function FooterSocials() {
   // Returned JSX
   return (
     <div>
       <FooterHeading>Social Accounts</FooterHeading>
-      <ul className="m-0 flex flex-col gap-0.5">
+      <ul className="m-0 flex flex-col gap-1">
         <li>
           <a href="" target="_blank">
             Facebook

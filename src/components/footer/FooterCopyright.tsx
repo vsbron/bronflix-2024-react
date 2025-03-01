@@ -1,4 +1,4 @@
-import FooterHeading from "./FooterHeading";
+import FooterHeading from "@/components/footer/FooterHeading";
 
 function FooterCopyright() {
   // Returned JSX
@@ -10,7 +10,8 @@ function FooterCopyright() {
       This project is available on{" "}
       <a href="https://github.com/vsbron/bronflix-2024-react" target="_blank">
         GitHub
-      </a>.
+      </a>
+      .
       <br />© {new Date().getFullYear()}. All rights reserved.
     </>
   );

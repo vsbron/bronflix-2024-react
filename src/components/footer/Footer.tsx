@@ -1,10 +1,10 @@
-import FooterCopyright from "./FooterCopyright";
-import FooterLegal from "./FooterLegal";
-import FooterLogo from "./FooterLogo";
-import FooterNav from "./FooterNav";
-import FooterPartners from "./FooterPartners";
-import FooterPowered from "./FooterPowered";
-import FooterSocials from "./FooterSocials";
+import FooterCopyright from "@/components/footer/FooterCopyright";
+import FooterLegal from "@/components/footer/FooterLegal";
+import FooterLogo from "@/components/footer/FooterLogo";
+import FooterNav from "@/components/footer/FooterNav";
+import FooterPartners from "@/components/footer/FooterPartners";
+import FooterPowered from "@/components/footer/FooterPowered";
+import FooterSocials from "@/components/footer/FooterSocials";
 
 function Footer() {
   // Returned JSX

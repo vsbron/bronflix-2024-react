@@ -1,4 +1,4 @@
-import FooterHeading from "./FooterHeading";
+import FooterHeading from "@/components/footer/FooterHeading";
 
 function FooterPowered() {
   // Returned JSX
