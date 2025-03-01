@@ -104,7 +104,12 @@ function Search() {
       onMouseLeave={() => inputText === "" && setIsHovered(false)}
       onSubmit={(e) => handleSearch(e)}
     >
-      <button type="submit" className="block w-12" disabled={isSubmitting}>
+      <button
+        type="submit"
+        className="block w-12"
+        disabled={isSubmitting}
+        area-label="Search"
+      >
         <MagnifyingGlassIcon />
       </button>
       <input
@@ -127,6 +132,7 @@ function Search() {
         }`}
         onClick={clearSearch}
         disabled={isSubmitting}
+        aria-label="Clear search"
       >
         <XMarkIcon />
       </button>

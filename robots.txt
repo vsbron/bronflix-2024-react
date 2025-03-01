@@ -1,7 +1,5 @@
-# Allow all bots to access everything
 User-agent: *
-Disallow: /admin/  # Example: If you have an admin panel, block it
-Allow: /          # Allow everything else
+Disallow: /profile/
+Allow: /
 
-# Sitemap location (if you have one)
 Sitemap: https://vsbronflix.netlify.app/sitemap.xml

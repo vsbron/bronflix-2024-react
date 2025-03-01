@@ -11,7 +11,7 @@ function Authentication() {
     <ModalProvider>
       <div className={`flex ${BASE_GAP_CLASS}`}>
         <ModalProvider.Trigger name="sign-in">
-          <Button>
+          <Button label="Sign into account">
             <span>SIGN IN</span>
           </Button>
         </ModalProvider.Trigger>
@@ -19,7 +19,7 @@ function Authentication() {
           <SignInForm />
         </ModalProvider.Content>
         <ModalProvider.Trigger name="sign-up">
-          <Button>
+          <Button label="Sign up for BroNflix">
             <span>SIGN UP</span>
           </Button>
         </ModalProvider.Trigger>

@@ -74,6 +74,7 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
         <button
           onClick={closeModal}
           className="text-white rounded-full text-[2.5rem] leading-1"
+          aria-label="Modal window"
         >
           ✕
         </button>

@@ -5,7 +5,7 @@ function FooterSocials() {
   return (
     <div>
       <FooterHeading>Social Accounts</FooterHeading>
-      <ul className="m-0">
+      <ul className="m-0 flex flex-col gap-1.5">
         <li>
           <a href="" target="_blank">
             Facebook
