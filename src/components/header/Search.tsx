@@ -108,7 +108,7 @@ function Search() {
         type="submit"
         className="block w-12"
         disabled={isSubmitting}
-        area-label="Search"
+        aria-label="Search"
       >
         <MagnifyingGlassIcon />
       </button>
