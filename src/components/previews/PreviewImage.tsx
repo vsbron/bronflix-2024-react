@@ -41,7 +41,7 @@ function PreviewImage({
           style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
         >
           <BlackGradientToTop height="90%" />
-          <h4 className="relative z-10">{media.name || media.title}</h4>
+          <h3 className="relative z-10">{media.name || media.title}</h3>
         </div>
       )}
       {media.vote_average !== undefined && (

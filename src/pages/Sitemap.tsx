@@ -41,7 +41,7 @@ function Sitemap() {
           </p>
           <div className="flex gap-48">
             <div>
-              <h3>Main pages</h3>
+              <h4>Main pages</h4>
               <ul>
                 <li>
                   <Link to="/">Home</Link>
@@ -61,7 +61,7 @@ function Sitemap() {
               </ul>
             </div>
             <div>
-              <h3>Additional pages</h3>
+              <h4>Additional pages</h4>
               <ul>
                 <li>
                   <Link to="/app-info">App Info</Link>
@@ -81,7 +81,7 @@ function Sitemap() {
               </ul>
             </div>
           </div>
-          <h3>Social accounts</h3>
+          <h4>Social accounts</h4>
           <ul>
             <li>
               <a href="" target="_blank">

@@ -44,9 +44,9 @@ function SearchResultsList({ query }: SearchResultsListProps) {
       <Heading>Search results</Heading>
       {query.length > 2 && data.total_results > 0 ? (
         <>
-          <h3>
+          <h4>
             Showing results for: <em>"{query}"</em>
-          </h3>
+          </h4>
           <p className="text-2xl mt-2">
             Page {page} • Total results: {data.total_results}
           </p>

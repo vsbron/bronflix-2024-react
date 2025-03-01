@@ -4,9 +4,9 @@ function SearchNoResults({ query }: { query: string }) {
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8">
+      <h4 className="mb-8">
         Sorry, no results were found for <em>"{query}"</em>
-      </h3>
+      </h4>
       <ProceedOptions />
     </>
   );
