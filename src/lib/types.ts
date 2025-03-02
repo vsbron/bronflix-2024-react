@@ -1,4 +1,13 @@
 import { ReactNode, RefObject } from "react";
+import { z } from "zod";
+
+import {
+  changePasswordFormSchema,
+  contactFormSchema,
+  editProfileFormSchema,
+  signInFormSchema,
+  signUpFormSchema,
+} from "@/lib/formSchemas";
 import {
   IBase,
   ICollection,
@@ -12,15 +21,7 @@ import {
   ISearchedMedia,
   ISearchedMediaSmall,
   ISearchResultsObjSmall,
-} from "./typesAPI";
-import { z } from "zod";
-import {
-  changePasswordFormSchema,
-  contactFormSchema,
-  editProfileFormSchema,
-  signInFormSchema,
-  signUpFormSchema,
-} from "./formSchemas";
+} from "@/lib/typesAPI";
 
 export type LayoutProps = { children?: ReactNode };
 
@@ -192,6 +193,10 @@ export type MediaListProps = {
   type: "movies" | "shows" | "person";
 };
 export type ListTitleProps = { children: string };
+export interface IGradedList {
+  id: number;
+  grade: number;
+}
 
 // Forms
 export type FormWrapProps = {

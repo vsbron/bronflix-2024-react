@@ -1,4 +1,4 @@
-import { SITE_NAME } from "./constants";
+import { SITE_NAME } from "@/lib/constants";
 
 // Final part of each meta title sitewise
 export const META_TITLE_END = ` - ${SITE_NAME}`;

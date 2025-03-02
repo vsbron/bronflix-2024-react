@@ -64,6 +64,7 @@ const initialState: IUserState = {
   likedPeople: [],
   watchlistMovies: [],
   watchlistShows: [],
+  gradedMovies: [],
   avatar: NO_AVATAR_M,
   isLoading: false,
   error: null,
@@ -103,6 +104,7 @@ const userSlice = createSlice({
           state.likedPeople = action.payload.likedPeople;
           state.watchlistMovies = action.payload.watchlistMovies;
           state.watchlistShows = action.payload.watchlistShows;
+          state.gradedMovies = action.payload.gradedMovies;
           state.avatar = action.payload.avatar;
         } else {
           state.uid = "";

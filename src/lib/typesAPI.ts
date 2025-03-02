@@ -1,4 +1,4 @@
-import { Media } from "./types";
+import { Media } from "@/lib/types";
 
 export type APIFetchType = "popular" | "top_rated";
 

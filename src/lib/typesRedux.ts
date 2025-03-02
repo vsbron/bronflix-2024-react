@@ -1,3 +1,4 @@
+import { IGradedList } from "@/lib/types";
 import { IBase } from "@/lib/typesAPI";
 import store from "@/redux/store";
 
@@ -18,20 +19,8 @@ export interface IUserState {
   likedPeople: IBase[];
   watchlistMovies: IBase[];
   watchlistShows: IBase[];
+  gradedMovies: IGradedList[];
   avatar: string;
   isLoading: boolean;
   error: string | null;
-}
-
-// Reducers
-type ListKey =
-  | "likedMovies"
-  | "likedShows"
-  | "likedPeople"
-  | "watchlistMovies"
-  | "watchlistShows";
-
-export interface ToggleItemPayload {
-  listKey: ListKey;
-  id: number;
 }
