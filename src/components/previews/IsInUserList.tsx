@@ -50,7 +50,7 @@ function IsInUserList({ type, id }: IsInUserListProps) {
         )}
       </div>
       {isGraded && (
-        <div className="bg-purple-800 rounded-xl p-1 pr-2 absolute left-3 top-12 flex items-center gap-0.5 text-xl text-purple-200">
+        <div className="bg-purple-800 rounded-xl px-1 pr-2 py-0 absolute left-3 top-12 flex items-center gap-0.5 text-xl text-purple-200">
           <StarIcon className="w-5" />
           {isGraded.grade}
         </div>

@@ -4,14 +4,19 @@ import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/outline";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { LANGUAGES } from "@/lib/constantsGeo";
 import { SearchPreviewProps } from "@/lib/types";
+import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate, getSearchMediaData, shortenText } from "@/utils/helpers";
 
 import ScorePreview from "@/components/ScorePreview";
 import IconWrapper from "@/components/IconWrapper";
+import IsInUserList from "@/components/previews/IsInUserList";
 
 function SearchPreview({ media }: SearchPreviewProps) {
   // Getting all the necessary data for the preview
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
+
+  // Getting user id from redux store
+  const { uid } = useUser();
 
   // Destructuring additional media data
   const {
@@ -47,6 +52,7 @@ function SearchPreview({ media }: SearchPreviewProps) {
           title={mediaTitle}
         />
         {isMedia && <ScorePreview score={vote_average} />}
+        {uid && <IsInUserList type={mediaType} id={media.id} />}
       </div>
       <div className="flex flex-col gap-3">
         <div className="font-heading text-5xl">{title || name}</div>
