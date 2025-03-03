@@ -195,7 +195,7 @@ export type MediaListProps = {
 export type ListTitleProps = { children: string };
 export interface IGradedList {
   id: number;
-  grade: number;
+  rate: number;
 }
 
 // Forms

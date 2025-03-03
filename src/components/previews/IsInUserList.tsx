@@ -11,16 +11,16 @@ function IsInUserList({ type, id }: IsInUserListProps) {
     likedMovies,
     likedPeople,
     likedShows,
-    gradedMovies,
+    ratedMovies,
   } = useUser();
 
   // Checking whether media is liked or is in watch list
-  let isLiked, isInWatchList, isGraded;
+  let isLiked, isInWatchList, isRated;
   switch (type) {
     case "movies":
       isLiked = likedMovies.some((movie) => movie.id === id);
       isInWatchList = watchlistMovies.some((movie) => movie.id === id);
-      isGraded = gradedMovies.find((movie) => movie.id === id);
+      isRated = ratedMovies.find((movie) => movie.id === id);
       break;
     case "tv":
       isLiked = likedShows.some((show) => show.id === id);
@@ -49,10 +49,10 @@ function IsInUserList({ type, id }: IsInUserListProps) {
           </div>
         )}
       </div>
-      {isGraded && (
+      {isRated && (
         <div className="bg-purple-800 rounded-xl px-1 pr-2 py-0 absolute left-3 top-12 flex items-center gap-0.5 text-xl text-purple-200">
           <StarIcon className="w-5" />
-          {isGraded.grade}
+          {isRated.rate}
         </div>
       )}
     </>
