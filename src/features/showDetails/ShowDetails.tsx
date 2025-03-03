@@ -17,8 +17,8 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import Heading from "@/components/ui/Heading";
-import MediaButtons from "../MediaButtons";
-import MediaInList from "../MediaInList";
+import MediaButtons from "@/features/MediaButtons";
+import MediaInList from "@/features/MediaInList";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Destructuring data

@@ -7,9 +7,11 @@ import PreviewImage from "@/components/previews/PreviewImage";
 function MediaList({ items, type }: MediaListProps) {
   let title;
   switch (type) {
+    case "movie":
     case "movies":
       title = "Movies";
       break;
+    case "tv":
     case "shows":
       title = "Shows";
       break;

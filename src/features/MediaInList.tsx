@@ -1,35 +1,11 @@
-import { IGradedList, IsInUserListProps } from "@/lib/types";
-import { useUser } from "@/redux/reducers/userReducer";
 import { EyeIcon, HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 
-function MediaInList({ type, id }: IsInUserListProps) {
-  // Getting user data from Redux store
-  const {
-    watchlistMovies,
-    watchlistShows,
-    likedMovies,
-    likedShows,
-    likedPeople,
-    ratedMovies,
-  } = useUser();
+import { IGradedList, MediaTypeAndId } from "@/lib/types";
+import { getUserListsInfo } from "@/utils/helpers";
 
-  // Checking whether media is liked or is in watch list
-  let isLiked, isInWatchList, isRated;
-  switch (type) {
-    case "movie":
-      isLiked = likedMovies.some((movie) => movie.id === id);
-      isInWatchList = watchlistMovies.some((movie) => movie.id === id);
-      isRated = ratedMovies.find((movie) => movie.id === id);
-      break;
-    case "tv":
-      isLiked = likedShows.some((show) => show.id === id);
-      isInWatchList = watchlistShows.some((show) => show.id === id);
-      break;
-    default:
-      isLiked = likedPeople.some((person) => person.id === id);
-      isInWatchList = false;
-      isRated = false;
-  }
+function MediaInList({ type, id }: MediaTypeAndId) {
+  // Getting the correct user lists
+  const { isLiked, isInWatchList, isRated } = getUserListsInfo({ type, id });
 
   // Common classes
   const classesList =
@@ -38,12 +14,13 @@ function MediaInList({ type, id }: IsInUserListProps) {
   // Returned JSX
   return (
     <div className="flex items-center gap-3 mt-1 mb-2">
-      {isRated && (
+      {type !== "person" && (
         <div
           className={`bg-purple-800 ${classesList} text-purple-200 cursor-pointer`}
         >
           <StarIcon className="w-5" />{" "}
-          {(isRated as IGradedList).rate || `Rate this ${type}`}
+          {(isRated !== undefined && (isRated as IGradedList).rate) ||
+            `Rate this ${type === "tv" ? "show" : type}`}
         </div>
       )}
       {isLiked && (

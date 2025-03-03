@@ -5,7 +5,9 @@ import {
   NO_SHOW_POSTER,
 } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
+import { MediaTypeAndId } from "@/lib/types";
 import { IBase, ISearchedMediaSmall } from "@/lib/typesAPI";
+import { useUser } from "@/redux/reducers/userReducer";
 
 // Function that shuffles the array
 export function shuffleArray<T>(array: T[]): T[] {
@@ -143,3 +145,39 @@ export function getMediaImagesSearch(
 ): string {
   return path ? `${MEDIA_IMG_URL}w500${path}` : defaultImage;
 }
+
+//
+export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
+  const {
+    likedMovies,
+    likedShows,
+    likedPeople,
+    watchlistMovies,
+    watchlistShows,
+    ratedMovies,
+  } = useUser();
+
+  // Checking whether media is liked or is in watch list
+  let isLiked, isInWatchList, isRated;
+  switch (type) {
+    case "movie":
+    case "movies":
+      isLiked = likedMovies.some((movie) => movie.id === id);
+      isInWatchList = watchlistMovies.some((movie) => movie.id === id);
+      isRated = ratedMovies.find((movie) => movie.id === id);
+      break;
+    case "tv":
+      isLiked = likedShows.some((show) => show.id === id);
+      isInWatchList = watchlistShows.some((show) => show.id === id);
+      break;
+    case "person":
+      isLiked = likedPeople.some((person) => person.id === id);
+      break;
+    default:
+      isLiked = false;
+      isInWatchList = false;
+  }
+
+  // Return the lists
+  return { isLiked, isInWatchList, isRated };
+};

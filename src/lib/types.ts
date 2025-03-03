@@ -28,7 +28,7 @@ export type LayoutProps = { children?: ReactNode };
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
 type PreviewSubtitles = "character" | "job" | "department";
-export type Media = "person" | "tv" | "movies";
+export type Media = "person" | "tv" | "shows" | "movies" | "movie";
 export type RibbonDirections = "left" | "right";
 
 /* Context */
@@ -64,7 +64,6 @@ export type IconWrapperProps = {
   icon: ReactNode;
   children: ReactNode;
 };
-export type IsInUserListProps = { type: string; id: number };
 export type PreviewsProps<T> = {
   rawPreviews: T[];
   pages?: number;
@@ -77,14 +76,14 @@ export type PreviewsProps<T> = {
 };
 export type PreviewItemProps<T> = {
   media: T;
-  type: string;
+  type: Media;
   height: string;
   width: string;
   subtitle?: keyof T;
 };
 export type PreviewGroupProps<T> = {
   previews: T[];
-  type: string;
+  type: Media;
   flexBasis?: string;
   height: string;
 };
@@ -96,7 +95,7 @@ export type PreviewMergedProps<T> = {
 };
 export type PreviewImageProps = {
   media: IBase;
-  type?: string;
+  type?: Media;
   children?: ReactNode;
   posters?: boolean;
   hud?: boolean;
@@ -190,13 +189,17 @@ export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };
 // Profile
 export type MediaListProps = {
   items: IBase[];
-  type: "movies" | "shows" | "person";
+  type: Media;
 };
 export type ListTitleProps = { children: string };
 export interface IGradedList {
   id: number;
   rate: number;
 }
+export type MediaTypeAndId = {
+  type: Media;
+  id: number;
+};
 
 // Forms
 export type FormWrapProps = {

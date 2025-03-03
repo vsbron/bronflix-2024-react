@@ -1,38 +1,11 @@
 import { EyeIcon, HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 
-import { IsInUserListProps } from "@/lib/types";
-import { useUser } from "@/redux/reducers/userReducer";
+import { MediaTypeAndId } from "@/lib/types";
+import { getUserListsInfo } from "@/utils/helpers";
 
-function IsInUserList({ type, id }: IsInUserListProps) {
-  // Get the personal lists from Redux store
-  const {
-    watchlistMovies,
-    watchlistShows,
-    likedMovies,
-    likedPeople,
-    likedShows,
-    ratedMovies,
-  } = useUser();
-
-  // Checking whether media is liked or is in watch list
-  let isLiked, isInWatchList, isRated;
-  switch (type) {
-    case "movies":
-      isLiked = likedMovies.some((movie) => movie.id === id);
-      isInWatchList = watchlistMovies.some((movie) => movie.id === id);
-      isRated = ratedMovies.find((movie) => movie.id === id);
-      break;
-    case "tv":
-      isLiked = likedShows.some((show) => show.id === id);
-      isInWatchList = watchlistShows.some((show) => show.id === id);
-      break;
-    case "person":
-      isLiked = likedPeople.some((person) => person.id === id);
-      break;
-    default:
-      isLiked = false;
-      isInWatchList = false;
-  }
+function IsInUserList({ type, id }: MediaTypeAndId) {
+  // Getting the correct user lists
+  const { isLiked, isInWatchList, isRated } = getUserListsInfo({ type, id });
 
   // Returned JSX
   return (
