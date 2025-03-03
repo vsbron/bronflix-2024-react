@@ -13,7 +13,7 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
       element = <h2 className="m-0">{children}</h2>;
       break;
     case "h3":
-      element = <h3 className="m-0">{children}</h3>;
+      element = <h3 className="m-0 text-[2.2rem]">{children}</h3>;
       break;
   }
 
