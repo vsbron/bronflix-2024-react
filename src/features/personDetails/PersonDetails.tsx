@@ -12,6 +12,7 @@ import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import MediaInList from "../MediaInList";
 
 function PersonDetails({ person }: PersonDetailsProps) {
   // Getting user data from Redux store
@@ -101,7 +102,8 @@ function PersonDetails({ person }: PersonDetailsProps) {
           title={`${person.name} photo`}
         />
         <div className="flex flex-col justify-end items-start">
-          <div className="text-[4rem] font-heading">{name}</div>
+          {uid && <MediaInList type="person" id={person.id} />}
+          <div className="text-[4rem] font-heading -mt-2">{name}</div>
           <div>Gender: {GENDERS[gender]}</div>
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>

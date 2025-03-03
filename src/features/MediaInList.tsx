@@ -1,4 +1,4 @@
-import { IsInUserListProps } from "@/lib/types";
+import { IGradedList, IsInUserListProps } from "@/lib/types";
 import { useUser } from "@/redux/reducers/userReducer";
 import { EyeIcon, HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 
@@ -9,13 +9,14 @@ function MediaInList({ type, id }: IsInUserListProps) {
     watchlistShows,
     likedMovies,
     likedShows,
+    likedPeople,
     ratedMovies,
   } = useUser();
 
   // Checking whether media is liked or is in watch list
   let isLiked, isInWatchList, isRated;
   switch (type) {
-    case "movies":
+    case "movie":
       isLiked = likedMovies.some((movie) => movie.id === id);
       isInWatchList = watchlistMovies.some((movie) => movie.id === id);
       isRated = ratedMovies.find((movie) => movie.id === id);
@@ -25,8 +26,9 @@ function MediaInList({ type, id }: IsInUserListProps) {
       isInWatchList = watchlistShows.some((show) => show.id === id);
       break;
     default:
-      isLiked = false;
+      isLiked = likedPeople.some((person) => person.id === id);
       isInWatchList = false;
+      isRated = false;
   }
 
   // Common classes
@@ -36,9 +38,14 @@ function MediaInList({ type, id }: IsInUserListProps) {
   // Returned JSX
   return (
     <div className="flex items-center gap-3 mt-1 mb-2">
-      <div className={`bg-purple-800 ${classesList} text-purple-200`}>
-        <StarIcon className="w-5" /> {isRated?.rate || "Rate this movie"}
-      </div>
+      {isRated && (
+        <div
+          className={`bg-purple-800 ${classesList} text-purple-200 cursor-pointer`}
+        >
+          <StarIcon className="w-5" />{" "}
+          {(isRated as IGradedList).rate || `Rate this ${type}`}
+        </div>
+      )}
       {isLiked && (
         <div className={`bg-red-800 ${classesList} text-red-200`}>
           <HeartIcon className="w-6" /> Favorite

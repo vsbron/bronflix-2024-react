@@ -9,6 +9,7 @@ import {
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
+import { useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate } from "@/utils/helpers";
 
@@ -17,6 +18,7 @@ import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import Heading from "@/components/ui/Heading";
 import MediaButtons from "../MediaButtons";
+import MediaInList from "../MediaInList";
 
 function ShowDetails({ show }: ShowDetailsProps) {
   // Destructuring data
@@ -36,6 +38,9 @@ function ShowDetails({ show }: ShowDetailsProps) {
     number_of_episodes,
     status,
   } = show;
+
+  // Getting user data from Redux store
+  const { uid } = useUser();
 
   // Handling the show data
   const headingTitle = `${name} (${
@@ -64,6 +69,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
               isBig={true}
             />
           </div>
+          {uid && <MediaInList type="tv" id={show.id} />}
           <div className="text-[4rem] -my-5 font-heading">{name}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
             {tagline}

@@ -10,7 +10,7 @@ import {
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
-
+import { useUser } from "@/redux/reducers/userReducer";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
 import { formatDate, formatRuntime } from "@/utils/helpers";
 
@@ -18,10 +18,9 @@ import IconWrapper from "@/components/IconWrapper";
 import MediaHero from "@/components/MediaHero";
 import ScorePreview from "@/components/ScorePreview";
 import Heading from "@/components/ui/Heading";
+import MediaButtons from "@/features/MediaButtons";
+import MediaInList from "@/features/MediaInList";
 import MovieCollectionLink from "@/features/movieDetails/MovieCollectionLink";
-import MediaButtons from "../MediaButtons";
-import { useUser } from "@/redux/reducers/userReducer";
-import MediaInList from "../MediaInList";
 
 function MovieDetails({ movie }: MovieDetailsProps) {
   // Destructuring data
@@ -68,7 +67,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               isBig={true}
             />
           </div>
-          {uid && <MediaInList type="movies" id={movie.id} />}
+          {uid && <MediaInList type="movie" id={movie.id} />}
           <div className="text-[4rem] -my-5 font-heading">{title}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
             {tagline}
