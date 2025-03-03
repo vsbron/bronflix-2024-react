@@ -148,6 +148,7 @@ export function getMediaImagesSearch(
 
 //
 export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
+  // Getting all the relevant lists from user store
   const {
     likedMovies,
     likedShows,
@@ -155,6 +156,7 @@ export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
     watchlistMovies,
     watchlistShows,
     ratedMovies,
+    ratedShows
   } = useUser();
 
   // Checking whether media is liked or is in watch list
@@ -169,6 +171,7 @@ export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
     case "tv":
       isLiked = likedShows.some((show) => show.id === id);
       isInWatchList = watchlistShows.some((show) => show.id === id);
+      isRated = ratedShows.find((show) => show.id === id);
       break;
     case "person":
       isLiked = likedPeople.some((person) => person.id === id);
