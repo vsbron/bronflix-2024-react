@@ -66,6 +66,7 @@ function SignUpForm() {
         likedMovies: [],
         likedShows: [],
         likedPeople: [],
+        ratedMovies: [],
         watchlistMovies: [],
         watchlistShows: [],
       };
