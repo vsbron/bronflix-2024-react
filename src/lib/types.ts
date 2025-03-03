@@ -199,6 +199,7 @@ export interface IGradedList {
 export type MediaTypeAndId = {
   type: Media;
   id: number;
+  name?: string;
 };
 
 // Forms

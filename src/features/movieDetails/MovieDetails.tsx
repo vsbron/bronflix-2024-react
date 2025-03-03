@@ -67,7 +67,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               isBig={true}
             />
           </div>
-          {uid && <MediaInList type="movie" id={movie.id} />}
+          {uid && (
+            <MediaInList type="movie" id={movie.id} name={headingTitle} />
+          )}
           <div className="text-[4rem] -my-5 font-heading">{title}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
             {tagline}

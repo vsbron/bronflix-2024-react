@@ -69,7 +69,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
               isBig={true}
             />
           </div>
-          {uid && <MediaInList type="tv" id={show.id} />}
+          {uid && <MediaInList type="tv" id={show.id} name={headingTitle} />}
           <div className="text-[4rem] -my-5 font-heading">{name}</div>
           <div className="mb-3 text-[2rem] italic text-stone-400">
             {tagline}

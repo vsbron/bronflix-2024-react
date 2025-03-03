@@ -2,8 +2,10 @@ import { EyeIcon, HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 
 import { IGradedList, MediaTypeAndId } from "@/lib/types";
 import { getUserListsInfo } from "@/utils/helpers";
+import { ModalProvider } from "@/context/ModalContext";
+import RateMedia from "./RateMedia";
 
-function MediaInList({ type, id }: MediaTypeAndId) {
+function MediaInList({ type, id, name }: MediaTypeAndId) {
   // Getting the correct user lists
   const { isLiked, isInWatchList, isRated } = getUserListsInfo({ type, id });
 
@@ -15,13 +17,22 @@ function MediaInList({ type, id }: MediaTypeAndId) {
   return (
     <div className="flex items-center gap-3 mt-1 mb-2">
       {type !== "person" && (
-        <div
-          className={`bg-purple-800 ${classesList} text-purple-200 cursor-pointer`}
-        >
-          <StarIcon className="w-5" />{" "}
-          {(isRated !== undefined && (isRated as IGradedList).rate) ||
-            `Rate this ${type === "tv" ? "show" : type}`}
-        </div>
+        <ModalProvider>
+          <ModalProvider.Trigger name="change-avatar">
+            <div
+              className={`bg-purple-800 ${classesList} text-purple-200 cursor-pointer`}
+            >
+              <StarIcon className="w-5" />{" "}
+              {(isRated !== undefined && (isRated as IGradedList).rate) ||
+                `Rate this ${
+                  type === "tv" ? "show" : type === "movies" ? "movie" : type
+                }`}
+            </div>
+          </ModalProvider.Trigger>
+          <ModalProvider.Content name="change-avatar">
+            <RateMedia name={name} />
+          </ModalProvider.Content>
+        </ModalProvider>
       )}
       {isLiked && (
         <div className={`bg-red-800 ${classesList} text-red-200`}>
