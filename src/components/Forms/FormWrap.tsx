@@ -14,7 +14,7 @@ function FormWrap({
   // Returned JSX
   return (
     <>
-      <h3 className="mb-8 mt-0">{title}</h3>
+      <h3 className="mb-8 mt-0 text-4xl">{title}</h3>
       <form
         onSubmit={submit}
         className={`flex flex-col ${BASE_GAP_CLASS} items-start`}

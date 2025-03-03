@@ -59,7 +59,7 @@ function FormAvatars() {
   // Returned JSX
   return (
     <div className="flex flex-col items-start gap-3">
-      <div className="text-[1.8rem]">Choose an avatar</div>
+      <h3 className="mb-2 mt-0 text-4xl">Choose an avatar</h3>
       {avatarError && <FormError>{avatarError}</FormError>}
       <div className="flex gap-1 flex-wrap max-w-[41rem]">
         {AVATARS.map(({ name, png }) => {
