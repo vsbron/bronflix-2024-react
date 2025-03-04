@@ -1,9 +1,10 @@
 import { EyeIcon, HeartIcon, StarIcon } from "@heroicons/react/24/solid";
 
+import { ModalProvider } from "@/context/ModalContext";
 import { IGradedList, MediaTypeAndId } from "@/lib/types";
 import { getUserListsInfo } from "@/utils/helpers";
-import { ModalProvider } from "@/context/ModalContext";
-import RateMedia from "./RateMedia";
+
+import RateMedia from "@/features/RateMedia";
 
 function MediaInList({ type, id, name }: MediaTypeAndId) {
   // Getting the correct user lists
@@ -30,7 +31,7 @@ function MediaInList({ type, id, name }: MediaTypeAndId) {
             </div>
           </ModalProvider.Trigger>
           <ModalProvider.Content name="change-avatar">
-            <RateMedia name={name} id={id} type={type} />
+            <RateMedia name={name!} id={id} type={type} />
           </ModalProvider.Content>
         </ModalProvider>
       )}
