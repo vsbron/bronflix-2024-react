@@ -30,7 +30,7 @@ function MediaInList({ type, id, name }: MediaTypeAndId) {
             </div>
           </ModalProvider.Trigger>
           <ModalProvider.Content name="change-avatar">
-            <RateMedia name={name} />
+            <RateMedia name={name} id={id} type={type} />
           </ModalProvider.Content>
         </ModalProvider>
       )}
