@@ -1,12 +1,13 @@
 import { useState } from "react";
-
-import { updateUserData, useUser } from "@/redux/reducers/userReducer";
-import { BASE_GAP_CLASS } from "@/lib/constants";
-import Button from "@/components/ui/Button";
-import { auth, db } from "@/utils/firebase";
-import { doc, getDoc } from "@firebase/firestore";
 import { useDispatch } from "react-redux";
+import { doc, getDoc } from "@firebase/firestore";
+
 import useModal from "@/context/ModalContext";
+import { BASE_GAP_CLASS } from "@/lib/constants";
+import { updateUserData, useUser } from "@/redux/reducers/userReducer";
+import { auth, db } from "@/utils/firebase";
+
+import Button from "@/components/ui/Button";
 
 function RateMedia({
   type,
@@ -41,7 +42,7 @@ function RateMedia({
   );
 
   // Button handlers
-  const updateRate = async () => {
+  const handleRateChange = async (newRate: number) => {
     // Enable submitting state
     setIsSubmitting(true);
 
@@ -49,7 +50,6 @@ function RateMedia({
       // Guard clause
       if (!auth.currentUser) {
         setRateError("No authenticated user found.");
-        setIsSubmitting(false);
         return;
       }
 
@@ -67,19 +67,19 @@ function RateMedia({
       const updatedRatedList = isMovie
         ? currentData.ratedMovies
         : currentData.ratedShows;
-
       const currentLikedList = Array.isArray(updatedRatedList)
         ? updatedRatedList
         : [];
 
-      // Checking whether we need to add or remove medi from the rated list
-      const updatedList = currentLikedList.some((m) => m.id === id)
-        ? currentLikedList
-            .map((m) => (m.id === id ? (rate === 0 ? null : { id, rate }) : m))
-            .filter(Boolean)
-        : rate === 0
-        ? currentLikedList
-        : [...currentLikedList, { id, rate }];
+      // Remove from the list if rate is 0, or update the rate otherwise
+      const updatedList =
+        newRate === 0
+          ? currentLikedList.filter((m) => m.id !== id)
+          : currentLikedList.some((m) => m.id === id)
+          ? currentLikedList.map((m) =>
+              m.id === id ? { id, rate: newRate } : m
+            )
+          : [...currentLikedList, { id, rate: newRate }];
 
       // Update the rated media list in the state and firebase
       dispatch(
@@ -93,59 +93,7 @@ function RateMedia({
       console.error(e);
       setRateError("Couldn't update the rating due to unknown error");
     } finally {
-      // Disabling submitting state
-      setIsSubmitting(false);
-      closeModal();
-    }
-  };
-
-  const removeRate = async () => {
-    setRate(0);
-    // Enable submitting state
-    setIsSubmitting(true);
-
-    try {
-      // Guard clause
-      if (!auth.currentUser) {
-        setRateError("No authenticated user found.");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Fetch the latest user data from Firestore
-      const userRef = doc(db, "users", auth!.currentUser!.uid);
-      const userSnap = await getDoc(userRef);
-
-      // Guard clause
-      if (!userSnap.exists()) return;
-
-      // Extracting the actual data
-      const currentData = userSnap.data();
-
-      // Setting the current rated list to work with
-      const updatedRatedList = isMovie
-        ? currentData.ratedMovies
-        : currentData.ratedShows;
-
-      const currentLikedList = Array.isArray(updatedRatedList)
-        ? updatedRatedList
-        : [];
-
-      // Removing the media data from the rated list
-      const updatedList = currentLikedList.filter((m) => m.id !== id);
-
-      dispatch(
-        updateUserData({
-          updatedData: {
-            [isMovie ? "ratedMovies" : "ratedShows"]: updatedList,
-          },
-        })
-      );
-    } catch (e: unknown) {
-      console.error(e);
-      setRateError("Couldn't update the rating due to unknown error");
-    } finally {
-      // Disabling submitting state
+      // Disabling submitting state & close modal
       setIsSubmitting(false);
       closeModal();
     }
@@ -174,10 +122,13 @@ function RateMedia({
         ))}
       </div>
       <div className={`mt-2 self-center flex ${BASE_GAP_CLASS}`}>
-        <Button onClick={removeRate} disabled={isSubmitting}>
+        <Button onClick={() => handleRateChange(0)} disabled={isSubmitting}>
           <span>REMOVE RATING</span>
         </Button>
-        <Button onClick={updateRate} disabled={isSubmitting}>
+        <Button
+          onClick={() => handleRateChange(rate || 0)}
+          disabled={isSubmitting}
+        >
           <span>SAVE RATING</span>
         </Button>
       </div>
