@@ -167,7 +167,11 @@ function AppInfo() {
               Movie poster, cover image, ratings, release information, and other
               essential details.
             </li>
+            <li>Ability to rate the movie on a scale from 1 to 5.</li>
             <li>A button to watch the trailer.</li>
+            <li>
+              Buttons to add or remove the movie from favorites or watch lists.
+            </li>
             <li>
               If the movie is part of a collection, a button to explore the
               collection.
@@ -191,6 +195,15 @@ function AppInfo() {
             <li>
               Displays the series' timespan, current status, and number of
               episodes.
+            </li>
+            <li>
+              Ability to rate the show on a scale from 1 to 5, just like with
+              the movies.
+            </li>
+            <li>A button to watch the trailer.</li>
+            <li>
+              Buttons to add or remove the show from favorites or watch lists,
+              similar to the movie.
             </li>
             <li>
               An episode guide, where users can choose a season and view

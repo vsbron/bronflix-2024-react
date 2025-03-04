@@ -65,7 +65,9 @@ The main page features several sections, including:
 Displays comprehensive information about a movie, including:
 
 - Movie poster, cover image, ratings, release information, and other essential details.
+- Ability to rate the movie on a scale from 1 to 5.
 - A button to watch the trailer.
+- Buttons to add or remove the movie from favorites or watch lists.
 - If the movie is part of a collection, a button to explore the collection.
 - Cast carousel featuring actors photos and their roles.
 - Crew section highlighting key contributors such as the director, writer, and producer.
@@ -76,6 +78,9 @@ Displays comprehensive information about a movie, including:
 Similar to the movie page, but with additional details:
 
 - Displays the series' timespan, current status, and number of episodes.
+- Ability to rate the show on a scale from 1 to 5, just like with the movies.
+- A button to watch the trailer.
+- Buttons to add or remove the show from favorites or watch lists, similar to the movie.
 - An episode guide, where users can choose a season and view episodes with overviews, air dates, and snapshot.
 - Series cast carousel featuring actors photos and their roles.
 - Crew section highlighting key contributors such as producers.
@@ -131,10 +136,7 @@ BroNflix is constantly evolving, with several exciting features planned for futu
 1. **Main Page for Movies, Shows, and People**  
    A unified main page will be added, providing a clear overview of all categories—movies, shows, and actors—allowing users to easily explore each.
 
-2. **Voting System**  
-   Users will be able to add their votes to movies and shows, contributing to the overall rating and offering a more personalized recommendation experience.
-
-3. **Mobile Layout**  
+2. **Mobile Layout**  
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
 
 ---
