@@ -25,8 +25,7 @@ function FavoritesList() {
             rawPreviews={[...likedShows].reverse()}
             width="18rem"
             height="27rem"
-            type="tv"
-            merged={true}
+            type="shows"
           />
         </div>
         <div>
