@@ -1,7 +1,7 @@
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
-import { useMoviesNowPlaying } from "./useMoviesNowPlaying";
+import { useMoviesNowPlaying } from "@/features/moviesMain/useMoviesNowPlaying";
 
 function MoviesNowPlaying() {
   // Getting the now playing movies and ref for ribbon element
@@ -22,8 +22,8 @@ function MoviesNowPlaying() {
       <Heading as="h2">In Theaters Now</Heading>
       <Previews
         rawPreviews={movies}
-        width="26rem"
-        height="40rem"
+        width="23rem"
+        height="35rem"
         type="movies"
       />
     </section>

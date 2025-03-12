@@ -46,8 +46,6 @@ export async function getShow(showId: string): Promise<IShow> {
     // Getting the actual data
     const data = await response.json();
 
-    console.log(data);
-
     // Return the show
     return data;
   } catch (error: unknown) {

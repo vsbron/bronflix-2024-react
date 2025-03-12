@@ -6,6 +6,7 @@ import Previews from "@/components/previews/Previews";
 function FavoritesList() {
   // Getting the user's favorites from the Redux store
   const { likedMovies, likedPeople, likedShows } = useUser();
+
   // Returned JSX
   return (
     <section>

@@ -15,6 +15,7 @@ export const movieLoader = async ({
 }: LoaderFunctionArgs): Promise<IMovie> => {
   // Getting the movie using API function
   const movie = await getMovie(params.movieId!);
+
   // Return movie
   return movie;
 };

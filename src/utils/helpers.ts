@@ -156,7 +156,7 @@ export const getUserListsInfo = ({ type, id }: MediaTypeAndId) => {
     watchlistMovies,
     watchlistShows,
     ratedMovies,
-    ratedShows
+    ratedShows,
   } = useUser();
 
   // Checking whether media is liked or is in watch list
