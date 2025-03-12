@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
 import {
   CalendarIcon,
   FilmIcon,
   GlobeAltIcon,
   LanguageIcon,
   ClockIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
@@ -33,6 +35,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
     vote_average: score,
     vote_count: count,
     overview = "No overview available for this show",
+    created_by: creators,
     networks: companies,
     number_of_seasons: seasons = 1,
     number_of_episodes,
@@ -98,6 +101,16 @@ function ShowDetails({ show }: ShowDetailsProps) {
               {studios && (
                 <IconWrapper icon={<FilmIcon />}>{studios}</IconWrapper>
               )}
+            </div>
+            <div className="flex gap-8 -mt-1">
+              <IconWrapper icon={<UserIcon />}>
+                {creators.map((c, i) => (
+                  <>
+                    <Link to={`/person/${c.id}`}>{c.name}</Link>
+                    {i < creators.length - 1 && "|"}
+                  </>
+                ))}
+              </IconWrapper>
             </div>
           </div>
           <div className="max-w-[65rem] mb-6">{formattedOverview}</div>

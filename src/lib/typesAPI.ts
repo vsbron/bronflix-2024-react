@@ -73,13 +73,11 @@ export interface IShow {
   poster_path?: string;
   backdrop_path: string;
   first_air_date: string;
-  created_by?: IPerson[];
-  episode_run_time?: any[];
+  created_by: IPerson[];
   genres: IGenre[];
   in_production?: boolean;
   languages?: string[];
   last_air_date: string;
-  last_episode_to_air?: any /**/;
   next_episode_to_air?: string;
   networks: IProductionCompany[];
   number_of_episodes?: number;
