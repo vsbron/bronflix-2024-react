@@ -8,6 +8,16 @@ export const META_MAIN_TITLE = `${SITE_NAME} - Discover Movies and TV Shows`;
 export const META_MAIN_DESC = `${SITE_NAME} is your ultimate platform for exploring movies and TV shows. Discover detailed information, search for your favorites, and enjoy personalized recommendations.`;
 export const META_MAIN_KEYW = `movies, tv shows, entertainment, streaming, genres, recommendations, ${SITE_NAME}, film, series, movie database`;
 
+// Main pages
+export const META_MAIN_MOVIES_TITLE = `${META_TITLE_END}`;
+export const META_MAIN_MOVIES_DESC = ``;
+
+export const META_MAIN_SHOWS_TITLE = `${META_TITLE_END}`;
+export const META_MAIN_SHOWS_DESC = ``;
+
+export const META_MAIN_PEOPLE_TITLE = `${META_TITLE_END}`;
+export const META_MAIN_PEOPLE_DESC = ``;
+
 // Other pages
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
 export const META_SITEMAP_DESC = `Explore the comprehensive sitemap of ${SITE_NAME}, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features.`;
