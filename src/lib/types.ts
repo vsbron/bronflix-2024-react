@@ -57,7 +57,7 @@ export type ButtonPreviewProps = {
 };
 export type ButtonPreviewArrowProps = {
   dir: RibbonDirections;
-  clickHandler: any;
+  clickHandler: (direction: RibbonDirections) => void;
 };
 export type ErrorMediaProps = { type: string };
 export type IconWrapperProps = {
