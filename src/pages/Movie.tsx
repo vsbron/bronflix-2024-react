@@ -1,13 +1,13 @@
 import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
+import { META_TITLE_END } from "@/lib/metaTags";
 import { IMovie } from "@/lib/typesAPI";
 import { getMovie } from "@/services/apiMovies";
 
 import MovieCastCrew from "@/features/movieDetails/MovieCastCrew";
 import MovieDetails from "@/features/movieDetails/MovieDetails";
 import MoviesSimilar from "@/features/movieDetails/MoviesSimilar";
-import { Helmet } from "react-helmet-async";
-import { META_TITLE_END } from "@/lib/metaTags";
 
 // Movie data loader
 export const movieLoader = async ({

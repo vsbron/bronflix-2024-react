@@ -3,7 +3,7 @@ import { IBase, ICastCrew } from "@/lib/typesAPI";
 
 // API for getting media cast and crew
 export async function getMediaCastCrew(
-  mediaId: string,
+  mediaId: number,
   type: string
 ): Promise<ICastCrew> {
   try {
@@ -34,7 +34,7 @@ export async function getMediaCastCrew(
 
 // API for getting similar media
 export async function getMediaSimilar(
-  mediaId: string,
+  mediaId: number,
   type: string
 ): Promise<IBase[]> {
   try {

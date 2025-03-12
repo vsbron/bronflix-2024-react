@@ -139,12 +139,10 @@ export type MediaHeroPros = {
 export type TrailerButtonProps = { video: string };
 
 // Movie page
-export type MovieCastCrewProps = { movieId: string };
+export type MovieCastCrewProps = { movieId: number };
 export type MovieCollectionLinkProps = { collection: ICollection };
 export type MovieDetailsProps = { movie: IMovie };
-export type MoviesSimilarProps = {
-  movieId: string;
-};
+export type MoviesSimilarProps = { movieId: number };
 
 // Movie collection page
 export type CollectionDetailsProps = { collection: ICollection };
@@ -162,11 +160,9 @@ export type PersonNotableWorkProps = {
 };
 
 // Show page
-export type ShowCastCrewProps = { showId: string };
+export type ShowCastCrewProps = { showId: number };
 export type ShowDetailsProps = { show: IShow };
-export type ShowSimilarProps = {
-  showId: string;
-};
+export type ShowSimilarProps = { showId: number };
 export type SeasonDetailsProps = { seasonNumber: string };
 export type SeasonEpisodeProps = { episode: IEpisode };
 

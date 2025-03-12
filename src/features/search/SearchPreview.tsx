@@ -3,7 +3,7 @@ import { CalendarIcon, LanguageIcon } from "@heroicons/react/24/outline";
 
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { LANGUAGES } from "@/lib/constantsGeo";
-import { SearchPreviewProps } from "@/lib/types";
+import { Media, SearchPreviewProps } from "@/lib/types";
 import { useUser } from "@/redux/reducers/userReducer";
 import { formatDate, getSearchMediaData, shortenText } from "@/utils/helpers";
 
@@ -52,7 +52,7 @@ function SearchPreview({ media }: SearchPreviewProps) {
           title={mediaTitle}
         />
         {isMedia && <ScorePreview score={vote_average} />}
-        {uid && <IsInUserList type={mediaType} id={media.id} />}
+        {uid && <IsInUserList type={mediaType as Media} id={media.id} />}
       </div>
       <div className="flex flex-col gap-3">
         <div className="font-heading text-5xl">{title || name}</div>

@@ -59,7 +59,7 @@ export async function getPerson(movieId: string): Promise<IPerson> {
 }
 
 // API for getting persons` credited work
-export async function getPersonCredits(personId: string): Promise<{
+export async function getPersonCredits(personId: number): Promise<{
   movies: { cast: IMediaCredit[]; crew: IMediaCredit[] };
   shows: { cast: IMediaCredit[]; crew: IMediaCredit[] };
 }> {

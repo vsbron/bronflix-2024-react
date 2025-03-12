@@ -12,7 +12,7 @@ import { formatDate, getMediaImages } from "@/utils/helpers";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import MediaInList from "../MediaInList";
+import MediaInList from "@/features/MediaInList";
 
 function PersonDetails({ person }: PersonDetailsProps) {
   // Getting user data from Redux store
