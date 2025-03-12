@@ -10,13 +10,16 @@ export const META_MAIN_KEYW = `movies, tv shows, entertainment, streaming, genre
 
 // Main pages
 export const META_MAIN_MOVIES_TITLE = `Explore Movies${META_TITLE_END}`;
-export const META_MAIN_MOVIES_DESC = `Browse through a variety of movies, discover trending films, and find top-rated movies on our platform`;
+export const META_MAIN_MOVIES_DESC = `Browse through a variety of movies on ${SITE_NAME}, discover trending films, and find top-rated movies on our platform.`;
+export const META_MAIN_MOVIES_KEYW = `movies, films, trending movies, top-rated movies, action movies, drama movies`;
 
 export const META_MAIN_SHOWS_TITLE = `Discover Shows${META_TITLE_END}`;
-export const META_MAIN_SHOWS_DESC = `Find your favorite TV shows, discover new series, and check out the latest trending and top-rated shows.`;
+export const META_MAIN_SHOWS_DESC = `Find your favorite TV shows on ${SITE_NAME}, discover new series, and check out the latest trending and top-rated shows.`;
+export const META_MAIN_SHOWS_KEYW = `tv shows, series, trending shows, top-rated shows, drama series, comedy series`;
 
 export const META_MAIN_PEOPLE_TITLE = `People in Movies & Shows${META_TITLE_END}`;
-export const META_MAIN_PEOPLE_DESC = `Explore actors, directors, producers, and other people who bring your favorite movies and shows to life.`;
+export const META_MAIN_PEOPLE_DESC = `Explore actors, directors, producers, and other people on ${SITE_NAME} who bring your favorite movies and shows to life.`;
+export const META_MAIN_PEOPLE_KEYW = `actors, actresses, directors, producers, filmmakers, movie stars, tv personalities`;
 
 // Other pages
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
