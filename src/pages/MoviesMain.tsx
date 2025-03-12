@@ -7,6 +7,7 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
 
 function MoviesMain() {
   // Returned JSX
@@ -23,6 +24,7 @@ function MoviesMain() {
       {/* Content */}
       <section>
         <Heading>BroNflix movies</Heading>
+        <MoviesUpcoming />
       </section>
     </>
   );

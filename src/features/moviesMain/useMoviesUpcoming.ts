@@ -1,0 +1,30 @@
+import { useQuery } from "@tanstack/react-query";
+
+import { MOVIES_TOP_RATED_QUANTITY } from "@/lib/constants";
+import { IMovieList } from "@/lib/typesAPI";
+import { getMovies } from "@/services/apiMovies";
+import { shuffleArray } from "@/utils/helpers";
+
+export function useMoviesUpcoming() {
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["movies-upcoming"],
+    queryFn: () => getMovies("upcoming"),
+  });
+
+  // Transform the data once it's loaded
+  let movies: IMovieList[] = [];
+  if (data) {
+    // Shuffle and select top rated movies
+    movies = shuffleArray(data)
+      .slice(0, MOVIES_TOP_RATED_QUANTITY)
+      .map((movie: IMovieList) => ({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path,
+        vote_count: movie.vote_count,
+        vote_average: movie.vote_average,
+      }));
+  }
+
+  return { isLoading, movies, error };
+}

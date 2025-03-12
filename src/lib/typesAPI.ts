@@ -1,6 +1,6 @@
 import { Media } from "@/lib/types";
 
-export type APIFetchType = "popular" | "top_rated";
+export type APIFetchType = "popular" | "top_rated" | "upcoming";
 
 /* Fetched lists */
 export interface IBase {
