@@ -21,8 +21,8 @@ function Nav() {
       <Link to="/movies">
         <NavItem icon={<FilmIcon />} title="Movies" />
       </Link>
-      <Link to="/actors">
-        <NavItem icon={<UserIcon />} title="Actors" />
+      <Link to="/people">
+        <NavItem icon={<UserIcon />} title="People" />
       </Link>
     </nav>
   );

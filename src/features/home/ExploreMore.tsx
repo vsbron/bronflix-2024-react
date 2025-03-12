@@ -42,8 +42,8 @@ function ExploreMore() {
           </Link>
         </Button>
         <Button>
-          <Link className="inline-block py-3 px-6" to="/actors">
-            ACTORS
+          <Link className="inline-block py-3 px-6" to="/people">
+            PEOPLE
           </Link>
         </Button>
       </div>
