@@ -24,9 +24,9 @@ function MoviesMain() {
 
       {/* Content */}
       <section>
-        <Heading>BroNflix movies</Heading>
-        <MoviesUpcoming />
+        <Heading>Discover Movies</Heading>
         <MoviesNowPlaying />
+        <MoviesUpcoming />
       </section>
     </>
   );

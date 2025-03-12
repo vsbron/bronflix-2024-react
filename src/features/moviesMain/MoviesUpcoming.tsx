@@ -7,6 +7,8 @@ function MoviesUpcoming() {
   // Getting the upcoming movies and ref for ribbon element
   const { isLoading, movies, error } = useMoviesUpcoming();
 
+  console.log(movies);
+
   // Guard clauses
   if (isLoading) return <Loader />;
   if (error || !movies)

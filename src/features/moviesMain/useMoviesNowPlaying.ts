@@ -14,7 +14,7 @@ export function useMoviesNowPlaying() {
   // Transform the data once it's loaded
   let movies: IMovieList[] = [];
   if (data) {
-    // Shuffle featured movies
+    // Shuffle now playing movies
     movies = shuffleArray(data).slice(0, MOVIES_FEATURED_QUANTITY);
   }
 

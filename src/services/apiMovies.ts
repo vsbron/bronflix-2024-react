@@ -32,6 +32,45 @@ export async function getMovies(type: APIFetchType): Promise<IMovieList[]> {
   }
 }
 
+// API for getting movies
+export async function getUpcomingMovies(): Promise<IMovieList[]> {
+  try {
+    // Getting current day
+    const today = new Date().toISOString().split("T")[0];
+
+    // Fetch the data
+    const response = await fetch(
+      `${MEDIA_URL}movie/upcoming?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }&page=1&include_adult=false`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the upcoming movies data: ${response.statusText}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Ensure data.results not empty and is an array
+    if (!data.results || !Array.isArray(data.results)) return [];
+
+    // Filter movies that are releasing after today
+    const upcomingMovies = data.results.filter(
+      (movie: IMovie) => movie.release_date > today
+    );
+
+    // Return the movies
+    return upcomingMovies;
+  } catch (error: unknown) {
+    console.error(error);
+    throw new Error("An error occurred while fetching upcoming movies data");
+  }
+}
+
 // API for getting specific movie
 export async function getMovie(movieId: string): Promise<IMovie> {
   try {
