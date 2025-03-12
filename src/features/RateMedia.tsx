@@ -4,6 +4,7 @@ import { doc, getDoc } from "@firebase/firestore";
 
 import useModal from "@/context/ModalContext";
 import { BASE_GAP_CLASS } from "@/lib/constants";
+import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -25,7 +26,7 @@ function RateMedia({
   const { closeModal } = useModal();
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Checking whether we deal with movie or not
   const isMovie = type === "movie";

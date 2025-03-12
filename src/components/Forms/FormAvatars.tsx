@@ -4,11 +4,12 @@ import { useDispatch } from "react-redux";
 import { NO_AVATAR_M, NO_AVATAR_F } from "@/lib/assets";
 import { AVATARS } from "@/lib/assetsAvatars";
 import { BASE_GAP_CLASS } from "@/lib/constants";
+import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
-import { FormError } from "@/components/Forms/FormElements";
 import Button from "@/components/ui/Button";
+import { FormError } from "@/components/Forms/FormElements";
 
 function FormAvatars() {
   // Getting the user data from redux store
@@ -20,7 +21,7 @@ function FormAvatars() {
   const [avatarError, setAvatarError] = useState<string | null>(null);
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Handler to update avatar in Redux and Firebase
   const updateAvatarHandler = async () => {

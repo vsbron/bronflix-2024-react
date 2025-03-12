@@ -8,6 +8,7 @@ import useModal from "@/context/ModalContext";
 import { NO_AVATAR_F, NO_AVATAR_M } from "@/lib/assets";
 import { editProfileFormSchema } from "@/lib/formSchemas";
 import { EditProfileFormData } from "@/lib/types";
+import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
@@ -43,7 +44,7 @@ function EditProfileForm() {
   });
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Form success handler
   const onSubmit = async (data: EditProfileFormData) => {

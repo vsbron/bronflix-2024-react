@@ -5,6 +5,7 @@ import { HeartIcon } from "@heroicons/react/24/solid";
 
 import { GENDERS } from "@/lib/constants";
 import { PersonDetailsProps } from "@/lib/types";
+import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 import { FormatTextBlock } from "@/utils/FormatTextBlock";
@@ -19,7 +20,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
   const { uid, likedPeople } = useUser();
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   // Destructuring data
   const {

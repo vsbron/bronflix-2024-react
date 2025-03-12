@@ -5,12 +5,13 @@ import { EyeIcon, HeartIcon } from "@heroicons/react/24/solid";
 import { ModalProvider } from "@/context/ModalContext";
 import useTrailer from "@/hooks/useTrailer";
 import { BASE_GAP_CLASS } from "@/lib/constants";
+import { MediaButtonsProps } from "@/lib/types";
+import { AppDispatch } from "@/lib/typesRedux";
 import { updateUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth, db } from "@/utils/firebase";
 
 import TrailerButton from "@/components/TrailerButton";
 import Button from "@/components/ui/Button";
-import { MediaButtonsProps } from "@/lib/types";
 
 function MediaButtons({ type, media }: MediaButtonsProps) {
   // Getting user data from Redux store
@@ -38,7 +39,7 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
   const isInWatchList = watchList.some((m) => m.id === media.id);
 
   // Getting the navigate and dispatch functions
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch<AppDispatch>();
 
   // User lists buttons handlers
   const addToFavoritesHandler = async () => {
