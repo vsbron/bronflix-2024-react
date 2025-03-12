@@ -9,14 +9,14 @@ export const META_MAIN_DESC = `${SITE_NAME} is your ultimate platform for explor
 export const META_MAIN_KEYW = `movies, tv shows, entertainment, streaming, genres, recommendations, ${SITE_NAME}, film, series, movie database`;
 
 // Main pages
-export const META_MAIN_MOVIES_TITLE = `${META_TITLE_END}`;
-export const META_MAIN_MOVIES_DESC = ``;
+export const META_MAIN_MOVIES_TITLE = `Explore Movies${META_TITLE_END}`;
+export const META_MAIN_MOVIES_DESC = `Browse through a variety of movies, discover trending films, and find top-rated movies on our platform`;
 
-export const META_MAIN_SHOWS_TITLE = `${META_TITLE_END}`;
-export const META_MAIN_SHOWS_DESC = ``;
+export const META_MAIN_SHOWS_TITLE = `Discover Shows${META_TITLE_END}`;
+export const META_MAIN_SHOWS_DESC = `Find your favorite TV shows, discover new series, and check out the latest trending and top-rated shows.`;
 
-export const META_MAIN_PEOPLE_TITLE = `${META_TITLE_END}`;
-export const META_MAIN_PEOPLE_DESC = ``;
+export const META_MAIN_PEOPLE_TITLE = `People in Movies & Shows${META_TITLE_END}`;
+export const META_MAIN_PEOPLE_DESC = `Explore actors, directors, producers, and other people who bring your favorite movies and shows to life.`;
 
 // Other pages
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
