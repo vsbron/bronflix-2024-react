@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Logo from "./Logo";
-import Nav from "./Nav";
+import Logo from "@/components/header/Logo";
+import Nav from "@/components/header/Nav";
 
 function Sidebar() {
   // Setting the state for hovering effect

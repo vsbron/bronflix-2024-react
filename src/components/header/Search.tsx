@@ -6,8 +6,9 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
 import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
-import SearchBriefResults from "./SearchBriefResults";
+import SearchBriefResults from "@/components/header/SearchBriefResults";
 
+// Initiating controller for fetch function
 let controller: AbortController | null = null;
 
 function Search() {

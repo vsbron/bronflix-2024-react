@@ -1,8 +1,7 @@
-import { useShowsTopRated } from "./useShowsTopRated";
-
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
+import { useShowsTopRated } from "@/features/home/useShowsTopRated";
 
 function ShowsTopRated() {
   // Getting the top rated shows and ref for ribbon element

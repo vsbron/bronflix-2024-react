@@ -1,8 +1,7 @@
-import { useActorsTrending } from "./useActorsTrending";
-
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
+import { useActorsTrending } from "@/features/home/useActorsTrending";
 
 function ActorsTrending() {
   // Getting the trending actors and ref for ribbon element

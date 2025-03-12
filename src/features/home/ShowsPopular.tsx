@@ -1,8 +1,7 @@
-import { useShowsTrending } from "./useShowsTrending";
-
 import Previews from "@/components/previews/Previews";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
+import { useShowsTrending } from "@/features/home/useShowsTrending";
 
 function ShowsPopular() {
   // Getting the trending shows and ref for ribbon element
