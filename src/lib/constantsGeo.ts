@@ -43,10 +43,11 @@ export const COUNTRIES: { [key: string]: string } = {
   NZ: "New Zealand",
   VE: "Venezuela",
 
+  AZ: "Azerbaijan",
   EG: "Egypt",
   IN: "India",
   ID: "Indonesia",
-  TH: "Thailand",
+  KZ: "Kazakhstan",
   MY: "Malaysia",
   NG: "Nigeria",
   PK: "Pakistan",
@@ -54,6 +55,7 @@ export const COUNTRIES: { [key: string]: string } = {
   SA: "Saudi Arabia",
   ZA: "South Africa",
   SU: "Soviet Union",
+  TH: "Thailand",
   VN: "Vietnam",
 };
 
@@ -96,10 +98,12 @@ export const LANGUAGES: { [key: string]: string } = {
 
   af: "African",
   ar: "Arabic",
+  az: "Azerbaijani",
   bn: "Bengali",
   fa: "Persian",
   hi: "Hindi",
   id: "Indonesian",
+  kk: "Kazakh",
   mk: "Macedonian",
   ms: "Malay",
   sw: "Swahili",
