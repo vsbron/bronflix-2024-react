@@ -8,6 +8,7 @@ import {
 
 import Heading from "@/components/ui/Heading";
 import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
+import MoviesNowPlaying from "@/features/moviesMain/MoviesNowPlaying";
 
 function MoviesMain() {
   // Returned JSX
@@ -25,6 +26,7 @@ function MoviesMain() {
       <section>
         <Heading>BroNflix movies</Heading>
         <MoviesUpcoming />
+        <MoviesNowPlaying />
       </section>
     </>
   );

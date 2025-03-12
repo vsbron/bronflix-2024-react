@@ -5,10 +5,10 @@ import { IMovieList } from "@/lib/typesAPI";
 import { getMovies } from "@/services/apiMovies";
 import { shuffleArray } from "@/utils/helpers";
 
-export function useMoviesUpcoming() {
+export function useMoviesNowPlaying() {
   const { isLoading, data, error } = useQuery({
-    queryKey: ["movies-upcoming"],
-    queryFn: () => getMovies("upcoming"),
+    queryKey: ["movies-now-playing"],
+    queryFn: () => getMovies("now_playing"),
   });
 
   // Transform the data once it's loaded
