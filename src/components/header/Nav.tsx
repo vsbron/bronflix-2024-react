@@ -15,11 +15,11 @@ function Nav() {
       <Link to="/">
         <NavItem icon={<HomeIcon />} title="Home" />
       </Link>
-      <Link to="/shows">
-        <NavItem icon={<TvIcon />} title="Shows" />
-      </Link>
       <Link to="/movies">
         <NavItem icon={<FilmIcon />} title="Movies" />
+      </Link>
+      <Link to="/shows">
+        <NavItem icon={<TvIcon />} title="Shows" />
       </Link>
       <Link to="/people">
         <NavItem icon={<UserIcon />} title="People" />

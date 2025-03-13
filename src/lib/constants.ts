@@ -37,6 +37,11 @@ export const EXCLUDED_GENRE_IDS = [
   10767, // Talk
 ];
 
+export const COLLECTION_IDS = [
+  131292, 263, 1241, 119, 10, 9485, 528, 10194, 328, 748, 295, 2150, 87359, 645,
+  8091, 264,
+];
+
 export const SEASON_TYPES = ["specials"];
 
 export const CREW_JOBS = [
