@@ -13,7 +13,7 @@ function MoviesCollections() {
 
   // Returned JSX
   return (
-    <section>
+    <>
       <Heading as="h2">Top Movie Franchises</Heading>
       <Previews
         rawPreviews={collections}
@@ -21,7 +21,7 @@ function MoviesCollections() {
         type="collection"
         isTwoRows={true}
       />
-    </section>
+    </>
   );
 }
 

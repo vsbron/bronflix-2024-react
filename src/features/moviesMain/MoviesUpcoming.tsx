@@ -18,15 +18,23 @@ function MoviesUpcoming() {
 
   // Returned JSX
   return (
-    <section>
+    <>
       <Heading as="h2">Upcoming Movies</Heading>
-      <Previews
-        rawPreviews={movies}
-        width="26rem"
-        height="40rem"
-        type="movies"
-      />
-    </section>
+      {movies.length > 0 ? (
+        <Previews
+          rawPreviews={movies}
+          width="26rem"
+          height="40rem"
+          type="movies"
+        />
+      ) : (
+        <div>
+          Sorry, there are no upcoming movies in our database at the moment.{" "}
+          <br />
+          Please check back later.{" "}
+        </div>
+      )}
+    </>
   );
 }
 

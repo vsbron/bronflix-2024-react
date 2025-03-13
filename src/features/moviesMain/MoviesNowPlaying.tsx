@@ -18,7 +18,7 @@ function MoviesNowPlaying() {
 
   // Returned JSX
   return (
-    <section>
+    <>
       <Heading as="h2">In Theaters Now</Heading>
       <Previews
         rawPreviews={movies}
@@ -26,7 +26,7 @@ function MoviesNowPlaying() {
         height="35rem"
         type="movies"
       />
-    </section>
+    </>
   );
 }
 
