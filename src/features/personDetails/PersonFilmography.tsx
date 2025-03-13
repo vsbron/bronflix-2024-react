@@ -54,7 +54,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
     return (
       <div>
-        <h3 className="mt-4">{sectionTitle}</h3>
+        <h3 className="my-4 mb-3 text-4xl">{sectionTitle}</h3>
         {credits.map((media) => {
           // Destructuring and handling media data
           const { id, title, type, year, roles } = media;
@@ -113,7 +113,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
           isExpanded || !isBigFilmography ? "" : "h-[88rem]"
         }`}
       >
-        {renderCredits(modifiedCast, "Actor")}
+        {renderCredits(modifiedCast, "Starring")}
         {renderCredits(modifiedCrew, "Production")}
         {isBigFilmography && !isExpanded && (
           <BlackGradientToTop height="30rem" />
