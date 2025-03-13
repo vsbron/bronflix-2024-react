@@ -28,7 +28,13 @@ export type LayoutProps = { children?: ReactNode };
 /* Unions */
 type Headings = "h1" | "h2" | "h3";
 type PreviewSubtitles = "character" | "job" | "department";
-export type Media = "person" | "tv" | "shows" | "movies" | "movie";
+export type Media =
+  | "person"
+  | "tv"
+  | "shows"
+  | "movies"
+  | "movie"
+  | "collection";
 export type RibbonDirections = "left" | "right";
 
 /* Context */

@@ -38,8 +38,8 @@ export const EXCLUDED_GENRE_IDS = [
 ];
 
 export const COLLECTION_IDS = [
-  131292, 263, 1241, 119, 10, 9485, 528, 10194, 328, 748, 295, 2150, 87359, 645,
-  8091, 264,
+  10, 119, 263, 264, 295, 328, 528, 645, 748, 1241, 2150, 8091, 9485, 10194,
+  86311, 87359,
 ];
 
 export const SEASON_TYPES = ["specials"];

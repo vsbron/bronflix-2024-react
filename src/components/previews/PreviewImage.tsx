@@ -34,7 +34,7 @@ function PreviewImage({
       className="rounded-lg h-full flex items-end bg-center bg-cover duration-300 transition-all hover:scale-95 relative pt-3"
     >
       {children}
-      {(!imgPath || (!posters && (type === "tv" || type === "person"))) && (
+      {(!imgPath || (!posters && type !== "movies")) && (
         <div
           className="relative w-full text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore
@@ -62,6 +62,7 @@ export const getImageData = (type: string) => {
     person: "profile_path",
     tv: "backdrop_path",
     movie: "poster_path",
+    collection: "backdrop_path",
   };
 
   // Preparing fallback in case of missing image
@@ -69,6 +70,7 @@ export const getImageData = (type: string) => {
     person: NO_PERSON_PHOTO,
     tv: NO_SHOW_COVER,
     movie: NO_MOVIE_POSTER,
+    collection: NO_MOVIE_POSTER,
   };
 
   // Return the image data object

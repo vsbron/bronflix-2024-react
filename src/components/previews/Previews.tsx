@@ -144,7 +144,13 @@ function PreviewGroup<T extends IBase>({
       {previews.map((media) => (
         <Link
           key={media.id}
-          to={`/${type === "tv" ? "shows" : type}/${media.id}`}
+          to={`/${
+            type === "tv"
+              ? "shows"
+              : type === "collection"
+              ? "movies/collection"
+              : type
+          }/${media.id}`}
           className="block text-stone-50 flex-1"
           style={{ flexBasis, height: height }}
         >
