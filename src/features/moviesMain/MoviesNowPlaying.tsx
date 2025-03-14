@@ -22,8 +22,8 @@ function MoviesNowPlaying() {
       <Heading as="h2">In Theaters Now</Heading>
       <Previews
         rawPreviews={movies}
-        width="23rem"
-        height="35rem"
+        width="25rem"
+        height="37.5rem"
         type="movies"
       />
     </>
