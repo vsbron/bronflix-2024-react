@@ -143,6 +143,7 @@ export type MediaHeroPros = {
   children: ReactNode;
 };
 export type TrailerButtonProps = { video: string };
+export type MediaMainBGProps = { type: "movies" | "shows" };
 
 // Movie page
 export type MovieCastCrewProps = { movieId: number };

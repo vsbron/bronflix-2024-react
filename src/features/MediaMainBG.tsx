@@ -1,4 +1,6 @@
-function MediaMainBG({ type }: any) {
+import { MediaMainBGProps } from "@/lib/types";
+
+function MediaMainBG({ type }: MediaMainBGProps) {
   // Declaring class for correct background image
   let backgroundImages;
   switch (type) {
