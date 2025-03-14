@@ -7,6 +7,7 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import ShowsTopBg from "@/features/showsMain/ShowsTopBg";
 
 function ShowsMain() {
   // Returned JSX
@@ -22,7 +23,8 @@ function ShowsMain() {
 
       {/* Content */}
       <section>
-        <Heading>BroNflix shows</Heading>
+        <Heading>Explore shows</Heading>
+        <ShowsTopBg />
       </section>
     </>
   );
