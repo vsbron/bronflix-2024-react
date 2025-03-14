@@ -12,6 +12,8 @@ module.exports = {
           "linear-gradient(to right, var(--color-black), transparent)",
         "featured-gradient-2":
           "linear-gradient(to top, var(--color-black) 5%, transparent)",
+        "featured-gradient-3":
+          "linear-gradient(to top, var(--color-black), transparent 15%, transparent 85%, var(--color-black))",
         "buttons-wrapper-gradient":
           "linear-gradient(to left, var(--color-black) 10%, transparent)",
         "heading-gradient":
@@ -24,6 +26,7 @@ module.exports = {
       },
       animation: {
         exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
+        mainPageBg: "mainPageBgMove 30s linear infinite",
         fadeInForwards: "fadeIn .2s ease forwards",
         showModalPopUp: "fadeInDown .2s ease forwards .2s",
       },
@@ -39,6 +42,10 @@ module.exports = {
         exploreMoreBgMove: {
           "0%": { backgroundPositionY: "0" },
           "100%": { backgroundPositionY: "-72rem" },
+        },
+        mainPageBgMove: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-135.6rem" },
         },
       },
     },

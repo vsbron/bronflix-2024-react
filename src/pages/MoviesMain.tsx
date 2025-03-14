@@ -10,6 +10,7 @@ import Heading from "@/components/ui/Heading";
 import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
 import MoviesNowPlaying from "@/features/moviesMain/MoviesNowPlaying";
 import MoviesCollections from "@/features/moviesMain/MoviesCollections";
+import MoviesTopBg from "@/features/moviesMain/MoviesTopBg";
 
 function MoviesMain() {
   // Returned JSX
@@ -26,6 +27,7 @@ function MoviesMain() {
       {/* Content */}
       <section>
         <Heading>Discover Movies</Heading>
+        <MoviesTopBg />
         <MoviesNowPlaying />
         <MoviesCollections />
         <MoviesUpcoming />

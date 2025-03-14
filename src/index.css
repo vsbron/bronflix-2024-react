@@ -159,3 +159,13 @@ footer a:focus svg {
     url("assets/explore-bg-2x.jpg") type("image/jpeg") 2x
   );
 }
+
+.movies-main-bg {
+  background-image: url("assets/movies-bg.jpg");
+  background-image: image-set(
+    url("assets/movies-bg.webp") type("image/webp"),
+    url("assets/movies-bg.jpg") type("image/jpeg"),
+    url("assets/movies-bg-2x.webp") type("image/webp") 2x,
+    url("assets/movies-bg-2x.jpg") type("image/jpeg") 2x
+  );
+}
