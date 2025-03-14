@@ -26,7 +26,7 @@ module.exports = {
       },
       animation: {
         exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
-        mainPageBg: "mainPageBgMove 30s linear infinite",
+        mainPageBg: "mainPageBgMove 20s linear infinite",
         fadeInForwards: "fadeIn .2s ease forwards",
         showModalPopUp: "fadeInDown .2s ease forwards .2s",
       },
@@ -45,7 +45,7 @@ module.exports = {
         },
         mainPageBgMove: {
           "0%": { backgroundPositionY: "0" },
-          "100%": { backgroundPositionY: "-135.6rem" },
+          "100%": { backgroundPositionY: "-90.5rem" },
         },
       },
     },
