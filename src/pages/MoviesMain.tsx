@@ -11,6 +11,7 @@ import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
 import MoviesNowPlaying from "@/features/moviesMain/MoviesNowPlaying";
 import MoviesCollections from "@/features/moviesMain/MoviesCollections";
 import MoviesTopBg from "@/features/moviesMain/MoviesTopBg";
+import MovieGenres from "@/features/moviesMain/MovieGenres";
 
 function MoviesMain() {
   // Returned JSX
@@ -29,6 +30,7 @@ function MoviesMain() {
         <Heading>Discover Movies</Heading>
         <MoviesTopBg />
         <MoviesNowPlaying />
+        <MovieGenres />
         <MoviesCollections />
         <MoviesUpcoming />
       </section>

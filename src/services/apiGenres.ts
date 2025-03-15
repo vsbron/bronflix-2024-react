@@ -1,8 +1,8 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { APIFetchType, IGenre } from "@/lib/typesAPI";
+import { APIFetchGenre, IGenre } from "@/lib/typesAPI";
 
 // API for getting the genres list
-export async function getGenres(type: APIFetchType): Promise<IGenre[]> {
+export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
   try {
     // Fetch the data
     const response = await fetch(

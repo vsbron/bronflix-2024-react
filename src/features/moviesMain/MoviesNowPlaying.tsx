@@ -12,7 +12,8 @@ function MoviesNowPlaying() {
   if (error || !movies)
     return (
       <div className="text-red-500">
-        {error?.message || "Error fetching now playing movies"}
+        {error?.message ||
+          "Error fetching movies currently playing in theaters"}
       </div>
     );
 
