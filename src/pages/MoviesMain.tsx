@@ -29,8 +29,8 @@ function MoviesMain() {
       <section>
         <Heading>Discover Movies</Heading>
         <MoviesTopBg />
-        <MoviesNowPlaying />
         <MovieGenres />
+        <MoviesNowPlaying />
         <MoviesCollections />
         <MoviesUpcoming />
       </section>
