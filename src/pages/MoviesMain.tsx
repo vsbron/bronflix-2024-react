@@ -7,10 +7,10 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import MediaMainBG from "@/features/MediaMainBG";
 import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
 import MoviesNowPlaying from "@/features/moviesMain/MoviesNowPlaying";
 import MoviesCollections from "@/features/moviesMain/MoviesCollections";
-import MoviesTopBg from "@/features/moviesMain/MoviesTopBg";
 import MovieGenres from "@/features/moviesMain/MovieGenres";
 
 function MoviesMain() {
@@ -28,7 +28,7 @@ function MoviesMain() {
       {/* Content */}
       <section>
         <Heading>Discover Movies</Heading>
-        <MoviesTopBg />
+        <MediaMainBG type="movies" />
         <MovieGenres />
         <MoviesNowPlaying />
         <MoviesCollections />

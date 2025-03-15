@@ -7,7 +7,7 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
-import ShowsTopBg from "@/features/showsMain/ShowsTopBg";
+import MediaMainBG from "@/features/MediaMainBG";
 import ShowGenres from "@/features/showsMain/ShowGenres";
 import ShowsOnAirToday from "@/features/showsMain/ShowsOnAirToday";
 
@@ -26,7 +26,7 @@ function ShowsMain() {
       {/* Content */}
       <section>
         <Heading>Explore shows</Heading>
-        <ShowsTopBg />
+        <MediaMainBG type="shows" />
         <ShowGenres />
         <ShowsOnAirToday />
       </section>
