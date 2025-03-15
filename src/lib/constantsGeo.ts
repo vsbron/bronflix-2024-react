@@ -31,6 +31,7 @@ export const COUNTRIES: { [key: string]: string } = {
   ES: "Spain",
   SE: "Sweden",
   TR: "Turkey",
+  TW: "Taiwan",
   UA: "Ukraine",
 
   AU: "Australia",
@@ -44,6 +45,7 @@ export const COUNTRIES: { [key: string]: string } = {
   VE: "Venezuela",
 
   AZ: "Azerbaijan",
+  BN: "Brunei",
   EG: "Egypt",
   IN: "India",
   ID: "Indonesia",
@@ -100,6 +102,7 @@ export const LANGUAGES: { [key: string]: string } = {
   ar: "Arabic",
   az: "Azerbaijani",
   bn: "Bengali",
+  ca: "Catalan",
   fa: "Persian",
   hi: "Hindi",
   id: "Indonesian",
