@@ -137,13 +137,14 @@ export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type MovieHighlightProps = { movie: IMovieList };
 
 // General
+export type GenreListProps = { data: IGenre[]; type: string };
 export type MediaHeroPros = {
   media: IBase;
   posterWidth: string;
   children: ReactNode;
 };
-export type TrailerButtonProps = { video: string };
 export type MediaMainBGProps = { type: "movies" | "shows" };
+export type TrailerButtonProps = { video: string };
 
 // Movie page
 export type MovieCastCrewProps = { movieId: number };
