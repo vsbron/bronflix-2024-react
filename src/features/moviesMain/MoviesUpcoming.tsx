@@ -4,7 +4,7 @@ import Loader from "@/components/ui/Loader";
 import { useMoviesUpcoming } from "@/features/moviesMain/useMoviesUpcoming";
 
 function MoviesUpcoming() {
-  // Getting the upcoming movies and ref for ribbon element
+  // Getting the upcoming movies
   const { isLoading, movies, error } = useMoviesUpcoming();
 
   // Guard clauses

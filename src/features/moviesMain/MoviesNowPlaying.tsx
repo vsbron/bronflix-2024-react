@@ -4,7 +4,7 @@ import Loader from "@/components/ui/Loader";
 import { useMoviesNowPlaying } from "@/features/moviesMain/useMoviesNowPlaying";
 
 function MoviesNowPlaying() {
-  // Getting the now playing movies and ref for ribbon element
+  // Getting the now playing movies
   const { isLoading, movies, error } = useMoviesNowPlaying();
 
   // Guard clauses

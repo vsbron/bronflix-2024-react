@@ -73,9 +73,13 @@ function ShowDetails({ show }: ShowDetailsProps) {
             />
           </div>
           {uid && <MediaInList type="tv" id={show.id} name={headingTitle} />}
-          <div className="text-[4rem] -my-5 font-heading">{name}</div>
-          <div className="mb-3 text-[2rem] italic text-stone-400">
-            {tagline}
+          <div className="mb-2">
+            <div className="text-[4rem] -my-5 font-heading">{name}</div>
+            {tagline && (
+              <div className="text-[2rem] mt-3 italic text-stone-400">
+                {tagline}
+              </div>
+            )}
           </div>
           <div className="contents text-2xl">
             <div>{genresList}</div>
@@ -102,16 +106,18 @@ function ShowDetails({ show }: ShowDetailsProps) {
                 <IconWrapper icon={<FilmIcon />}>{studios}</IconWrapper>
               )}
             </div>
-            <div className="flex gap-8 -mt-1">
-              <IconWrapper icon={<UserIcon />}>
-                {creators.map((c, i) => (
-                  <>
-                    <Link to={`/person/${c.id}`}>{c.name}</Link>
-                    {i < creators.length - 1 && "|"}
-                  </>
-                ))}
-              </IconWrapper>
-            </div>
+            {creators.length > 0 && (
+              <div className="flex gap-8 -mt-1">
+                <IconWrapper icon={<UserIcon />}>
+                  {creators.map((c, i) => (
+                    <>
+                      <Link to={`/person/${c.id}`}>{c.name}</Link>
+                      {i < creators.length - 1 && "|"}
+                    </>
+                  ))}
+                </IconWrapper>
+              </div>
+            )}
           </div>
           <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
           <MediaButtons type={"tv"} media={show} />

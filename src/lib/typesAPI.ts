@@ -1,6 +1,11 @@
 import { Media } from "@/lib/types";
 
-export type APIFetchType = "popular" | "top_rated" | "upcoming" | "now_playing";
+export type APIFetchType =
+  | "popular"
+  | "top_rated"
+  | "upcoming"
+  | "now_playing"
+  | "airing_today";
 export type APIFetchGenre = "tv" | "movie";
 
 /* Fetched lists */

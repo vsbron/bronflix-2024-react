@@ -22,7 +22,7 @@ export async function getShows(type: APIFetchType): Promise<IShowList[]> {
     // Ensure data.results not empty and is an array
     if (!data.results || !Array.isArray(data.results)) return [];
 
-    // Return the movies
+    // Return the shows
     return data.results;
   } catch (error: unknown) {
     console.error(error);
