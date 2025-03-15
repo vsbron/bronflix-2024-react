@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
+import { BASE_GAP_CLASS } from "@/lib/constants";
+
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import { useMovieGenres } from "@/features/moviesMain/useMovieGenres";
-import { BASE_GAP_CLASS } from "@/lib/constants";
-import { Link } from "react-router-dom";
 
 function MovieGenres() {
   // Getting the movie genres data

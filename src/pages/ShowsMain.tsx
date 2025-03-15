@@ -8,6 +8,7 @@ import {
 
 import Heading from "@/components/ui/Heading";
 import ShowsTopBg from "@/features/showsMain/ShowsTopBg";
+import ShowGenres from "@/features/showsMain/ShowGenres";
 
 function ShowsMain() {
   // Returned JSX
@@ -25,6 +26,7 @@ function ShowsMain() {
       <section>
         <Heading>Explore shows</Heading>
         <ShowsTopBg />
+        <ShowGenres />
       </section>
     </>
   );
