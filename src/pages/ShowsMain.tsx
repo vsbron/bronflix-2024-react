@@ -11,6 +11,8 @@ import MediaMainBG from "@/features/MediaMainBG";
 import ShowGenres from "@/features/showsMain/ShowGenres";
 import ShowsOnAirToday from "@/features/showsMain/ShowsOnAirToday";
 import ShowsRunning from "@/features/showsMain/ShowsRunning";
+import ShowsPopular from "@/features/home/ShowsPopular";
+import ShowsTopRated from "@/features/home/ShowsTopRated";
 
 function ShowsMain() {
   // Returned JSX
@@ -31,6 +33,8 @@ function ShowsMain() {
         <ShowGenres />
         <ShowsOnAirToday />
         <ShowsRunning />
+        <ShowsPopular />
+        <ShowsTopRated />
       </section>
     </>
   );
