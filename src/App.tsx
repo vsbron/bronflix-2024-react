@@ -23,7 +23,6 @@ const Home = lazy(() => import("@/pages/Home"));
 const MoviesMain = lazy(() => import("@/pages/MoviesMain"));
 const Movie = lazy(() => import("@/pages/Movie"));
 const MovieCollection = lazy(() => import("@/pages/MovieCollection"));
-const PeopleMain = lazy(() => import("@/pages/PeopleMain"));
 const Person = lazy(() => import("@/pages/Person"));
 const ShowsMain = lazy(() => import("@/pages/ShowsMain"));
 const Show = lazy(() => import("@/pages/Show"));
@@ -89,7 +88,6 @@ const router = createBrowserRouter([
       },
       { path: "/movies", element: <MoviesMain /> },
       { path: "/shows", element: <ShowsMain /> },
-      { path: "/people", element: <PeopleMain /> },
       { path: "/search", element: <SearchResults /> },
       { path: "/site-map", element: <Sitemap /> },
       { path: "/about-us", element: <AboutUs /> },

@@ -17,10 +17,6 @@ export const META_MAIN_SHOWS_TITLE = `Discover Shows${META_TITLE_END}`;
 export const META_MAIN_SHOWS_DESC = `Find your favorite TV shows on ${SITE_NAME}, discover new series, and check out the latest trending and top-rated shows`;
 export const META_MAIN_SHOWS_KEYW = `tv shows, series, trending shows, top-rated shows, drama series, comedy series`;
 
-export const META_MAIN_PEOPLE_TITLE = `People in Movies & Shows${META_TITLE_END}`;
-export const META_MAIN_PEOPLE_DESC = `Explore actors, directors, producers, and other people on ${SITE_NAME} who bring your favorite movies and shows to life`;
-export const META_MAIN_PEOPLE_KEYW = `actors, actresses, directors, producers, filmmakers, movie stars, tv personalities`;
-
 // Other pages
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;
 export const META_SITEMAP_DESC = `Explore the comprehensive sitemap of ${SITE_NAME}, where you can find links to all key sections, including movies, shows, actors, and more. Easily navigate through the platform and discover all available content and future features`;

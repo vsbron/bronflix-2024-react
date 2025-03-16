@@ -6,9 +6,14 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 
+import { useUser } from "@/redux/reducers/userReducer";
+
 import { NavItemProps } from "@/lib/types";
 
 function Nav() {
+  // Getting the id from user store
+  const { uid } = useUser();
+
   // Returned JSX
   return (
     <nav className="flex flex-col gap-16 my-auto">
@@ -21,9 +26,11 @@ function Nav() {
       <Link to="/shows">
         <NavItem icon={<TvIcon />} title="Shows" />
       </Link>
-      <Link to="/people">
-        <NavItem icon={<UserIcon />} title="People" />
-      </Link>
+      {uid && (
+        <Link to="/profile">
+          <NavItem icon={<UserIcon />} title="Profile" />
+        </Link>
+      )}
     </nav>
   );
 }
