@@ -84,7 +84,7 @@ function Previews<T extends IBase>({
               return (
                 <PreviewGroup
                   key={i}
-                  previews={previews}
+                  previews={pages === 1 ? rawPreviews : previews}
                   type={type}
                   flexBasis={isTwoRows ? flexBasis : undefined}
                   height={height}

@@ -7,6 +7,7 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import Separator from "@/components/ui/Separator";
 import MediaMainBG from "@/features/MediaMainBG";
 import ShowGenres from "@/features/showsMain/ShowGenres";
 import ShowsOnAirToday from "@/features/showsMain/ShowsOnAirToday";
@@ -33,6 +34,7 @@ function ShowsMain() {
         <ShowGenres />
         <ShowsOnAirToday />
         <ShowsRunning />
+        <Separator className="my-12" />
         <ShowsPopular />
         <ShowsTopRated />
       </section>

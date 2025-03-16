@@ -7,11 +7,13 @@ import {
 } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
+import Separator from "@/components/ui/Separator";
 import MediaMainBG from "@/features/MediaMainBG";
 import MoviesUpcoming from "@/features/moviesMain/MoviesUpcoming";
 import MoviesNowPlaying from "@/features/moviesMain/MoviesNowPlaying";
 import MoviesCollections from "@/features/moviesMain/MoviesCollections";
 import MovieGenres from "@/features/moviesMain/MovieGenres";
+import MoviesAcclaimed from "@/features/home/MoviesAcclaimed";
 
 function MoviesMain() {
   // Returned JSX
@@ -32,7 +34,9 @@ function MoviesMain() {
         <MovieGenres />
         <MoviesNowPlaying />
         <MoviesUpcoming />
+        <Separator className="my-12" />
         <MoviesCollections />
+        <MoviesAcclaimed />
       </section>
     </>
   );
