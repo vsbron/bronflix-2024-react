@@ -5,7 +5,8 @@ export type APIFetchType =
   | "top_rated"
   | "upcoming"
   | "now_playing"
-  | "airing_today";
+  | "airing_today"
+  | "on_the_air";
 export type APIFetchGenre = "tv" | "movie";
 
 /* Fetched lists */
@@ -38,6 +39,7 @@ export interface IMovieList extends IBase {
 export interface IShowList extends IBase {
   name: string;
   backdrop_path: string;
+  first_air_date?: string;
   vote_average: number;
   vote_count: number;
 }
