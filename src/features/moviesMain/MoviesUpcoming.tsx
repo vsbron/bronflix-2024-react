@@ -23,8 +23,8 @@ function MoviesUpcoming() {
       {movies.length > 0 ? (
         <Previews
           rawPreviews={movies}
-          width="26rem"
-          height="40rem"
+          width="22rem"
+          height="33rem"
           type="movies"
         />
       ) : (

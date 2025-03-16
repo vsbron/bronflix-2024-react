@@ -10,7 +10,7 @@ import Heading from "@/components/ui/Heading";
 import MediaMainBG from "@/features/MediaMainBG";
 import ShowGenres from "@/features/showsMain/ShowGenres";
 import ShowsOnAirToday from "@/features/showsMain/ShowsOnAirToday";
-import ShowsUpcoming from "@/features/showsMain/ShowsUpcoming";
+import ShowsRunning from "@/features/showsMain/ShowsRunning";
 
 function ShowsMain() {
   // Returned JSX
@@ -30,7 +30,7 @@ function ShowsMain() {
         <MediaMainBG type="shows" />
         <ShowGenres />
         <ShowsOnAirToday />
-        <ShowsUpcoming />
+        <ShowsRunning />
       </section>
     </>
   );

@@ -31,8 +31,8 @@ function MoviesMain() {
         <MediaMainBG type="movies" />
         <MovieGenres />
         <MoviesNowPlaying />
-        <MoviesCollections />
         <MoviesUpcoming />
+        <MoviesCollections />
       </section>
     </>
   );

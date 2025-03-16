@@ -20,7 +20,7 @@ function ShowsRunning() {
   return (
     <>
       <Heading as="h2">Currently Running Shows</Heading>
-      <Previews rawPreviews={shows} width="26rem" height="40rem" type="shows" />
+      <Previews rawPreviews={shows} width="22rem" height="33rem" type="shows" />
     </>
   );
 }
