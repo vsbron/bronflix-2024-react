@@ -53,7 +53,7 @@ function Sitemap() {
                   <Link to="/shows">Shows</Link>
                 </li>
                 <li>
-                  <Link to="/actors">Actors</Link>
+                  <Link to="/about-us">About Us</Link>
                 </li>
                 <li>
                   <Link to="/site-map">Site Map</Link>
@@ -65,9 +65,6 @@ function Sitemap() {
               <ul>
                 <li>
                   <Link to="/app-info">App Info</Link>
-                </li>
-                <li>
-                  <Link to="/about-us">About Us</Link>
                 </li>
                 <li>
                   <Link to="/contact-us">Contact Us</Link>

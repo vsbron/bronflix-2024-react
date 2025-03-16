@@ -65,6 +65,12 @@ function AppInfo() {
                   <a href="#profile-page">Profile Page</a>
                 </li>
                 <li>
+                  <a href="#main-movies-page">Main Movies Page</a>
+                </li>
+                <li>
+                  <a href="#main-shows-page">Main Shows Page</a>
+                </li>
+                <li>
                   <a href="#additional-pages">Additional Pages</a>
                 </li>
               </ul>
@@ -284,12 +290,74 @@ function AppInfo() {
             </li>
           </ul>
 
+          <Heading as="h3" id="main-movies-page">
+            Main Movies Page
+          </Heading>
+          <p>
+            The Main Movies Page is your gateway to a world of cinema, offering
+            curated lists, trending films, and more:
+          </p>
+          <ul>
+            <li>
+              Movie Genres: A section featuring different movie genres, helping
+              users explore films based on their preferred style or mood.
+            </li>
+            <li>
+              Now Playing: A dynamic list showcasing movies currently in
+              theaters, so you can keep up with the latest releases.
+            </li>
+            <li>
+              Upcoming Movies: A preview of upcoming movies with their release
+              dates, trailers, and summaries, giving you a glimpse of what's
+              coming soon.
+            </li>
+            <li>
+              Collections: A curated selection of movie collections, from
+              franchises to themed lists, perfect for binge-watching or
+              discovering films in the same category.
+            </li>
+            <li>
+              Acclaimed Movies: A list of highly-rated and critically acclaimed
+              movies, ensuring you're up-to-date with the best in cinema.
+            </li>
+          </ul>
+
+          <Heading as="h3" id="main-shows-page">
+            Main Shows Page
+          </Heading>
+          <p>
+            The Main Shows Page offers a comprehensive guide to TV series,
+            making it easy to discover new shows and follow your favorites:
+          </p>
+
+          <li>
+            Show Genres: A section that categorizes TV shows by genre, helping
+            users find new shows based on what they love to watch.
+          </li>
+          <li>
+            On Air Today: A dynamic list of TV shows currently airing, so you
+            never miss an episode of your favorite series.
+          </li>
+          <li>
+            Currently Running Shows: A selection of ongoing TV shows, updated
+            regularly to keep track of the latest seasons and episodes.
+          </li>
+          <li>
+            Popular Shows: A carousel featuring trending and most popular TV
+            shows, giving you a quick view of what's buzzing in the TV world.
+          </li>
+          <li>
+            Top Rated Shows: A curated list of top-rated TV shows, offering
+            highly recommended content for those looking for critically
+            acclaimed series.
+          </li>
+
           <Heading as="h3" id="additional-pages">
             Additional Pages
           </Heading>
           <p>
             Includes supplementary pages such as Contact Us, App Info, About Us,
-            Site Map, Terms of Use and Privacy Policy,
+            Site Map, Terms of Use and Privacy Policy.
           </p>
 
           <hr />

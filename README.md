@@ -17,6 +17,8 @@ It features an index page, as well as separate pages for movies, shows, and peop
    - [Person Page](#person-page)
    - [Collection Page](#collection-page)
    - [Profile Page](#profile-page)
+   - [Main Movies Page](#main-movies-page)
+   - [Main Shows Page](#main-shows-page)
    - [Additional Pages](#additional-pages)
 4. [Technical Details](#technical-details)
 5. [Live version](#live-version)
@@ -111,9 +113,29 @@ The Profile Page serves as the user's hub, displaying their personal details and
 - Favorites: Separate lists for favorite movies, TV shows, and people (actors/crew).
 - If a movie, show, or person is included in any of the user's lists, the corresponding icon will be displayed on the media's preview across the site.
 
+### **Main Movies Page**
+
+The Main Movies Page is your gateway to a world of cinema, offering curated lists, trending films, and more:
+
+- Movie Genres: A section featuring different movie genres, helping users explore films based on their preferred style or mood.
+- Now Playing: A dynamic list showcasing movies currently in theaters, so you can keep up with the latest releases.
+- Upcoming Movies: A preview of upcoming movies with their release dates, trailers, and summaries, giving you a glimpse of what’s coming soon.
+- Collections: A curated selection of movie collections, from franchises to themed lists, perfect for binge-watching or discovering films in the same category.
+- Acclaimed Movies: A list of highly-rated and critically acclaimed movies, ensuring you're up-to-date with the best in cinema.
+
+### **Main Shows Page**
+
+The Main Shows Page offers a comprehensive guide to TV series, making it easy to discover new shows and follow your favorites:
+
+- Show Genres: A section that categorizes TV shows by genre, helping users find new shows based on what they love to watch.
+- On Air Today: A dynamic list of TV shows currently airing, so you never miss an episode of your favorite series.
+- Currently Running Shows: A selection of ongoing TV shows, updated regularly to keep track of the latest seasons and episodes.
+- Popular Shows: A carousel featuring trending and most popular TV shows, giving you a quick view of what’s buzzing in the TV world.
+- Top Rated Shows: A curated list of top-rated TV shows, offering highly recommended content for those looking for critically acclaimed series.
+
 ### **Additional pages**
 
-Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, Terms of Use and Privacy Policy,
+Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, Terms of Use and Privacy Policy.
 
 ## Technical Details
 
@@ -132,9 +154,6 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 ## Future Features
 
 BroNflix is constantly evolving, with several exciting features planned for future updates:
-
-1. **Main Page for Movies, Shows, and People**  
-   A unified main page will be added, providing a clear overview of all categories—movies, shows, and actors—allowing users to easily explore each.
 
 2. **Mobile Layout**  
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.

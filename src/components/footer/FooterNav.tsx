@@ -19,7 +19,7 @@ function FooterNav() {
             <Link to="/shows">Shows</Link>
           </li>
           <li>
-            <Link to="/actors">Actors</Link>
+            <Link to="/about-us">About Us</Link>
           </li>
           <li>
             <Link to="/site-map">Site Map</Link>
@@ -28,9 +28,6 @@ function FooterNav() {
         <ul className="basis-[40%] m-0 flex flex-col gap-1">
           <li>
             <Link to="/app-info">App Info</Link>
-          </li>
-          <li>
-            <Link to="/about-us">About Us</Link>
           </li>
           <li>
             <Link to="/contact-us">Contact Us</Link>
