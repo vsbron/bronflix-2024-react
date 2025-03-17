@@ -18,9 +18,11 @@ import ErrorBoundary from "@/components/errorBoundary/ErrorBoundary";
 import ErrorMedia from "@/components/errorBoundary/ErrorMedia";
 import Layout from "@/components/ui/Layout";
 import Loader from "@/components/ui/Loader";
+import { moviesByGenreLoader } from "@/pages/MoviesByGenre";
 
 const Home = lazy(() => import("@/pages/Home"));
 const MoviesMain = lazy(() => import("@/pages/MoviesMain"));
+const MoviesByGenre = lazy(() => import("@/pages/MoviesByGenre"));
 const Movie = lazy(() => import("@/pages/Movie"));
 const MovieCollection = lazy(() => import("@/pages/MovieCollection"));
 const Person = lazy(() => import("@/pages/Person"));
@@ -87,6 +89,11 @@ const router = createBrowserRouter([
         children: [{ index: true, element: <Profile /> }],
       },
       { path: "/movies", element: <MoviesMain /> },
+      {
+        path: "/movies/genre/:genreId",
+        element: <MoviesByGenre />,
+        loader: moviesByGenreLoader,
+      },
       { path: "/shows", element: <ShowsMain /> },
       { path: "/search", element: <SearchResults /> },
       { path: "/site-map", element: <Sitemap /> },

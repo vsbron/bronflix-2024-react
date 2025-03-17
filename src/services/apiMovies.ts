@@ -96,3 +96,31 @@ export async function getMovie(movieId: string): Promise<IMovie> {
     throw new Error("An error occurred while fetching movie data");
   }
 }
+
+// API for getting specific movie
+export async function getMoviesGenre(genreId: string): Promise<IMovieList[]> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}discover/movie?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }&with_genres=${genreId}`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch the movies with selected genre: ${response.statusText}`
+      );
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the movie list
+    return data.results;
+  } catch (error: unknown) {
+    console.error(error);
+    throw new Error("An error occurred while fetching movies data");
+  }
+}
