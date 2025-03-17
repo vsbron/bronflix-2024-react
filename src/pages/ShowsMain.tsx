@@ -35,8 +35,8 @@ function ShowsMain() {
         <ShowsOnAirToday />
         <ShowsRunning />
         <Separator className="my-12" />
-        <ShowsPopular />
         <ShowsTopRated />
+        <ShowsPopular />
       </section>
     </>
   );
