@@ -35,18 +35,16 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
     <section>
       <Heading as="h2">Episode Guide</Heading>
       <div className={`flex ${BASE_GAP_CLASS} mb-6 flex-wrap`}>
-        {onlySeasons.map((season) => {
-          return (
-            <Button
-              key={season.id}
-              isActive={String(season.season_number) === chosenSeason}
-            >
-              <span onClick={() => handleSeason(season.season_number)}>
-                {season.name}
-              </span>
-            </Button>
-          );
-        })}
+        {onlySeasons.map((season) => (
+          <Button
+            key={season.id}
+            isActive={String(season.season_number) === chosenSeason}
+          >
+            <span onClick={() => handleSeason(season.season_number)}>
+              {season.name}
+            </span>
+          </Button>
+        ))}
       </div>
       {chosenSeason &&
         (isSeason ? (

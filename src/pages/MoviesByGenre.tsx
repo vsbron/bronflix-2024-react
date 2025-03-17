@@ -23,9 +23,9 @@ function MoviesByGenre() {
   return (
     <>
       <Heading>Movies by Genre</Heading>
-      {movies.map((movie: IMovieList) => {
-        return <div key={movie.id}>{movie.title}</div>;
-      })}
+      {movies.map((movie: IMovieList) => (
+        <div key={movie.id}>{movie.title}</div>
+      ))}
     </>
   );
 }

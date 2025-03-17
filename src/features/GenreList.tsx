@@ -23,7 +23,7 @@ function GenreList({ data, type }: GenreListProps) {
       </div>
       <div className={`flex flex-wrap ${BASE_GAP_CLASS} max-w-[75%] mt-5`}>
         {data.map((genre) => (
-          <Button>
+          <Button key={genre.id}>
             <Link
               to={`/${type === "movie" ? "movies" : "shows"}/genre/${genre.id}`}
             >

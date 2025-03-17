@@ -76,6 +76,7 @@ function FormAvatars() {
               className={`cursor-pointer border-[2px] ${
                 isActive ? "border-red-700" : "border-transparent"
               }`}
+              key={name}
             >
               <img src={imgSrc} key={name} width={76} alt={altText} />
             </div>
