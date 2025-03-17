@@ -1,56 +1,25 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import Heading from "@/components/ui/Heading";
+import useGenreData from "@/hooks/useGenreData";
 import {
   META_MOVIES_GENRE_DESC,
   META_MOVIES_GENRE_TITLE,
 } from "@/lib/metaTags";
 
-function MoviesByGenre() {
-  // Setting the state for genre name and error
-  const [genreName, setGenreName] = useState<string | null>(null);
-  const [error, setError] = useState<string>("");
+import Loader from "@/components/ui/Loader";
 
+function MoviesByGenre() {
   // Getting the genre ID from params
   const { genreId } = useParams();
 
-  useEffect(() => {
-    // Guard clause
-    if (!genreId) {
-      setError("No Genre provided");
-      return;
-    }
+  if (!genreId) return <div>Sorry, no Genre was provided</div>;
 
-    // Create signal from controller to clean fetch function
-    const controller = new AbortController();
-    const signal = controller.signal;
+  // Getting the genre name and possible error from custom hook
+  const { genreName, error } = useGenreData(genreId);
 
-    // Function to fetch genres and get the name of the selected one
-    const fetchGenres = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-          import.meta.env.VITE_TMDB_API_KEY
-        }&language=en-US`,
-        { signal }
-      );
-      const data = await response.json();
-      const genre = data.genres.find(
-        (g: { id: number; name: string }) => g.id === parseInt(genreId!)
-      );
-      setGenreName(genre ? genre.name : "Unknown Genre");
-      setError("");
-    };
-
-    // Call the function
-    fetchGenres();
-
-    // Cleanup function
-    return () => {
-      controller.abort();
-    };
-  }, [genreId]);
+  if (!genreName) return <Loader />;
 
   // Returned JSX
   return (
