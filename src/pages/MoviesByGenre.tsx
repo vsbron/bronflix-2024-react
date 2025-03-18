@@ -12,8 +12,9 @@ import Loader from "@/components/ui/Loader";
 import GenreMediaList from "@/features/GenreMediaList";
 
 function MoviesByGenre() {
-  // Getting the genre ID from params
+  // Getting the genre ID from params and setting the type
   const { genreId } = useParams();
+  const type = "movie";
 
   // Guard clause
   if (!genreId)
@@ -22,7 +23,7 @@ function MoviesByGenre() {
     );
 
   // Use the custom hook
-  const { genreName, error, isLoading } = useGenreNameData("movie", genreId);
+  const { genreName, error, isLoading } = useGenreNameData(type, genreId);
 
   // Show loader if data is still loading
   if (isLoading) return <Loader />;
@@ -45,7 +46,7 @@ function MoviesByGenre() {
 
       {/* Content */}
       <Heading>{`Movies in the ${genreName} Genre`}</Heading>
-      <GenreMediaList genreId={genreId} />
+      <GenreMediaList genreId={genreId} type={type} />
     </>
   );
 }

@@ -138,6 +138,10 @@ export type MovieHighlightProps = { movie: IMovieList };
 
 // General
 export type GenreListProps = { data: IGenre[]; type: string };
+export type GenreMediaListProps = {
+  genreId: string;
+  type: "movie" | "tv";
+};
 export type MediaHeroPros = {
   media: IBase;
   posterWidth: string;

@@ -11,6 +11,7 @@ import GenreMediaList from "@/features/GenreMediaList";
 function ShowsByGenre() {
   // Getting the genre ID from params
   const { genreId } = useParams();
+  const type = "tv";
 
   // Guard clause
   if (!genreId)
@@ -19,7 +20,7 @@ function ShowsByGenre() {
     );
 
   // Use the custom hook
-  const { genreName, error, isLoading } = useGenreNameData("tv", genreId);
+  const { genreName, error, isLoading } = useGenreNameData(type, genreId);
 
   // Show loader if data is still loading
   if (isLoading) return <Loader />;
@@ -42,7 +43,7 @@ function ShowsByGenre() {
 
       {/* Content */}
       <Heading>{`Shows in the ${genreName} Genre`}</Heading>
-      <GenreMediaList genreId={genreId} />
+      <GenreMediaList genreId={genreId} type={type} />
     </>
   );
 }

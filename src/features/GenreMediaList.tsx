@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
+import { GenreMediaListProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
 import Loader from "@/components/ui/Loader";
@@ -8,13 +9,13 @@ import { useGenreMediaData } from "@/features/useGenreMediaData";
 import SearchPreview from "@/features/search/SearchPreview";
 import SearchPagination from "@/features/search/SearchPagination";
 
-function GenreMediaList({ genreId }: { genreId: string }) {
+function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   // Getting the page number from search params
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
 
   // Getting the media from chosen genre from React Query
-  const { isLoading, data, error } = useGenreMediaData(genreId, page);
+  const { isLoading, data, error } = useGenreMediaData(type, genreId, page);
 
   // Guard clauses
   if (isLoading) return <Loader />;
