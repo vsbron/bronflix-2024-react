@@ -39,6 +39,10 @@ function useTrailer(id: number, type: "tv" | "movie") {
         // Updating the state of video
         setVideo(trailer ? `https://www.youtube.com/embed/${trailer.key}` : "");
       } catch (error) {
+        // Ignore the abort controller error
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
         setVideo("");
         console.error("Error fetching trailer:", error);
       }

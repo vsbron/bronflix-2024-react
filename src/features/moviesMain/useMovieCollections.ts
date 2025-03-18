@@ -41,7 +41,7 @@ const useMovieCollections = () => {
       } catch (err: unknown) {
         // Ignore the abort controller error
         if (err instanceof DOMException && err.name === "AbortError") {
-          return; // Ignore
+          return;
         }
         // Set the error message
         setError("Couldn't fetch movie collections data");

@@ -29,6 +29,10 @@ export function GenresProvider({ children }: GenresProviderProps) {
         const data = await response.json();
         setGenres(data.genres); // Assuming the API returns a "genres" array
       } catch (error) {
+        // Ignore the abort controller error
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
         console.error("Error fetching genres:", error);
       }
     }
