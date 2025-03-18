@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useGenreData(type: "tv" | "movie", genreId: string) {
+export function useGenreNameData(type: "tv" | "movie", genreId: string) {
   // Setting the state for genre name, error and loading state
   const [genreName, setGenreName] = useState<string>("Unknown");
   const [error, setError] = useState<string>("");

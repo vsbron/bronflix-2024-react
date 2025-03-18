@@ -233,3 +233,9 @@ export interface ISearchResults {
   total_results: number;
   total_pages: number;
 }
+
+export interface IGenreMedia {
+  results: IMovieList[];
+  total_results: number;
+  total_pages: number;
+}

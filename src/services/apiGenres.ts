@@ -1,5 +1,5 @@
 import { MEDIA_URL } from "@/lib/constants";
-import { APIFetchGenre, IGenre } from "@/lib/typesAPI";
+import { APIFetchGenre, IGenre, IGenreMedia } from "@/lib/typesAPI";
 
 // API for getting the genres list
 export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
@@ -29,5 +29,36 @@ export async function getGenres(type: APIFetchGenre): Promise<IGenre[]> {
   } catch (error: unknown) {
     console.error(error);
     throw new Error(`An error occurred while fetching ${type} genres data`);
+  }
+}
+
+// API for getting media under genre
+export async function getGenresMedia(
+  genreId: string,
+  page: number
+): Promise<IGenreMedia> {
+  try {
+    // Fetching the data
+    const response = await fetch(
+      `${MEDIA_URL}discover/movie?api_key=${
+        import.meta.env.VITE_TMDB_API_KEY
+      }&with_genres=${genreId}&page=${page}`
+    );
+
+    // Guard clause
+    if (!response.ok) {
+      throw new Error(`Failed to fetch the media data: ${response.statusText}`);
+    }
+
+    // Getting the actual data
+    const data = await response.json();
+
+    // Return the show
+    return data;
+  } catch (error: unknown) {
+    console.error(error);
+    throw new Error(
+      "An error occurred while fetching media under chosen genre data"
+    );
   }
 }

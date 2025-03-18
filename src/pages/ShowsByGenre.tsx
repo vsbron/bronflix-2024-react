@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-import { useGenreData } from "@/hooks/useGenreData";
+import { useGenreNameData } from "@/hooks/useGenreNameData";
 import { META_SHOWS_GENRE_DESC, META_SHOWS_GENRE_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
@@ -19,7 +19,7 @@ function ShowsByGenre() {
     );
 
   // Use the custom hook
-  const { genreName, error, isLoading } = useGenreData("tv", genreId);
+  const { genreName, error, isLoading } = useGenreNameData("tv", genreId);
 
   // Show loader if data is still loading
   if (isLoading) return <Loader />;
