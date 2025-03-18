@@ -36,17 +36,19 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   // Returned JSX
   return (
     <>
-      <section>
-        <Heading as="h2">Cast & Characters</Heading>
-        {/* The Cast */}
-        <Previews
-          rawPreviews={shortenCast as ICast[]}
-          height="26rem"
-          width="18rem"
-          type="person"
-          subtitle="character"
-        />
-      </section>
+      {cast.length > 0 && (
+        <section>
+          <Heading as="h2">Cast & Characters</Heading>
+          {/* The Cast */}
+          <Previews
+            rawPreviews={shortenCast as ICast[]}
+            height="26rem"
+            width="18rem"
+            type="person"
+            subtitle="character"
+          />
+        </section>
+      )}
       {/* The Crew (if available) */}
       {crew.length > 0 && (
         <section>
