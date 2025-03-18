@@ -39,6 +39,7 @@ const useMovieCollections = () => {
         // Update the state
         setCollections(responses);
       } catch (err: unknown) {
+        // Ignore the abort controller error
         if (err instanceof DOMException && err.name === "AbortError") {
           return; // Ignore
         }

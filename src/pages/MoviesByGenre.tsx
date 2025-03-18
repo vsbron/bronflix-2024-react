@@ -2,24 +2,31 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import Heading from "@/components/ui/Heading";
-import useGenreData from "@/hooks/useGenreData";
 import {
   META_MOVIES_GENRE_DESC,
   META_MOVIES_GENRE_TITLE,
 } from "@/lib/metaTags";
 
 import Loader from "@/components/ui/Loader";
+import GenreMediaList from "@/features/GenreMediaList";
+import { useGenreData } from "@/hooks/useGenreData";
 
 function MoviesByGenre() {
   // Getting the genre ID from params
   const { genreId } = useParams();
 
-  if (!genreId) return <div>Sorry, no Genre was provided</div>;
+  // Guard clause
+  if (!genreId)
+    return <div className="text-red-500">Sorry, no genre was provided</div>;
 
-  // Getting the genre name and possible error from custom hook
-  const { genreName, error } = useGenreData(genreId);
+  // Use the custom hook
+  const { genreName, error, isLoading } = useGenreData(genreId);
 
-  if (!genreName) return <Loader />;
+  // Show loader if data is still loading
+  if (isLoading) return <Loader />;
+
+  // Guard clause for errors or no genre
+  if (error) return <div className="text-red-500">{error}</div>;
 
   // Returned JSX
   return (
@@ -36,7 +43,7 @@ function MoviesByGenre() {
 
       {/* Content */}
       <Heading>{`Movies in the ${genreName} Genre`}</Heading>
-      {/* {error || <GenreMediaList genreId={genreId} />} */}
+      <GenreMediaList genreId={genreId} />
     </>
   );
 }
