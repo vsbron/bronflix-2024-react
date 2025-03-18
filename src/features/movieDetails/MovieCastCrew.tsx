@@ -23,6 +23,9 @@ function MovieCastCrew({ movieId }: MovieCastCrewProps) {
   // Destructuring the data
   const { cast, crew } = data;
 
+  // Guard clause
+  if (cast.length === 0 && crew.length === 0) return null;
+
   // Filtering the cast and crew arrays
   const shortenCast = cast.slice(0, CAST_MAX);
   const shortenCrew = crew
