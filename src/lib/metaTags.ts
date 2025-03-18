@@ -18,7 +18,10 @@ export const META_MAIN_SHOWS_DESC = `Find your favorite TV shows on ${SITE_NAME}
 export const META_MAIN_SHOWS_KEYW = `tv shows, series, trending shows, top-rated shows, drama series, comedy series`;
 
 export const META_MOVIES_GENRE_TITLE = `Genre - Movies list${META_TITLE_END}`;
-export const META_MOVIES_GENRE_DESC = `Explore a wide selection of movies from different genres. Find top-rated, trending, and classic films all in one place.`;
+export const META_MOVIES_GENRE_DESC = `Explore a wide selection of movies from different genres. Find top-rated, trending, and classic films all in one place`;
+
+export const META_SHOWS_GENRE_TITLE = `Genre - Shows list${META_TITLE_END}`;
+export const META_SHOWS_GENRE_DESC = `Browse through a collection of shows spanning multiple genres. From popular hits to hidden gems, find your next favorite series here`;
 
 // Other pages
 export const META_SITEMAP_TITLE = `Site Map${META_TITLE_END}`;

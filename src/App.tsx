@@ -26,6 +26,7 @@ const Movie = lazy(() => import("@/pages/Movie"));
 const MovieCollection = lazy(() => import("@/pages/MovieCollection"));
 const Person = lazy(() => import("@/pages/Person"));
 const ShowsMain = lazy(() => import("@/pages/ShowsMain"));
+const ShowsByGenre = lazy(() => import("@/pages/ShowsByGenre"));
 const Show = lazy(() => import("@/pages/Show"));
 const SearchResults = lazy(() => import("@/pages/SearchResults"));
 const Profile = lazy(() => import("@/pages/Profile"));
@@ -90,6 +91,7 @@ const router = createBrowserRouter([
       { path: "/movies", element: <MoviesMain /> },
       { path: "/movies/genre/:genreId", element: <MoviesByGenre /> },
       { path: "/shows", element: <ShowsMain /> },
+      { path: "/shows/genre/:genreId", element: <ShowsByGenre /> },
       { path: "/search", element: <SearchResults /> },
       { path: "/site-map", element: <Sitemap /> },
       { path: "/about-us", element: <AboutUs /> },

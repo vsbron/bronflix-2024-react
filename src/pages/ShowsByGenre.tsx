@@ -2,27 +2,24 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import { useGenreData } from "@/hooks/useGenreData";
-import {
-  META_MOVIES_GENRE_DESC,
-  META_MOVIES_GENRE_TITLE,
-} from "@/lib/metaTags";
+import { META_SHOWS_GENRE_DESC, META_SHOWS_GENRE_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import GenreMediaList from "@/features/GenreMediaList";
 
-function MoviesByGenre() {
+function ShowsByGenre() {
   // Getting the genre ID from params
   const { genreId } = useParams();
 
   // Guard clause
   if (!genreId)
     return (
-      <div className="text-red-500">Sorry, no movie genre was provided</div>
+      <div className="text-red-500">Sorry, no show genre was provided</div>
     );
 
   // Use the custom hook
-  const { genreName, error, isLoading } = useGenreData("movie", genreId);
+  const { genreName, error, isLoading } = useGenreData("tv", genreId);
 
   // Show loader if data is still loading
   if (isLoading) return <Loader />;
@@ -37,17 +34,17 @@ function MoviesByGenre() {
       <Helmet>
         <title>
           {genreName}
-          {META_MOVIES_GENRE_TITLE}
+          {META_SHOWS_GENRE_TITLE}
         </title>
-        <meta name="description" content={META_MOVIES_GENRE_DESC} />
+        <meta name="description" content={META_SHOWS_GENRE_DESC} />
         <meta name="robots" content="noindex,nofollow" />
       </Helmet>
 
       {/* Content */}
-      <Heading>{`Movies in the ${genreName} Genre`}</Heading>
+      <Heading>{`Shows in the ${genreName} Genre`}</Heading>
       <GenreMediaList genreId={genreId} />
     </>
   );
 }
 
-export default MoviesByGenre;
+export default ShowsByGenre;

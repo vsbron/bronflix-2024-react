@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useGenreData(genreId: string) {
+export function useGenreData(type: "tv" | "movie", genreId: string) {
   // Setting the state for genre name, error and loading state
   const [genreName, setGenreName] = useState<string>("Unknown");
   const [error, setError] = useState<string>("");
@@ -18,7 +18,7 @@ export function useGenreData(genreId: string) {
       try {
         // Get the full genres list, find the one we're interested in
         const response = await fetch(
-          `https://api.themoviedb.org/3/genre/movie/list?api_key=${
+          `https://api.themoviedb.org/3/genre/${type}/list?api_key=${
             import.meta.env.VITE_TMDB_API_KEY
           }&language=en-US`,
           { signal }
@@ -38,7 +38,7 @@ export function useGenreData(genreId: string) {
           return; // Ignore
         }
         // Set the error message
-        setError("Failed to fetch genre data");
+        setError(`Failed to fetch ${type} genre data`);
         // Disable loading state
         setIsLoading(false);
       }
