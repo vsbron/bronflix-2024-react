@@ -1,5 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
+import { MAX_RESULTS_PER_PAGE } from "@/lib/constants";
 import { SearchResultsListProps } from "@/lib/types";
 import { ISearchedMedia } from "@/lib/typesAPI";
 
@@ -30,7 +31,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
     );
 
   // Calculating tht total number of pages
-  const totalPages = Math.ceil(data.total_results / 20);
+  const totalPages = Math.ceil(data.total_results / MAX_RESULTS_PER_PAGE);
 
   // Page change handler
   const handlePageChange = (newPage: number) => {

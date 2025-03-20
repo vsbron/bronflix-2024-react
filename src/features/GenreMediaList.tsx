@@ -1,5 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 
+import {
+  MAX_PAGINATION,
+  MAX_RESULTS,
+  MAX_RESULTS_PER_PAGE,
+} from "@/lib/constants";
 import { GenreMediaListProps } from "@/lib/types";
 import { IMovieList } from "@/lib/typesAPI";
 
@@ -26,8 +31,11 @@ function GenreMediaList({ genreId, type }: GenreMediaListProps) {
       </div>
     );
 
-  // Calculating tht total number of pages
-  const totalPages = Math.ceil(data.total_results / 20);
+  // Calculating the total number of pages
+  const totalPages =
+    data.total_results > MAX_RESULTS
+      ? MAX_PAGINATION
+      : Math.ceil(data.total_results / MAX_RESULTS_PER_PAGE);
 
   // Page change handler
   const handlePageChange = (newPage: number) => {

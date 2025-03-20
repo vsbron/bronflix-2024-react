@@ -27,6 +27,9 @@ export const NOTABLE_SCORE_LAST = 6.5;
 
 export const MIN_SEARCH_CHARS = 2;
 export const SEARCH_RESULTS_PAGE = 20;
+export const MAX_RESULTS = 10000;
+export const MAX_PAGINATION = 500;
+export const MAX_RESULTS_PER_PAGE = 20;
 
 export const FILMOGRAPHY_LIMIT = 40;
 export const EXCLUDED_GENRE_IDS = [
