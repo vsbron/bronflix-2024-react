@@ -12,6 +12,7 @@ import PaginationNav from "@/features/PaginationNav";
 import SearchNoResults from "@/features/search/SearchNoResults";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
+import ResultsTwoColumns from "../ResultsTwoColumns";
 
 function SearchResultsList({ query }: SearchResultsListProps) {
   // Getting the page number from search params
@@ -53,11 +54,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
           </p>
 
           <Separator className="my-10" />
-          <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-            {data.results.map((media: ISearchedMedia) => (
-              <SearchPreview media={media} key={media.id} />
-            ))}
-          </div>
+          <ResultsTwoColumns media={data.results} />
           <Separator className="my-10" />
           <PaginationNav
             page={page}

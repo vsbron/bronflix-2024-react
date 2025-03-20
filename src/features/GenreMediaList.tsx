@@ -10,9 +10,8 @@ import { GenreMediaListProps } from "@/lib/types";
 import Loader from "@/components/ui/Loader";
 import Separator from "@/components/ui/Separator";
 import PaginationNav from "@/features/PaginationNav";
+import ResultsTwoColumns from "@/features/ResultsTwoColumns";
 import { useGenreMediaData } from "@/features/useGenreMediaData";
-import SearchPreview from "./search/SearchPreview";
-import GenreMediaPreview from "./GenreMediaPreview";
 
 function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   // Getting the page number from search params
@@ -46,11 +45,7 @@ function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   // Returned JSX
   return (
     <>
-      <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-        {data.results.map((media: any) => (
-          <GenreMediaPreview media={media} key={media.id} type={type} />
-        ))}
-      </div>
+      <ResultsTwoColumns media={data.results} />
       <Separator className="my-10" />
       <PaginationNav
         page={page}

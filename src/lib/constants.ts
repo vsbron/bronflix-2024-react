@@ -19,6 +19,7 @@ export const BIO_PREVIEW_LENGTH = 400;
 
 export const CAST_MAX = 25;
 export const CREW_MAX = 15;
+export const MAX_OVERVIEW_CHARS = 250;
 export const NOTABLE_WORK_LIMIT = 15;
 export const NOTABLE_POPULARITY_LIMIT = 4;
 export const NOTABLE_SCORE_LIMIT = 7.5;
