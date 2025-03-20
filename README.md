@@ -19,6 +19,7 @@ It features an index page, as well as separate pages for movies, shows, and peop
    - [Profile Page](#profile-page)
    - [Main Movies Page](#main-movies-page)
    - [Main Shows Page](#main-shows-page)
+   - [Genres Media Page](#genres-media-page)
    - [Additional Pages](#additional-pages)
 4. [Technical Details](#technical-details)
 5. [Live version](#live-version)
@@ -133,6 +134,13 @@ The Main Shows Page offers a comprehensive guide to TV series, making it easy to
 - Popular Shows: A carousel featuring trending and most popular TV shows, giving you a quick view of what’s buzzing in the TV world.
 - Top Rated Shows: A curated list of top-rated TV shows, offering highly recommended content for those looking for critically acclaimed series.
 
+### **Genres Media Page**
+
+A page that lists media based on the selected genre from the **Main Movies** or **Main Shows** pages:
+
+- Uses a 2-column layout, similar to the Search Results page.
+- Displays up to 10,000 results across 500 pages (TMDB's limit).
+
 ### **Additional pages**
 
 Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, Terms of Use and Privacy Policy.
@@ -155,7 +163,7 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 BroNflix is constantly evolving, with several exciting features planned for future updates:
 
-2. **Mobile Layout**  
+1. **Mobile Layout** (The Last One)
    A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
 
 ---

@@ -32,9 +32,7 @@ function AppInfo() {
             functionalities include dynamic content from the TMDB API, a sleek
             and responsive UI, and intuitive navigation.
           </p>
-
           <hr />
-
           <Heading as="h2">Contents</Heading>
           <ul>
             <li>
@@ -71,6 +69,9 @@ function AppInfo() {
                   <a href="#main-shows-page">Main Shows Page</a>
                 </li>
                 <li>
+                  <a href="#genres-media-page">Genres Media Page</a>
+                </li>
+                <li>
                   <a href="#additional-pages">Additional Pages</a>
                 </li>
               </ul>
@@ -82,9 +83,7 @@ function AppInfo() {
               <a href="#live-version">Live version</a>
             </li>
           </ul>
-
           <hr />
-
           <Heading as="h2" id="project-overview">
             Project Overview
           </Heading>
@@ -107,7 +106,6 @@ function AppInfo() {
               layout and intuitive navigation.
             </li>
           </ul>
-
           <hr />
           <Heading as="h2" id="features">
             Features
@@ -135,13 +133,10 @@ function AppInfo() {
               with saved preferences and recommendations.
             </li>
           </ul>
-
           <hr />
-
           <Heading as="h2" id="page-descriptions">
             Page Descriptions
           </Heading>
-
           <Heading as="h3" id="index-page">
             Index Page
           </Heading>
@@ -163,7 +158,6 @@ function AppInfo() {
               every visit.
             </li>
           </ul>
-
           <Heading as="h3" id="movie-page">
             Movie Page
           </Heading>
@@ -192,7 +186,6 @@ function AppInfo() {
               recommendations.
             </li>
           </ul>
-
           <Heading as="h3" id="show-page">
             Show Page
           </Heading>
@@ -223,7 +216,6 @@ function AppInfo() {
             </li>
             <li>"Shows You May Also Like" carousel for recommendations.</li>
           </ul>
-
           <Heading as="h3" id="person-page">
             Person Page
           </Heading>
@@ -241,7 +233,6 @@ function AppInfo() {
               with each entry clickable for more details.
             </li>
           </ul>
-
           <Heading as="h3" id="collection-page">
             Collection Page
           </Heading>
@@ -250,7 +241,6 @@ function AppInfo() {
             poster, a brief overview, and a list of movies included in the
             collection.
           </p>
-
           <Heading as="h3" id="profile-page">
             Profile Page
           </Heading>
@@ -289,7 +279,6 @@ function AppInfo() {
               preview across the site.
             </li>
           </ul>
-
           <Heading as="h3" id="main-movies-page">
             Main Movies Page
           </Heading>
@@ -321,7 +310,6 @@ function AppInfo() {
               movies, ensuring you're up-to-date with the best in cinema.
             </li>
           </ul>
-
           <Heading as="h3" id="main-shows-page">
             Main Shows Page
           </Heading>
@@ -329,29 +317,42 @@ function AppInfo() {
             The Main Shows Page offers a comprehensive guide to TV series,
             making it easy to discover new shows and follow your favorites:
           </p>
-
-          <li>
-            Show Genres: A section that categorizes TV shows by genre, helping
-            users find new shows based on what they love to watch.
-          </li>
-          <li>
-            On Air Today: A dynamic list of TV shows currently airing, so you
-            never miss an episode of your favorite series.
-          </li>
-          <li>
-            Currently Running Shows: A selection of ongoing TV shows, updated
-            regularly to keep track of the latest seasons and episodes.
-          </li>
-          <li>
-            Popular Shows: A carousel featuring trending and most popular TV
-            shows, giving you a quick view of what's buzzing in the TV world.
-          </li>
-          <li>
-            Top Rated Shows: A curated list of top-rated TV shows, offering
-            highly recommended content for those looking for critically
-            acclaimed series.
-          </li>
-
+          <ul>
+            <li>
+              Show Genres: A section that categorizes TV shows by genre, helping
+              users find new shows based on what they love to watch.
+            </li>
+            <li>
+              On Air Today: A dynamic list of TV shows currently airing, so you
+              never miss an episode of your favorite series.
+            </li>
+            <li>
+              Currently Running Shows: A selection of ongoing TV shows, updated
+              regularly to keep track of the latest seasons and episodes.
+            </li>
+            <li>
+              Popular Shows: A carousel featuring trending and most popular TV
+              shows, giving you a quick view of what's buzzing in the TV world.
+            </li>
+            <li>
+              Top Rated Shows: A curated list of top-rated TV shows, offering
+              highly recommended content for those looking for critically
+              acclaimed series.
+            </li>
+          </ul>
+          <Heading as="h3" id="genres-media-page">
+            Genres Media Page
+          </Heading>
+          <p>
+            A page that lists media based on the selected genre from the Main
+            Movies or Main Shows pages
+          </p>
+          <ul>
+            <li>Uses a 2-column layout, similar to the Search Results page.</li>
+            <li>
+              Displays up to 10,000 results across 500 pages (TMDB's limit).
+            </li>
+          </ul>
           <Heading as="h3" id="additional-pages">
             Additional Pages
           </Heading>
@@ -359,9 +360,7 @@ function AppInfo() {
             Includes supplementary pages such as Contact Us, App Info, About Us,
             Site Map, Terms of Use and Privacy Policy.
           </p>
-
           <hr />
-
           <Heading as="h2" id="technical-details">
             Technical Details
           </Heading>
