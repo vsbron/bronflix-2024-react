@@ -8,8 +8,8 @@ import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import Separator from "@/components/ui/Separator";
 
+import PaginationNav from "@/features/PaginationNav";
 import SearchNoResults from "@/features/search/SearchNoResults";
-import SearchPagination from "@/features/search/SearchPagination";
 import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
 
@@ -59,7 +59,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
             ))}
           </div>
           <Separator className="my-10" />
-          <SearchPagination
+          <PaginationNav
             page={page}
             totalPages={totalPages}
             handlePageChange={handlePageChange}

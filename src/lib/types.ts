@@ -21,6 +21,7 @@ import {
   ISearchedMedia,
   ISearchedMediaSmall,
   ISearchResultsObjSmall,
+  IShowList,
 } from "@/lib/typesAPI";
 
 export type LayoutProps = { children?: ReactNode };
@@ -142,12 +143,25 @@ export type GenreMediaListProps = {
   genreId: string;
   type: "movie" | "tv";
 };
+export type GenreMediaPreviewProps = {
+  media: ISearchedMedia;
+  type: "movie" | "tv";
+};
+export type GenreMediaResultsProps = {
+  media: IMovieList | IShowList;
+  type: "movie" | "tv";
+};
 export type MediaHeroPros = {
   media: IBase;
   posterWidth: string;
   children: ReactNode;
 };
 export type MediaMainBGProps = { type: "movies" | "shows" };
+export type PaginationNavProps = {
+  page: number;
+  totalPages: number;
+  handlePageChange: (newPage: number) => void;
+};
 export type TrailerButtonProps = { video: string };
 
 // Movie page
@@ -184,12 +198,9 @@ export type SearchBriefResultsProps = {
   results: ISearchResultsObjSmall;
   inputText: string;
 };
-export type SearchPaginationProps = {
-  page: number;
-  totalPages: number;
-  handlePageChange: (newPage: number) => void;
+export type SearchPreviewProps = {
+  media: ISearchedMedia;
 };
-export type SearchPreviewProps = { media: ISearchedMedia };
 export type SearchPreviewSmallProps = { media: ISearchedMediaSmall };
 export type SearchResultsListProps = { query: string };
 export type SearchSmallArrowProps = { children: string; dir: "left" | "right" };

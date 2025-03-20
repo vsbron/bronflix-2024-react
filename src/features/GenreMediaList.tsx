@@ -6,13 +6,13 @@ import {
   MAX_RESULTS_PER_PAGE,
 } from "@/lib/constants";
 import { GenreMediaListProps } from "@/lib/types";
-import { IMovieList } from "@/lib/typesAPI";
 
 import Loader from "@/components/ui/Loader";
 import Separator from "@/components/ui/Separator";
+import PaginationNav from "@/features/PaginationNav";
 import { useGenreMediaData } from "@/features/useGenreMediaData";
-import SearchPreview from "@/features/search/SearchPreview";
-import SearchPagination from "@/features/search/SearchPagination";
+import SearchPreview from "./search/SearchPreview";
+import GenreMediaPreview from "./GenreMediaPreview";
 
 function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   // Getting the page number from search params
@@ -47,12 +47,12 @@ function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   return (
     <>
       <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-        {data.results.map((media: IMovieList) => (
-          <SearchPreview media={media} key={media.id} />
+        {data.results.map((media: any) => (
+          <GenreMediaPreview media={media} key={media.id} type={type} />
         ))}
       </div>
       <Separator className="my-10" />
-      <SearchPagination
+      <PaginationNav
         page={page}
         totalPages={totalPages}
         handlePageChange={handlePageChange}

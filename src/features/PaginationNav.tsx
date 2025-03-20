@@ -1,39 +1,39 @@
-import { SearchPaginationProps, SearchSmallArrowProps } from "@/lib/types";
+import { PaginationNavProps, SearchSmallArrowProps } from "@/lib/types";
 
 import Button from "@/components/ui/Button";
 
-function SearchPagination({
+function PaginationNav({
   page,
   totalPages,
   handlePageChange,
-}: SearchPaginationProps) {
+}: PaginationNavProps) {
   // Returned JSX
   return (
     <>
       {/* prettier-ignore */}
       <div className="flex items-center gap-6">
         <Button disabled={page === 1} onClick={()=>handlePageChange(1)} label="Go to the first page">
-          <span><SearchSmallArrow dir="left">&laquo;</SearchSmallArrow> First</span>
+          <span><PaginationSmallArrow dir="left">&laquo;</PaginationSmallArrow> First</span>
         </Button>
         <Button disabled={page === 1} onClick={()=>handlePageChange(page-1)} label="Go to previous page">
-          <span><SearchSmallArrow dir="left">&lsaquo;</SearchSmallArrow> Prev</span>
+          <span><PaginationSmallArrow dir="left">&lsaquo;</PaginationSmallArrow> Prev</span>
         </Button>
         <div className="mx-12">Page <b>{page}</b> out of <b>{totalPages}</b></div>
         <Button disabled={page === totalPages} onClick={()=>handlePageChange(page+1)} label="Go to next page">
-          <span>Next <SearchSmallArrow dir="right">&rsaquo;</SearchSmallArrow></span>
+          <span>Next <PaginationSmallArrow dir="right">&rsaquo;</PaginationSmallArrow></span>
         </Button>
         <Button disabled={page === totalPages} onClick={()=>handlePageChange(totalPages)} label="Go to the last page">
-          <span>Last <SearchSmallArrow dir="right">&raquo;</SearchSmallArrow></span>
+          <span>Last <PaginationSmallArrow dir="right">&raquo;</PaginationSmallArrow></span>
         </Button>
       </div>
     </>
   );
 }
 
-export default SearchPagination;
+export default PaginationNav;
 
 // Helper component for small arrow in button
-function SearchSmallArrow({ children, dir }: SearchSmallArrowProps) {
+function PaginationSmallArrow({ children, dir }: SearchSmallArrowProps) {
   // Returned JSX
   return (
     <span
