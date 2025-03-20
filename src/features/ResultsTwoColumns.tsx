@@ -1,11 +1,18 @@
-import SearchPreview from "@/features/search/SearchPreview";
+import { ResultsTwoColumnsProps } from "@/lib/types";
+import { ISearchedMedia } from "@/lib/typesAPI";
 
-function ResultsTwoColumns({ media }: any) {
+import ResultPreview from "@/features/ResultPreview";
+
+function ResultsTwoColumns({ media, type }: ResultsTwoColumnsProps) {
   // Returned JSX
   return (
     <div className="grid grid-cols-2 gap-x-24 gap-y-12 w-3/4">
-      {media.map((media: any) => (
-        <SearchPreview media={media} key={media.id} />
+      {media.map((media) => (
+        <ResultPreview
+          media={media as ISearchedMedia}
+          key={media.id}
+          type={type}
+        />
       ))}
     </div>
   );

@@ -2,17 +2,14 @@ import { useSearchParams } from "react-router-dom";
 
 import { MAX_RESULTS_PER_PAGE } from "@/lib/constants";
 import { SearchResultsListProps } from "@/lib/types";
-import { ISearchedMedia } from "@/lib/typesAPI";
 
 import Heading from "@/components/ui/Heading";
 import Loader from "@/components/ui/Loader";
 import Separator from "@/components/ui/Separator";
-
 import PaginationNav from "@/features/PaginationNav";
+import ResultsTwoColumns from "@/features/ResultsTwoColumns";
 import SearchNoResults from "@/features/search/SearchNoResults";
-import SearchPreview from "@/features/search/SearchPreview";
 import { useSearchResults } from "@/features/search/useSearchResults";
-import ResultsTwoColumns from "../ResultsTwoColumns";
 
 function SearchResultsList({ query }: SearchResultsListProps) {
   // Getting the page number from search params

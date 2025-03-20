@@ -45,7 +45,7 @@ function GenreMediaList({ genreId, type }: GenreMediaListProps) {
   // Returned JSX
   return (
     <>
-      <ResultsTwoColumns media={data.results} />
+      <ResultsTwoColumns media={data.results} type={type} />
       <Separator className="my-10" />
       <PaginationNav
         page={page}

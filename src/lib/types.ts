@@ -162,6 +162,14 @@ export type PaginationNavProps = {
   totalPages: number;
   handlePageChange: (newPage: number) => void;
 };
+export type ResultPreviewProps = {
+  media: ISearchedMedia;
+  type?: "movie" | "tv";
+};
+export type ResultsTwoColumnsProps = {
+  media: IBase[];
+  type?: "movie" | "tv";
+};
 export type TrailerButtonProps = { video: string };
 
 // Movie page
@@ -197,9 +205,6 @@ export type SearchBriefResultsProps = {
   clearSearch: () => void;
   results: ISearchResultsObjSmall;
   inputText: string;
-};
-export type SearchPreviewProps = {
-  media: ISearchedMedia;
 };
 export type SearchPreviewSmallProps = { media: ISearchedMediaSmall };
 export type SearchResultsListProps = { query: string };
