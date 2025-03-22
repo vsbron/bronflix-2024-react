@@ -5,7 +5,7 @@ function FooterLegal() {
   return (
     <>
       <FooterHeading>Legal info</FooterHeading>
-      <div className="max-xs:text-[.5rem]">
+      <div className="max-xs:text-[1.2rem]">
         Any redistribution or reproduction of part or all of the contents in any
         form is prohibited.
         <br />

@@ -48,6 +48,9 @@ module.exports = {
           "100%": { backgroundPositionY: "-90.5rem" },
         },
       },
+      screens: {
+        xs: "450px",
+      },
     },
   },
   plugins: [
