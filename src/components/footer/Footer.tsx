@@ -9,7 +9,7 @@ import FooterSocials from "@/components/footer/FooterSocials";
 function Footer() {
   // Returned JSX
   return (
-    <footer className="relative border-t border-main-color mt-20 ml-12 md:ml-0 mr-12 pt-12 pb-8 text-stone-500 text-[1.4rem] xs:text-[1.5rem] flex flex-col sm:grid grid-cols-9 gap-x-12 2xl:gap-x-4 gap-y-16 overflow-hidden">
+    <footer className="relative border-t border-main-color mt-20 ml-6 md:ml-0 mr-6 md:mr-12 pt-12 pb-8 text-stone-500 text-[1.4rem] xs:text-[1.5rem] flex flex-col sm:grid grid-cols-9 gap-x-12 2xl:gap-x-4 gap-y-16 overflow-hidden">
       <div className="col-span-full lg:col-span-3 xl:col-span-2">
         <FooterNav />
       </div>

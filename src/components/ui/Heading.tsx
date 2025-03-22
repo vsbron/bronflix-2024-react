@@ -20,7 +20,7 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
       break;
     case "h3":
       element = (
-        <h3 className="text-[1.7rem] md:text-[2.2rem] m-0">{children}</h3>
+        <h3 className="text-[1.8rem] md:text-[2.2rem] m-0">{children}</h3>
       );
       break;
   }
@@ -29,7 +29,7 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
   return (
     <div
       id={id}
-      className="px-6 pt-2 pb-3 mt-12 first:mt-6 mb-6 text-stone-50 bg-heading-gradient w-[70%] rounded-md uppercase col-span-full"
+      className="px-4 md:px-6 pt-2 pb-3 mt-12 first:mt-6 mb-6 text-stone-50 bg-heading-gradient w-[70%] rounded-md uppercase col-span-full"
     >
       {element}
     </div>
