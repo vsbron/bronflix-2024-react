@@ -80,9 +80,15 @@ module.exports = {
             cursor: "not-allowed",
             pointerEvents: "none",
           },
+          "@media (max-width: 768px)": {
+            fontSize: "1.5rem",
+            padding: "0.25rem 0.75rem",
+            minWidth: "0",
+            height: "3.5rem",
+          },
         },
         ".input-wide-styles": {
-          width: "32rem",
+          maxWidth: "32rem",
         },
         ".add-to-user-list-ui": {
           svg: {

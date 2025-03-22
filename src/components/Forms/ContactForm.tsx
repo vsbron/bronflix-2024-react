@@ -106,7 +106,7 @@ function ContactForm() {
           </FormLabelError>
           <textarea
             id="message"
-            className="input-styles min-w-[35rem] h-36 resize-none"
+            className="input-styles min-w-0 xs:min-w-[40rem] h-36 resize-none"
             {...register("message")}
             placeholder="Write your message here..."
             disabled={isSubmitting}
