@@ -103,7 +103,7 @@ function RateMedia({
   // Returned JSX
   return (
     <div className="flex flex-col gap-8 py-6 text-center">
-      <h3 className="text-4xl mt-0">
+      <h3 className="mt-0">
         Place your rating on the{" "}
         <span className="text-5xl block mt-2">{name}</span>
       </h3>

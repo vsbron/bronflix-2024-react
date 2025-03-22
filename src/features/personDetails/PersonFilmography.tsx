@@ -54,7 +54,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
     return (
       <div>
-        <h3 className="my-4 mb-3 text-4xl">{sectionTitle}</h3>
+        <h3 className="my-4 mb-3">{sectionTitle}</h3>
         {credits.map((media) => {
           // Destructuring and handling media data
           const { id, title, type, year, roles } = media;
@@ -107,7 +107,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   // Returned JSX
   return (
     <div className="border-l-[1px] border-main-color px-12">
-      <h2 className="mt-0 uppercase">Filmography</h2>
+      <h2 className="mt-0 uppercase text-[2.5rem]">Filmography</h2>
       <div
         className={`flex flex-col gap-2 overflow-hidden relative ${
           isExpanded || !isBigFilmography ? "" : "h-[88rem]"

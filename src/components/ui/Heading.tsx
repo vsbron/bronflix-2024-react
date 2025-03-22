@@ -7,13 +7,21 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
   // Switch statement to determine the right header
   switch (as) {
     case "h1":
-      element = <h1 className="-mt-0.5">{children.toUpperCase()}</h1>;
+      element = (
+        <h1 className="text-4xl md:text-5xl -mt-0.5 ">
+          {children.toUpperCase()}
+        </h1>
+      );
       break;
     case "h2":
-      element = <h2 className="m-0">{children}</h2>;
+      element = (
+        <h2 className="text-[2rem] md:text-[2.5rem] m-0">{children}</h2>
+      );
       break;
     case "h3":
-      element = <h3 className="m-0 text-[2.2rem]">{children}</h3>;
+      element = (
+        <h3 className="text-[1.7rem] md:text-[2.2rem] m-0">{children}</h3>
+      );
       break;
   }
 
