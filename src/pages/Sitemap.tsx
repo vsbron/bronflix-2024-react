@@ -39,7 +39,7 @@ function Sitemap() {
             information about upcoming features, ensuring that {SITE_NAME}
             continues to evolve and improve.
           </p>
-          <div className="flex gap-48">
+          <div className="flex max-xs:flex-col gap-x-48">
             <div>
               <h4>Main pages</h4>
               <ul>
