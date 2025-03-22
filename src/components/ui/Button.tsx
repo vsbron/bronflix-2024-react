@@ -12,7 +12,7 @@ function Button({
 }: ButtonProps) {
   // Creating new props for the children component
   const newProps = {
-    className: "inline-block px-4 py-2 md:px-6 md:py-3",
+    className: "inline-block px-4 py-2 md:px-6 md:py-3 whitespace-nowrap",
   };
 
   // Returned JSX

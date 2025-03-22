@@ -24,7 +24,7 @@ function Layout({ children }: LayoutProps) {
       <BackspaceNavigation />
       <Header />
       <Sidebar />
-      <main className="w-screen ml-[7.5rem] min-h-screen overflow-x-hidden">
+      <main className="w-screen ml-0 md:ml-[7.5rem] min-h-screen overflow-x-hidden">
         {children ? (
           children
         ) : (
