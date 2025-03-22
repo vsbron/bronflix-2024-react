@@ -159,15 +159,6 @@ Includes supplementary pages such as Contact Us, App Info, About Us, Site Map, T
 
 ---
 
-## Future Features
-
-BroNflix is constantly evolving, with several exciting features planned for future updates:
-
-1. **Mobile Layout** (The Last One)
-   A fully optimized mobile layout will be developed to ensure a smooth and engaging experience on smartphones and tablets.
-
----
-
 ## Live version (VPN might be needed)
 
 https://vsbronflix.netlify.app/
