@@ -1,5 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 
+import { useResponsive } from "@/hooks/useResponsive";
 import { LayoutProps } from "@/lib/types";
 import BackspaceNavigation from "@/utils/BackspaceNavigation";
 import ScrollToTop from "@/utils/ScrollToTop";
@@ -14,6 +15,9 @@ function Layout({ children }: LayoutProps) {
   // Getting the navigation object from the hook
   const navigation = useNavigation();
 
+  // Getting the media breakpoint
+  const { isMD } = useResponsive();
+
   // Creating boolean variable based on navigation state
   const isLoading = navigation.state === "loading";
 
@@ -23,7 +27,7 @@ function Layout({ children }: LayoutProps) {
       <ScrollToTop />
       <BackspaceNavigation />
       <Header />
-      <Sidebar />
+      {isMD && <Sidebar />}
       <main className="w-screen ml-0 md:ml-[7.5rem] min-h-screen overflow-x-hidden">
         {children ? (
           children

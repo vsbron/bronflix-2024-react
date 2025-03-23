@@ -1,12 +1,12 @@
 import { useMediaQuery } from "react-responsive";
 
 const device = {
-  xxl: `(max-width: 1536px)`,
-  xl: `(max-width: 1280px)`,
-  lg: `(max-width: 1024px)`,
-  md: `(max-width: 768px)`,
-  sm: `(max-width: 640px)`,
-  xs: `(max-width: 450px)`,
+  xxl: `(min-width: 1536px)`,
+  xl: `(min-width: 1280px)`,
+  lg: `(min-width: 1024px)`,
+  md: `(min-width: 768px)`,
+  sm: `(min-width: 640px)`,
+  xs: `(min-width: 450px)`,
 };
 
 export function useResponsive() {
