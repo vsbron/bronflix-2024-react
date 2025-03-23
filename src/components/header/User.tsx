@@ -31,21 +31,20 @@ function User() {
   // Returned JSX
   return (
     <div className="flex gap-6 items-center">
-      <picture>
-        <source srcSet={selectedAvatarWebp} type="image/webp" />
-        <img
-          src={selectedAvatarPng}
-          className="rounded-full"
-          width={50}
-          height={50}
-          alt={name}
-          title={`${name} avatar`}
-        />
-      </picture>
+      <Link to="/profile">
+        <picture>
+          <source srcSet={selectedAvatarWebp} type="image/webp" />
+          <img
+            src={selectedAvatarPng}
+            className="rounded-full"
+            width={50}
+            height={50}
+            alt={name}
+            title={`${name} avatar`}
+          />
+        </picture>
+      </Link>
 
-      <Button label="Go to profile page">
-        <Link to="/profile">PROFILE</Link>
-      </Button>
       <Button onClick={handleSignOut} label="Sign out">
         <span>LOG OUT</span>
       </Button>

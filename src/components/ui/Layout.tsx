@@ -7,6 +7,7 @@ import ScrollToTop from "@/utils/ScrollToTop";
 
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import HeaderMobile from "@/components/header/HeaderMobile";
 import Sidebar from "@/components/header/Sidebar";
 import Loader from "@/components/ui/Loader";
 import Wrapper from "@/components/ui/Wrapper";
@@ -26,8 +27,15 @@ function Layout({ children }: LayoutProps) {
     <div className="text-stone-50 flex max-w-[1920px] mx-auto">
       <ScrollToTop />
       <BackspaceNavigation />
-      <Header />
-      {isMD && <Sidebar />}
+      {!isMD ? (
+        <>
+          <Header />
+          <Sidebar />
+        </>
+      ) : (
+        <HeaderMobile />
+      )}
+
       <main className="w-screen ml-0 md:ml-[7.5rem] min-h-screen overflow-x-hidden">
         {children ? (
           children

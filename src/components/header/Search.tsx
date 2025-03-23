@@ -115,9 +115,9 @@ function Search() {
       </button>
       <input
         type="text"
-        className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.4rem] ${
+        className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.3rem] xl:text-[1.4rem] ${
           isHovered
-            ? "w-[28rem] opacity-100 pl-5 pr-[3rem]"
+            ? "w-[22rem] lg:w-[25rem] xl:w-[28rem] opacity-100 pl-5 pr-[3rem]"
             : "w-0 opacity-0 p-0"
         } transition-all duration-200`}
         value={inputText}
