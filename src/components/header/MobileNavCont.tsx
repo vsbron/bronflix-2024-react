@@ -1,18 +1,15 @@
 import { useState } from "react";
 
-function MobileNav() {
+import Hamburger from "@/components/header/Hamburger";
+
+function MobileNavCont() {
   // Setting the state for the menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Returned JSX
   return (
     <div>
-      <div
-        onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
-        className="cursor-pointer"
-      >
-        Hamburger
-      </div>
+      <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div
         className={`fixed inset-0 bg-black -z-10 flex flex-col justify-center items-center
           ${
@@ -33,4 +30,4 @@ function MobileNav() {
   );
 }
 
-export default MobileNav;
+export default MobileNavCont;

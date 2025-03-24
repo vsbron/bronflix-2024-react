@@ -1,12 +1,12 @@
 import LogoFull from "@/components/header/LogoFull";
-import MobileNav from "@/components/header/MobileNav";
+import MobileNavCont from "@/components/header/MobileNavCont";
 
 function HeaderMobile() {
   // Returned JSX
   return (
-    <header className="fixed inset-0 bottom-auto px-6 pt-4 pb-10 z-20 flex justify-between bg-header-gradient">
+    <header className="fixed inset-0 bottom-auto px-6 pt-4 pb-10 z-20 flex justify-between items-center bg-header-gradient">
       <LogoFull />
-      <MobileNav />
+      <MobileNavCont />
     </header>
   );
 }
