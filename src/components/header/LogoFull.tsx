@@ -9,8 +9,8 @@ function LogoFull() {
     <Link to="/">
       <img
         src={logoFull}
-        width="197"
-        height="50"
+        width="158"
+        height="40"
         alt={SITE_NAME}
         title={`${SITE_NAME} logo`}
       />
