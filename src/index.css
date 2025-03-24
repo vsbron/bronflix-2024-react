@@ -92,6 +92,18 @@ ul a:focus,
   color: var(--color-white);
 }
 
+nav a {
+  color: var(--color-white);
+}
+nav a:hover,
+nav a:focus {
+  color: var(--color-rose--300);
+}
+nav button a:hover,
+nav button a:focus {
+  color: inherit;
+}
+
 /* Side bar custom CSS */
 .sidebar__nav-title {
   opacity: 0;
