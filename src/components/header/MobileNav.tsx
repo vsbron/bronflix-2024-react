@@ -51,14 +51,17 @@ function MobileNav() {
       <Search />
       {/* Main nav */}
       <div
-        className={`transition-all w-full mb-4 ${
+        className={`transition-all w-full my-4 ${
           isMenuOpen
             ? "translate-y-0 delay-100 opacity-1"
             : "translate-y-60 delay-0 opacity-0"
         }`}
       >
         <Heading as="h2">Navigation</Heading>
-        <ul className="m-0 flex flex-col gap-4 text-3xl" onClick={closeMenu}>
+        <ul
+          className="m-0 flex flex-col gap-2 text-[1.7rem]"
+          onClick={closeMenu}
+        >
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
