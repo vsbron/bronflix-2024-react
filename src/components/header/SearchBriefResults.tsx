@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import { useResponsive } from "@/hooks/useResponsive";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchBriefResultsProps } from "@/lib/types";
 import { ISearchedMediaSmall } from "@/lib/typesAPI";
@@ -11,10 +12,15 @@ function SearchBriefResults({
   results,
   inputText,
 }: SearchBriefResultsProps) {
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // Returned JSX
   return (
     <div
-      className={`absolute -bottom-4 translate-y-full rounded-3xl z-50 bg-stone-800 w-[28rem] right-0 px-6 py-4 flex flex-col text-2xl ${BASE_GAP_CLASS}`}
+      className={`absolute -bottom-4 right-0 translate-y-full rounded-3xl z-50 bg-stone-800 w-[28rem] px-6 py-4 flex flex-col text-2xl ${
+        isMD ? "left-0 w-full" : ""
+      } ${BASE_GAP_CLASS}`}
       onClick={clearSearch}
     >
       {results.totalResults > 0 ? (

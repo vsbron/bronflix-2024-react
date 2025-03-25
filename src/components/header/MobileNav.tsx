@@ -12,6 +12,7 @@ import { auth } from "@/utils/firebase";
 import Authentication from "@/components/header/Authentication";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import Search from "./Search";
 
 function MobileNav() {
   // Getting the user id
@@ -45,15 +46,9 @@ function MobileNav() {
               : "opacity-0 pointer-events-none"
           }`}
     >
-      {/* Logo */}
-      <img
-        src={logo}
-        width="250"
-        height="365"
-        className="absolute bottom-4 -right-4 -z-10 opacity-20 -rotate-12"
-        alt={SITE_NAME}
-        title={`${SITE_NAME} logo`}
-      />
+      {/* Search */}
+      <Heading as="h2">Search</Heading>
+      <Search />
       {/* Main nav */}
       <div
         className={`transition-all w-full mb-4 ${
@@ -63,10 +58,7 @@ function MobileNav() {
         }`}
       >
         <Heading as="h2">Navigation</Heading>
-        <ul
-          className="m-0 flex flex-col gap-4 text-3xl"
-          onClick={closeMenu}
-        >
+        <ul className="m-0 flex flex-col gap-4 text-3xl" onClick={closeMenu}>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -108,6 +100,16 @@ function MobileNav() {
           )}
         </div>
       </div>
+
+      {/* Logo */}
+      <img
+        src={logo}
+        width="250"
+        height="365"
+        className="absolute bottom-4 -right-4 -z-10 opacity-20 -rotate-12"
+        alt={SITE_NAME}
+        title={`${SITE_NAME} logo`}
+      />
     </nav>
   );
 }

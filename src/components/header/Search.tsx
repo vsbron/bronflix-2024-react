@@ -1,5 +1,5 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useResolvedPath } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -7,6 +7,7 @@ import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
 import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "@/components/header/SearchBriefResults";
+import { useResponsive } from "@/hooks/useResponsive";
 
 // Initiating controller for fetch function
 let controller: AbortController | null = null;
@@ -18,6 +19,9 @@ function Search() {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [briefResults, setBriefResults] =
     useState<ISearchResultsObjSmall | null>(null);
+
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
@@ -100,7 +104,7 @@ function Search() {
   // Returned JSX
   return (
     <form
-      className="flex gap-4 relative"
+      className={`flex gap-4 ${isMD ? "flex-row-reverse w-full" : ""} relative`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => inputText === "" && setIsHovered(false)}
       onSubmit={(e) => handleSearch(e)}
@@ -115,11 +119,17 @@ function Search() {
       </button>
       <input
         type="text"
-        className={`bg-stone-50 text-stone-950 rounded-full outline-none py-.5 text-[1.3rem] xl:text-[1.4rem] ${
-          isHovered
+        className={`rounded-full outline-none py-.5 text-[1.3rem] xl:text-[1.4rem] border border-stone-50 ${
+          isHovered || isMD
             ? "w-[22rem] lg:w-[25rem] xl:w-[28rem] opacity-100 pl-5 pr-[3rem]"
             : "w-0 opacity-0 p-0"
-        } transition-all duration-200`}
+        } 
+          ${
+            isMD
+              ? "bg-stone-950 text-stone-50 w-full"
+              : "bg-stone-50 text-stone-950"
+          }
+          transition-all duration-200`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Search for movies, shows or person..."
