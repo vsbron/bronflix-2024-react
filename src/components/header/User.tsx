@@ -12,7 +12,7 @@ function User() {
   // Getting the user name from the redux
   const { name, avatar } = useUser();
 
-  // Getting the dispatch and navigate functions
+  // Getting the dispatch function
   const dispatch = useDispatch();
 
   // Sign Out handler (signs out and redirects to main page)

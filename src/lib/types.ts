@@ -254,4 +254,5 @@ export type HamburgerProps = {
 };
 export type MobileNavProps = {
   isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
