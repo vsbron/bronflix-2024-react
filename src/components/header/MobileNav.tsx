@@ -38,7 +38,7 @@ function MobileNav() {
   // Returned JSX
   return (
     <nav
-      className={`fixed inset-0 bg-black -z-10 flex flex-col justify-start items-center transition-all p-6 pt-28
+      className={`fixed inset-0 bg-black -z-10 flex flex-col justify-start items-center transition-all p-6 pt-24
           ${
             isMenuOpen
               ? "opacity-1 pointer-events-auto"
@@ -56,7 +56,7 @@ function MobileNav() {
       />
       {/* Main nav */}
       <div
-        className={`transition-all w-full mb-8 ${
+        className={`transition-all w-full mb-4 ${
           isMenuOpen
             ? "translate-y-0 delay-100 opacity-1"
             : "translate-y-60 delay-0 opacity-0"
@@ -64,7 +64,7 @@ function MobileNav() {
       >
         <Heading as="h2">Navigation</Heading>
         <ul
-          className={`m-0 flex flex-col ${BASE_GAP_CLASS} text-3xl`}
+          className="m-0 flex flex-col gap-4 text-3xl"
           onClick={closeMenu}
         >
           <li>
