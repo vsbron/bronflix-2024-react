@@ -1,13 +1,14 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
-import { useNavigate, useResolvedPath } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import { useMobileNav } from "@/context/MobileNavContext";
+import { useResponsive } from "@/hooks/useResponsive";
 import { MEDIA_URL, MIN_SEARCH_CHARS } from "@/lib/constants";
 import { ISearchResultsObjSmall } from "@/lib/typesAPI";
 
 import SearchBriefResults from "@/components/header/SearchBriefResults";
-import { useResponsive } from "@/hooks/useResponsive";
 
 // Initiating controller for fetch function
 let controller: AbortController | null = null;
@@ -22,6 +23,9 @@ function Search() {
 
   // Getting the MD media query from custom hook
   const { isMD } = useResponsive();
+
+  // Getting the mobile nav state and close function from custom hook
+  const { isMenuOpen, closeMenu } = useMobileNav();
 
   // Getting the navigate function from useNavigate hook
   const navigate = useNavigate();
@@ -90,6 +94,7 @@ function Search() {
     setIsSubmitting(true); // Enabling submitting state
     controller?.abort(); // Cancel the running fetch from
     navigate(`/search?q=${encodeURIComponent(inputText)}`); // Redirecting user to search page
+    isMenuOpen && closeMenu();
     clearSearch(); // Reset the search component
     setIsSubmitting(false); // Disabling submitting state
   };
@@ -119,15 +124,15 @@ function Search() {
       </button>
       <input
         type="text"
-        className={`rounded-full outline-none py-.5 text-[1.3rem] xl:text-[1.4rem] border border-stone-50 ${
+        className={`rounded-full outline-none text-[1.3rem] xl:text-[1.4rem] border border-stone-50 ${
           isHovered || isMD
             ? "w-[22rem] lg:w-[25rem] xl:w-[28rem] opacity-100 pl-5 pr-[3rem]"
             : "w-0 opacity-0 p-0"
         } 
           ${
             isMD
-              ? "bg-stone-950 text-stone-50 w-full"
-              : "bg-stone-50 text-stone-950"
+              ? "bg-stone-950 text-stone-50 w-full py-1.5"
+              : "bg-stone-50 text-stone-950 py-.5 "
           }
           transition-all duration-200`}
         value={inputText}
@@ -136,10 +141,14 @@ function Search() {
       />
       <button
         type="reset"
-        className={`block w-8 text-stone-950 absolute right-3 top-2 z-10 transition-opacity ${
+        className={`block absolute right-3 z-10 transition-opacity ${
           inputText.length > 0
             ? "opacity-1 pointer-events-auto"
             : "opacity-0 pointer-events-none"
+        } ${
+          isMD
+            ? "right-[4.5rem] text-stone-50 top-[0.3rem] w-9"
+            : "right-3 text-stone-950 top-2 w-8"
         }`}
         onClick={clearSearch}
         disabled={isSubmitting}

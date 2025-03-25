@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import { useMobileNav } from "@/context/MobileNavContext";
 import { useResponsive } from "@/hooks/useResponsive";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchBriefResultsProps } from "@/lib/types";
@@ -14,6 +15,9 @@ function SearchBriefResults({
 }: SearchBriefResultsProps) {
   // Getting the MD media query from custom hook
   const { isMD } = useResponsive();
+
+  // Getting the mobile nav state and close function from custom hook
+  const { isMenuOpen, closeMenu } = useMobileNav();
 
   // Returned JSX
   return (
@@ -31,6 +35,9 @@ function SearchBriefResults({
           <Link
             to={`/search?q=${encodeURIComponent(inputText)}`}
             className="text-center pt-3 border-t border-stone-50 hover:text-red-300"
+            onClick={() => {
+              isMenuOpen && closeMenu();
+            }}
           >
             See all results ({results.totalResults})
           </Link>
