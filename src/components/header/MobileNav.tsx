@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 
 import logo from "@/assets/bronflix-logo.svg";
 import { useMobileNav } from "@/context/MobileNavContext";
-import { SITE_NAME } from "@/lib/constants";
+import { BASE_GAP_CLASS, SITE_NAME } from "@/lib/constants";
 import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
@@ -38,7 +38,7 @@ function MobileNav() {
   // Returned JSX
   return (
     <nav
-      className={`fixed inset-0 bg-black -z-10 flex flex-col justify-start items-center transition-all p-6 pt-24
+      className={`fixed inset-0 bg-black -z-10 flex flex-col justify-start items-center transition-all p-6 pt-28
           ${
             isMenuOpen
               ? "opacity-1 pointer-events-auto"
@@ -56,14 +56,17 @@ function MobileNav() {
       />
       {/* Main nav */}
       <div
-        className={`transition-all w-full mb-6 ${
+        className={`transition-all w-full mb-8 ${
           isMenuOpen
             ? "translate-y-0 delay-100 opacity-1"
             : "translate-y-60 delay-0 opacity-0"
         }`}
       >
         <Heading as="h2">Navigation</Heading>
-        <ul className="m-0 flex flex-col gap-4 text-3xl" onClick={closeMenu}>
+        <ul
+          className={`m-0 flex flex-col ${BASE_GAP_CLASS} text-3xl`}
+          onClick={closeMenu}
+        >
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -90,7 +93,7 @@ function MobileNav() {
         }`}
       >
         <Heading as="h2">User</Heading>
-        <div className="flex flex-col gap-4 items-start">
+        <div className={`flex flex-col ${BASE_GAP_CLASS} items-start`}>
           {uid ? (
             <>
               <Button onClick={closeMenu}>
@@ -101,7 +104,7 @@ function MobileNav() {
               </Button>
             </>
           ) : (
-            <Authentication />
+            <Authentication col={true} />
           )}
         </div>
       </div>
