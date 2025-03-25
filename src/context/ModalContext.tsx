@@ -8,6 +8,7 @@ import {
   ModalTriggerProps,
 } from "@/lib/types";
 import { useMobileNav } from "./MobileNavContext";
+import { useResponsive } from "@/hooks/useResponsive";
 
 // Creating the context
 const ModalContext = createContext<ModalContextProps>({
@@ -48,6 +49,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
   // Getting the modal state and close function
   const { activeModal, closeModal } = useContext(ModalContext);
 
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // useEffect for Escape key press handler
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -71,7 +75,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-black/80 animate-fadeInForwards">
       <div className="flex items-start gap-4 opacity-0 relative -t-[20rem] animate-showModalPopUp ">
         <div
-          className={`z-30 p-8 text-stone-50 rounded-lg min-w-[35rem] ${
+          className={`z-30 p-8 text-stone-50 rounded-lg ${
+            isMD ? "min-w-1 w-[32rem]" : "min-w-[35rem]"
+          } ${
             alternative ? "bg-red-950" : "bg-stone-900"
           } max-h-[95vh] overflow-y-scroll`}
         >
@@ -80,7 +86,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
 
         <button
           onClick={closeModal}
-          className="text-white rounded-full text-[2.5rem] leading-1"
+          className={`text-white rounded-full text-[2.5rem] leading-1 z-40 ${
+            isMD ? "absolute top-1 right-4" : "relative"
+          }`}
           aria-label="Modal window"
         >
           ✕

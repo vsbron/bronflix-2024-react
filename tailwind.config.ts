@@ -84,9 +84,13 @@ module.exports = {
           },
           "@media (max-width: 768px)": {
             fontSize: "1.5rem",
-            padding: "0.25rem 0.75rem",
+            padding: ".25rem .75rem",
             minWidth: "0",
             height: "3.5rem",
+          },
+          "@media (max-width: 450px)": {
+            padding: ".15rem .6rem",
+            height: "3rem",
           },
         },
         ".input-wide-styles": {
