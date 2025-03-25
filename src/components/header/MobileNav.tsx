@@ -47,19 +47,27 @@ function MobileNav() {
           }`}
     >
       {/* Search */}
-      <Heading as="h2">Search</Heading>
-      <Search />
-      {/* Main nav */}
       <div
-        className={`transition-all w-full my-4 ${
+        className={`transition-all duration-500 flex flex-col w-full ${
           isMenuOpen
             ? "translate-y-0 delay-100 opacity-1"
             : "translate-y-60 delay-0 opacity-0"
         }`}
       >
+        <Heading as="h2">Search</Heading>
+        <Search />
+      </div>
+      {/* Main nav */}
+      <div
+        className={`transition-all duration-500 w-full my-4 ${
+          isMenuOpen
+            ? "translate-y-0 delay-200 opacity-1"
+            : "translate-y-60 delay-0 opacity-0"
+        }`}
+      >
         <Heading as="h2">Navigation</Heading>
         <ul
-          className="m-0 flex flex-col gap-2 text-[1.7rem]"
+          className="m-0 flex flex-col gap-1.5 text-[1.7rem]"
           onClick={closeMenu}
         >
           <li>
@@ -81,9 +89,9 @@ function MobileNav() {
       </div>
       {/* Profile nav */}
       <div
-        className={`transition-all w-full ${
+        className={`transition-all duration-500 w-full ${
           isMenuOpen
-            ? "translate-y-0 delay-200 opacity-1"
+            ? "translate-y-0 delay-300 opacity-1"
             : "translate-y-60 delay-0 opacity-0"
         }`}
       >
