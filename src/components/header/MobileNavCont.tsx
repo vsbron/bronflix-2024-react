@@ -11,7 +11,7 @@ function MobileNavCont() {
   return (
     <div>
       <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <MobileNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <MobileNav isMenuOpen={isMenuOpen} />
     </div>
   );
 }

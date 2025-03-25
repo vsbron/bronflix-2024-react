@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 
 import logo from "@/assets/bronflix-logo.svg";
+import { SITE_NAME } from "@/lib/constants";
 import { MobileNavProps } from "@/lib/types";
 
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import Logo from "./Logo";
-import { SITE_NAME } from "@/lib/constants";
 
-function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
+function MobileNav({ isMenuOpen }: MobileNavProps) {
   // Returned JSX
   return (
     <nav
@@ -19,6 +18,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
               : "opacity-0 pointer-events-none"
           }`}
     >
+      {/* Logo */}
       <img
         src={logo}
         width="250"
@@ -27,6 +27,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
         alt={SITE_NAME}
         title={`${SITE_NAME} logo`}
       />
+      {/* Main nav */}
       <div
         className={`transition-all w-full mb-6 ${
           isMenuOpen
@@ -53,6 +54,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
           </li>
         </ul>
       </div>
+      {/* Profile nav */}
       <div
         className={`transition-all w-full ${
           isMenuOpen
@@ -63,7 +65,7 @@ function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
         <Heading as="h2">User</Heading>
         <div className="flex flex-col gap-4 items-start">
           <Button>
-            <a href="/profile">Profile</a>
+            <Link to="/profile">Profile</Link>
           </Button>
           <Button>
             <span>Sign Out</span>
