@@ -96,11 +96,14 @@ nav a {
   color: var(--color-white);
 }
 nav a:hover,
-nav a:focus {
+nav a:focus,
+nav a.active {
   color: var(--color-rose--300);
 }
+
 nav button a:hover,
-nav button a:focus {
+nav button a:focus,
+nav button a.active {
   color: inherit;
 }
 

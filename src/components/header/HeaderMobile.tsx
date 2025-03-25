@@ -1,6 +1,6 @@
+import Hamburger from "@/components/header/Hamburger";
 import LogoFull from "@/components/header/LogoFull";
-import Hamburger from "./Hamburger";
-import MobileNav from "./MobileNav";
+import MobileNav from "@/components/header/MobileNav";
 
 function HeaderMobile() {
   // Returned JSX

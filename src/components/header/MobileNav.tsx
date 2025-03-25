@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOut } from "firebase/auth";
 
@@ -16,11 +17,17 @@ function MobileNav() {
   // Getting the user id
   const { uid } = useUser();
 
+  // Getting the Mobile Nav state from the Context
+  const { isMenuOpen, closeMenu } = useMobileNav();
+
   // Getting the dispatch function
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  // Getting the Mobile Nav state from the Context
-  const { isMenuOpen } = useMobileNav();
+  // Use effect that closes menu each time when URL changes
+  useEffect(() => {
+    isMenuOpen && closeMenu();
+  }, [location.pathname]);
 
   // Sign Out handler (signs out and redirects to main page)
   const handleSignOut = () => {
@@ -56,21 +63,21 @@ function MobileNav() {
         }`}
       >
         <Heading as="h2">Navigation</Heading>
-        <ul className="m-0 flex flex-col gap-4 text-3xl">
+        <ul className="m-0 flex flex-col gap-4 text-3xl" onClick={closeMenu}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/movies">Movies</Link>
+            <NavLink to="/movies">Movies</NavLink>
           </li>
           <li>
-            <Link to="/shows">Shows</Link>
+            <NavLink to="/shows">Shows</NavLink>
           </li>
           <li>
-            <Link to="/about-us">About Us</Link>
+            <NavLink to="/about-us">About Us</NavLink>
           </li>
           <li>
-            <Link to="/contact-us">Contact Us</Link>
+            <NavLink to="/contact-us">Contact Us</NavLink>
           </li>
         </ul>
       </div>
@@ -86,8 +93,8 @@ function MobileNav() {
         <div className="flex flex-col gap-4 items-start">
           {uid ? (
             <>
-              <Button>
-                <Link to="/profile">Profile</Link>
+              <Button onClick={closeMenu}>
+                <NavLink to="/profile">Profile</NavLink>
               </Button>
               <Button onClick={handleSignOut} label="Sign out">
                 <span>Sign Out</span>
