@@ -1,10 +1,13 @@
-import { HamburgerProps } from "@/lib/types";
+import { useMobileNav } from "@/context/MobileNavContext";
 
-function Hamburger({ isMenuOpen, setIsMenuOpen }: HamburgerProps) {
+function Hamburger() {
+  // Getting the Mobile Nav state from the Context
+  const { isMenuOpen, toggleMenu } = useMobileNav();
+
   // Returned JSX
   return (
     <div
-      onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+      onClick={toggleMenu}
       className={`cursor-pointer w-16 h-[2.25rem] relative  transition-all ${
         isMenuOpen ? "rotate-90 top-[.5px]" : "-top-[2px]"
       }`}

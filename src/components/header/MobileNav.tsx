@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import { signOut } from "firebase/auth";
+
 import logo from "@/assets/bronflix-logo.svg";
+import { useMobileNav } from "@/context/MobileNavContext";
 import { SITE_NAME } from "@/lib/constants";
-import { MobileNavProps } from "@/lib/types";
 import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
@@ -12,12 +12,15 @@ import Authentication from "@/components/header/Authentication";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 
-function MobileNav({ isMenuOpen, setIsMenuOpen }: MobileNavProps) {
+function MobileNav() {
   // Getting the user id
   const { uid } = useUser();
 
   // Getting the dispatch function
   const dispatch = useDispatch();
+
+  // Getting the Mobile Nav state from the Context
+  const { isMenuOpen } = useMobileNav();
 
   // Sign Out handler (signs out and redirects to main page)
   const handleSignOut = () => {

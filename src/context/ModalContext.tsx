@@ -7,6 +7,7 @@ import {
   ModalProviderProps,
   ModalTriggerProps,
 } from "@/lib/types";
+import { useMobileNav } from "./MobileNavContext";
 
 // Creating the context
 const ModalContext = createContext<ModalContextProps>({
@@ -17,9 +18,15 @@ const ModalContext = createContext<ModalContextProps>({
 
 // Parent component
 export function ModalProvider({ children }: ModalProviderProps) {
+  // Getting the close mobile nav function from custom hook
+  const { closeMenu } = useMobileNav();
+
   // Setting the pop up state and click handlers
   const [activeModal, setActiveModal] = useState<string | null>(null);
-  const openModal = (name: string) => setActiveModal(name);
+  const openModal = (name: string) => {
+    closeMenu();
+    setActiveModal(name);
+  };
   const closeModal = () => setActiveModal(null);
 
   return (

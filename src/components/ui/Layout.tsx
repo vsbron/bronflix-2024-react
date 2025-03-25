@@ -1,5 +1,6 @@
 import { Outlet, useNavigation } from "react-router-dom";
 
+import { MobileNavProvider } from "@/context/MobileNavContext";
 import { useResponsive } from "@/hooks/useResponsive";
 import { LayoutProps } from "@/lib/types";
 import BackspaceNavigation from "@/utils/BackspaceNavigation";
@@ -27,14 +28,16 @@ function Layout({ children }: LayoutProps) {
     <div className="text-stone-50 flex max-w-[1920px] mx-auto">
       <ScrollToTop />
       <BackspaceNavigation />
-      {!isMD ? (
-        <>
-          <Header />
-          <Sidebar />
-        </>
-      ) : (
-        <HeaderMobile />
-      )}
+      <MobileNavProvider>
+        {!isMD ? (
+          <>
+            <Header />
+            <Sidebar />
+          </>
+        ) : (
+          <HeaderMobile />
+        )}
+      </MobileNavProvider>
 
       <main className="w-screen ml-0 md:ml-[7.5rem] min-h-screen overflow-x-hidden">
         {children ? (
