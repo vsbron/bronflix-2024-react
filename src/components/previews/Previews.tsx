@@ -1,7 +1,12 @@
 import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { BASE_GAP_CLASS } from "@/lib/constants";
+import { useResponsive } from "@/hooks/useResponsive";
+import {
+  BASE_GAP_CLASS,
+  MOBILE_PREVIEW_HEIGHT,
+  MOBILE_PREVIEW_WIDTH,
+} from "@/lib/constants";
 import {
   PreviewGroupProps,
   PreviewItemProps,
@@ -48,7 +53,7 @@ function Previews<T extends IBase>({
 
       {/* Ribbon */}
       <div
-        className={`flex ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
+        className={`flex max-md:gap-3 ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
         ref={ribbonRef}
       >
         {/* If there's width provided, then we scroll by one, otherwise by set */}
@@ -108,23 +113,27 @@ function PreviewItem<T extends IBase>({
   width,
   subtitle,
 }: PreviewItemProps<T>) {
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
+  // Getting indicators of when we are currently located
   const location = useLocation();
   const isPersonPath = location.pathname === "/profile";
   // Returned JSX
   return (
     <div
+      style={{ flexBasis: isMD ? MOBILE_PREVIEW_WIDTH : width }}
       className="block flex-shrink-0 rounded-lg overflow-x-hidden"
-      style={{ flexBasis: width }}
     >
       <Link
         to={`/${type === "tv" ? "shows" : type}/${media.id}`}
         className="block"
-        style={{ height: height }}
+        style={{ height: isMD ? MOBILE_PREVIEW_HEIGHT : height }}
       >
         <PreviewImage media={media} type={type} hud={!isPersonPath} />
       </Link>
       {subtitle && (
-        <div className="text-stone-400 text-center mt-4 text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
+        <div className="text-stone-400 text-center mt-4 text-[1.2rem] md:text-[1.5rem] px-1 py-3 leading-tight border-red-900 border-t">
           {(media[subtitle] as string) || media.roles?.at(0)?.character || ""}
         </div>
       )}
@@ -138,6 +147,9 @@ function PreviewGroup<T extends IBase>({
   flexBasis,
   height,
 }: PreviewGroupProps<T>) {
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // Returned JSX
   return (
     <div className={`${BASE_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}>
@@ -152,7 +164,10 @@ function PreviewGroup<T extends IBase>({
               : type
           }/${media.id}`}
           className="block text-stone-50 flex-1"
-          style={{ flexBasis, height: height }}
+          style={{
+            flexBasis: isMD ? MOBILE_PREVIEW_WIDTH : flexBasis,
+            height: isMD ? MOBILE_PREVIEW_HEIGHT : height,
+          }}
         >
           <PreviewImage media={media} type={type} />
         </Link>

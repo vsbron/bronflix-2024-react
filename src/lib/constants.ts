@@ -17,6 +17,9 @@ export const BASE_GAP_CLASS = `gap-${BASE_GAP / 2.5}`;
 export const SCROLL_BY_ONE_MULTIPLIER = 3;
 export const BIO_PREVIEW_LENGTH = 400;
 
+export const MOBILE_PREVIEW_WIDTH = "10rem";
+export const MOBILE_PREVIEW_HEIGHT = "15rem";
+
 export const CAST_MAX = 25;
 export const CREW_MAX = 15;
 export const MAX_OVERVIEW_CHARS = 250;

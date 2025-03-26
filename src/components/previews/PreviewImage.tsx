@@ -36,12 +36,12 @@ function PreviewImage({
       {children}
       {(!imgPath || (!posters && type !== "movies" && type !== "shows")) && (
         <div
-          className="relative w-full text-[2rem] px-3 pb-2 pt-20"
+          className="relative w-full text-[1.7rem] md:text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore
           style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
         >
           <BlackGradientToTop height="90%" />
-          <h3 className="relative z-10 text-[2rem]">
+          <h3 className="relative z-10 text-[1.7rem] md:text-[2rem]">
             {media.name || media.title}
           </h3>
         </div>

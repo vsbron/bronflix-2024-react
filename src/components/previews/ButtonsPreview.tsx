@@ -41,7 +41,7 @@ function ButtonsPreview({
 
   // Returned JSX
   return (
-    <div className="absolute z-10 -top-5 left-[100%] -translate-x-full -translate-y-full flex gap-6 pl-16 pr-8 py-2 bg-buttons-wrapper-gradient">
+    <div className="absolute z-10 -top-5 left-[99vw] md:left-[100%] -translate-x-full -translate-y-full flex gap-2 md:gap-6 pl-16 pr-8 py-2 bg-buttons-wrapper-gradient">
       <ButtonsPreviewArrow dir="left" clickHandler={scrollType} />
       <ButtonsPreviewArrow dir="right" clickHandler={scrollType} />
     </div>
@@ -57,7 +57,7 @@ function ButtonsPreviewArrow({ dir, clickHandler }: ButtonPreviewArrowProps) {
   // Returned JSX
   return (
     <button
-      className="cursor-pointer w-16 hover:text-red-500 transition-colors duration-300"
+      className="cursor-pointer w-12 md:w-16 hover:text-red-500 transition-colors duration-300"
       onClick={() => clickHandler(dir)}
       aria-label={`Scroll ${dir}`}
     >
