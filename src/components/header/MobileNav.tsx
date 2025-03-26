@@ -10,9 +10,9 @@ import { clearUserData, useUser } from "@/redux/reducers/userReducer";
 import { auth } from "@/utils/firebase";
 
 import Authentication from "@/components/header/Authentication";
+import Search from "@/components/header/Search";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
-import Search from "./Search";
 
 function MobileNav() {
   // Getting the user id
@@ -37,78 +37,38 @@ function MobileNav() {
   };
 
   // Returned JSX
+  // prettier-ignore
   return (
     <nav
       className={`fixed inset-0 bg-black -z-10 flex flex-col justify-start items-center transition-all p-6 pt-24
-          ${
-            isMenuOpen
-              ? "opacity-1 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
-    >
+        ${isMenuOpen ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
+
       {/* Search */}
-      <div
-        className={`transition-all duration-500 flex flex-col w-full ${
-          isMenuOpen
-            ? "translate-y-0 delay-100 opacity-1"
-            : "translate-y-60 delay-0 opacity-0"
-        }`}
-      >
+      <div className={`transition-all duration-500 flex flex-col w-full ${isMenuOpen ? "translate-y-0 delay-100 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">Search</Heading>
         <Search />
       </div>
+
       {/* Main nav */}
-      <div
-        className={`transition-all duration-500 w-full my-4 ${
-          isMenuOpen
-            ? "translate-y-0 delay-200 opacity-1"
-            : "translate-y-60 delay-0 opacity-0"
-        }`}
-      >
+      <div className={`transition-all duration-500 w-full my-4 ${isMenuOpen ? "translate-y-0 delay-200 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">Navigation</Heading>
-        <ul
-          className="m-0 flex flex-col gap-1.5 text-[1.7rem]"
-          onClick={closeMenu}
-        >
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/movies">Movies</NavLink>
-          </li>
-          <li>
-            <NavLink to="/shows">Shows</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about-us">About Us</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact-us">Contact Us</NavLink>
-          </li>
+        <ul className="m-0 flex flex-col gap-1.5 text-[1.7rem]" onClick={closeMenu}>
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/movies">Movies</NavLink></li>
+          <li><NavLink to="/shows">Shows</NavLink></li>
+          <li><NavLink to="/about-us">About Us</NavLink></li>
+          <li><NavLink to="/contact-us">Contact Us</NavLink></li>
         </ul>
       </div>
+
       {/* Profile nav */}
-      <div
-        className={`transition-all duration-500 w-full ${
-          isMenuOpen
-            ? "translate-y-0 delay-300 opacity-1"
-            : "translate-y-60 delay-0 opacity-0"
-        }`}
-      >
+      <div className={`transition-all duration-500 w-full ${isMenuOpen ? "translate-y-0 delay-300 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">User</Heading>
         <div className={`flex flex-col ${BASE_GAP_CLASS} items-start`}>
-          {uid ? (
-            <>
-              <Button onClick={closeMenu}>
-                <NavLink to="/profile">Profile</NavLink>
-              </Button>
-              <Button onClick={handleSignOut} label="Sign out">
-                <span>Sign Out</span>
-              </Button>
-            </>
-          ) : (
-            <Authentication col={true} />
-          )}
+          {uid ? <>
+              <Button onClick={closeMenu}><NavLink to="/profile">Profile</NavLink></Button>
+              <Button onClick={handleSignOut} label="Sign out"><span>Sign Out</span></Button>
+            </> : <Authentication col={true} />}
         </div>
       </div>
 
@@ -117,7 +77,7 @@ function MobileNav() {
         src={logo}
         width="250"
         height="365"
-        className="absolute bottom-4 -right-4 -z-10 opacity-20 -rotate-12"
+        className={`absolute bottom-4 -right-4 -z-10 -rotate-12 transition-all duration-700 ${isMenuOpen ? "opacity-20 delay-200" : "opacity-0 delay-0"}`}
         alt={SITE_NAME}
         title={`${SITE_NAME} logo`}
       />
