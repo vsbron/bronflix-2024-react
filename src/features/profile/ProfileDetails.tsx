@@ -30,30 +30,39 @@ function ProfileDetails() {
       <ModalProvider>
         <Heading>Profile</Heading>
         <div
-          className={`grid grid-cols-[auto_1fr] ${BASE_GAP_CLASS} items-end`}
+          className={`flex flex-col items-start xs:items-end xs:grid grid-cols-[auto_1fr] gap-3 xs:gap-x-6`}
         >
-          <ModalProvider.Trigger name="change-avatar">
-            <div className="relative text-stone-50 text-4xl cursor-pointer group">
-              <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
-                Change avatar
+          <div className="sm:row-span-2">
+            <ModalProvider.Trigger name="change-avatar">
+              <div className="relative text-stone-50 text-3xl md:text-4xl cursor-pointer group">
+                <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                  Change avatar
+                </div>
+                <picture>
+                  <source srcSet={selectedAvatarWebp} type="image/webp" />
+                  <img
+                    src={selectedAvatarPng}
+                    className="rounded-lg w-[12rem] sm:w-[19rem] md:w-[21rem] lg:w-[25rem]"
+                  />
+                </picture>
               </div>
-              <picture>
-                <source srcSet={selectedAvatarWebp} type="image/webp" />
-                <img src={selectedAvatarPng} className="rounded-lg w-[25rem]" />
-              </picture>
-            </div>
-          </ModalProvider.Trigger>
-          <ModalProvider.Content name="change-avatar">
-            <FormAvatars />
-          </ModalProvider.Content>
+            </ModalProvider.Trigger>
+            <ModalProvider.Content name="change-avatar">
+              <FormAvatars />
+            </ModalProvider.Content>
+          </div>
 
           <div className="flex flex-col gap-2 items-start">
-            <h2 className="m-0 text-6xl">{name}</h2>
-            <div className="text-[2rem] italic text-stone-400">{title}</div>
-            <div className="mt-1">
+            <h2 className="m-0 text-[2.5rem] sm:text-5xl md:text-6xl max-sm:-mb-1">
+              {name}
+            </h2>
+            <div className="text-[1.8rem] md:text-[2rem] italic text-stone-400">
+              {title}
+            </div>
+            <div className="mt-1 text-[1.4rem] md:text-2xl">
               <IconWrapper icon={<EnvelopeIcon />}>{email}</IconWrapper>
             </div>
-            <div className="flex gap-8 text-2xl">
+            <div className="flex gap-8 text-[1.4rem] md:text-2xl">
               <IconWrapper icon={<UserIcon />}>{gender}</IconWrapper>
               <IconWrapper icon={<CakeIcon />}>
                 {birthday !== "Unknown"
@@ -61,7 +70,9 @@ function ProfileDetails() {
                   : birthday}
               </IconWrapper>
             </div>
-            <div className="text-2xl text-stone-400 italic mt-4">
+          </div>
+          <div className="flex flex-col gap-2 items-start max-sm:col-span-2">
+            <div className="text-2xl text-stone-400 italic mt-2 md:mt-4">
               — Member since {formatDate(createdAt)}
             </div>
             <div className={`flex ${BASE_GAP_CLASS}`}>
