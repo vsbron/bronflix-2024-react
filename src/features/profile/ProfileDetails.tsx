@@ -35,7 +35,7 @@ function ProfileDetails() {
           <div className="sm:row-span-2">
             <ModalProvider.Trigger name="change-avatar">
               <div className="relative text-stone-50 text-3xl md:text-4xl cursor-pointer group">
-                <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                <div className="absolute inset-0 bg-stone-950/60 flex justify-center items-center text-center p-5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
                   Change avatar
                 </div>
                 <picture>

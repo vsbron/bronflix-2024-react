@@ -62,7 +62,7 @@ function FormAvatars() {
     <div className="flex flex-col items-start gap-3">
       <h3 className="mb-2 mt-0">Choose an avatar</h3>
       {avatarError && <FormError>{avatarError}</FormError>}
-      <div className="flex gap-1 flex-wrap max-w-[41rem]">
+      <div className="flex md:gap-1 flex-wrap max-w-[41rem]">
         {AVATARS.map(({ name, png }) => {
           // Setting some values for img
           const imgSrc = png;
@@ -73,12 +73,18 @@ function FormAvatars() {
           return (
             <div
               onClick={() => setCurrentAvatar(name)}
-              className={`cursor-pointer border-[2px] ${
+              className={`cursor-pointer border-[2px] w-[5.6rem] md:w-[7.6rem] overflow-hidden ${
                 isActive ? "border-red-700" : "border-transparent"
               }`}
               key={name}
             >
-              <img src={imgSrc} key={name} width={76} alt={altText} />
+              <img
+                src={imgSrc}
+                key={name}
+                width={76}
+                className="max-md:scale-110"
+                alt={altText}
+              />
             </div>
           );
         })}
