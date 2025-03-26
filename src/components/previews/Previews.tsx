@@ -125,6 +125,7 @@ function PreviewItem<T extends IBase>({
   // Getting indicators of when we are currently located
   const location = useLocation();
   const isPersonPath = location.pathname === "/profile";
+
   // Returned JSX
   return (
     <div
@@ -189,6 +190,7 @@ function PreviewMerged<T extends IBase>({
   height,
   width,
 }: PreviewMergedProps<T>) {
+  // Getting indicators of when we are currently located
   const location = useLocation();
   const isPersonPath = location.pathname === "/profile";
 

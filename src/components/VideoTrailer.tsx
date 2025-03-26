@@ -1,12 +1,33 @@
+import { useResponsive } from "@/hooks/useResponsive";
+
 function VideoTrailer({ video }: { video: string }) {
+  // Getting the MD media query from custom hook
+  const { isXS, isSM, isMD, isLG } = useResponsive();
+
+  let videoWidth, videoHeight;
+
+  switch (true) {
+    case isMD:
+      videoWidth = "280";
+      videoHeight = "158";
+      break;
+    case isLG:
+      videoWidth = "600";
+      videoHeight = "338";
+      break;
+    default:
+      videoWidth = "800";
+      videoHeight = "450";
+  }
+
   // Returned JSX
   return (
     <>
       {video !== "" ? (
         <div className="aspect-w-16 aspect-h-9">
           <iframe
-            width="800"
-            height="450"
+            width={videoWidth}
+            height={videoHeight}
             src={video}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
