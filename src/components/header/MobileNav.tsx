@@ -44,7 +44,7 @@ function MobileNav() {
         ${isMenuOpen ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
 
       {/* Search */}
-      <div className={`transition-all duration-500 flex flex-col w-full ${isMenuOpen ? "translate-y-0 delay-100 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
+      <div className={`transition-all duration-500 flex flex-col w-full relative z-50 ${isMenuOpen ? "translate-y-0 delay-100 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">Search</Heading>
         <Search />
       </div>

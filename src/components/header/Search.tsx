@@ -109,7 +109,7 @@ function Search() {
   // Returned JSX
   return (
     <form
-      className={`flex gap-4 ${isMD ? "flex-row-reverse w-full" : ""} relative`}
+      className="flex gap-4 max-md:flex-row-reverse max-md:w-full relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => inputText === "" && setIsHovered(false)}
       onSubmit={(e) => handleSearch(e)}
@@ -124,17 +124,11 @@ function Search() {
       </button>
       <input
         type="text"
-        className={`rounded-full outline-none text-[1.3rem] xl:text-[1.4rem] border border-stone-50 ${
+        className={`rounded-full outline-none text-[1.3rem] xl:text-[1.4rem] border border-stone-50 transition-all duration-200 ${
           isHovered || isMD
             ? "w-[22rem] lg:w-[25rem] xl:w-[28rem] opacity-100 pl-5 pr-[3rem]"
             : "w-0 opacity-0 p-0"
-        } 
-          ${
-            isMD
-              ? "bg-stone-950 text-stone-50 w-full py-1.5"
-              : "bg-stone-50 text-stone-950 py-.5 "
-          }
-          transition-all duration-200`}
+        } bg-stone-50 max-md:bg-stone-950 text-stone-950 max-md:text-stone-50 max-md:w-full py-.5 max-md:py-1.5`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Search for movies, shows or person..."
@@ -145,11 +139,7 @@ function Search() {
           inputText.length > 0
             ? "opacity-1 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        } ${
-          isMD
-            ? "right-[4.5rem] text-stone-50 top-[0.3rem] w-9"
-            : "right-3 text-stone-950 top-2 w-8"
-        }`}
+        } right-3 max-md:right-[4.5rem] text-stone-950 max-md:text-stone-50 top-2 max-md:top-[0.3rem] w-8 max-md:w-9`}
         onClick={clearSearch}
         disabled={isSubmitting}
         aria-label="Clear search"

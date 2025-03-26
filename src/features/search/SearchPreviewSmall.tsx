@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-import { useResponsive } from "@/hooks/useResponsive";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { SearchPreviewSmallProps } from "@/lib/types";
 import { getSearchMediaData } from "@/utils/helpers";
@@ -8,9 +7,6 @@ import { getSearchMediaData } from "@/utils/helpers";
 function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
   // Getting all the necessary data for the preview
   const { mediaType, mediaTitle, mediaImage } = getSearchMediaData(media);
-
-  // Getting the MD media query from custom hook
-  const { isMD } = useResponsive();
 
   // Returned JSX
   return (
@@ -21,7 +17,7 @@ function SearchPreviewSmall({ media }: SearchPreviewSmallProps) {
       >
         <img
           src={mediaImage}
-          className={`rounded-md ${isMD ? "w-[3.5rem]" : ""}`}
+          className="rounded-md max-md:w-[3.5rem]"
           width={40}
           height={120}
           alt={mediaTitle}
