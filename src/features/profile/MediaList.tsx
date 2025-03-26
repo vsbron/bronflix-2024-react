@@ -31,11 +31,11 @@ function MediaList({ items, type }: MediaListProps) {
   // Returned JSX
   return (
     <>
-      <div className="flex gap-4 flex-wrap">
+      <div className="flex gap-2 md:gap-4 flex-wrap">
         {items.map((item) => (
           <Link
             to={`/${type}/${item.id}`}
-            className="basis-[14rem] h-[21rem]"
+            className="basis-[10rem] md:basis-[11rem] xl:basis-[14rem] h-[15rem] md:h-[17rem] xl:h-[21rem]"
             key={item.id}
           >
             <PreviewImage media={item} type={type} hud={false} />

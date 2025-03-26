@@ -12,7 +12,7 @@ function WatchList() {
   return (
     <section>
       <Heading as="h2">Watch list</Heading>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="flex flex-col md:grid grid-cols-2 gap-12">
         <div>
           <ListTitle>Movies</ListTitle>
           <MediaList items={watchlistMovies} type="movies" />
