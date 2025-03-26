@@ -31,6 +31,9 @@ function Previews<T extends IBase>({
   // Setting the ref for the ribbon
   const ribbonRef = useRef<HTMLDivElement>(null);
 
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // Calculating how many elements we need to display on the page
   const GAP = 15;
   const elementsPerPage = Math.ceil(rawPreviews.length / pages);
@@ -48,7 +51,7 @@ function Previews<T extends IBase>({
       <ButtonsPreview
         ribbon={ribbonRef}
         length={length || rawPreviews.length}
-        isScrollByOne={!!width}
+        isScrollByOne={isMD ? false : !!width}
       />
 
       {/* Ribbon */}
@@ -64,7 +67,7 @@ function Previews<T extends IBase>({
                   key={media.id}
                   media={media}
                   type={type}
-                  height={height}
+                  height={isMD ? MOBILE_PREVIEW_HEIGHT : height}
                   width={width}
                 />
               ))
@@ -75,8 +78,8 @@ function Previews<T extends IBase>({
                   }
                   media={media}
                   type={type}
-                  height={height}
-                  width={width!}
+                  height={isMD ? MOBILE_PREVIEW_HEIGHT : height}
+                  width={isMD ? MOBILE_PREVIEW_WIDTH : width}
                   subtitle={subtitle}
                 />
               ))
@@ -91,8 +94,14 @@ function Previews<T extends IBase>({
                   key={i}
                   previews={pages === 1 ? rawPreviews : previews}
                   type={type}
-                  flexBasis={isTwoRows ? flexBasis : undefined}
-                  height={height}
+                  flexBasis={
+                    isTwoRows
+                      ? isMD
+                        ? MOBILE_PREVIEW_WIDTH
+                        : flexBasis
+                      : undefined
+                  }
+                  height={isMD ? MOBILE_PREVIEW_HEIGHT : height}
                 />
               );
             })}
@@ -113,22 +122,19 @@ function PreviewItem<T extends IBase>({
   width,
   subtitle,
 }: PreviewItemProps<T>) {
-  // Getting the MD media query from custom hook
-  const { isMD } = useResponsive();
-
   // Getting indicators of when we are currently located
   const location = useLocation();
   const isPersonPath = location.pathname === "/profile";
   // Returned JSX
   return (
     <div
-      style={{ flexBasis: isMD ? MOBILE_PREVIEW_WIDTH : width }}
+      style={{ flexBasis: width }}
       className="block flex-shrink-0 rounded-lg overflow-x-hidden"
     >
       <Link
         to={`/${type === "tv" ? "shows" : type}/${media.id}`}
         className="block"
-        style={{ height: isMD ? MOBILE_PREVIEW_HEIGHT : height }}
+        style={{ height: height }}
       >
         <PreviewImage media={media} type={type} hud={!isPersonPath} />
       </Link>

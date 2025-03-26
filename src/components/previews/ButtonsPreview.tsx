@@ -1,5 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
+import { useResponsive } from "@/hooks/useResponsive";
 import { BASE_GAP, SCROLL_BY_ONE_MULTIPLIER } from "@/lib/constants";
 import {
   ButtonPreviewProps,
@@ -12,6 +13,9 @@ function ButtonsPreview({
   length,
   isScrollByOne = false,
 }: ButtonPreviewProps) {
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // Scroll handlers for the left/right directions
   const scrollByOne = (direction: RibbonDirections) => {
     const step = ribbon.current?.scrollWidth! / length; // Get the step distance (one preview)
@@ -29,7 +33,11 @@ function ButtonsPreview({
       ribbon.current.scrollBy({
         left:
           direction === "left"
-            ? -ribbonWidth - BASE_GAP
+            ? isMD
+              ? (-ribbonWidth - BASE_GAP) / 2
+              : -ribbonWidth - BASE_GAP
+            : isMD
+            ? (ribbonWidth + BASE_GAP) / 2
             : ribbonWidth + BASE_GAP,
         behavior: "smooth",
       });
