@@ -158,7 +158,9 @@ function PreviewGroup<T extends IBase>({
 
   // Returned JSX
   return (
-    <div className={`${BASE_GAP_CLASS} w-full flex flex-shrink-0 flex-wrap`}>
+    <div
+      className={`w-full max-md:gap-3 ${BASE_GAP_CLASS} flex flex-shrink-0 flex-wrap`}
+    >
       {previews.map((media) => (
         <Link
           key={media.id}

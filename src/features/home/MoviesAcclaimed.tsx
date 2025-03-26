@@ -20,7 +20,7 @@ function MoviesAcclaimed() {
   return (
     <section>
       <Heading as="h2">Critically Acclaimed Movies</Heading>
-      <Previews rawPreviews={movies} pages={3} height="40rem" type="movies" />
+      <Previews rawPreviews={movies} pages={3} height="22vw" type="movies" />
     </section>
   );
 }
