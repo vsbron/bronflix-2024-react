@@ -45,7 +45,7 @@ function PreviewImage({
           style={type === "tv" ? { padding: isMD ? "2.5rem .5rem .5rem" : "2.5rem 1.5rem .75rem"} : {}}
         >
           <BlackGradientToTop height="90%" />
-          <h3 className="relative z-10 text-[1.5rem] md:text-[2rem]">
+          <h3 className="relative z-10 text-[1.5rem] md:text-[1.7rem] lg:text-[2rem]">
             {media.name || media.title}
           </h3>
         </div>

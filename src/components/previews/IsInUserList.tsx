@@ -10,7 +10,7 @@ function IsInUserList({ type, id }: MediaTypeAndId) {
   // Returned JSX
   return (
     <>
-      <div className="absolute top-3 right-3 z-10 w-[1.8rem] md:w-[2.2rem] flex flex-col gap-2">
+      <div className="absolute top-2 md:top-3 right-3 z-10 w-[1.8rem] md:w-[2rem] lg:w-[2.2rem] flex flex-col gap-2">
         {isLiked && (
           <div className="bg-red-800 rounded-full p-1">
             <HeartIcon className="text-red-200" />
