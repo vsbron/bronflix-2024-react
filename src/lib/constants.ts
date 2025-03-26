@@ -9,8 +9,11 @@ export const MOVIE_CHANGE_INTERVAL = 10000;
 export const MOVIES_FEATURED_QUANTITY = 15;
 export const MOVIES_TOP_RATED_QUANTITY = 18;
 export const SHOWS_TRENDING_QUANTITY = 20;
+export const SHOWS_TRENDING_QUANTITY_MD = 12;
 export const SHOWS_TOP_RATED_QUANTITY = 16;
+export const SHOWS_TOP_RATED_QUANTITY_MD = 12;
 export const ACTORS_TRENDING_QUANTITY = 20;
+export const ACTORS_TRENDING_QUANTITY_MD = 12;
 
 export const BASE_GAP = 15;
 export const BASE_GAP_CLASS = `gap-${BASE_GAP / 2.5}`;

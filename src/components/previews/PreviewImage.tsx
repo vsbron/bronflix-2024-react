@@ -1,3 +1,4 @@
+import { useResponsive } from "@/hooks/useResponsive";
 import { NO_MOVIE_POSTER, NO_PERSON_PHOTO, NO_SHOW_COVER } from "@/lib/assets";
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { PreviewImageProps } from "@/lib/types";
@@ -21,6 +22,9 @@ function PreviewImage({
   // Getting user id from redux store
   const { uid } = useUser();
 
+  // Getting the MD media query from custom hook
+  const { isMD } = useResponsive();
+
   // Build the final image path
   const imgPath = media[posters ? "poster_path" : imageKey];
   const backgroundImage = `url(${
@@ -38,10 +42,10 @@ function PreviewImage({
         <div
           className="relative w-full text-[1.7rem] md:text-[2rem] px-3 pb-2 pt-20"
           // prettier-ignore
-          style={type === "tv" ? { fontSize: "2.2rem", padding: "2.5rem 1.5rem .75rem"} : {}}
+          style={type === "tv" ? { padding: isMD ? "2.5rem .5rem .5rem" : "2.5rem 1.5rem .75rem"} : {}}
         >
           <BlackGradientToTop height="90%" />
-          <h3 className="relative z-10 text-[1.7rem] md:text-[2rem]">
+          <h3 className="relative z-10 text-[1.5rem] md:text-[2rem]">
             {media.name || media.title}
           </h3>
         </div>
