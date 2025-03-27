@@ -66,7 +66,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         {!isSM && <BlackGradientToRight width="40%" />}
       </div>
       <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-full h-auto sm:h-[35rem] xl:w-[35%] xl:h-[50rem] max-sm:pl-3">
-        <h2 className="text-6xl lg:text-7xl xl:text-8xl m-0">
+        <h2 className="text-[3.2rem] sm:text-6xl lg:text-7xl xl:text-8xl m-0">
           {title.toUpperCase()}
         </h2>
         <div className="flex max-lg:flex-col gap-2 lg:gap-8 items-start lg:items-center -mt-2 text-stone-400">
@@ -78,7 +78,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
             <IconWrapper icon={<LanguageIcon />}>
               {LANGUAGES[original_language!]}
             </IconWrapper>
-            <div className="text-nowrap w-auto sm:w-full md:w-auto">
+            <div className="text-nowrap w-auto max-sm:text-[1.4rem] sm:w-full md:w-auto">
               {genreNames}
             </div>
           </div>
@@ -86,7 +86,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         <p className="mt-0 mb-2 xl:mb-6 max-xs:hidden max-lg:text-[1.4rem]">
           {shortenOverview}
         </p>
-        <div className="flex max-sm:flex-col items-start gap-x-6 gap-y-3">
+        <div className="flex max-sm:-mt-3 max-sm:flex-col items-start gap-x-6 gap-y-3">
           <Button label={`Learn more about ${title}`}>
             <Link to={`/movies/${id}`}>
               <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />
