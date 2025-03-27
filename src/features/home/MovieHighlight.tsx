@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/Overlays";
 import { shortenText } from "@/utils/helpers";
 import { NO_MOVIE_COVER } from "@/lib/assets";
+import { useResponsive } from "@/hooks/useResponsive";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Destructuring data
@@ -36,6 +37,9 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     vote_count: count,
     overview = "",
   } = movie;
+
+  // Getting the SM media query from custom hook
+  const { isSM } = useResponsive();
 
   // Get the genres from Context API
   const { genres } = useGenres();
@@ -53,23 +57,36 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Returned JSX
   return (
-    <div className="mb-16">
-      <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-1/3 h-[50rem]">
-        <h2 className="text-8xl m-0">{title.toUpperCase()}</h2>
-        <div className="flex gap-8 items-center -mt-2 text-stone-400">
+    <div className="mb-8 sm:mb-16">
+      <div
+        style={{ backgroundImage }}
+        className="relative sm:absolute top-0 right-0 w-full sm:w-3/4 h-[20rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover rounded-lg max-sm:-mb-20"
+      >
+        <BlackGradientToTop height={isSM ? "60%" : "25%"} />
+        {!isSM && <BlackGradientToRight width="40%" />}
+      </div>
+      <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-full h-auto sm:h-[35rem] xl:w-[35%] xl:h-[50rem] max-sm:pl-3">
+        <h2 className="text-6xl lg:text-7xl xl:text-8xl m-0">
+          {title.toUpperCase()}
+        </h2>
+        <div className="flex max-lg:flex-col gap-2 lg:gap-8 items-start lg:items-center -mt-2 text-stone-400">
           <ScorePreview score={score} count={count} isHighlighted={true} />
-          <div className="flex items-center gap-8 text-[1.5rem] pb-0.5">
+          <div className="flex items-center gap-x-8 gap-y-1 text-[1.5rem] pb-0.5 max-lg:flex-wrap">
             <IconWrapper icon={<CalendarIcon />}>
               {new Date(release_date!).getFullYear()}
             </IconWrapper>
             <IconWrapper icon={<LanguageIcon />}>
               {LANGUAGES[original_language!]}
             </IconWrapper>
-            <div>{genreNames}</div>
+            <div className="text-nowrap w-auto sm:w-full md:w-auto">
+              {genreNames}
+            </div>
           </div>
         </div>
-        <p className="mt-0 mb-6">{shortenOverview}</p>
-        <div className="flex gap-6">
+        <p className="mt-0 mb-2 xl:mb-6 max-xs:hidden max-lg:text-[1.4rem]">
+          {shortenOverview}
+        </p>
+        <div className="flex max-sm:flex-col items-start gap-x-6 gap-y-3">
           <Button label={`Learn more about ${title}`}>
             <Link to={`/movies/${id}`}>
               <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />
@@ -78,13 +95,6 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
           </Button>
           <TrailerButton video={trailer!} />
         </div>
-      </div>
-      <div
-        style={{ backgroundImage }}
-        className="absolute top-0 right-0 w-3/4 h-5/6 bg-no-repeat bg-cover rounded-lg"
-      >
-        <BlackGradientToTop height="25%" />
-        <BlackGradientToRight width="40%" />
       </div>
     </div>
   );
