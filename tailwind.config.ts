@@ -28,6 +28,10 @@ module.exports = {
       },
       animation: {
         exploreMoreBg: "exploreMoreBgMove 60s linear infinite",
+        mainPageBgXL: "mainPageBgMoveXL 20s linear infinite",
+        mainPageBgLG: "mainPageBgMoveLG 20s linear infinite",
+        mainPageBgMD: "mainPageBgMoveMD 20s linear infinite",
+        mainPageBgSM: "mainPageBgMoveSM 20s linear infinite",
         mainPageBg: "mainPageBgMove 20s linear infinite",
         fadeInForwards: "fadeIn .2s ease forwards",
         showModalPopUp: "fadeInDown .2s ease forwards .2s",
@@ -45,9 +49,25 @@ module.exports = {
           "0%": { backgroundPositionY: "0" },
           "100%": { backgroundPositionY: "-72rem" },
         },
-        mainPageBgMove: {
+        mainPageBgMoveXL: {
           "0%": { backgroundPositionY: "0" },
           "100%": { backgroundPositionY: "-90.5rem" },
+        },
+        mainPageBgMoveLG: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-58.7rem" },
+        },
+        mainPageBgMoveMD: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-46rem" },
+        },
+        mainPageBgMoveSM: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-36.9rem" },
+        },
+        mainPageBgMove: {
+          "0%": { backgroundPositionY: "0" },
+          "100%": { backgroundPositionY: "-30.5rem" },
         },
       },
       screens: {
