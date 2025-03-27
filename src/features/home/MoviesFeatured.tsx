@@ -83,14 +83,14 @@ function MoviesFeatured({ movies }: MoviesFeaturedProps) {
           isScrollByOne={true}
         />
         <div
-          className={`flex ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
+          className={`flex max-sm:gap-3 ${BASE_GAP_CLASS} w-full overflow-x-hidden`}
           ref={ribbonRef}
         >
           {movies.map((movie: IMovieList) => (
             <div
               key={movie.id}
               onClick={() => handleClick(movie)}
-              className="block basis-72 h-[27rem] flex-shrink-0 rounded-lg overflow-hidden cursor-pointer"
+              className="block basis-40 sm:basis-48 md:basis-60 lg:basis-72 h-[14rem] sm:h-[18rem] md:h-[22.5rem] lg:h-[27rem] flex-shrink-0 rounded-lg overflow-hidden cursor-pointer"
             >
               <PreviewImage media={movie} type={"movies"}>
                 {movie.id === chosenMovie.id && (
