@@ -131,7 +131,7 @@ function Search() {
         } bg-stone-50 max-md:bg-stone-950 text-stone-950 max-md:text-stone-50 max-md:w-full py-.5 max-md:py-1.5`}
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="Search for movies, shows or person..."
+        placeholder="Search for movie, show or person..."
       />
       <button
         type="reset"
