@@ -38,6 +38,12 @@ body {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 28.125em) {
+  body {
+    font-size: 1.5rem;
+  }
+}
 ::selection {
   background-color: var(--color-red--800);
   color: var(--color-white);
