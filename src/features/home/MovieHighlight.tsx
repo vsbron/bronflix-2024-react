@@ -60,7 +60,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     <div className="mb-8 sm:mb-16">
       <div
         style={{ backgroundImage }}
-        className="relative sm:absolute top-0 right-0 w-full sm:w-3/4 h-[20rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover rounded-lg max-sm:-mb-20"
+        className="relative sm:absolute top-0 right-0 w-full sm:w-3/4 h-[20rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover bg-center rounded-lg max-sm:-mb-20"
       >
         <BlackGradientToTop height={isSM ? "60%" : "25%"} />
         {!isSM && <BlackGradientToRight width="40%" />}
