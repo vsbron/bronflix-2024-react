@@ -5,12 +5,15 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/solid";
 
+import { NO_MOVIE_COVER } from "@/lib/assets";
 import { useGenres } from "@/context/GenresContext";
+import { useResponsive } from "@/hooks/useResponsive";
 import useTrailer from "@/hooks/useTrailer";
 import { MEDIA_IMG_URL } from "@/lib/constants";
 import { LANGUAGES } from "@/lib/constantsGeo";
 import { MovieHighlightProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
+import { shortenText } from "@/utils/helpers";
 
 import IconWrapper from "@/components/IconWrapper";
 import ScorePreview from "@/components/ScorePreview";
@@ -20,9 +23,6 @@ import {
   BlackGradientToRight,
   BlackGradientToTop,
 } from "@/components/ui/Overlays";
-import { shortenText } from "@/utils/helpers";
-import { NO_MOVIE_COVER } from "@/lib/assets";
-import { useResponsive } from "@/hooks/useResponsive";
 
 function MovieHighlight({ movie }: MovieHighlightProps) {
   // Destructuring data
@@ -78,7 +78,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
             <IconWrapper icon={<LanguageIcon />}>
               {LANGUAGES[original_language!]}
             </IconWrapper>
-            <div className="text-nowrap w-auto max-sm:text-[1.4rem] sm:w-full md:w-auto">
+            <div className="w-auto max-sm:text-[1.4rem] sm:w-full md:w-auto">
               {genreNames}
             </div>
           </div>
@@ -86,14 +86,14 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         <p className="mt-0 mb-2 xl:mb-6 max-xs:hidden max-lg:text-[1.4rem]">
           {shortenOverview}
         </p>
-        <div className="flex max-sm:-mt-3 max-sm:flex-col items-start gap-x-6 gap-y-3">
+        <div className="flex max-sm:-mt-3 items-start gap-x-6 gap-y-3">
           <Button label={`Learn more about ${title}`}>
             <Link to={`/movies/${id}`}>
-              <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />
+              {!isSM && <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />}
               LEARN MORE
             </Link>
           </Button>
-          <TrailerButton video={trailer!} />
+          <TrailerButton video={trailer!} index={true} />
         </div>
       </div>
     </div>

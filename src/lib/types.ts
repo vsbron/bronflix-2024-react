@@ -171,7 +171,7 @@ export type ResultsTwoColumnsProps = {
   media: IBase[];
   type?: "movie" | "tv";
 };
-export type TrailerButtonProps = { video: string };
+export type TrailerButtonProps = { video: string; index?: boolean };
 
 // Movie page
 export type MovieCastCrewProps = { movieId: number };
