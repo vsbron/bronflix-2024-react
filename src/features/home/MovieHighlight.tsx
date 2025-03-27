@@ -65,7 +65,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         <BlackGradientToTop height={isSM ? "60%" : "25%"} />
         {!isSM && <BlackGradientToRight width="40%" />}
       </div>
-      <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-full h-auto sm:h-[35rem] xl:w-[35%] xl:h-[50rem] max-sm:pl-3">
+      <div className="flex flex-col items-start justify-end gap-6 relative z-10 w-full h-auto sm:h-[35rem] sm:w-[45%] lg:w-[35%] xl:h-[50rem] max-sm:pl-3">
         <h2 className="text-[3.2rem] sm:text-6xl lg:text-7xl xl:text-8xl m-0">
           {title.toUpperCase()}
         </h2>
