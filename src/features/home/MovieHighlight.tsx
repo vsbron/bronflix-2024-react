@@ -57,10 +57,10 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Returned JSX
   return (
-    <div className="mb-8 sm:mb-16">
+    <div className="mb-7 sm:mb-16 relative max-xs:h-[30rem] max-xs:flex">
       <div
         style={{ backgroundImage }}
-        className="relative sm:absolute top-0 right-0 w-full sm:w-3/4 h-[20rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover bg-center rounded-lg max-sm:-mb-20"
+        className="absolute top-0 right-0 w-full sm:w-3/4 h-[20rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover bg-center rounded-lg max-sm:-mb-20"
       >
         <BlackGradientToTop height={isSM ? "60%" : "25%"} />
         {!isSM && <BlackGradientToRight width="40%" />}
