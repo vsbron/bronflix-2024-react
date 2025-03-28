@@ -13,8 +13,8 @@ function LogoFull() {
     <Link to="/" onClick={closeMenu}>
       <img
         src={logoFull}
-        width="158"
-        height="40"
+        width="138"
+        height="35"
         alt={SITE_NAME}
         title={`${SITE_NAME} logo`}
       />

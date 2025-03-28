@@ -8,8 +8,8 @@ function Hamburger() {
   return (
     <div
       onClick={toggleMenu}
-      className={`cursor-pointer w-16 h-[2.25rem] relative  transition-all ${
-        isMenuOpen ? "rotate-90 top-[.5px]" : "-top-[2px]"
+      className={`cursor-pointer w-16 h-[2.25rem] relative transition-all ${
+        isMenuOpen ? "rotate-90 -top-[2.5px]" : "-top-[5px]"
       }`}
     >
       <span
