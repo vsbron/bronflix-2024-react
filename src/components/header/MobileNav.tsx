@@ -64,7 +64,7 @@ function MobileNav() {
       {/* Profile nav */}
       <div className={`transition-all duration-500 w-full ${isMenuOpen ? "translate-y-0 delay-300 opacity-1" : "translate-y-60 delay-0 opacity-0"}`}>
         <Heading as="h2">User</Heading>
-        <div className={`flex flex-col ${BASE_GAP_CLASS} items-start`}>
+        <div className={`flex flex-col gap-4 items-start`}>
           {uid ? <>
               <Button onClick={closeMenu}><NavLink to="/profile">Profile</NavLink></Button>
               <Button onClick={handleSignOut} label="Sign out"><span>Sign Out</span></Button>
