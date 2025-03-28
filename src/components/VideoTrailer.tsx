@@ -1,15 +1,19 @@
 import { useResponsive } from "@/hooks/useResponsive";
 
 function VideoTrailer({ video }: { video: string }) {
-  // Getting the MD media query from custom hook
+  // Getting the number of media queries from custom hook
   const { isXS, isSM, isMD, isLG } = useResponsive();
 
   let videoWidth, videoHeight;
 
   switch (true) {
+    case isSM:
+      videoWidth = "320";
+      videoHeight = "180";
+      break;
     case isMD:
-      videoWidth = "280";
-      videoHeight = "158";
+      videoWidth = "390";
+      videoHeight = "220";
       break;
     case isLG:
       videoWidth = "600";

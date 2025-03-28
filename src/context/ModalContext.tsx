@@ -72,7 +72,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
       <div className="flex items-start gap-4 opacity-0 relative -t-[20rem] animate-showModalPopUp ">
         <div
           className={`z-30 p-8 text-stone-50 rounded-lg md:min-w-[35rem] max-md:min-w-1 max-md:w-[32rem] ${
-            alternative ? "bg-red-950" : "bg-stone-900"
+            alternative
+              ? "bg-red-950 max-md:p-2 max-md:w-[40rem] max-sm:w-[33rem]"
+              : "bg-stone-900"
           } max-h-[95vh] overflow-y-scroll`}
         >
           {children}
@@ -80,7 +82,9 @@ function Content({ children, name, alternative = false }: ModalContentProps) {
 
         <button
           onClick={closeModal}
-          className="text-white rounded-full text-[2.5rem] leading-1 z-40 relative max-md:absolute max-md:top-1 max-md:right-4"
+          className={`text-white rounded-full text-[2.5rem] leading-1 z-40 relative max-md:absolute max-md:top-1 max-md:right-4 ${
+            alternative ? "max-md:-top-14 max-md:right-0" : ""
+          }`}
           aria-label="Modal window"
         >
           ✕
