@@ -57,6 +57,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     <section>
       <Heading>{headingTitle}</Heading>
       <MediaHero media={movie} posterWidth="40rem">
+        {/* <MediaHero media={movie} posterWidth="33rem"> */}
         {!!collection && <MovieCollectionLink collection={collection} />}
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-gray-400">
@@ -70,8 +71,10 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           {uid && (
             <MediaInList type="movie" id={movie.id} name={headingTitle} />
           )}
-          <div className="text-[4rem] -my-5 font-heading">{title}</div>
-          <div className="mb-3 text-[2rem] italic text-stone-400">
+          <div className="text-[3rem] xl:text-[4rem] leading-[1.1] -my-1 xl:my-0 font-heading">
+            {title}
+          </div>
+          <div className="mb-1 xl:mb-3 text-[1.8rem] xl:text-[2rem] italic text-stone-400">
             {tagline}
           </div>
           <div className="contents text-2xl">
@@ -87,7 +90,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
                 {formatRuntime(runtime)}
               </IconWrapper>
             </div>
-            <div className="flex gap-8 mb-2">
+            <div className="flex gap-8 mb-0 xl:mb-2">
               {originCountry.length > 0 && (
                 <IconWrapper icon={<GlobeAltIcon />}>
                   {originCountry}
@@ -103,7 +106,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               )}
             </div>
           </div>
-          <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
+          <div className="max-w-[65rem] mb-4 xl:mb-6 text-[1.4rem] xl:text-[1.6rem]">
+            {formattedOverview}
+          </div>
           <MediaButtons type={"movie"} media={movie} />
         </div>
       </MediaHero>

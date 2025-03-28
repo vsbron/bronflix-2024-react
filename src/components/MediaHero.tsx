@@ -11,7 +11,7 @@ function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
   // Returned JSX
   return (
     <div
-      className={`flex items-stretch rounded-lg overflow-hidden ${BASE_GAP_CLASS}`}
+      className={`flex items-stretch rounded-lg overflow-hidden max-xl:gap-4 ${BASE_GAP_CLASS}`}
     >
       <img
         src={posterPath}

@@ -157,7 +157,7 @@ function MediaButtons({ type, media }: MediaButtonsProps) {
 
   // Returned JSX
   return (
-    <div className={`flex ${BASE_GAP_CLASS}`}>
+    <div className={`flex ${BASE_GAP_CLASS} gap-y-4 flex-wrap`}>
       <ModalProvider>
         <TrailerButton video={trailer!} />
       </ModalProvider>
