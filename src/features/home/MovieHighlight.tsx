@@ -57,7 +57,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
 
   // Returned JSX
   return (
-    <div className="mb-7 sm:mb-16 max-sm:h-[32rem] max-sm:flex">
+    <div className="mb-[1.170rem] sm:mb-16 max-sm:h-[32rem] max-sm:flex">
       <div
         style={{ backgroundImage }}
         className="absolute top-0 right-0 w-full sm:w-3/4 h-[25rem] sm:h-4/6 xl:h-5/6 bg-no-repeat bg-cover bg-top sm:bg-center rounded-lg max-sm:-mb-20"

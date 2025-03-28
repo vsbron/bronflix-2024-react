@@ -49,7 +49,7 @@ function ButtonsPreview({
 
   // Returned JSX
   return (
-    <div className="absolute z-10 -top-5 left-[99vw] md:left-[100%] -translate-x-full -translate-y-full flex gap-2 md:gap-6 pl-16 pr-8 py-2 bg-buttons-wrapper-gradient">
+    <div className="absolute z-10 -top-[0.65rem] md:-top-5 left-[99vw] md:left-[100%] -translate-x-full -translate-y-full flex gap-2 md:gap-6 pl-16 pr-8 py-2 bg-buttons-wrapper-gradient">
       <ButtonsPreviewArrow dir="left" clickHandler={scrollType} />
       <ButtonsPreviewArrow dir="right" clickHandler={scrollType} />
     </div>
