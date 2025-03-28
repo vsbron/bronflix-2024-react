@@ -109,14 +109,16 @@ function PersonDetails({ person }: PersonDetailsProps) {
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>
           {formattedDeathday && <div>Deathday: {formattedDeathday}</div>}
-          <div className="mb-6">Place of Birth: {place_of_birth}</div>
+          <div>Place of Birth: {place_of_birth || "Unknown"}</div>
           {uid && (
-            <Button onClick={addToFavoritesHandler} label="Add to favorites">
-              <span>
-                <HeartIcon className="w-8 inline-block pb-1 mr-2" />
-                {isLiked ? "Remove from" : "Add to"} Favorites
-              </span>
-            </Button>
+            <div className="mt-6">
+              <Button onClick={addToFavoritesHandler} label="Add to favorites">
+                <span>
+                  <HeartIcon className="w-8 inline-block pb-1 mr-2" />
+                  {isLiked ? "Remove from" : "Add to"} Favorites
+                </span>
+              </Button>
+            </div>
           )}
         </div>
       </div>
