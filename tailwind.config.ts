@@ -15,7 +15,7 @@ module.exports = {
         "featured-gradient-3":
           "linear-gradient(to top, var(--color-black), transparent 15%, transparent 85%, var(--color-black))",
         "header-gradient":
-          "linear-gradient(to top, transparent, var(--color-black) 30%, var(--color-black))",
+          "linear-gradient(to top, transparent, var(--color-black) 20%, var(--color-black))",
         "buttons-wrapper-gradient":
           "linear-gradient(to left, var(--color-black) 10%, transparent)",
         "heading-gradient":
@@ -37,10 +37,7 @@ module.exports = {
         showModalPopUp: "fadeInDown .2s ease forwards .2s",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
+        fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
         fadeInDown: {
           "0%": { top: "-20rem", opacity: "0" },
           "100%": { top: "0rem", opacity: "1" },
