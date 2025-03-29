@@ -16,18 +16,18 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
 
   // Returned JSX
   return (
-    <div className="absolute top-2 lg:top-4 xxl:top-auto xxl:bottom-8 right-4 lg:right-8 z-20">
-      <div className="text-xl mb-2 text-center">
+    <div className="md:absolute top-2 lg:top-4 xxl:top-auto xxl:bottom-8 right-4 lg:right-8 z-20 max-md:mt-10">
+      <div className="text-2xl md:text-xl mb-2 text-left md:text-center">
         Check out the related movies from
       </div>
       <Link
         to={`/movies/collection/${collection.id}`}
         style={{ backgroundImage: coverImg }}
-        className="min-w-0 max-lg:w-[26rem] lg:min-w-[25rem] relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
+        className="max-w-[40rem] md:min-w-[25rem] relative bg-center bg-cover bg-no-repeat rounded-xl flex justify-center overflow-hidden hover:scale-95 transition-transform border-red-900 border-2"
       >
         <BlackGradientToTop height="50%" />
-        <div className="relative z-10 px-3 lg:px-5 xxl:px-8 pb-0 pt-[4rem] lg:pt-[5rem] xl:pt-[6rem] xxl:pb-4 xxl:pt-52">
-          <h4 className="text-center text-[1.5rem] lg:text-[1.6rem] xxl:text-[2rem] leading-8 font-medium relative max-lg:top-2">
+        <div className="relative z-10 px-3 lg:px-5 xxl:px-8 pb-0 pt-[10rem] md:pt-[4rem] lg:pt-[5rem] xl:pt-[6rem] xxl:pb-4 xxl:pt-52">
+          <h4 className="text-center text-[1.7rem] xs:text-[2rem] md:text-[1.5rem] lg:text-[1.6rem] xxl:text-[2rem] leading-8 font-medium relative top-0 md:top-2 lg:top-0">
             {collection.name}
           </h4>
         </div>

@@ -29,7 +29,7 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
   return (
     <div
       id={id}
-      className="px-4 md:px-6 pt-2 pb-3 mt-12 first:mt-6 mb-4 sm:mb-6 text-stone-50 bg-heading-gradient w-full sm:w-[70%] rounded-md uppercase col-span-full"
+      className="px-4 md:px-6 pt-2 pb-3 mt-12 first:mt-6 mb-4 sm:mb-6 text-stone-50 bg-heading-gradient w-full md:w-[70%] rounded-md uppercase col-span-full"
     >
       {element}
     </div>

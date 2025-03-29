@@ -10,13 +10,21 @@ function MediaHero({ media, small = false, children }: MediaHeroPros) {
   const { posterPath, backgroundImage } = getMediaImages(media);
 
   // Getting a number of media queries from custom hook
-  const { isMD, isLG } = useResponsive();
+  const { isXS, isSM, isMD, isLG } = useResponsive();
 
   // Setting the widths for poster
   let basicWidth, smallWidth;
   switch (true) {
+    case isXS:
+      basicWidth = "100%";
+      smallWidth = "25rem";
+      break;
+    case isSM:
+      basicWidth = "30rem";
+      smallWidth = "25rem";
+      break;
     case isMD:
-      basicWidth = "25rem";
+      basicWidth = "22rem";
       smallWidth = "25rem";
       break;
     case isLG:
@@ -31,18 +39,18 @@ function MediaHero({ media, small = false, children }: MediaHeroPros) {
   // Returned JSX
   return (
     <div
-      className={`flex items-stretch rounded-lg overflow-hidden max-xl:gap-4 ${BASE_GAP_CLASS}`}
+      className={`sm:flex items-stretch rounded-lg overflow-hidden max-xl:gap-4 ${BASE_GAP_CLASS}`}
     >
       <img
         src={posterPath}
-        className="rounded-lg"
+        className="rounded-lg max-sm:object-contain"
         style={{ width: small ? smallWidth : basicWidth }}
         alt={media.title || media.name}
         title={`${media.title || media.name} poster`}
       />
       <div
-        style={{ backgroundImage }}
-        className="bg-no-repeat bg-cover bg-center basis-full relative flex flex-col justify-end px-10 py-8 rounded-lg"
+        style={isSM ? {} : { backgroundImage }}
+        className="bg-no-repeat bg-cover bg-center basis-full relative flex flex-col justify-end max-sm:mt-6 sm:px-10 sm:py-8 rounded-lg"
       >
         <DimOverlay />
         {children}

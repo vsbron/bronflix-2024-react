@@ -45,7 +45,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const { uid } = useUser();
 
   // Getting a number of media queries from custom hook
-  const { isMD, isLG } = useResponsive();
+  const { isSM, isMD, isLG } = useResponsive();
 
   // Handling some movie data
   const headingTitle = `${title} (${
@@ -61,7 +61,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
     <section>
       <Heading>{headingTitle}</Heading>
       <MediaHero media={movie}>
-        {!!collection && <MovieCollectionLink collection={collection} />}
+        {!!collection && !isMD && (
+          <MovieCollectionLink collection={collection} />
+        )}
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-gray-400">
             <ScorePreview
@@ -80,6 +82,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           <div className="mb-1 xl:mb-3 text-[1.6rem] lg:text-[1.8rem] xl:text-[2rem] italic text-stone-400">
             {tagline}
           </div>
+
           <div className="contents text-2xl">
             <div>{genresList}</div>
             <div className="flex gap-x-8 gap-y-1 flex-wrap">
@@ -127,6 +130,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           <MediaButtons type={"movie"} media={movie} />
         </>
       )}
+      {!!collection && isMD && <MovieCollectionLink collection={collection} />}
     </section>
   );
 }
