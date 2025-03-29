@@ -8,6 +8,7 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 
+import { useResponsive } from "@/hooks/useResponsive";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { ShowDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
@@ -45,6 +46,9 @@ function ShowDetails({ show }: ShowDetailsProps) {
   // Getting user data from Redux store
   const { uid } = useUser();
 
+  // Getting a number of media queries from custom hook
+  const { isMD, isLG } = useResponsive();
+
   // Handling the show data
   const headingTitle = `${name} (${
     first_air_date ? new Date(first_air_date).getFullYear().toString() : "TBA"
@@ -62,7 +66,7 @@ function ShowDetails({ show }: ShowDetailsProps) {
   return (
     <section>
       <Heading>{headingTitle}</Heading>
-      <MediaHero media={show} posterWidth="40rem">
+      <MediaHero media={show}>
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-gray-400">
             <ScorePreview
@@ -74,28 +78,30 @@ function ShowDetails({ show }: ShowDetailsProps) {
           </div>
           {uid && <MediaInList type="tv" id={show.id} name={headingTitle} />}
           <div className="mb-2">
-            <div className="text-[4rem] -my-5 font-heading">{name}</div>
+            <div className="text-[2.5rem] lg:text-[3rem] xl:text-[4rem] -my-5 font-heading">
+              {name}
+            </div>
             {tagline && (
-              <div className="text-[2rem] mt-3 italic text-stone-400">
+              <div className="mb-1 xl:mb-3 mt-5 text-[1.6rem] lg:text-[1.8rem] xl:text-[2rem] italic text-stone-400 leading-8">
                 {tagline}
               </div>
             )}
           </div>
           <div className="contents text-2xl">
             <div>{genresList}</div>
-            <div className="flex gap-8">
+            <div className="flex gap-x-8 gap-y-1 flex-wrap">
               <IconWrapper icon={<CalendarIcon />}>
                 {formatDate(first_air_date)} -{" "}
                 {isEnded ? formatDate(last_air_date) : "Present"}
               </IconWrapper>
             </div>
-            <div className="flex gap-8">
+            <div className="flex gap-x-8 gap-y-1 mb-0 xl:mb-2 flex-wrap">
               <IconWrapper icon={<ClockIcon />}>{status}</IconWrapper>
               <span className="-mx-3">|</span>
               {seasons} Season
               {seasons > 1 && "s"}, {number_of_episodes} episodes
             </div>
-            <div className="flex gap-8 mb-2">
+            <div className="flex gap-x-8 gap-y-1 mb-0 xl:mb-2 flex-wrap">
               <IconWrapper icon={<GlobeAltIcon />}>
                 {originCountry || "Unknown"}
               </IconWrapper>
@@ -119,10 +125,24 @@ function ShowDetails({ show }: ShowDetailsProps) {
               </div>
             )}
           </div>
-          <div className="max-w-[65rem] mb-6">{formattedOverview}</div>
-          <MediaButtons type={"tv"} media={show} />
+          {!isLG && (
+            <>
+              <div className="max-w-[65rem] mb-4 xl:mb-6 text-[1.4rem] xl:text-[1.6rem]">
+                {formattedOverview}
+              </div>
+              <MediaButtons type={"tv"} media={show} />
+            </>
+          )}
         </div>
       </MediaHero>
+      {isLG && (
+        <>
+          <div className="max-w-[65rem] my-6 text-[1.4rem]">
+            {formattedOverview}
+          </div>
+          <MediaButtons type={"tv"} media={show} />
+        </>
+      )}
     </section>
   );
 }
