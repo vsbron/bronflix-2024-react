@@ -45,7 +45,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   const { uid } = useUser();
 
   // Getting a number of media queries from custom hook
-  const { isSM, isMD, isLG } = useResponsive();
+  const { isMD, isLG } = useResponsive();
 
   // Handling some movie data
   const headingTitle = `${title} (${
@@ -79,7 +79,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           <div className="text-[2.5rem] lg:text-[3rem] xl:text-[4rem] leading-[1.1] -my-1 xl:my-0 font-heading">
             {title}
           </div>
-          <div className="mb-1 xl:mb-3 text-[1.6rem] lg:text-[1.8rem] xl:text-[2rem] italic text-stone-400">
+          <div className="mb-1 xl:mb-3 text-[1.6rem] lg:text-[1.8rem] xl:text-[2rem] italic text-stone-400 leading-8">
             {tagline}
           </div>
 
