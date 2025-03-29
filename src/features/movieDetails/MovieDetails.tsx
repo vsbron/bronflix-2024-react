@@ -7,6 +7,7 @@ import {
   LanguageIcon,
 } from "@heroicons/react/24/outline";
 
+import { useResponsive } from "@/hooks/useResponsive";
 import { COUNTRIES, LANGUAGES } from "@/lib/constantsGeo";
 import { MovieDetailsProps } from "@/lib/types";
 import { IGenre } from "@/lib/typesAPI";
@@ -43,6 +44,9 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   // Getting user data from Redux store
   const { uid } = useUser();
 
+  // Getting a number of media queries from custom hook
+  const { isMD, isLG } = useResponsive();
+
   // Handling some movie data
   const headingTitle = `${title} (${
     release_date ? new Date(release_date).getFullYear().toString() : "TBA"
@@ -56,8 +60,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
   return (
     <section>
       <Heading>{headingTitle}</Heading>
-      <MediaHero media={movie} posterWidth="40rem">
-        {/* <MediaHero media={movie} posterWidth="33rem"> */}
+      <MediaHero media={movie}>
         {!!collection && <MovieCollectionLink collection={collection} />}
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-gray-400">
@@ -71,15 +74,15 @@ function MovieDetails({ movie }: MovieDetailsProps) {
           {uid && (
             <MediaInList type="movie" id={movie.id} name={headingTitle} />
           )}
-          <div className="text-[3rem] xl:text-[4rem] leading-[1.1] -my-1 xl:my-0 font-heading">
+          <div className="text-[2.5rem] lg:text-[3rem] xl:text-[4rem] leading-[1.1] -my-1 xl:my-0 font-heading">
             {title}
           </div>
-          <div className="mb-1 xl:mb-3 text-[1.8rem] xl:text-[2rem] italic text-stone-400">
+          <div className="mb-1 xl:mb-3 text-[1.6rem] lg:text-[1.8rem] xl:text-[2rem] italic text-stone-400">
             {tagline}
           </div>
           <div className="contents text-2xl">
             <div>{genresList}</div>
-            <div className="flex gap-8">
+            <div className="flex gap-x-8 gap-y-1 flex-wrap">
               <IconWrapper icon={<CalendarIcon />}>
                 {formatDate(release_date)}
               </IconWrapper>
@@ -90,7 +93,7 @@ function MovieDetails({ movie }: MovieDetailsProps) {
                 {formatRuntime(runtime)}
               </IconWrapper>
             </div>
-            <div className="flex gap-8 mb-0 xl:mb-2">
+            <div className="flex gap-x-8 gap-y-1 mb-0 xl:mb-2 flex-wrap">
               {originCountry.length > 0 && (
                 <IconWrapper icon={<GlobeAltIcon />}>
                   {originCountry}
@@ -106,12 +109,24 @@ function MovieDetails({ movie }: MovieDetailsProps) {
               )}
             </div>
           </div>
-          <div className="max-w-[65rem] mb-4 xl:mb-6 text-[1.4rem] xl:text-[1.6rem]">
+          {!isLG && (
+            <>
+              <div className="max-w-[65rem] mb-4 xl:mb-6 text-[1.4rem] xl:text-[1.6rem]">
+                {formattedOverview}
+              </div>
+              <MediaButtons type={"movie"} media={movie} />
+            </>
+          )}
+        </div>
+      </MediaHero>
+      {isLG && (
+        <>
+          <div className="max-w-[65rem] my-6 text-[1.4rem]">
             {formattedOverview}
           </div>
           <MediaButtons type={"movie"} media={movie} />
-        </div>
-      </MediaHero>
+        </>
+      )}
     </section>
   );
 }

@@ -154,8 +154,8 @@ export type GenreMediaResultsProps = {
 };
 export type MediaHeroPros = {
   media: IBase;
-  posterWidth: string;
   children: ReactNode;
+  small?: boolean;
 };
 export type MediaMainBGProps = { type: "movies" | "shows" };
 export type PaginationNavProps = {

@@ -11,7 +11,7 @@ function CollectionDetails({ collection }: CollectionDetailsProps) {
   return (
     <section>
       <Heading>{name}</Heading>
-      <MediaHero media={collection} posterWidth="25rem">
+      <MediaHero media={collection} small={true}>
         <div className="relative z-10 flex flex-col gap-3">
           <div className="text-[4rem] -mb-2 font-heading">{name}</div>
           <div className="max-w-[65rem] mb-6">{overview}</div>

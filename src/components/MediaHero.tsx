@@ -1,12 +1,32 @@
+import { useResponsive } from "@/hooks/useResponsive";
 import { BASE_GAP_CLASS } from "@/lib/constants";
 import { MediaHeroPros } from "@/lib/types";
 import { getMediaImages } from "@/utils/helpers";
 
 import { DimOverlay } from "@/components/ui/Overlays";
 
-function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
+function MediaHero({ media, small = false, children }: MediaHeroPros) {
   // Getting images paths
   const { posterPath, backgroundImage } = getMediaImages(media);
+
+  // Getting a number of media queries from custom hook
+  const { isMD, isLG } = useResponsive();
+
+  // Setting the widths for poster
+  let basicWidth, smallWidth;
+  switch (true) {
+    case isMD:
+      basicWidth = "25rem";
+      smallWidth = "25rem";
+      break;
+    case isLG:
+      basicWidth = "32rem";
+      smallWidth = "25rem";
+      break;
+    default:
+      basicWidth = "40rem";
+      smallWidth = "25rem";
+  }
 
   // Returned JSX
   return (
@@ -16,7 +36,7 @@ function MediaHero({ media, posterWidth, children }: MediaHeroPros) {
       <img
         src={posterPath}
         className="rounded-lg"
-        style={{ width: posterWidth }}
+        style={{ width: small ? smallWidth : basicWidth }}
         alt={media.title || media.name}
         title={`${media.title || media.name} poster`}
       />
