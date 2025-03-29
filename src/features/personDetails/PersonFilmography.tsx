@@ -7,6 +7,7 @@ import { IMediaCredit } from "@/lib/typesAPI";
 
 import Button from "@/components/ui/Button";
 import { BlackGradientToTop } from "@/components/ui/Overlays";
+import Heading from "@/components/ui/Heading";
 
 function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
   // Helper function that sorts the credits array
@@ -54,7 +55,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
     return (
       <div>
-        <h3 className="my-4 mb-3">{sectionTitle}</h3>
+        <h3 className="mt-0 mb-3 xl:mt-4">{sectionTitle}</h3>
         {credits.map((media) => {
           // Destructuring and handling media data
           const { id, title, type, year, roles } = media;
@@ -106,8 +107,8 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
   // Returned JSX
   return (
-    <div className="border-l-[1px] border-main-color px-12">
-      <h2 className="mt-0 uppercase text-[2.5rem]">Filmography</h2>
+    <div className="mt-6 xl:-mt-4 border-0 xk:border-l-[1px] border-main-color px-0 xl:px-12">
+      <Heading as="h2">Filmography</Heading>
       <div
         className={`flex flex-col gap-2 overflow-hidden relative ${
           isExpanded || !isBigFilmography ? "" : "h-[88rem]"
