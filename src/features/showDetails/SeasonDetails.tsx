@@ -40,20 +40,26 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
 
   // Returned JSX
   return (
-    <div className={`grid ${BASE_GAP_CLASS} grid-cols-[20.7rem_1fr]`}>
-      <div className="relative">
+    <div
+      className={`flex flex-col sm:grid ${BASE_GAP_CLASS} gap-y-0 grid-cols-[20.7rem_1fr] grid-rows-[1fr_auto] sm:items-end`}
+    >
+      <div className="relative sm:row-span-1 md:row-span-2 mt-8 md:mt-0">
         <ScorePreview score={vote_average} />
         <img
           src={poster}
-          className="rounded-lg"
+          className="rounded-lg max-md:w-[20rem]"
           alt={`Season poster`}
           title={`Poster of the ${name}`}
         />
       </div>
-      <div className="flex flex-col justify-end ">
+      <div className="flex flex-col max-md:mt-6">
         <div className="font-heading text-5xl mb-2">{name}</div>
-        <div className="text-xl mb-4">Air date: {formatDate(air_date)}</div>
-        <div className="w-1/2 text-2xl">{formattedOverview}</div>
+        <div className="text-2xl lg:text-xl">
+          Air date: {formatDate(air_date)}
+        </div>
+      </div>
+      <div className="lg:w-2/3 xl:w-1/2 text-2xl max-sm:col-span-1 max-md:col-span-2 max-md:mt-0">
+        {formattedOverview}
       </div>
       {episodes.length > 0 && (
         <div className="col-span-full">
