@@ -62,9 +62,9 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
         {formattedOverview}
       </div>
       {episodes.length > 0 && (
-        <div className="col-span-full">
+        <div className="max-w-[70rem] xl:max-w-full col-span-full">
           <Heading as="h3">{`${name} Episodes`}</Heading>
-          <div className="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
             {episodes.map((episode: IEpisode) => (
               <SeasonEpisode episode={episode} key={episode.id} />
             ))}

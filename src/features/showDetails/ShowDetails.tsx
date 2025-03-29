@@ -46,8 +46,8 @@ function ShowDetails({ show }: ShowDetailsProps) {
   // Getting user data from Redux store
   const { uid } = useUser();
 
-  // Getting a number of media queries from custom hook
-  const { isMD, isLG } = useResponsive();
+  // Getting the LG media query from custom hook
+  const { isLG } = useResponsive();
 
   // Handling the show data
   const headingTitle = `${name} (${

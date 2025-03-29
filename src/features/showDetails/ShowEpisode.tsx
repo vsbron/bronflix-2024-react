@@ -28,22 +28,24 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
   // Returned JSX
   return (
     <div className={`flex ${BASE_GAP_CLASS}`}>
-      <div className="relative basis-[30rem] flex-shrink-0 pb-[16.875rem] overflow-hidden rounded-lg">
+      <div className="relative basis-[30rem] xl:basis-[25rem] xxl:basis-[30rem] flex-shrink-0 pb-[16.875rem] xl:pb-[14rem] xxl:pb-[16.875rem]">
         <img
           src={snapshot}
-          className="object-cover absolute inset-0"
+          className="object-cover absolute inset-0 rounded-lg"
           alt="Episode still"
           title={name}
         />
         <ScorePreview score={vote_average} />
       </div>
       <div className="flex flex-col justify-end">
-        <div className="text-[1.5rem] -mb-2 text-stone-400 font-medium">
+        <div className="text-[1.4rem] md:text-[1.6rem] xl:text-[1.4rem] xxl:text-[1.5rem] -mb-2 text-stone-400 font-medium">
           Episode {episode_number}
         </div>
-        <div className="font-heading text-[2.5rem]">{name}</div>
+        <div className="font-heading text-[2.2rem] md:text-[2.8rem] xl:text-[2.2rem] xxl:text-[2.5rem]">
+          {name}
+        </div>
 
-        <div className="text-xl mb-2 flex gap-3">
+        <div className="text-xl md:text-[1.5rem] xl:text-xl mb-2 flex gap-3">
           Air date: {formatDate(air_date)}
           {runtime && (
             <>
@@ -51,7 +53,9 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
             </>
           )}
         </div>
-        <div className="text-2xl">{shortenOverview}</div>
+        <div className="text-[1.3rem] md:text-2xl xl:text-[1.3rem] xxl:text-2xl leading-[1.7rem] md:leading-[1.9rem] xl:leading-[1.7rem] xxl:leading-[1.9rem]">
+          {shortenOverview}
+        </div>
       </div>
     </div>
   );
