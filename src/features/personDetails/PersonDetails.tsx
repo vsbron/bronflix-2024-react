@@ -104,7 +104,7 @@ function PersonDetails({ person }: PersonDetailsProps) {
         />
         <div className="flex flex-col justify-end items-start">
           {uid && <MediaInList type="person" id={person.id} name={name} />}
-          <div className="text-[4rem] font-heading -mt-2">{name}</div>
+          <div className="text-[4rem] font-heading -mt-2 mb-3 leading-[4.5rem]">{name}</div>
           <div>Gender: {GENDERS[gender]}</div>
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>

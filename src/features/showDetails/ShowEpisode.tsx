@@ -43,7 +43,7 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
         <div className="text-[1.4rem] md:text-[1.6rem] xl:text-[1.4rem] xxl:text-[1.5rem] -mb-2 text-stone-400 font-medium">
           Episode {episode_number}
         </div>
-        <div className="font-heading text-[2.2rem] md:text-[2.8rem] xl:text-[2.2rem] xxl:text-[2.5rem]">
+        <div className="font-heading text-[2.2rem] md:text-[2.8rem] xl:text-[2.2rem] xxl:text-[2.5rem] leading-10 max-md:mb-2 max-xl:mb-3 my-2">
           {name}
         </div>
         <div className="text-xl md:text-[1.5rem] xl:text-xl flex gap-x-3 gap-y-0 flex-wrap">
