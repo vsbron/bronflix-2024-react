@@ -3,9 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { SITE_NAME } from "@/lib/constants";
 import { META_APP_INFO_DESC, META_APP_INFO_TITLE } from "@/lib/metaTags";
 
+import AnchorTarget from "@/components/ui/AnchorTarget";
 import Heading from "@/components/ui/Heading";
 import ContentWall from "@/components/ui/ContentWall";
-import AnchorTarget from "@/components/ui/AnchorTarget";
 
 function AppInfo() {
   // Returned JSX
@@ -81,9 +81,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="project-overview" />
-          <Heading as="h2">
-            Project Overview
-          </Heading>
+          <Heading as="h2">Project Overview</Heading>
           <p>
             {SITE_NAME} allows users to explore movies, TV shows, and actors
             with dynamic content fetched from the TMDB API. It includes:
@@ -104,9 +102,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="features" />
-          <Heading as="h2">
-            Features
-          </Heading>
+          <Heading as="h2">Features</Heading>
           <ul>
             <li>
               <strong>Interactive Content</strong>: The index page includes a
@@ -131,13 +127,9 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="page-descriptions" />
-          <Heading as="h2">
-            Page Descriptions
-          </Heading>
+          <Heading as="h2">Page Descriptions</Heading>
           <AnchorTarget id="index-page" />
-          <Heading as="h3">
-            Index Page
-          </Heading>
+          <Heading as="h3">Index Page</Heading>
           <p>The main page features several sections, including:</p>
           <ul>
             <li>
@@ -157,9 +149,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="movie-page" />
-          <Heading as="h3">
-            Movie Page
-          </Heading>
+          <Heading as="h3">Movie Page</Heading>
           <p>Displays comprehensive information about a movie, including:</p>
           <ul>
             <li>
@@ -186,9 +176,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="show-page" />
-          <Heading as="h3">
-            Show Page
-          </Heading>
+          <Heading as="h3">Show Page</Heading>
           <p>Similar to the movie page, but with additional details:</p>
           <ul>
             <li>
@@ -217,9 +205,7 @@ function AppInfo() {
             <li>"Shows You May Also Like" carousel for recommendations.</li>
           </ul>
           <AnchorTarget id="person-page" />
-          <Heading as="h3">
-            Person Page
-          </Heading>
+          <Heading as="h3">Person Page</Heading>
           <p>Provides in-depth details about an actor or crew member:</p>
           <ul>
             <li>
@@ -235,18 +221,14 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="collection-page" />
-          <Heading as="h3">
-            Collection Page
-          </Heading>
+          <Heading as="h3">Collection Page</Heading>
           <p>
             Accessed from a movie page within a collection. Displays the movie's
             poster, a brief overview, and a list of movies included in the
             collection.
           </p>
           <AnchorTarget id="profile-page" />
-          <Heading as="h3">
-            Profile Page
-          </Heading>
+          <Heading as="h3">Profile Page</Heading>
           <p>
             The Profile Page serves as the user's hub, displaying their personal
             details and curated lists.
@@ -283,9 +265,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="main-movies-page" />
-          <Heading as="h3">
-            Main Movies Page
-          </Heading>
+          <Heading as="h3">Main Movies Page</Heading>
           <p>
             The Main Movies Page is your gateway to a world of cinema, offering
             curated lists, trending films, and more:
@@ -315,9 +295,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="main-shows-page" />
-          <Heading as="h3">
-            Main Shows Page
-          </Heading>
+          <Heading as="h3">Main Shows Page</Heading>
           <p>
             The Main Shows Page offers a comprehensive guide to TV series,
             making it easy to discover new shows and follow your favorites:
@@ -346,9 +324,7 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="genres-media-page" />
-          <Heading as="h3">
-            Genres Media Page
-          </Heading>
+          <Heading as="h3">Genres Media Page</Heading>
           <p>
             A page that lists media based on the selected genre from the Main
             Movies or Main Shows pages
@@ -360,17 +336,13 @@ function AppInfo() {
             </li>
           </ul>
           <AnchorTarget id="additional-pages" />
-          <Heading as="h3">
-            Additional Pages
-          </Heading>
+          <Heading as="h3">Additional Pages</Heading>
           <p>
             Includes supplementary pages such as Contact Us, App Info, About Us,
             Site Map, Terms of Use and Privacy Policy.
           </p>
           <AnchorTarget id="technical-details" />
-          <Heading as="h2">
-            Technical Details
-          </Heading>
+          <Heading as="h2">Technical Details</Heading>
           <ul>
             <li>
               <strong>Framework</strong>: React with TypeScript for type safety

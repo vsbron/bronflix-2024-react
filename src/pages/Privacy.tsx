@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 import { SITE_NAME } from "@/lib/constants";
 import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 
+import AnchorTarget from "@/components/ui/AnchorTarget";
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
-import AnchorTarget from "@/components/ui/AnchorTarget";
-import { Link } from "react-router-dom";
 
 function Privacy() {
   // Returned JSX
