@@ -95,10 +95,10 @@ function PersonDetails({ person }: PersonDetailsProps) {
   // Returned JSX
   return (
     <>
-      <div className={`flex gap-6 md:gap-10`}>
+      <div className={`flex max-sm:flex-col gap-6 md:gap-10`}>
         <img
           src={posterPath}
-          className="rounded-lg xs:w-[15rem] md:w-[17rem] lg:w-[20rem]"
+          className="rounded-lg w-[25rem] xs:w-[15rem] md:w-[17rem] lg:w-[20rem]"
           alt={person.name}
           title={`${person.name} photo`}
         />
