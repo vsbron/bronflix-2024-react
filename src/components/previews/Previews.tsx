@@ -68,7 +68,7 @@ function Previews<T extends IBase>({
                   media={media}
                   type={type}
                   height={isMD ? MOBILE_PREVIEW_HEIGHT : height}
-                  width={width}
+                  width={isMD ? MOBILE_PREVIEW_WIDTH : width}
                 />
               ))
             : rawPreviews.map((media: T) => (

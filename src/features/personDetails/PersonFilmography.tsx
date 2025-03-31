@@ -63,8 +63,8 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
 
           // Build credits list
           return (
-            <div className="flex items-end relative" key={`${type}-${id}`}>
-              <div className="bg-stone-950 pr-2 text-2xl flex">
+            <div className="flex items-end relative flex-wrap max-sm:mb-2" key={`${type}-${id}`}>
+              <div className="bg-stone-950 pr-2 text-[1.4rem] md:text-2xl flex">
                 <div className="whitespace-nowrap">
                   {year || "TBA"}
                   <span className="inline-block mx-3">·</span>
@@ -76,7 +76,7 @@ function PersonFilmography({ cast, crew }: PersonFilmographyProps) {
                   {title}
                 </Link>
               </div>
-              <div className="bg-stone-950 pl-2 text-[1.4rem] ml-auto text-right">
+              <div className="bg-stone-950 pl-2 text-[1.3rem] md:text-[1.4rem] ml-auto text-right">
                 <span className="inline-block max-w-[40rem]">
                   {combinedRoles}
                 </span>

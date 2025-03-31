@@ -95,16 +95,16 @@ function PersonDetails({ person }: PersonDetailsProps) {
   // Returned JSX
   return (
     <>
-      <div className={`flex gap-10`}>
+      <div className={`flex gap-6 md:gap-10`}>
         <img
           src={posterPath}
-          className="rounded-lg w-[20rem]"
+          className="rounded-lg xs:w-[15rem] md:w-[17rem] lg:w-[20rem]"
           alt={person.name}
           title={`${person.name} photo`}
         />
         <div className="flex flex-col justify-end items-start">
           {uid && <MediaInList type="person" id={person.id} name={name} />}
-          <div className="text-[4rem] font-heading -mt-2 mb-3 leading-[4.5rem]">{name}</div>
+          <div className="text-[2.8rem] md:text-[3rem] lg:text-[4rem] font-heading -mt-2 mb-3 leading-[3rem] md:leading-[3.4rem] lg:leading-[4.5rem]">{name}</div>
           <div>Gender: {GENDERS[gender]}</div>
           <div>Known for: {known_for_department}</div>
           <div>Birthday: {formattedBirthday}</div>
