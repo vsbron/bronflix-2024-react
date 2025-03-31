@@ -5,6 +5,8 @@ import { META_PRIVACY_DESC, META_PRIVACY_TITLE } from "@/lib/metaTags";
 
 import ContentWall from "@/components/ui/ContentWall";
 import Heading from "@/components/ui/Heading";
+import AnchorTarget from "@/components/ui/AnchorTarget";
+import { Link } from "react-router-dom";
 
 function Privacy() {
   // Returned JSX
@@ -27,6 +29,50 @@ function Privacy() {
             visit our website, register or log in, and use our contact form. By
             using our services, you agree to the terms of this Privacy Policy.
           </p>
+          <Heading as="h2">Contents</Heading>
+          <ul>
+            <li>
+              <a href="#information-collect">Information We Collect</a>
+              <ul>
+                <li>
+                  <a href="#how-we-use-information">
+                    How We Use Your Information
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#data-sharing">Data Sharing and Disclosure</a>
+            </li>
+            <li>
+              <a href="#cookies-and-tracking">
+                Cookies and Tracking Technologies
+              </a>
+            </li>
+            <li>
+              <a href="#data-security">Data Security</a>
+              <ul>
+                <li>
+                  <a href="#your-rights">Your Rights</a>
+                </li>
+                <li>
+                  <a href="#third-party-links">Third-Party Links</a>
+                </li>
+                <li>
+                  <a href="#childrens-privacy">Children's Privacy</a>
+                </li>
+                <li>
+                  <a href="#changes-to-policy">
+                    Changes to This Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#contact-us">Contact Us</a>
+            </li>
+          </ul>
+          <AnchorTarget id="information-collect" />
           <Heading as="h2">Information We Collect</Heading>
           <p>We may collect the following types of information:</p>
           <ul>
@@ -51,6 +97,7 @@ function Privacy() {
             </li>
           </ul>
 
+          <AnchorTarget id="how-we-use-information" />
           <Heading as="h3">How We Use Your Information</Heading>
           <p>
             We may use the information we collect for the following purposes:
@@ -68,6 +115,7 @@ function Privacy() {
             </li>
           </ul>
 
+          <AnchorTarget id="data-sharing" />
           <Heading as="h2">Data Sharing and Disclosure</Heading>
           <p>
             We do not sell, trade, or rent your personal information to third
@@ -89,6 +137,7 @@ function Privacy() {
             </li>
           </ul>
 
+          <AnchorTarget id="cookies-and-tracking" />
           <Heading as="h2">Cookies and Tracking Technologies</Heading>
           <p>
             We use cookies and similar tracking technologies to collect data
@@ -108,6 +157,7 @@ function Privacy() {
             site.
           </p>
 
+          <AnchorTarget id="data-security" />
           <Heading as="h2">Data Security</Heading>
           <p>
             We implement reasonable security measures to protect your personal
@@ -117,6 +167,7 @@ function Privacy() {
             your data.
           </p>
 
+          <AnchorTarget id="your-rights" />
           <Heading as="h3">Your Rights</Heading>
           <p>
             Depending on your location and applicable laws, you may have the
@@ -125,6 +176,7 @@ function Privacy() {
             Contact Email].
           </p>
 
+          <AnchorTarget id="third-party-links" />
           <Heading as="h3">Third-Party Links</Heading>
           <p>
             Our website may contain links to third-party websites. We are not
@@ -133,6 +185,7 @@ function Privacy() {
             personal information.
           </p>
 
+          <AnchorTarget id="childrens-privacy" />
           <Heading as="h3">Children's Privacy</Heading>
           <p>
             Our services are not intended for children under the age of 13, and
@@ -141,6 +194,7 @@ function Privacy() {
             child under 13, we will take steps to delete that information.
           </p>
 
+          <AnchorTarget id="changes-to-policy" />
           <Heading as="h3">Changes to This Privacy Policy</Heading>
           <p>
             We may update this Privacy Policy from time to time. When we make
@@ -149,6 +203,7 @@ function Privacy() {
             informed about how we protect your information.
           </p>
 
+          <AnchorTarget id="contact-us" />
           <Heading as="h2">Contact Us</Heading>
           <p>
             If you have any questions or concerns about this Privacy Policy, or
@@ -165,8 +220,7 @@ function Privacy() {
               </a>
             </li>
             <li>
-              <strong>Phone:</strong>{" "}
-              <a href="tel:+16195551212">+1 (619) 555-12-12</a>
+              Or use our <Link to="/contact-us">Contact Us</Link> page
             </li>
           </ul>
         </ContentWall>
