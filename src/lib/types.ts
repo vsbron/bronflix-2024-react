@@ -138,6 +138,7 @@ export type MoviesFeaturedProps = { movies: IMovieList[] };
 export type MovieHighlightProps = { movie: IMovieList };
 
 // General
+export type AnchorTargetProps = {id: string}
 export type AuthenticationProps = { col?: boolean };
 export type GenreListProps = { data: IGenre[]; type: string };
 export type GenreMediaListProps = {

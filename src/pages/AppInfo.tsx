@@ -5,6 +5,7 @@ import { META_APP_INFO_DESC, META_APP_INFO_TITLE } from "@/lib/metaTags";
 
 import Heading from "@/components/ui/Heading";
 import ContentWall from "@/components/ui/ContentWall";
+import AnchorTarget from "@/components/ui/AnchorTarget";
 
 function AppInfo() {
   // Returned JSX
@@ -32,7 +33,6 @@ function AppInfo() {
             functionalities include dynamic content from the TMDB API, a sleek
             and responsive UI, and intuitive navigation.
           </p>
-          <hr />
           <Heading as="h2">Contents</Heading>
           <ul>
             <li>
@@ -79,12 +79,9 @@ function AppInfo() {
             <li>
               <a href="#technical-details">Technical Details</a>
             </li>
-            <li>
-              <a href="#live-version">Live version</a>
-            </li>
           </ul>
-          <hr />
-          <Heading as="h2" id="project-overview">
+          <AnchorTarget id="project-overview" />
+          <Heading as="h2">
             Project Overview
           </Heading>
           <p>
@@ -106,8 +103,8 @@ function AppInfo() {
               layout and intuitive navigation.
             </li>
           </ul>
-          <hr />
-          <Heading as="h2" id="features">
+          <AnchorTarget id="features" />
+          <Heading as="h2">
             Features
           </Heading>
           <ul>
@@ -133,11 +130,12 @@ function AppInfo() {
               with saved preferences and recommendations.
             </li>
           </ul>
-          <hr />
-          <Heading as="h2" id="page-descriptions">
+          <AnchorTarget id="page-descriptions" />
+          <Heading as="h2">
             Page Descriptions
           </Heading>
-          <Heading as="h3" id="index-page">
+          <AnchorTarget id="index-page" />
+          <Heading as="h3">
             Index Page
           </Heading>
           <p>The main page features several sections, including:</p>
@@ -158,7 +156,8 @@ function AppInfo() {
               every visit.
             </li>
           </ul>
-          <Heading as="h3" id="movie-page">
+          <AnchorTarget id="movie-page" />
+          <Heading as="h3">
             Movie Page
           </Heading>
           <p>Displays comprehensive information about a movie, including:</p>
@@ -186,7 +185,8 @@ function AppInfo() {
               recommendations.
             </li>
           </ul>
-          <Heading as="h3" id="show-page">
+          <AnchorTarget id="show-page" />
+          <Heading as="h3">
             Show Page
           </Heading>
           <p>Similar to the movie page, but with additional details:</p>
@@ -216,7 +216,8 @@ function AppInfo() {
             </li>
             <li>"Shows You May Also Like" carousel for recommendations.</li>
           </ul>
-          <Heading as="h3" id="person-page">
+          <AnchorTarget id="person-page" />
+          <Heading as="h3">
             Person Page
           </Heading>
           <p>Provides in-depth details about an actor or crew member:</p>
@@ -233,7 +234,8 @@ function AppInfo() {
               with each entry clickable for more details.
             </li>
           </ul>
-          <Heading as="h3" id="collection-page">
+          <AnchorTarget id="collection-page" />
+          <Heading as="h3">
             Collection Page
           </Heading>
           <p>
@@ -241,7 +243,8 @@ function AppInfo() {
             poster, a brief overview, and a list of movies included in the
             collection.
           </p>
-          <Heading as="h3" id="profile-page">
+          <AnchorTarget id="profile-page" />
+          <Heading as="h3">
             Profile Page
           </Heading>
           <p>
@@ -279,7 +282,8 @@ function AppInfo() {
               preview across the site.
             </li>
           </ul>
-          <Heading as="h3" id="main-movies-page">
+          <AnchorTarget id="main-movies-page" />
+          <Heading as="h3">
             Main Movies Page
           </Heading>
           <p>
@@ -310,7 +314,8 @@ function AppInfo() {
               movies, ensuring you're up-to-date with the best in cinema.
             </li>
           </ul>
-          <Heading as="h3" id="main-shows-page">
+          <AnchorTarget id="main-shows-page" />
+          <Heading as="h3">
             Main Shows Page
           </Heading>
           <p>
@@ -340,7 +345,8 @@ function AppInfo() {
               acclaimed series.
             </li>
           </ul>
-          <Heading as="h3" id="genres-media-page">
+          <AnchorTarget id="genres-media-page" />
+          <Heading as="h3">
             Genres Media Page
           </Heading>
           <p>
@@ -353,15 +359,16 @@ function AppInfo() {
               Displays up to 10,000 results across 500 pages (TMDB's limit).
             </li>
           </ul>
-          <Heading as="h3" id="additional-pages">
+          <AnchorTarget id="additional-pages" />
+          <Heading as="h3">
             Additional Pages
           </Heading>
           <p>
             Includes supplementary pages such as Contact Us, App Info, About Us,
             Site Map, Terms of Use and Privacy Policy.
           </p>
-          <hr />
-          <Heading as="h2" id="technical-details">
+          <AnchorTarget id="technical-details" />
+          <Heading as="h2">
             Technical Details
           </Heading>
           <ul>
