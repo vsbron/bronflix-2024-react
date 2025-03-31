@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { BASE_GAP_CLASS, SEASON_TYPES } from "@/lib/constants";
 import { ISeason } from "@/lib/typesAPI";
 
+import AnchorTarget from "@/components/ui/AnchorTarget";
 import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
 import SeasonDetails from "@/features/showDetails/SeasonDetails";
@@ -34,7 +35,8 @@ function ShowSeasons({ seasons }: { seasons: ISeason[] }) {
   return (
     <section>
       <Heading as="h2">Episode Guide</Heading>
-      <div className={`flex ${BASE_GAP_CLASS} mb-6 flex-wrap`}>
+      <AnchorTarget id="season-select" />
+      <div className={`flex max-md:gap-4 ${BASE_GAP_CLASS} mb-6 flex-wrap`}>
         {onlySeasons.map((season) => (
           <Button
             key={season.id}
