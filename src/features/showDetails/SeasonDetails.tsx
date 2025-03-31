@@ -79,7 +79,7 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
         <Button>
           <a href="#season-select">
             <ArrowUpIcon className="w-8 inline-block pb-1 mr-2" />
-            Back to Seasons
+            Return to Season List
           </a>
         </Button>
       </div>
