@@ -8,7 +8,7 @@ function Heading({ children, as = "h1", id }: HeadingProps) {
   switch (as) {
     case "h1":
       element = (
-        <h1 className="text-4xl max-md:pt-0.5 md:text-5xl my-0 md:mt-[0.3rem] md:mb-[0.4rem]">
+        <h1 className="text-4xl leading-[1.2] max-md:pt-0.5 md:text-5xl md:leading-[1.1] my-0 md:mt-[0.3rem] md:mb-[0.4rem]">
           {children.toUpperCase()}
         </h1>
       );

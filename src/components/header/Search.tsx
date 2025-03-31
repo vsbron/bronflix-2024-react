@@ -120,11 +120,11 @@ function Search() {
         disabled={isSubmitting}
         aria-label="Search"
       >
-        <MagnifyingGlassIcon />
+        <MagnifyingGlassIcon style={{filter:"drop-shadow(0 0 2px black) drop-shadow(0 0 4px black) drop-shadow(0 0 6px black) drop-shadow(0 0 8px black)"}} />
       </button>
       <input
         type="text"
-        className={`rounded-full outline-none text-[1.3rem] xl:text-[1.4rem] border border-stone-50 transition-all duration-200 ${
+        className={`rounded-full outline-none text-[1.3rem] xl:text-[1.4rem] border border-stone-50 shadow-md transition-all duration-200 ${
           isHovered || isMD
             ? "w-[22rem] lg:w-[25rem] xl:w-[28rem] opacity-100 pl-5 pr-[3rem]"
             : "w-0 opacity-0 p-0"
