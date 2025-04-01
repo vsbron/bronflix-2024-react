@@ -42,8 +42,10 @@ function ShowsByGenre() {
       </Helmet>
 
       {/* Content */}
-      <Heading>{`Shows in the ${genreName} Genre`}</Heading>
-      <GenreMediaList genreId={genreId} type={type} />
+      <section>
+        <Heading>{`Shows in the ${genreName} Genre`}</Heading>
+        <GenreMediaList genreId={genreId} type={type} />
+      </section>
     </>
   );
 }

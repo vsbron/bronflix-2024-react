@@ -1,6 +1,7 @@
 import { PaginationNavProps, SearchSmallArrowProps } from "@/lib/types";
 
 import Button from "@/components/ui/Button";
+import { BASE_GAP_CLASS } from "@/lib/constants";
 
 function PaginationNav({
   page,
@@ -11,7 +12,7 @@ function PaginationNav({
   return (
     <>
       {/* prettier-ignore */}
-      <div className="flex items-center gap-6">
+      <div className={`flex items-center max-md:gap-3 ${BASE_GAP_CLASS}`}>
         <Button disabled={page === 1} onClick={()=>handlePageChange(1)} label="Go to the first page">
           <span><PaginationSmallArrow dir="left">&laquo;</PaginationSmallArrow> First</span>
         </Button>
@@ -37,7 +38,7 @@ function PaginationSmallArrow({ children, dir }: SearchSmallArrowProps) {
   // Returned JSX
   return (
     <span
-      className={`inline-block text-4xl ${dir === "left" ? "mr-1" : "ml-1"}`}
+      className={`inline-block text-4xl leading-[0.6] md:leading-[1] relative max-md:top-[1px] ${dir === "left" ? "mr-1" : "ml-1"}`}
     >
       {children}
     </span>

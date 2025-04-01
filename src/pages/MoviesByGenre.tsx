@@ -45,8 +45,10 @@ function MoviesByGenre() {
       </Helmet>
 
       {/* Content */}
-      <Heading>{`Movies in the ${genreName} Genre`}</Heading>
-      <GenreMediaList genreId={genreId} type={type} />
+      <section>
+        <Heading>{`Movies in the ${genreName} Genre`}</Heading>
+        <GenreMediaList genreId={genreId} type={type} />
+      </section>
     </>
   );
 }

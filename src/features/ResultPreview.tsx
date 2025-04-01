@@ -47,7 +47,7 @@ function ResultPreview({ media, type }: ResultPreviewProps) {
       to={`/${finalMediaType}/${media.id}`}
       className={`flex ${BASE_GAP_CLASS} items-end hover:text-red-300`}
     >
-      <div className="relative basis-[17.5rem] flex-shrink-0 overflow-hidden rounded-lg">
+      <div className="relative basis-[13rem] sm:basis-[17.5rem] flex-shrink-0 overflow-hidden rounded-lg">
         <img
           src={mediaImage}
           className="rounded-md"
@@ -59,10 +59,10 @@ function ResultPreview({ media, type }: ResultPreviewProps) {
         {isMedia && <ScorePreview score={vote_average} />}
         {uid && <IsInUserList type={finalMediaType as Media} id={media.id} />}
       </div>
-      <div className="flex flex-col gap-3">
-        <div className="font-heading text-5xl">{title || name}</div>
+      <div className="flex flex-col gap-2 sm:gap-3">
+        <div className="font-heading text-[2.2rem] sm:text-[2.5rem] xxl:text-[3rem] leading-[1.1] sm:leading-[1.2]">{title || name}</div>
         {isMedia && (
-          <div className={`flex ${BASE_GAP_CLASS} text-[1.5rem]`}>
+          <div className={`flex max-md:gap-x-3 ${BASE_GAP_CLASS} gap-y-1 text-[1.4rem] sm:text-[1.5rem] flex-wrap`}>
             <IconWrapper icon={<CalendarIcon />}>
               {formatDate(date)}
             </IconWrapper>
@@ -72,7 +72,7 @@ function ResultPreview({ media, type }: ResultPreviewProps) {
           </div>
         )}
         {isMedia && (
-          <div className="text-[1.4rem]">
+          <div className="text-[1.3rem] sm:text-[1.4rem]">
             {shortenOverview || "No overview available"}
           </div>
         )}
