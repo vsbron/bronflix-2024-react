@@ -45,12 +45,12 @@ function ResultPreview({ media, type }: ResultPreviewProps) {
   return (
     <Link
       to={`/${finalMediaType}/${media.id}`}
-      className={`flex ${BASE_GAP_CLASS} items-end hover:text-red-300`}
+      className={`grid grid-cols-1 xs:grid-cols-[auto_1fr] xs:grid-rows-[1fr_auto] ${BASE_GAP_CLASS} gap-y-3 items-end hover:text-red-300`}
     >
-      <div className="relative basis-[13rem] sm:basis-[17.5rem] flex-shrink-0 overflow-hidden rounded-lg">
+      <div className="relative overflow-hidden rounded-lg sm:row-span-2">
         <img
           src={mediaImage}
-          className="rounded-md"
+          className="w-[20rem] sm:w-[17.5rem] rounded-md"
           width={175}
           height={300}
           alt={mediaTitle}
@@ -71,12 +71,12 @@ function ResultPreview({ media, type }: ResultPreviewProps) {
             </IconWrapper>
           </div>
         )}
-        {isMedia && (
-          <div className="text-[1.3rem] sm:text-[1.4rem]">
+      </div>
+      {isMedia && (
+          <div className="text-[1.3rem] sm:text-[1.4rem] xs:col-span-2 sm:col-span-1">
             {shortenOverview || "No overview available"}
           </div>
         )}
-      </div>
     </Link>
   );
 }

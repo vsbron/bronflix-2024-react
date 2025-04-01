@@ -43,7 +43,7 @@ function SearchResultsList({ query }: SearchResultsListProps) {
       <Heading>Search results</Heading>
       {query.length > 2 && data.total_results > 0 ? (
         <>
-          <h4>
+          <h4 className="text-[2rem] sm:text-[2.2rem]">
             Showing results for: <em>"{query}"</em>
           </h4>
           <p className="text-2xl mt-2">
