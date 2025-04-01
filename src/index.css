@@ -195,3 +195,25 @@ footer a:focus svg {
     url("assets/shows-bg-2x.jpg") type("image/jpeg") 2x
   );
 }
+
+@media screen and (max-width:767px){  
+  .movies-main-bg {
+    background-image: url("assets/movies-bg-mobile.jpg");
+    background-image: image-set(
+      url("assets/movies-bg-mobile.webp") type("image/webp"),
+      url("assets/movies-bg-mobile.jpg") type("image/jpeg"),
+      url("assets/movies-bg.webp") type("image/webp") 2x,
+      url("assets/movies-bg.jpg") type("image/jpeg") 2x
+      );
+    }
+    
+  .shows-main-bg {
+    background-image: url("assets/shows-bg-mobile.jpg");
+    background-image: image-set(
+      url("assets/shows-bg-mobile.webp") type("image/webp"),
+      url("assets/shows-bg-mobile.jpg") type("image/jpeg"),
+      url("assets/shows-bg.webp") type("image/webp") 2x,
+      url("assets/shows-bg.jpg") type("image/jpeg") 2x
+    );
+  }
+}
