@@ -42,6 +42,7 @@ BroNflix allows users to explore movies, TV shows, and actors with dynamic conte
 - **Detailed Pages**: Each movie, show, and actor has its dedicated page with rich information, including posters, overviews, cast/crew, and similar recommendations.
 - **Seamless Navigation**: Users can click on items to navigate to their respective pages for more detailed information.
 - **User Authentication**: Users can sign up, log in, and access their personalized profile, enhancing their experience with saved preferences and recommendations.
+- **Responsive Design**: Supports mobile devices with a minimum width of 360px.
 
 ### Search Functionality
 

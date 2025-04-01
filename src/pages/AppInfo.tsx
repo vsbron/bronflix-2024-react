@@ -125,6 +125,9 @@ function AppInfo() {
               and access their personalized profile, enhancing their experience
               with saved preferences and recommendations.
             </li>
+            <li>
+              <strong>Responsive Design</strong>: Supports mobile devices with a minimum width of 360px.
+            </li>
           </ul>
           <AnchorTarget id="page-descriptions" />
           <Heading as="h2">Page Descriptions</Heading>
