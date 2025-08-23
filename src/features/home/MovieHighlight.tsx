@@ -52,7 +52,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
     return genre ? genre.name : null}).filter(Boolean).splice(0,3).join(", ") || "";
   const shortenOverview = shortenText(overview, 150);
   const backgroundImage = backdrop_path
-    ? `url(${MEDIA_IMG_URL}/original/${backdrop_path})`
+    ? `url(${MEDIA_IMG_URL}/w1280/${backdrop_path})`
     : `url(${NO_MOVIE_COVER})`;
 
   // Returned JSX

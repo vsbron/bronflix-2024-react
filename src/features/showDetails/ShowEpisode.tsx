@@ -19,7 +19,7 @@ function SeasonEpisode({ episode }: SeasonEpisodeProps) {
 
   // Setting the snapshot image
   const snapshot = still_path
-    ? `${MEDIA_IMG_URL}w500${still_path}`
+    ? `${MEDIA_IMG_URL}w300${still_path}`
     : NO_SHOW_COVER;
 
   // Shortening the overview

@@ -28,7 +28,7 @@ function PreviewImage({
   // Build the final image path
   const imgPath = media[posters ? "poster_path" : imageKey];
   const backgroundImage = `url(${
-    imgPath ? MEDIA_IMG_URL + "w500" + imgPath : fallback
+    imgPath ? MEDIA_IMG_URL + "w300" + imgPath : fallback
   })`;
 
   // Returned JSX

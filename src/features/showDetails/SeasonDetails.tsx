@@ -37,7 +37,7 @@ function SeasonDetails({ seasonNumber }: SeasonDetailsProps) {
 
   // Setting the poster image
   const poster = poster_path
-    ? `${MEDIA_IMG_URL}w500${poster_path}`
+    ? `${MEDIA_IMG_URL}w300${poster_path}`
     : NO_SHOW_POSTER;
 
   // Returned JSX

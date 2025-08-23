@@ -80,10 +80,10 @@ export function getMediaImages<T extends IBase>(media: T, type?: string) {
   const posterPath =
     type !== "person"
       ? media.poster_path
-        ? `${MEDIA_IMG_URL}w500${media.poster_path}`
+        ? `${MEDIA_IMG_URL}w300${media.poster_path}`
         : NO_MOVIE_POSTER
       : media.profile_path
-      ? `${MEDIA_IMG_URL}w500${media.profile_path}`
+      ? `${MEDIA_IMG_URL}w300${media.profile_path}`
       : NO_PERSON_PHOTO;
 
   const backgroundImage =
@@ -143,7 +143,7 @@ export function getMediaImagesSearch(
   path: string | undefined,
   defaultImage: string
 ): string {
-  return path ? `${MEDIA_IMG_URL}w500${path}` : defaultImage;
+  return path ? `${MEDIA_IMG_URL}w300${path}` : defaultImage;
 }
 
 //

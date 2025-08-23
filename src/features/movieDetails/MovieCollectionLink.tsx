@@ -10,7 +10,7 @@ function MovieCollectionLink({ collection }: MovieCollectionLinkProps) {
   // Setting the cover image for the collection link
   const coverImg = `url(${
     collection.backdrop_path
-      ? `${MEDIA_IMG_URL}/w400/${collection.backdrop_path}`
+      ? `${MEDIA_IMG_URL}/w300/${collection.backdrop_path}`
       : `${NO_MOVIE_COVER}`
   }`;
 
