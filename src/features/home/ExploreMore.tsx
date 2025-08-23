@@ -43,7 +43,7 @@ function ExploreMore() {
           </Link>
         </Button>
         <Button>
-          <Link className="inline-block py-3 px-6" to="/series">
+          <Link className="inline-block py-3 px-6" to="/shows">
             SERIES
           </Link>
         </Button>
