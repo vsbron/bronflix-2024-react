@@ -88,7 +88,7 @@ function MovieHighlight({ movie }: MovieHighlightProps) {
         </p>
         <div className="flex max-sm:-mt-3 items-start gap-x-6 gap-y-3">
           <Button label={`Learn more about ${title}`}>
-            <Link to={`/movies/${id}`}>
+            <Link to={`/movies/${id}`} aria-label={`Learn more about ${title}`}>
               {!isSM && <BookOpenIcon className="w-8 inline-block pb-1 mr-2" />}
               LEARN MORE
             </Link>
